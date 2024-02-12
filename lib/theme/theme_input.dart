@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:shayplanner/theme/theme_colors.dart';
 
 class ThemeInput extends StatelessWidget {
-  String theLabelText;
+  String? theLabelText;
   String theHintText;
   TextEditingController theTextEditingController;
   Function theValidation;
   Widget? theIconWidget;
   double theContentPadding;
+  FloatingLabelBehavior? theFloatingLabelBehaviour;
   ThemeInput(
       {Key? key,
-      required this.theLabelText,
+      this.theLabelText,
       required this.theHintText,
       required this.theTextEditingController,
       required this.theValidation,
       this.theIconWidget,
-      required this.theContentPadding})
+      required this.theContentPadding,
+      this.theFloatingLabelBehaviour})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -27,15 +30,28 @@ class ThemeInput extends StatelessWidget {
         return result;
       },
       decoration: InputDecoration(
-        labelText: theLabelText,
+        labelText: theLabelText ?? '',
         hintText: theHintText,
+       floatingLabelBehavior: theFloatingLabelBehaviour ??  FloatingLabelBehavior.auto ,
         contentPadding: EdgeInsets.all(theContentPadding),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        fillColor: Colors.grey[200],
+        fillColor: white,
         filled: true,
         suffixIcon: theIconWidget,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            color: Colors.white,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }

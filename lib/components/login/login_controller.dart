@@ -3,6 +3,7 @@ import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shayplanner/components/shops/shops_screen.dart';
 
 class LoginController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -39,7 +40,9 @@ class LoginController extends GetxController {
     await Future.delayed(const Duration(seconds: 3));
     isLoading.value = false;
     isLoading.refresh();
-    Get.toNamed(HomeScreen.routename);
+    //Get.toNamed(HomeScreen.routename);
+    Get.toNamed(ShopsScreen.routename);
+
   }
 
   goToRestPassword() {

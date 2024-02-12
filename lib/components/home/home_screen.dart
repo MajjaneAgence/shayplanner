@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:shayplanner/components/home/home_controller.dart';
+import 'package:shayplanner/theme/theme_app_bar.dart';
 import 'package:shayplanner/theme/theme_button.dart';
+import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_grad_container.dart';
 import 'package:shayplanner/theme/theme_input.dart';
 import 'package:shayplanner/theme/theme_text.dart';
@@ -30,27 +32,6 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.only(left: 4.0.wp),
             child: Row(
               children: [
-                // InkWell(
-                //   onTap: () {
-                //     homeController.showLanguageDropDown();
-                //   },
-                //   child:
-                //    RichText(
-                //     text: TextSpan(
-                //       children: [
-                //         const TextSpan(
-                //             text: "Fr ", style: TextStyle(color: Colors.black)),
-                //         WidgetSpan(
-                //           child: SvgPicture.asset(
-                //             "assets/icons/drop_down.svg",
-                //             width: 6,
-                //             height: 6,
-                //           ),
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                // ),
                 Obx(
                   () => PopupMenuButton<String>(
                     position: PopupMenuPosition.under,
@@ -77,9 +58,13 @@ class HomeScreen extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         homeController.selectedLanguage.value == "Fr"
-                            ? Text("Fr")
-                            : Text("An"),
-                        Icon(Icons.arrow_drop_down),
+                            ? Text(
+                                "Fr",
+                                style: TextStyle(color: Colors.black),
+                              )
+                            : Text("An", style: TextStyle(color: Colors.black)),
+                        SizedBox(width: 4.0.sp),
+                        SvgPicture.asset("assets/icons/drop_down.svg"),
                       ],
                     ),
                     onSelected: (v) {
@@ -105,14 +90,16 @@ class HomeScreen extends StatelessWidget {
         leadingWidth: 25.0.wp,
         title: Image.asset(
           "assets/images/logo.png",
-          width: 100,
-          height: 80,
+          width: 9.0.hp,
+          height: 9.0.hp,
         ),
         centerTitle: true,
         actions: [
           ThemeGradContainer(
-              theWith: 13.0.wp,
-              theHeight: 13.0.wp,
+              theWith: 5.0.hp,
+              theHeight: 5.0.hp,
+              theMargin: 2.5.hp,
+              theLinearGradient: greyYellowLinearGradient,
               theContent: Image.asset(
                 "assets/icons/user.png",
               )),
@@ -183,11 +170,13 @@ class HomeScreen extends StatelessWidget {
                               theHeight: 3.0.wp,
                               theWith: 3.0.wp,
                               theMargin: 5.0.sp,
+                              theLinearGradient: yellowFadeGradient,
                               theContent: Image.asset(
                                 "assets/icons/shop.png",
                                 color: Colors.white,
                               ),
                             ),
+                             theFloatingLabelBehaviour:  FloatingLabelBehavior.never,
                           ),
                           SizedBox(height: 1.0.hp),
                           ThemeInput(
@@ -200,17 +189,19 @@ class HomeScreen extends StatelessWidget {
                             theIconWidget: ThemeGradContainer(
                               theHeight: 3.0.wp,
                               theWith: 3.0.wp,
+                              theLinearGradient: yellowFadeGradient,
                               theMargin: 5.0.sp,
                               theContent: Image.asset(
                                 "assets/icons/localization.png",
                               ),
                             ),
+                            theFloatingLabelBehaviour:  FloatingLabelBehavior.never,
                           ),
                         ]),
                   ),
                 ),
               ),
-              ThemeText(theText: "Catégorie"),
+              ThemeText(theText: "Catégorie",theColor: black,thefontSize: 14.0.sp,),
               SizedBox(
                 height: 10.0.hp,
                 child: ListView(
@@ -374,7 +365,7 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              ThemeText(theText: "Nouveau sur PLANNER"),
+              ThemeText(theText: "Nouveau sur PLANNER", theColor: black,thefontSize: 14.0.sp,),
               Container(
                 height: 35.0.hp,
                 margin: EdgeInsets.symmetric(horizontal: 8.0.sp),
@@ -384,23 +375,7 @@ class HomeScreen extends StatelessWidget {
                     Container(
                       height: 25.0.hp,
                       margin: EdgeInsets.symmetric(vertical: 8.0.sp),
-                      decoration: BoxDecoration(boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          offset: const Offset(
-                            5.0,
-                            5.0,
-                          ),
-                          blurRadius: 10.0,
-                          //spreadRadius: 2.0,
-                        ), //BoxShadow
-                        BoxShadow(
-                          color: const Color.fromRGBO(255, 255, 255, 1),
-                          offset: const Offset(0.0, 0.0),
-                          blurRadius: 0.0,
-                          spreadRadius: 0.0,
-                        ), //BoxShadow
-                      ], borderRadius: BorderRadius.circular(25)),
+                      decoration: BoxDecoration(boxShadow:themeBoxShadowCard, borderRadius: BorderRadius.circular(25)),
                       child: Column(children: [
                         Expanded(
                           flex: 6,
@@ -433,6 +408,7 @@ class HomeScreen extends StatelessWidget {
                                     theWith: 7.0.wp,
                                     theHeight: 7.0.wp,
                                     thePadding: 4.0.sp,
+                                    theLinearGradient: greyYellowLinearGradient,
                                     theContent: SvgPicture.asset(
                                       "assets/icons/arrow_right.svg",
                                     )),
@@ -464,23 +440,7 @@ class HomeScreen extends StatelessWidget {
                     Container(
                       height: 25.0.hp,
                       margin: EdgeInsets.symmetric(vertical: 8.0.sp),
-                      decoration: BoxDecoration(boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          offset: const Offset(
-                            5.0,
-                            5.0,
-                          ),
-                          blurRadius: 10.0,
-                          //spreadRadius: 2.0,
-                        ), //BoxShadow
-                        BoxShadow(
-                          color: Colors.white,
-                          offset: const Offset(0.0, 0.0),
-                          blurRadius: 0.0,
-                          spreadRadius: 0.0,
-                        ), //BoxShadow
-                      ], borderRadius: BorderRadius.circular(25)),
+                      decoration: BoxDecoration(boxShadow:themeBoxShadowCard, borderRadius: BorderRadius.circular(25)),
                       child: Column(children: [
                         Expanded(
                           flex: 6,
@@ -513,6 +473,7 @@ class HomeScreen extends StatelessWidget {
                                     theWith: 7.0.wp,
                                     theHeight: 7.0.wp,
                                     thePadding: 4.0.sp,
+                                    theLinearGradient: greyYellowLinearGradient,
                                     theContent: SvgPicture.asset(
                                       "assets/icons/arrow_right.svg",
                                     )),

@@ -1,4 +1,5 @@
 import 'package:shayplanner/theme/theme_button.dart';
+import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_input.dart';
 import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
@@ -47,7 +48,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                           //ThemeText is a widget that we created to unify all the text across the app
                           //and at the same time avoid repeating code for widget
                           ThemeText(
-                              theText: "tr_enter_email_to_receive_code".tr),
+                              theText: "tr_enter_email_to_receive_code".tr,theColor: black,thefontSize: 14.0.sp,),
                           // this the form that contains the Email and the send button for email reset
                           Form(
                             key: forgotPasswordController.formKey,
@@ -92,7 +93,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                           //ThemeText is a widget that we created to unify all the text across the app
                           //and at the same time avoid repeating code for widget
                           ThemeText(
-                              theText: "tr_enter_phone_to_receive_code".tr),
+                              theText: "tr_enter_phone_to_receive_code".tr,theColor: black,thefontSize: 14.0.sp,),
                           Form(
                             key: forgotPasswordController.formKey,
                             child: Column(children: [

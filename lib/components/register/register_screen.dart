@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import 'package:shayplanner/components/register/register_controller.dart';
 import 'package:shayplanner/theme/theme_button.dart';
+import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_input.dart';
 import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
@@ -26,7 +27,9 @@ class RegisterScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 10.0.hp),
-              ThemeText(theText: "tr_create_account_by_filling_inputs".tr),
+              ThemeText(theText: "tr_create_account_by_filling_inputs".tr,
+              theColor: black,
+              thefontSize: 8.0.sp,),
               Form(
                   key: registerController.formKey,
                   child: Column(children: [
