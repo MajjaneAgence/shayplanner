@@ -166,7 +166,7 @@ class ShopsScreen extends StatelessWidget {
                               Container(
                                 width: 50.0.wp,
                                 margin: EdgeInsets.only(right: 6.0.sp),
-                                child: ThemeText(
+                                child: ThemeText( 
                                   theText: "Lorem ipsum dolor sit amet",
                                   thefontSize: 10.0.sp,
                                   theColor: black,
