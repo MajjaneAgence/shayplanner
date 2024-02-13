@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:shayplanner/theme/theme_colors.dart';
+import 'package:shayplanner/theme/theme_text.dart';
+import 'package:shayplanner/tools/extension.dart';
 
 class ShopsController extends GetxController {
-  final formKey = GlobalKey<FormState>();
   TextEditingController keywordEditingController = TextEditingController();
-  RxBool isLoading=false.obs;
-
+   RxBool isShowingWorkHours = false.obs;
+  RxBool isLoading = false.obs;
 
   @override
   void onInit() async {
@@ -29,8 +32,7 @@ class ShopsController extends GetxController {
   }
 
   dontValidate(String password) {
-      return null;
-
+    return null;
   }
 
   validatePassword(String password) {
@@ -41,15 +43,16 @@ class ShopsController extends GetxController {
     }
   }
 
-  validateConfirmPassword(String confirmPassword){
- if (confirmPassword.isNotEmpty) {
+  validateConfirmPassword(String confirmPassword) {
+    if (confirmPassword.isNotEmpty) {
       return null;
     } else {
       return "tr_confirm_password_doent_math".tr;
     }
   }
-  register() async{
-  print('here');
+
+  register() async {
+    print('here');
     isLoading.value = true;
     isLoading.refresh();
     await Future.delayed(const Duration(seconds: 3));
@@ -57,9 +60,49 @@ class ShopsController extends GetxController {
     isLoading.refresh();
   }
 
-  searchShop(String keyword){
-     print("searching");
+  searchShop(String keyword) {
+    print("searching");
   }
 
+  book() {}
+  goToSalonSheet() {}
 
+  List<Widget> buildDaysList() {
+    List<Widget> daysList = [];
+    DateTime now = DateTime.now();
+    final dateFormat = DateFormat('EEE d','fr');
+    for (int i = 0; i < 7; i++) {
+      DateTime day = now.add(Duration(days: i));
+      String dayName = dateFormat.format(day);
+      daysList.add(
+        InkWell(
+          onTap: () {
+            showWorkHours();
+          },
+          child:
+          Container(
+          margin: EdgeInsets.only(left: 2.0.wp, top:7.0.sp,bottom:7.0.sp),
+          padding: EdgeInsets.symmetric(horizontal: 3.0.sp, vertical: 2.0.sp),
+          height:8.0.sp,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.0),
+            color: grey,
+          ),
+          child:Center(child: ThemeText(
+            theText: dayName,
+            thefontSize: 9.0.sp,
+            theColor: white,
+            theFontWeight: FontWeight.bold,
+          ),)
+        )),
+      );
+    }
+
+    return daysList;
+  }
+
+  showWorkHours(){
+    isShowingWorkHours.value=!isShowingWorkHours.value;
+    isShowingWorkHours.refresh();
+  }
 }

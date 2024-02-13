@@ -48,7 +48,10 @@ class ForgotPasswordScreen extends StatelessWidget {
                           //ThemeText is a widget that we created to unify all the text across the app
                           //and at the same time avoid repeating code for widget
                           ThemeText(
-                              theText: "tr_enter_email_to_receive_code".tr,theColor: black,thefontSize: 14.0.sp,),
+                            theText: "tr_enter_email_to_receive_code".tr,
+                            theColor: black,
+                            thefontSize: 14.0.sp,
+                          ),
                           // this the form that contains the Email and the send button for email reset
                           Form(
                             key: forgotPasswordController.formKey,
@@ -72,7 +75,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                                 // Here we have our ThemeButton that we created to avoid repeating the same code accross the app
                                 // to render the same visual for a button
                                 () => ThemeButton(
-                                  theText: "tr_send".tr,
+                                  theContent: Text("tr_send".tr),
                                   theAction: forgotPasswordController
                                       .sendVerificationCode,
                                   theFormKey: forgotPasswordController.formKey,
@@ -93,7 +96,10 @@ class ForgotPasswordScreen extends StatelessWidget {
                           //ThemeText is a widget that we created to unify all the text across the app
                           //and at the same time avoid repeating code for widget
                           ThemeText(
-                              theText: "tr_enter_phone_to_receive_code".tr,theColor: black,thefontSize: 14.0.sp,),
+                            theText: "tr_enter_phone_to_receive_code".tr,
+                            theColor: black,
+                            thefontSize: 14.0.sp,
+                          ),
                           Form(
                             key: forgotPasswordController.formKey,
                             child: Column(children: [
@@ -116,7 +122,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                                 // Here we have our ThemeButton that we created to avoid repeating the same code accross the app
                                 // to render the same visual for a button
                                 () => ThemeButton(
-                                  theText: "tr_send".tr,
+                                  theContent: Text("tr_send".tr),
                                   theAction: forgotPasswordController
                                       .sendVerificationCode,
                                   theFormKey: forgotPasswordController.formKey,

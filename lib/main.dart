@@ -1,3 +1,4 @@
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:shayplanner/components/splash/splash_screen.dart';
 import 'package:shayplanner/routes/routes.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
@@ -6,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
+  // initilizing date formating to work with different languages for dates
+  initializeDateFormatting();
   runApp(const MyApp());
 }
 
@@ -27,6 +30,6 @@ class MyApp extends StatelessWidget {
       ),
         getPages: router,
         translationsKeys: AppTranslation.translationsKeys,
-        locale: const Locale('fr', 'FR'));
+        locale:  Locale('fr', 'FR'));
   }
 }

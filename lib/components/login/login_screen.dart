@@ -1,5 +1,6 @@
 import 'package:shayplanner/components/register/register_controller.dart';
 import 'package:shayplanner/theme/theme_button.dart';
+import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_input.dart';
 import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
@@ -82,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                     // Here we have our ThemeButton that we created to avoid repeating the same code accross the app
                     // to render the same visual for a button
                     () => ThemeButton(
-                      theText: "tr_connect".tr,
+                      theContent: Text("tr_connect".tr),
                       theAction: loginController.connect,
                       theFormKey: loginController.formKey,
                       theLoadingStatus: loginController.isLoading.value,

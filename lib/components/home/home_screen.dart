@@ -176,7 +176,8 @@ class HomeScreen extends StatelessWidget {
                                 color: Colors.white,
                               ),
                             ),
-                             theFloatingLabelBehaviour:  FloatingLabelBehavior.never,
+                            theFloatingLabelBehaviour:
+                                FloatingLabelBehavior.never,
                           ),
                           SizedBox(height: 1.0.hp),
                           ThemeInput(
@@ -195,13 +196,18 @@ class HomeScreen extends StatelessWidget {
                                 "assets/icons/localization.png",
                               ),
                             ),
-                            theFloatingLabelBehaviour:  FloatingLabelBehavior.never,
+                            theFloatingLabelBehaviour:
+                                FloatingLabelBehavior.never,
                           ),
                         ]),
                   ),
                 ),
               ),
-              ThemeText(theText: "Catégorie",theColor: black,thefontSize: 14.0.sp,),
+              ThemeText(
+                theText: "Catégorie",
+                theColor: black,
+                thefontSize: 14.0.sp,
+              ),
               SizedBox(
                 height: 10.0.hp,
                 child: ListView(
@@ -365,142 +371,213 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              ThemeText(theText: "Nouveau sur PLANNER", theColor: black,thefontSize: 14.0.sp,),
+              ThemeText(
+                theText: "Nouveau sur PLANNER",
+                theColor: black,
+                thefontSize: 14.0.sp,
+              ),
               Container(
-                height: 35.0.hp,
+                height: 40.0.hp,
                 margin: EdgeInsets.symmetric(horizontal: 8.0.sp),
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
                     Container(
-                      height: 25.0.hp,
-                      margin: EdgeInsets.symmetric(vertical: 8.0.sp),
-                      decoration: BoxDecoration(boxShadow:themeBoxShadowCard, borderRadius: BorderRadius.circular(25)),
+                      margin: EdgeInsets.only(right: 4.0.wp,bottom: 1.0.hp),
+                      decoration: BoxDecoration(
+                          boxShadow: themeBoxShadowCard,
+                          borderRadius: BorderRadius.circular(25)),
                       child: Column(children: [
-                        Expanded(
-                          flex: 6,
-                          child: Container(
-                            height: 25.0.hp,
-                            width: 87.0.wp,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(25),
-                                  topRight: Radius.circular(25)),
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  "assets/images/model_on_mirror.png",
-                                ),
-                                fit: BoxFit.cover,
+                        Container(
+                          height: 25.0.hp,
+                          width: 87.0.wp,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(18.0.sp),
+                                topRight: Radius.circular(18.0.sp)),
+                            image: DecorationImage(
+                              image: AssetImage(
+                                "assets/images/model_on_mirror.png",
                               ),
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
-                        Expanded(
-                          flex: 2,
-                          child: Container(
-                            width: 87.0.wp,
-                            padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Container(
+                          height: 5.0.hp,
+                          width: 87.0.wp,
+                          padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Lorem ipsum"),
+                              ThemeGradContainer(
+                                  theWith: 7.0.wp,
+                                  theHeight: 7.0.wp,
+                                  thePadding: 4.0.sp,
+                                  theLinearGradient: greyYellowLinearGradient,
+                                  theContent: SvgPicture.asset(
+                                    "assets/icons/arrow_right.svg",
+                                  )),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 87.0.wp,
+                          height: 4.0.hp,
+                          padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
+                          child: RichText(
+                            text: TextSpan(
+                              style:
+                                  TextStyle(fontSize: 24, color: Colors.black),
                               children: [
-                                Text("Lorem ipsum"),
-                                ThemeGradContainer(
-                                    theWith: 7.0.wp,
-                                    theHeight: 7.0.wp,
-                                    thePadding: 4.0.sp,
-                                    theLinearGradient: greyYellowLinearGradient,
-                                    theContent: SvgPicture.asset(
-                                      "assets/icons/arrow_right.svg",
-                                    )),
+                                WidgetSpan(
+                                  child: Container(
+                                    width: 5.0.wp,
+                                    height: 5.0.wp,
+                                    margin: EdgeInsets.only(right: 6.0.sp),
+                                    child: SvgPicture.asset(
+                                        'assets/icons/bell.svg'),
+                                  ),
+                                ),
+                                WidgetSpan(
+                                    child: ThemeText(
+                                        theText: "Lorem ipsum dolor sit amet,",
+                                        thefontSize: 10.0.sp,
+                                        theColor: black)),
                               ],
                             ),
                           ),
                         ),
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 87.0.wp,
-                            padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
-                            child: Text("hhhhhh"),
+                        Container(
+                          width: 87.0.wp,
+                          height: 4.0.hp,
+                          padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
+                          child: RichText(
+                            text: TextSpan(
+                              style:
+                                  TextStyle(fontSize: 24, color: Colors.black),
+                              children: [
+                                WidgetSpan(
+                                  child: Container(
+                                    width: 5.0.wp,
+                                    height: 5.0.wp,
+                                    margin: EdgeInsets.only(right: 6.0.sp),
+                                    child: SvgPicture.asset(
+                                        'assets/icons/bell.svg'),
+                                  ),
+                                ),
+                                WidgetSpan(
+                                    child: ThemeText(
+                                        theText: "Lorem ipsum dolor sit amet,",
+                                        thefontSize: 10.0.sp,
+                                        theColor: black)),
+                              ],
+                            ),
                           ),
                         ),
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 87.0.wp,
-                            padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
-                            child: Text("hhhhhh"),
+                        SizedBox(height: 1.0.hp)
+                        //  Text("hhhhhh")
+                      ]),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 4.0.wp),
+                      decoration: BoxDecoration(
+                          boxShadow: themeBoxShadowCard,
+                          borderRadius: BorderRadius.circular(25)),
+                      child: Column(children: [
+                        Container(
+                          height: 25.0.hp,
+                          width: 87.0.wp,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(18.0.sp),
+                                topRight: Radius.circular(18.0.sp)),
+                            image: DecorationImage(
+                              image: AssetImage(
+                                "assets/images/model_on_mirror.png",
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 5.0.hp,
+                          width: 87.0.wp,
+                          padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Lorem ipsum"),
+                              ThemeGradContainer(
+                                  theWith: 7.0.wp,
+                                  theHeight: 7.0.wp,
+                                  thePadding: 4.0.sp,
+                                  theLinearGradient: greyYellowLinearGradient,
+                                  theContent: SvgPicture.asset(
+                                    "assets/icons/arrow_right.svg",
+                                  )),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 87.0.wp,
+                          height: 4.0.hp,
+                          padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
+                          child: RichText(
+                            text: TextSpan(
+                              style:
+                                  TextStyle(fontSize: 24, color: Colors.black),
+                              children: [
+                                WidgetSpan(
+                                  child: Container(
+                                    width: 5.0.wp,
+                                    height: 5.0.wp,
+                                    margin: EdgeInsets.only(right: 6.0.sp),
+                                    child: SvgPicture.asset(
+                                        'assets/icons/bell.svg'),
+                                  ),
+                                ),
+                                WidgetSpan(
+                                    child: ThemeText(
+                                        theText: "Lorem ipsum dolor sit amet,",
+                                        thefontSize: 10.0.sp,
+                                        theColor: black)),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 87.0.wp,
+                          height: 4.0.hp,
+                          padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
+                          child: RichText(
+                            text: TextSpan(
+                              style:
+                                  TextStyle(fontSize: 24, color: Colors.black),
+                              children: [
+                                WidgetSpan(
+                                  child: Container(
+                                    width: 5.0.wp,
+                                    height: 5.0.wp,
+                                    margin: EdgeInsets.only(right: 6.0.sp),
+                                    child: SvgPicture.asset(
+                                        'assets/icons/bell.svg'),
+                                  ),
+                                ),
+                                WidgetSpan(
+                                    child: ThemeText(
+                                        theText: "Lorem ipsum dolor sit amet,",
+                                        thefontSize: 10.0.sp,
+                                        theColor: black)),
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(height: 9.0.sp)
                         //  Text("hhhhhh")
                       ]),
                     ),
-                    SizedBox(width: 10.0.sp),
-                    Container(
-                      height: 25.0.hp,
-                      margin: EdgeInsets.symmetric(vertical: 8.0.sp),
-                      decoration: BoxDecoration(boxShadow:themeBoxShadowCard, borderRadius: BorderRadius.circular(25)),
-                      child: Column(children: [
-                        Expanded(
-                          flex: 6,
-                          child: Container(
-                            height: 25.0.hp,
-                            width: 87.0.wp,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(25),
-                                  topRight: Radius.circular(25)),
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  "assets/images/model_on_mirror.png",
-                                ),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: Container(
-                            width: 87.0.wp,
-                            padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text("Lorem ipsum"),
-                                ThemeGradContainer(
-                                    theWith: 7.0.wp,
-                                    theHeight: 7.0.wp,
-                                    thePadding: 4.0.sp,
-                                    theLinearGradient: greyYellowLinearGradient,
-                                    theContent: SvgPicture.asset(
-                                      "assets/icons/arrow_right.svg",
-                                    )),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 87.0.wp,
-                            padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
-                            child: Text("hhhhhh"),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 87.0.wp,
-                            padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
-                            child: Text("hhhhhh"),
-                          ),
-                        ),
-                        SizedBox(height: 9.0.sp)
-                        //  Text("hhhhhh")
-                      ]),
-                    )
                   ],
                 ),
               ),

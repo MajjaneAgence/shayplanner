@@ -34,8 +34,9 @@ const List<BoxShadow> themeBoxShadowCard = [
 ];
 const LinearGradient greyYellowLinearGradient = LinearGradient(
   colors: [
-    Color(0xFFD5A702), // D5A702
-    Color(0xFF2D2D2D), // 2D2D2D
+    Color(0xFFD5A702),
+     Color.fromRGBO(213, 167, 2, 0.6),
+    Color(0xFF2D2D2D), 
   ],
   begin: Alignment.topCenter,
   end: Alignment.bottomCenter,

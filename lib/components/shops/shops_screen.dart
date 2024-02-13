@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/shops/shops_controller.dart';
 import 'package:shayplanner/theme/theme_button.dart';
+import 'package:shayplanner/theme/theme_button.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_grad_container.dart';
 import 'package:shayplanner/theme/theme_input.dart';
@@ -48,25 +49,13 @@ class ShopsScreen extends StatelessWidget {
           height: 9.0.hp,
         )),
         centerTitle: true,
-        actions: [
-          ThemeGradContainer(
-            theWith: 7.0.hp,
-            theHeight: 7.0.hp,
-            theMargin: 1.5.hp,
-            theLinearGradient: greyYellowLinearGradient,
-            theContent: Image.asset(
-              "assets/icons/user.png",
-            ),
-          ),
-          SizedBox(width: 3.0.wp),
-        ],
+        actions: [],
         toolbarHeight: 10.0.hp,
       ),
       // first we're going to add a container that will occupy the whole width and 90% of the height
-      body: Container(
+      body: SizedBox(
         //we're going to add some padding horizontally for the container in order
         //that the content will not stick to the edge of the screen
-        padding: EdgeInsets.symmetric(horizontal: 5.0.wp),
         width: Get.width,
         height:
             90.0.hp, // 10 percent of the height is a lready taken by the appbar
@@ -82,7 +71,7 @@ class ShopsScreen extends StatelessWidget {
                 child: Container(
                   margin: EdgeInsets.only(top: 3.0.hp, bottom: 3.0.hp),
                   height: 6.0.hp,
-                  width: 80.0.wp,
+                  width: 87.0.wp,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0.sp),
                     boxShadow: [themeBoxShadowInput],
@@ -105,167 +94,244 @@ class ShopsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              ThemeText(
-                  theText: "Sélectionner un salon",
-                  theColor: black,
-                  thefontSize: 14.0.sp,
-                  theFontWeight: FontWeight.bold),
-              SizedBox(height: 1.0.hp),
-              ThemeText(
-                  theText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit,",
+              Container(
+                margin: EdgeInsets.only(left: 6.0.wp, bottom: 1.0.hp),
+                child: ThemeText(
+                    theText: "Sélectionner un salon",
+                    theColor: black,
+                    thefontSize: 14.0.sp,
+                    theFontWeight: FontWeight.bold),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 6.0.wp, bottom: 1.0.hp),
+                child: ThemeText(
+                  theText:
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit,",
                   theColor: black,
                   thefontSize: 11.0.sp,
-                 ),
-                  Container(
-                height: 90.0.hp ,
-                margin: EdgeInsets.symmetric(horizontal: 8.0.sp),
-                child: ListView(
-                  children: [
-                   Column(children: [Container(
-                      height: 25.0.hp,
-                      margin: EdgeInsets.symmetric(vertical: 8.0.sp),
-                      decoration: BoxDecoration(boxShadow: themeBoxShadowCard
-                      , borderRadius: BorderRadius.circular(25)),
-                      child: Column(children: [
-                        Expanded(
-                          flex: 6,
-                          child: Container(
-                            height: 25.0.hp,
-                            width: 87.0.wp,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(25),
-                                  topRight: Radius.circular(25)),
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  "assets/images/model_on_mirror.png",
-                                ),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 87.0.wp,
-                            padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
-                            child:
-                                Text("Lorem ipsum"),
-                           
-                          ),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: Container(
-                            width: 87.0.wp,
-                            padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text("Lorem ipsum"),
-                                ThemeGradContainer(
-                                    theWith: 7.0.wp,
-                                    theHeight: 7.0.wp,
-                                    thePadding: 4.0.sp,
-                                    theLinearGradient: greyYellowLinearGradient,
-                                    theContent: SvgPicture.asset(
-                                      "assets/icons/arrow_right.svg",
-                                    )),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 87.0.wp,
-                            padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
-                            child: Text("hhhhhh"),
-                          ),
-                        ),
-                        SizedBox(height: 9.0.sp)
-                        //  Text("hhhhhh")
-                      ]),
-                    ),
-                    ElevatedButton(onPressed: ()=>{}, child: Text("Réserver"))
-                    ]),
-                    Column(
-                      children:
-                      [Container(
-                      height: 25.0.hp,
-                      margin: EdgeInsets.symmetric(vertical: 8.0.sp),
-                      decoration: BoxDecoration(boxShadow: themeBoxShadowCard, borderRadius: BorderRadius.circular(25)),
-                      child: Column(children: [
-                        Expanded(
-                          flex: 6,
-                          child: Container(
-                            height: 25.0.hp,
-                            width: 87.0.wp,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(25),
-                                  topRight: Radius.circular(25)),
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  "assets/images/model_on_mirror.png",
-                                ),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: Container(
-                            width: 87.0.wp,
-                            padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text("Lorem ipsum"),
-                                ThemeGradContainer(
-                                    theWith: 7.0.wp,
-                                    theHeight: 7.0.wp,
-                                    thePadding: 4.0.sp,
-                                    theLinearGradient: greyYellowLinearGradient,
-                                    theContent: SvgPicture.asset(
-                                      "assets/icons/arrow_right.svg",
-                                    )),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 87.0.wp,
-                            padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
-                            child: Text("hhhhhh"),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 87.0.wp,
-                            padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
-                            child: Text("hhhhhh"),
-                          ),
-                        ),
-                        SizedBox(height: 9.0.sp)
-                        //  Text("hhhhhh")
-                      ]),
-                    ),
-                                        ElevatedButton(onPressed: ()=>{}, child: Text("Réserver"))
-
-                    ],)
-                  ],
                 ),
+              ),
+              Container(
+                height: 62.0.hp,
+                margin: EdgeInsets.symmetric(horizontal: 8.0.sp),
+                child: ListView(children: [
+                  Column(children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 8.0.sp),
+                      decoration: BoxDecoration(
+                          boxShadow: themeBoxShadowCard,
+                          borderRadius: BorderRadius.circular(25)),
+                      child: Column(children: [
+                        Container(
+                          height: 25.0.hp,
+                          width: 97.0.wp,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(25),
+                                topRight: Radius.circular(25)),
+                            image: DecorationImage(
+                              image: AssetImage(
+                                "assets/images/model_on_mirror.png",
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 92.0.wp,
+                          height: 4.0.hp,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 9.0.sp, vertical: 4.0.sp),
+                          child: ThemeText(
+                            theText: "Lorem ipsum",
+                            thefontSize: 14.0.sp,
+                            theColor: grey,
+                            theFontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Container(
+                          width: 92.0.wp,
+                          height: 4.0.hp,
+                          padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 5.0.wp,
+                                height: 4.0.wp,
+                                margin: EdgeInsets.only(right: 2.0.sp),
+                                child:
+                                    SvgPicture.asset('assets/icons/bell.svg'),
+                              ),
+                              Container(
+                                width: 50.0.wp,
+                                margin: EdgeInsets.only(right: 6.0.sp),
+                                child: ThemeText(
+                                  theText: "Lorem ipsum dolor sit amet",
+                                  thefontSize: 10.0.sp,
+                                  theColor: black,
+                                  theMaxOfLines: 1,
+                                ),
+                              ),
+                              Container(
+                                width: 10.0.wp,
+                                child:
+                              ThemeButton(
+                                  theContent: Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 6.0.sp, vertical: 5.0.sp),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      color: grey,
+                                    ),
+                                    child: ThemeText(
+                                      theText: "Fiche du salon",
+                                      thefontSize: 9.0.sp,
+                                      theColor: white,
+                                      theFontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  theAction: shopsController.goToSalonSheet,
+                                  theLoadingStatus:
+                                      shopsController.isLoading.value))
+                            ],
+                          ),
+                        ),
+                        Container(
+                            width: 92.0.wp,
+                            height: 4.0.hp,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 9.0.sp, vertical: 2.0.sp),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 5.0.wp,
+                                    height: 4.0.wp,
+                                    margin: EdgeInsets.only(right: 6.0.sp),
+                                    child: SvgPicture.asset(
+                                        'assets/icons/bell.svg'),
+                                  ),
+                                  Container(
+                                    width: 70.0.wp,
+                                    margin: EdgeInsets.only(right: 6.0.sp),
+                                    child: ThemeText(
+                                      theText: "Lorem ipsum dolor sit amet",
+                                      thefontSize: 10.0.sp,
+                                      theColor: black,
+                                      theMaxOfLines: 1,
+                                    ),
+                                  ),
+                                ])),
+                        Container(
+                          width: 92.0.wp,
+                       //   height: 5.0.hp,
+                          padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
+                          child: Column(
+                            children: [
+                              Container(
+                                width: 92.0.wp,
+                                height: 5.0.hp,
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 1,
+                                      child: ThemeText(
+                                        theText: "Matin",
+                                        thefontSize: 10.0.sp,
+                                        theColor: grey,
+                                        theFontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 3,
+                                      child: ListView(
+                                          scrollDirection: Axis.horizontal,
+                                          children:
+                                              shopsController.buildDaysList()),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Obx(() => shopsController.isShowingWorkHours.value?
+                               Container(
+                                width: 92.0.wp,
+                                height: 5.0.hp,
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 1,
+                                      child: ThemeText(
+                                        theText: "Matin",
+                                        thefontSize: 10.0.sp,
+                                        theColor: grey,
+                                        theFontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 3,
+                                      child: ListView(
+                                          scrollDirection: Axis.horizontal,
+                                          children:
+                                              shopsController.buildDaysList()),
+                                    ),
+                                  ],
+                                ),
+                              ):
+                              SizedBox()
+                              
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 92.0.wp,
+                          height: 5.0.hp,
+                          padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: ThemeText(
+                                    theText: "Après-midi",
+                                    thefontSize: 10.0.sp,
+                                    theColor: grey,
+                                    theFontWeight: FontWeight.bold),
+                              ),
+                              Expanded(
+                                flex: 3,
+                                child: ListView(
+                                    scrollDirection: Axis.horizontal,
+                                    children: shopsController.buildDaysList()),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ]),
+                    ),
+                    SizedBox(height: 1.0.hp),
+                    ThemeButton(
+                        theContent: ThemeGradContainer(
+                          theWith: 30.0.wp,
+                          theHeight: 5.0.hp,
+                          theLinearGradient: greyYellowLinearGradient,
+                          theContent: Center(
+                              child: ThemeText(
+                                  theText: "Prendre Rdv",
+                                  thefontSize: 12.0.sp,
+                                  theColor: white)),
+                        ),
+                        theAction: shopsController.book,
+                        theLoadingStatus: shopsController.isLoading.value)
+                  ]),
+                ]),
               ),
             ],
           ),
         ),
       ),
+      floatingActionButton: ElevatedButton( onPressed:() => {},
+      child: Text("hhhhh")),
     );
   }
 }

@@ -1,17 +1,20 @@
+import 'package:shayplanner/theme/theme_colors.dart';
+import 'package:shayplanner/theme/theme_grad_container.dart';
+import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ThemeButton extends StatelessWidget {
-  String theText;
+  Widget theContent;
   Function theAction;
   bool theLoadingStatus;
   var theFormKey;
   ThemeButton(
       {Key? key,
-      required this.theText,
+      required this.theContent,
       required this.theAction,
-      required this.theFormKey,
+      this.theFormKey,
       required this.theLoadingStatus})
       : super(key: key);
   @override
@@ -19,32 +22,21 @@ class ThemeButton extends StatelessWidget {
     return theLoadingStatus == false
         ? (ElevatedButton(
             onPressed: () {
-              //   if (theFormKey.currentState!.validate()) {
-              //   theAction();
-              // }
-              theAction();
+              if (theFormKey == null) {
+                theAction();
+              } else {
+                if (theFormKey.currentState!.validate()) {
+                  theAction();
+                }
+              }
             },
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(
-                  Colors.blue), // Background color
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(17.0), // Rounded corners
-                ),
-              ),
-              padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                EdgeInsets.symmetric(
-                    vertical: 10.0.sp, horizontal: 15.0.sp), // Padding
-              ),
+            style: TextButton.styleFrom(
+              minimumSize: Size.zero, // Set this
+              padding: EdgeInsets.zero, // and this
+                      backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
             ),
-            child: Text(
-              theText,
-              style: TextStyle(
-                fontSize: 11.0.sp, // Text size
-                color: Colors.white, // Text color
-              ),
-            ),
-          ))
+            child: theContent))
         : const CircularProgressIndicator();
   }
 }

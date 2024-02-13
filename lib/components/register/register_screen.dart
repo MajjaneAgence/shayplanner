@@ -27,9 +27,11 @@ class RegisterScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 10.0.hp),
-              ThemeText(theText: "tr_create_account_by_filling_inputs".tr,
-              theColor: black,
-              thefontSize: 8.0.sp,),
+              ThemeText(
+                theText: "tr_create_account_by_filling_inputs".tr,
+                theColor: black,
+                thefontSize: 8.0.sp,
+              ),
               Form(
                   key: registerController.formKey,
                   child: Column(children: [
@@ -92,7 +94,7 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: 2.0.hp),
                     Obx(
                       () => ThemeButton(
-                        theText: "tr_register".tr,
+                        theContent: Text("tr_register".tr),
                         theAction: registerController.register,
                         theFormKey: registerController.formKey,
                         theLoadingStatus: registerController.isLoading.value,
