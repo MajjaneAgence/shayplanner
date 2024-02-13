@@ -7,19 +7,22 @@ class ThemeText extends StatelessWidget {
   Color theColor;
   FontWeight? theFontWeight;
   int? theMaxOfLines;
+  TextAlign? theTextAlign;
   ThemeText({
     Key? key,
     required this.theText,
     required this.thefontSize,
     required this.theColor,
    this.theFontWeight,
-   this.theMaxOfLines
+   this.theMaxOfLines,
+   this.theTextAlign
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Text(
       theText,
       overflow: TextOverflow.ellipsis,
+      textAlign: theTextAlign ?? TextAlign.start,
       maxLines: theMaxOfLines ?? 2,
       style: TextStyle(
         color: theColor,

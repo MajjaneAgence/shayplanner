@@ -47,9 +47,20 @@ class HomeScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                                 color: Color.fromRGBO(253, 250, 242, 1),
                                 borderRadius: BorderRadius.circular(5.0)),
-                            padding: EdgeInsets.all(4),
-                            width: double.infinity,
-                            child: Text(str),
+                            padding: EdgeInsets.all(4.0.sp),
+                            width: 25.0.wp,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                ThemeText(
+                                    theText: str,
+                                    thefontSize: 10.0.sp,
+                                    theColor: black),
+                                SizedBox(width: 5.0.sp),
+                                SvgPicture.asset(
+                                    "assets/icons/language_chose_arrow.svg")
+                              ],
+                            ),
                           ),
                         );
                       }).toList();
@@ -58,11 +69,16 @@ class HomeScreen extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         homeController.selectedLanguage.value == "Fr"
-                            ? Text(
-                                "Fr",
-                                style: TextStyle(color: Colors.black),
-                              )
-                            : Text("An", style: TextStyle(color: Colors.black)),
+                            ? ThemeText(
+                                theText: "Fr",
+                                thefontSize: 12.0.sp,
+                                theColor: black,
+                                theFontWeight: FontWeight.bold)
+                            : ThemeText(
+                                theText: "An",
+                                thefontSize: 12.0.sp,
+                                theColor: black,
+                                theFontWeight: FontWeight.bold),
                         SizedBox(width: 4.0.sp),
                         SvgPicture.asset("assets/icons/drop_down.svg"),
                       ],
@@ -140,7 +156,7 @@ class HomeScreen extends StatelessWidget {
                   opacity: 0.85,
                   child: Container(
                     margin: EdgeInsets.only(
-                        top: 40.0.hp,
+                        top: 35.0.hp,
                         left: 7.0.wp,
                         right: 7.0.wp,
                         bottom: 10.0.hp),
@@ -157,8 +173,13 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Réservez l'élégance à son apogée"),
-                          SizedBox(height: 3.0.hp),
+                          ThemeText(
+                              theText: "Réservez l'élégance à son apogée",
+                              thefontSize: 18.0.sp,
+                              theColor: white,
+                              theFontWeight: FontWeight.bold,
+                              theTextAlign: TextAlign.center,),
+                          SizedBox(height: 2.0.hp),
                           ThemeInput(
                             theLabelText: "Nom du Salon",
                             theHintText: "Nom du salon",
@@ -199,6 +220,7 @@ class HomeScreen extends StatelessWidget {
                             theFloatingLabelBehaviour:
                                 FloatingLabelBehavior.never,
                           ),
+                          SizedBox(height: 2.0.hp),
                         ]),
                   ),
                 ),
@@ -383,7 +405,7 @@ class HomeScreen extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(right: 4.0.wp,bottom: 1.0.hp),
+                      margin: EdgeInsets.only(right: 4.0.wp, bottom: 1.0.hp),
                       decoration: BoxDecoration(
                           boxShadow: themeBoxShadowCard,
                           borderRadius: BorderRadius.circular(25)),
@@ -477,12 +499,12 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 1.0.hp),
-                        
+
                         //  Text("hhhhhh")
                       ]),
                     ),
                     Container(
-                      margin: EdgeInsets.only(right: 4.0.wp,bottom: 1.0.hp),
+                      margin: EdgeInsets.only(right: 4.0.wp, bottom: 1.0.hp),
                       decoration: BoxDecoration(
                           boxShadow: themeBoxShadowCard,
                           borderRadius: BorderRadius.circular(25)),
@@ -576,7 +598,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 1.0.hp),
-                        
+
                         //  Text("hhhhhh")
                       ]),
                     ),

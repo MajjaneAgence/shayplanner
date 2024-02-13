@@ -174,7 +174,7 @@ class ShopsScreen extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                width: 10.0.wp,
+                                width: 20.0.wp,
                                 child:
                               ThemeButton(
                                   theContent: Container(

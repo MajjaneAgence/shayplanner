@@ -32,12 +32,12 @@ class ThemeInput extends StatelessWidget {
       decoration: InputDecoration(
         labelText: theLabelText ?? '',
         hintText: theHintText,
+        fillColor: white,
        floatingLabelBehavior: theFloatingLabelBehaviour ??  FloatingLabelBehavior.auto ,
         contentPadding: EdgeInsets.all(theContentPadding),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        fillColor: white,
         filled: true,
         suffixIcon: theIconWidget,
         enabledBorder: OutlineInputBorder(

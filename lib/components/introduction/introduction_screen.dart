@@ -11,7 +11,7 @@ class IntroductionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final IntroductionController homeController = Get.put(IntroductionController());
+    final IntroductionController introductionController = Get.put(IntroductionController());
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -32,21 +32,21 @@ class IntroductionScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: 15.0.hp,),
+                SizedBox(height: 18.0.hp,),
                 Image.asset(
                   'assets/images/logo.png', // Replace with your image path
                   fit: BoxFit.cover, // Adjust image fit as needed (e.g., BoxFit.fill)
                 ),
-                SizedBox(height: 9.0.hp,),
-                SizedBox(width: 90.0.wp,height: 9.0.hp,child:
+                SizedBox(height: 15.0.hp,),
+                SizedBox(width: 80.0.wp,height: 7.0.hp,child:
                   ElevatedButton(
-                    onPressed: () { homeController.onButton1Pressed(); }, 
-                    child: Text('Je souhaite réserver un RDV',style: TextStyle(fontSize: 15.0.sp),),
+                    onPressed: () { introductionController.bookAppointement(); }, 
+                    child: Text('Je souhaite réserver un RDV',style: TextStyle(fontSize: 12.0.sp),),
                     style: ElevatedButton.styleFrom(
                       primary: Color.fromARGB(255, 255, 255, 255), // Adjust button color
                       onPrimary: Color.fromARGB(255, 22, 20, 20), // Adjust text color
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(8.0.sp),
                         side: BorderSide(
                           color: Color(0xFFC39800), // Set border color
                           width: 2.0, // Set border width
@@ -56,15 +56,15 @@ class IntroductionScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 4.0.hp,),
-                SizedBox(width: 90.0.wp,height: 9.0.hp,child:
+                SizedBox(width: 80.0.wp,height: 7.0.hp,child:
                   ElevatedButton(
-                    onPressed: () { homeController.onButton2Pressed(); }, 
-                    child: Text('Ajouter mon établissement',style: TextStyle(fontSize: 15.0.sp),),
+                    onPressed: () { introductionController.bookAppointement(); }, 
+                    child: Text('Ajouter mon établissement',style: TextStyle(fontSize: 12.0.sp),),
                     style: ElevatedButton.styleFrom(
                       primary: Color.fromARGB(255, 255, 255, 255), // Adjust button color
                       onPrimary: Color.fromARGB(255, 22, 20, 20), // Adjust text color
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(8.0.sp),
                         side: BorderSide(
                           color: Color(0xFFC39800), // Set border color
                           width: 2.0, // Set border width
@@ -87,7 +87,7 @@ class IntroductionScreen extends StatelessWidget {
                       SizedBox(width: 3.0.wp,),
                       SvgPicture.asset("assets/icons/ig.svg"),
                       SizedBox(width: 3.0.wp,),
-                      SvgPicture.asset("assets/icons/ig.svg"),
+                      Image.asset("assets/icons/tiktok.png"),
                     ]
                   ),
                 ),  
