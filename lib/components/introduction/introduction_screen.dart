@@ -3,6 +3,7 @@ import 'package:shayplanner/tools/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class IntroductionScreen extends StatelessWidget {
   const IntroductionScreen({super.key});
@@ -41,7 +42,7 @@ class IntroductionScreen extends StatelessWidget {
                 SizedBox(width: 90.0.wp,height: 9.0.hp,child:
                   ElevatedButton(
                     onPressed: () { homeController.onButton1Pressed(); }, 
-                    child: Text('Je souhaite réserver un RDV',style: TextStyle(fontSize: 15.0.sp),),
+                    child: Text('Je souhaite réserver un RDV',style: TextStyle(fontSize: 15.0.sp,fontWeight: FontWeight.w600,fontFamily: 'Montserrat-bold'),),
                     style: ElevatedButton.styleFrom(
                       primary: Color.fromARGB(255, 255, 255, 255), // Adjust button color
                       onPrimary: Color.fromARGB(255, 22, 20, 20), // Adjust text color
@@ -59,7 +60,7 @@ class IntroductionScreen extends StatelessWidget {
                 SizedBox(width: 90.0.wp,height: 9.0.hp,child:
                   ElevatedButton(
                     onPressed: () { homeController.onButton2Pressed(); }, 
-                    child: Text('Ajouter mon établissement',style: TextStyle(fontSize: 15.0.sp),),
+                    child: Text('Ajouter mon établissement',style: TextStyle(fontSize: 15.0.sp,fontWeight: FontWeight.w600,fontFamily: 'Montserrat-bold'),),
                     style: ElevatedButton.styleFrom(
                       primary: Color.fromARGB(255, 255, 255, 255), // Adjust button color
                       onPrimary: Color.fromARGB(255, 22, 20, 20), // Adjust text color
@@ -75,22 +76,40 @@ class IntroductionScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 8.0.hp,),
                 SizedBox(
-                  child: Text('Suivez nous', style: TextStyle(fontSize: 15.0.sp,fontWeight: FontWeight.w700)),
+                  child: Text('Suivez nous', style: TextStyle(fontSize: 15.0.sp,fontWeight: FontWeight.w600,fontFamily: 'Montserrat-bold')),
                 ),
                 SizedBox(height: 1.5.hp,),
                 SizedBox(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // InkWell()
-                      SvgPicture.asset("assets/icons/fb.svg"),
-                      SizedBox(width: 3.0.wp,),
-                      SvgPicture.asset("assets/icons/ig.svg"),
-                      SizedBox(width: 3.0.wp,),
-                      SvgPicture.asset("assets/icons/ig.svg"),
-                    ]
+                      InkWell(
+                        onTap: () async {
+                          const url = 'https://www.facebook.com/p/Majjane-100036309618886/';
+                          await launch(url);
+                        },
+                        child: SvgPicture.asset("assets/icons/fb.svg"),
+                      ),
+                      SizedBox(width: 3.0.wp),
+                      InkWell(
+                        onTap: () async {
+                          const url1 = 'https://www.instagram.com/majjaneagency/?hl=fr';
+                          await launch(url1);
+                        },
+                        child: SvgPicture.asset("assets/icons/ig.svg"),
+                      ),
+                      SizedBox(width: 3.0.wp),
+                      InkWell(
+                        onTap: () async {
+                          const url2 = 'https://www.instagram.com/majjaneagency/?hl=fr';
+                          await launch(url2);
+                        },
+                        child: SvgPicture.asset("assets/icons/ig.svg"),
+                      ),
+                    ],
                   ),
-                ),  
+                ),
+ 
               ],
         
             ),
