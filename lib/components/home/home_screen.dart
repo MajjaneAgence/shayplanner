@@ -476,12 +476,13 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(height: 1.0.hp)
+                        SizedBox(height: 1.0.hp),
+                        
                         //  Text("hhhhhh")
                       ]),
                     ),
                     Container(
-                      margin: EdgeInsets.only(right: 4.0.wp),
+                      margin: EdgeInsets.only(right: 4.0.wp,bottom: 1.0.hp),
                       decoration: BoxDecoration(
                           boxShadow: themeBoxShadowCard,
                           borderRadius: BorderRadius.circular(25)),
@@ -574,7 +575,8 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(height: 9.0.sp)
+                        SizedBox(height: 1.0.hp),
+                        
                         //  Text("hhhhhh")
                       ]),
                     ),
