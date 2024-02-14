@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:shayplanner/components/home/home_controller.dart';
 import 'package:shayplanner/theme/theme_app_bar.dart';
@@ -139,92 +140,102 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                width: Get.width,
-                height: 70.0.hp,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40)),
-                  image: DecorationImage(
-                    image: AssetImage(
-                        'assets/images/models.png'), // Replace 'assets/image.jpg' with your image path
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                child: Opacity(
-                  opacity: 0.85,
-                  child: Container(
-                    margin: EdgeInsets.only(
-                        top: 35.0.hp,
-                        left: 7.0.wp,
-                        right: 7.0.wp,
-                        bottom: 10.0.hp),
-                    padding: EdgeInsets.only(
-                      left: 5.0.wp,
-                      right: 5.0.wp,
+              Stack(children: [
+                Container(
+                  width: Get.width,
+                  height: 75.0.hp,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        topRight: Radius.circular(40)),
+                    image: DecorationImage(
+                      image: AssetImage(
+                          'assets/images/models.png'), // Replace 'assets/image.jpg' with your image path
+                      fit: BoxFit.cover,
+                      alignment: Alignment.topCenter,
                     ),
-                    height: 30.0.hp,
-                    width: 75.0.wp,
-                    decoration: BoxDecoration(
-                        //color: Colors.transparent,
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(25)),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ThemeText(
-                              theText: "Réservez l'élégance à son apogée",
-                              thefontSize: 18.0.sp,
-                              theColor: white,
-                              theFontWeight: FontWeight.bold,
-                              theTextAlign: TextAlign.center,),
-                          SizedBox(height: 2.0.hp),
-                          ThemeInput(
-                            theLabelText: "Nom du Salon",
-                            theHintText: "Nom du salon",
-                            theTextEditingController:
-                                homeController.shopNameEditingController,
-                            theValidation: homeController.validateUsername,
-                            theContentPadding: 5.0.sp,
-                            theIconWidget: ThemeGradContainer(
-                              theHeight: 3.0.wp,
-                              theWith: 3.0.wp,
-                              theMargin: 5.0.sp,
-                              theLinearGradient: yellowFadeGradient,
-                              theContent: Image.asset(
-                                "assets/icons/shop.png",
-                                color: Colors.white,
-                              ),
-                            ),
-                            theFloatingLabelBehaviour:
-                                FloatingLabelBehavior.never,
-                          ),
-                          SizedBox(height: 1.0.hp),
-                          ThemeInput(
-                            theLabelText: "Adresse du Salon",
-                            theHintText: "Adresse du salon",
-                            theTextEditingController:
-                                homeController.shopAddressEditingController,
-                            theValidation: homeController.validateUsername,
-                            theContentPadding: 5.0.sp,
-                            theIconWidget: ThemeGradContainer(
-                              theHeight: 3.0.wp,
-                              theWith: 3.0.wp,
-                              theLinearGradient: yellowFadeGradient,
-                              theMargin: 5.0.sp,
-                              theContent: Image.asset(
-                                "assets/icons/localization.png",
-                              ),
-                            ),
-                            theFloatingLabelBehaviour:
-                                FloatingLabelBehavior.never,
-                          ),
-                          SizedBox(height: 2.0.hp),
-                        ]),
                   ),
                 ),
-              ),
+                Positioned(
+                  top: 40.0.hp,
+                  left: 7.0.wp,
+                  right: 7.0.wp,
+                  bottom: 7.0.hp,
+                  child: ClipRRect(
+                    borderRadius:BorderRadius.circular(25) ,
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.25),
+                            borderRadius: BorderRadius.circular(25)),
+                        child: Container(
+                     padding: EdgeInsets.only(
+                    left: 5.0.wp,
+                    right: 5.0.wp,
+                  ),
+                  child:
+                  Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ThemeText(
+                          theText: "Réservez l'élégance à son apogée",
+                          thefontSize: 18.0.sp,
+                          theColor: white,
+                          theFontWeight: FontWeight.bold,
+                          theTextAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 2.0.hp),
+                        ThemeInput(
+                          theLabelText: "Nom du Salon",
+                          theHintText: "Nom du salon",
+                          theTextEditingController:
+                              homeController.shopNameEditingController,
+                          theValidation: homeController.validateUsername,
+                          theContentPadding: 5.0.sp,
+                          theIconWidget: ThemeGradContainer(
+                            theHeight: 3.0.wp,
+                            theWith: 3.0.wp,
+                            theMargin: 5.0.sp,
+                            theLinearGradient: yellowFadeGradient,
+                            theContent: Image.asset(
+                              "assets/icons/shop.png",
+                              color: Colors.white,
+                            ),
+                          ),
+                          theFloatingLabelBehaviour:
+                              FloatingLabelBehavior.never,
+                        ),
+                        SizedBox(height: 1.0.hp),
+                        ThemeInput(
+                          theLabelText: "Adresse du Salon",
+                          theHintText: "Adresse du salon",
+                          theTextEditingController:
+                              homeController.shopAddressEditingController,
+                          theValidation: homeController.validateUsername,
+                          theContentPadding: 5.0.sp,
+                          theIconWidget: ThemeGradContainer(
+                            theHeight: 3.0.wp,
+                            theWith: 3.0.wp,
+                            theLinearGradient: yellowFadeGradient,
+                            theMargin: 5.0.sp,
+                            theContent: Image.asset(
+                              "assets/icons/localization.png",
+                            ),
+                          ),
+                          theFloatingLabelBehaviour:
+                              FloatingLabelBehavior.never,
+                        ),
+                        SizedBox(height: 2.0.hp),
+                      ]),
+                 ),
+                      ),
+                    ),
+                  ),
+                ),
+              ]),
+              // ),
+
               ThemeText(
                 theText: "Catégorie",
                 theColor: black,

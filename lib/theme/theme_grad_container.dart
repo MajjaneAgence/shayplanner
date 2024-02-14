@@ -19,6 +19,7 @@ class ThemeGradContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       height: theHeight,
       width: theWith,
       margin: EdgeInsets.all(theMargin ?? 0),

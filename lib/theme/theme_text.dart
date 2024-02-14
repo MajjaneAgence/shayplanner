@@ -8,6 +8,7 @@ class ThemeText extends StatelessWidget {
   FontWeight? theFontWeight;
   int? theMaxOfLines;
   TextAlign? theTextAlign;
+  TextDecoration? theTextDecoration;
   ThemeText({
     Key? key,
     required this.theText,
@@ -15,7 +16,8 @@ class ThemeText extends StatelessWidget {
     required this.theColor,
    this.theFontWeight,
    this.theMaxOfLines,
-   this.theTextAlign
+   this.theTextAlign,
+   this.theTextDecoration
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -24,11 +26,13 @@ class ThemeText extends StatelessWidget {
       overflow: TextOverflow.ellipsis,
       textAlign: theTextAlign ?? TextAlign.start,
       maxLines: theMaxOfLines ?? 2,
+      
       style: TextStyle(
         color: theColor,
         fontSize: thefontSize,
         fontFamily: "Montserrat-regular",
         fontWeight: theFontWeight ?? FontWeight.normal,
+        decoration: theTextDecoration ?? TextDecoration.none,
       ),
     );
   }
