@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:shayplanner/components/home_page/home_page_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 
 class IntroductionController extends GetxController {
@@ -12,7 +13,7 @@ class IntroductionController extends GetxController {
   }
 
   void onButton2Pressed() async {
-    print('hello');
+    Get.toNamed(HomePageScreen.routename);
   }
 
   // Additional functions and logic as needed

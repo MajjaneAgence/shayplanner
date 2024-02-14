@@ -4,6 +4,7 @@ import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/introduction/introduction_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/register/register_screen.dart';
+import 'package:shayplanner/components/home_page/home_page_screen.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/components/shops/shops_screen.dart';
 
@@ -31,5 +32,9 @@ var router = [
   GetPage(
     name: IntroductionScreen.routename,
     page: () => IntroductionScreen(),
+  ),
+  GetPage(
+    name: HomePageScreen.routename,
+    page: () => HomePageScreen(),
   ),
 ];
