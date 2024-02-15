@@ -127,6 +127,8 @@ class IntroductionScreen extends StatelessWidget {
                   Image.asset("assets/icons/tiktok.png"),
                 ]),
               ),
+                                    SizedBox(height: 4.0.hp)
+
             ],
           ),
         ),

@@ -65,7 +65,7 @@ class ShopsController extends GetxController {
   }
 
   book() {}
-  goToSalonSheet() {}
+  goToSalonSheet() {print("ggg");}
 
   List<Widget> buildDaysList() {
     List<Widget> daysList = [];
@@ -81,7 +81,7 @@ class ShopsController extends GetxController {
           },
           child:
           Container(
-          margin: EdgeInsets.only(left: 2.0.wp, top:7.0.sp,bottom:7.0.sp),
+          margin: EdgeInsets.only(left: 2.0.wp, top:5.0.sp,bottom:5.0.sp),
           padding: EdgeInsets.symmetric(horizontal: 3.0.sp, vertical: 2.0.sp),
           height:8.0.sp,
           decoration: BoxDecoration(
@@ -104,5 +104,9 @@ class ShopsController extends GetxController {
   showWorkHours(){
     isShowingWorkHours.value=!isShowingWorkHours.value;
     isShowingWorkHours.refresh();
+  }
+
+   getData() async {
+    await Future.delayed(Duration(seconds: 4));
   }
 }

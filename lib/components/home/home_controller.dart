@@ -53,4 +53,8 @@ class HomeController extends GetxController {
   goToRegister() {
     Get.toNamed(RegisterScreen.routename);
   }
+
+  getData() async {
+    await Future.delayed(Duration(seconds: 5));
+  }
 }

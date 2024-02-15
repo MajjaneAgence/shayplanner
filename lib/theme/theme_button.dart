@@ -34,6 +34,8 @@ class ThemeButton extends StatelessWidget {
               minimumSize: Size.zero, // Set this
               padding: EdgeInsets.zero, // and this
                       backgroundColor: Colors.transparent,
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+
           shadowColor: Colors.transparent,
             ),
             child: theContent))

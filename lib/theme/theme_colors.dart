@@ -6,6 +6,7 @@ Color white = Colors.white;
 Color lightYellow = Color(0xFFFBF6EA);
 Color yellow = Color(0xFFD5A702);
 Color grey = Color(0xFF2D2D2D);
+Color lightYellowTransparent = Color.fromRGBO(251, 246, 234, 0.6);
 const BoxShadow themeBoxShadowInput = BoxShadow(
   color: Color.fromARGB(255, 224, 217, 217),
   offset: Offset(
@@ -45,6 +46,16 @@ const LinearGradient yellowFadeGradient = LinearGradient(
   colors: [
     Color(0xFFCFB83F), // D5A702
     Color(0xFFD5A702), // 2D2D2D
+  ],
+  begin: Alignment.topCenter,
+  end: Alignment.bottomCenter,
+);
+
+const LinearGradient goldenLinearGradient = LinearGradient(
+  colors: [
+     Color(0xFFCFB83F),
+      Color(0xFFF4E282),
+    Color(0xFFC7AB48), 
   ],
   begin: Alignment.topCenter,
   end: Alignment.bottomCenter,
