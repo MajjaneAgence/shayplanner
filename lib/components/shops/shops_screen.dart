@@ -44,7 +44,7 @@ class ShopsScreen extends StatelessWidget {
             )),
         leadingWidth: 10.0.wp,
         title: (Image.asset(
-          "assets/images/logo.png",
+          "assets/images/logo103.png",
           width: 9.0.hp,
           height: 9.0.hp,
         )),
@@ -70,7 +70,7 @@ class ShopsScreen extends StatelessWidget {
               Center(
                 child: Container(
                   margin: EdgeInsets.only(top: 3.0.hp, bottom: 3.0.hp),
-                  height: 6.0.hp,
+                 height: 6.0.hp,
                   width: 87.0.wp,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0.sp),
@@ -138,10 +138,10 @@ class ShopsScreen extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: 92.0.wp,
+                          width: 97.0.wp,
                           height: 4.0.hp,
                           padding: EdgeInsets.symmetric(
-                              horizontal: 9.0.sp, vertical: 4.0.sp),
+                              horizontal: 9.0.sp),
                           child: ThemeText(
                             theText: "Lorem ipsum",
                             thefontSize: 14.0.sp,
@@ -150,7 +150,7 @@ class ShopsScreen extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: 92.0.wp,
+                          width: 97.0.wp,
                           height: 4.0.hp,
                           padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
                           child: Row(
@@ -158,28 +158,31 @@ class ShopsScreen extends StatelessWidget {
                             children: [
                               Container(
                                 width: 5.0.wp,
-                                height: 4.0.wp,
+                                height: 5.0.wp,
                                 margin: EdgeInsets.only(right: 2.0.sp),
                                 child:
-                                    SvgPicture.asset('assets/icons/bell.svg'),
+                                    SvgPicture.asset('assets/icons/localization.svg',
+                                    color: grey
+                                    ),
                               ),
-                              Container(
+                             Center(child: Container(
                                 width: 50.0.wp,
                                 margin: EdgeInsets.only(right: 6.0.sp),
-                                child: ThemeText(
+                                child: ThemeText( 
                                   theText: "Lorem ipsum dolor sit amet",
                                   thefontSize: 10.0.sp,
-                                  theColor: black,
+                                  theColor: grey,
                                   theMaxOfLines: 1,
+                                  theTextDecoration: TextDecoration.underline,
                                 ),
-                              ),
+                              ),),
                               Container(
-                                width: 10.0.wp,
+                                width: 30.0.wp,
                                 child:
                               ThemeButton(
                                   theContent: Container(
                                     padding: EdgeInsets.symmetric(
-                                        horizontal: 6.0.sp, vertical: 5.0.sp),
+                                        horizontal: 6.0.sp, vertical: 2.0.sp),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(8.0),
                                       color: grey,
@@ -193,13 +196,13 @@ class ShopsScreen extends StatelessWidget {
                                   ),
                                   theAction: shopsController.goToSalonSheet,
                                   theLoadingStatus:
-                                      shopsController.isLoading.value))
+                                      shopsController.isLoading.value),),
                             ],
                           ),
                         ),
                         Container(
-                            width: 92.0.wp,
-                            height: 4.0.hp,
+                            width: 97.0.wp,
+                            height: 3.0.hp,
                             padding: EdgeInsets.symmetric(
                                 horizontal: 9.0.sp, vertical: 2.0.sp),
                             child: Row(
@@ -207,25 +210,26 @@ class ShopsScreen extends StatelessWidget {
                                 children: [
                                   Container(
                                     width: 5.0.wp,
-                                    height: 4.0.wp,
+                                    height: 6.0.wp,
                                     margin: EdgeInsets.only(right: 6.0.sp),
                                     child: SvgPicture.asset(
-                                        'assets/icons/bell.svg'),
+                                        'assets/icons/star.svg',
+                                        color:grey,
+                                       ),
                                   ),
                                   Container(
                                     width: 70.0.wp,
                                     margin: EdgeInsets.only(right: 6.0.sp),
                                     child: ThemeText(
-                                      theText: "Lorem ipsum dolor sit amet",
+                                      theText: "4,9 (317 avis)  MAD",
                                       thefontSize: 10.0.sp,
-                                      theColor: black,
+                                      theColor: grey,
                                       theMaxOfLines: 1,
                                     ),
                                   ),
                                 ])),
                         Container(
-                          width: 92.0.wp,
-                       //   height: 5.0.hp,
+                          width: 97.0.wp,
                           padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
                           child: Column(
                             children: [
@@ -255,7 +259,7 @@ class ShopsScreen extends StatelessWidget {
                               ),
                               Obx(() => shopsController.isShowingWorkHours.value?
                                Container(
-                                width: 92.0.wp,
+                                width: 97.0.wp,
                                 height: 5.0.hp,
                                 child: Row(
                                   children: [
@@ -285,7 +289,7 @@ class ShopsScreen extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: 92.0.wp,
+                          width: 97.0.wp,
                           height: 5.0.hp,
                           padding: EdgeInsets.symmetric(horizontal: 9.0.sp),
                           child: Row(
@@ -312,15 +316,15 @@ class ShopsScreen extends StatelessWidget {
                     SizedBox(height: 1.0.hp),
                     ThemeButton(
                         theContent: ThemeGradContainer(
-                          theWith: 30.0.wp,
+                          theWith: 40.0.wp,
                           theHeight: 5.0.hp,
                           theLinearGradient: greyYellowLinearGradient,
-                          theContent: Center(
-                              child: ThemeText(
+                          theContent:  ThemeText(
                                   theText: "Prendre Rdv",
                                   thefontSize: 12.0.sp,
-                                  theColor: white)),
-                        ),
+                                  theColor: white,
+                                  theFontWeight: FontWeight.bold),
+                                  ),
                         theAction: shopsController.book,
                         theLoadingStatus: shopsController.isLoading.value)
                   ]),

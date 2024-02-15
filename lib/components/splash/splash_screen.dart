@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/components/splash/splash_controller.dart';
+import 'package:shayplanner/tools/extension.dart';
 
 class SplashScreen extends StatelessWidget{
    SplashScreen({super.key});
@@ -20,10 +21,13 @@ class SplashScreen extends StatelessWidget{
           ),
         ),
         child: Center(
-          child: Image.asset(
-            'assets/images/logo.png',
-            // width: 200,
-            // height: 200,
+          child:SizedBox(
+            width: 60.0.wp,
+            height: 60.0.wp,
+            child: Image.asset(
+              'assets/images/logo103.png',
+            
+            ),
           ),
         ),
       ),

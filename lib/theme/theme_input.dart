@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
+import 'package:shayplanner/tools/extension.dart';
 
 class ThemeInput extends StatelessWidget {
   String? theLabelText;
@@ -23,7 +24,9 @@ class ThemeInput extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    return SizedBox(
+      height: 5.0.hp,
+      child:TextFormField(
       controller: theTextEditingController,
       validator: (value) {
         var result = theValidation(value);
@@ -32,12 +35,16 @@ class ThemeInput extends StatelessWidget {
       decoration: InputDecoration(
         labelText: theLabelText ?? '',
         hintText: theHintText,
+        fillColor: white,
+        hintStyle: TextStyle(
+          fontSize: 10.0.sp
+        ),
+        labelStyle: TextStyle(fontSize: 10.0.sp),
        floatingLabelBehavior: theFloatingLabelBehaviour ??  FloatingLabelBehavior.auto ,
         contentPadding: EdgeInsets.all(theContentPadding),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        fillColor: white,
         filled: true,
         suffixIcon: theIconWidget,
         enabledBorder: OutlineInputBorder(
@@ -53,6 +60,6 @@ class ThemeInput extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ),);
   }
 }

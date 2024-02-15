@@ -1,3 +1,4 @@
+import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/home_page/home_page_controller.dart';
 import 'package:shayplanner/theme/theme_app_bar.dart';
 import 'package:shayplanner/theme/theme_button.dart';
@@ -100,7 +101,7 @@ class HomePageScreen extends StatelessWidget {
         Container(
           width: 100.0.wp,
           height: 88.0.hp,
-          color: Colors.white,
+          color: Color(0xFFFBF6EA),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -186,40 +187,418 @@ class HomePageScreen extends StatelessWidget {
                 ),
                 Container(
                   width: 100.0.wp,
-                  margin: EdgeInsets.only(
-                    top: 2.5.hp, 
-                    left: 3.0.wp, 
-                  ),
+                  
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ThemeText(
-                        theText: "Catégorie",
-                        theColor: black,
-                        thefontSize: 14.0.sp,
-                        theFontWeight: FontWeight.w600,
+                      SizedBox(height: 2.5.hp,),
+                      Padding(
+                        padding: EdgeInsets.only(left: 3.0.wp,right: 3.0.wp),
+                        child: ThemeText(
+                          theText: "Catégorie",
+                          thefontSize: 14.0.sp,
+                          theColor: black,
+                          theFontWeight: FontWeight.w600,
+                        ),
                       ),
-                      SizedBox(height: 1.0.hp,),
+                      SizedBox(height: 3.0.hp,),
                       SizedBox(
-                        height: 12.0.hp,
+                        height: 17.0.hp,
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
-                            Image.asset("assets/images/logo2.png"),
-                            Image.asset("assets/images/logo2.png"),
-                            Image.asset("assets/images/logo2.png"),
-                            Image.asset("assets/images/logo2.png"),
-                            Image.asset("assets/images/logo2.png"),
-                            Image.asset("assets/images/logo2.png"),
+                            SizedBox(width: 4.0.wp,),
+                            Column(
+                              children: [
+                                CustomPaint(
+                                  size: Size(4.0.hp * 2, 4.0 * 2),
+                                  painter: CirclePainter(
+                                    percentage: 0.85,
+                                    // backgroundColor: Colors.red,
+                                    progressColor: Color(0xFFCFB83F),
+                                  ),
+                                  child: Container(
+                                    width: 8.0.hp,
+                                    height: 8.0.hp,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                          "assets/images/template_circle.png",
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 3.0.hp,),
+                                Text("testtest")
+                              ],
+                            ),
+                            SizedBox(width: 6.5.wp,),
+                            Column(
+                              children: [
+                                CustomPaint(
+                                  size: Size(4.0.hp * 2, 4.0 * 2),
+                                  painter: CirclePainter(
+                                    percentage: 0.85,
+                                    // backgroundColor: Colors.red,
+                                    progressColor: Color(0xFFD9D9D9),
+                                  ),
+                                  child: Container(
+                                    width: 8.0.hp,
+                                    height: 8.0.hp,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                          "assets/images/template_circle.png",
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 3.0.hp,),
+                                Text("testtest")
+                              ],
+                            ),
+                            SizedBox(width: 6.5.wp,),
+                            Column(
+                              children: [
+                                CustomPaint(
+                                  size: Size(4.0.hp * 2, 4.0 * 2),
+                                  painter: CirclePainter(
+                                    percentage: 0.85,
+                                    // backgroundColor: Colors.red,
+                                    progressColor: Color(0xFFD9D9D9),
+                                  ),
+                                  child: Container(
+                                    width: 8.0.hp,
+                                    height: 8.0.hp,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                          "assets/images/template_circle.png",
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 3.0.hp,),
+                                Text("testtest")
+                              ],
+                            ),
+                            SizedBox(width: 6.5.wp,),
+                            Column(
+                              children: [
+                                CustomPaint(
+                                  size: Size(4.0.hp * 2, 4.0 * 2),
+                                  painter: CirclePainter(
+                                    percentage: 0.85,
+                                    // backgroundColor: Colors.red,
+                                    progressColor: Color(0xFFD9D9D9),
+                                  ),
+                                  child: Container(
+                                    width: 8.0.hp,
+                                    height: 8.0.hp,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                          "assets/images/template_circle.png",
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 3.0.hp,),
+                                Text("testtest")
+                              ],
+                            ),
+                            SizedBox(width: 6.5.wp,),
+                            Column(
+                              children: [
+                                CustomPaint(
+                                  size: Size(4.0.hp * 2, 4.0 * 2),
+                                  painter: CirclePainter(
+                                    percentage: 0.85,
+                                    // backgroundColor: Colors.red,
+                                    progressColor: Color(0xFFD9D9D9),
+                                  ),
+                                  child: Container(
+                                    width: 8.0.hp,
+                                    height: 8.0.hp,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                          "assets/images/template_circle.png",
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 3.0.hp,),
+                                Text("testtest")
+                              ],
+                            ),
+                            SizedBox(width: 6.5.wp,),
                           ],
                         ),
                       )
                     ],)
-                )
+                ),
+                Container(
+                  width: 100.0.wp,
+                  height: 38.0.hp,
+                  // color: Colors.red,
+                  // padding: EdgeInsets.only(bottom: 2.0.hp),
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      SizedBox(width: 4.0.wp,),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(6.5.wp),
+                          boxShadow: themeBoxShadowCard,
+                        ),
+                        margin: EdgeInsets.only(bottom: 2.0.hp),
+                        child:   
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 75.0.wp,
+                                // height: 15.0.hp,
+                                child: Image.asset("assets/images/model_on_mirror.png"),
+                              ),
+                              SizedBox(height: 2.0.hp,),
+                              Container(
+                                width: 75.0.wp,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only( 
+                                        left: 3.0.wp,
+                                      ),
+                                      child : ThemeText(
+                                        theText: "Lorem ipsum",
+                                        thefontSize: 14.0.sp,
+                                        theColor: black,
+                                        theFontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only( 
+                                        right: 3.0.wp,
+                                      ),
+                                      child: SvgPicture.asset("assets/icons/btn.svg"),
+                                    )
+                                    
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 2.0.hp,),
+                              Container(
+                                width: 75.0.wp,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only( 
+                                        left: 4.0.wp,
+                                        right: 4.0.wp,
+                                      ),
+                                      child: SvgPicture.asset("assets/icons/localization.svg",width: 4.0.wp,height: 4.0.wp,),
+                                    ),
+                                    Container(
+                                      child : ThemeText(
+                                        theText: "Lorem ipsum dolor sit amet,",
+                                        thefontSize: 11.0.sp,
+                                        theColor: Color(0xFF848484),
+                                        theFontWeight: FontWeight.w500,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 1.0.hp,),
+                              Container(
+                                width: 75.0.wp,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only( 
+                                        left: 4.0.wp,
+                                        right: 4.0.wp,
+                                      ),
+                                      child: SvgPicture.asset("assets/icons/star.svg",width: 4.0.wp,height: 4.0.wp,),
+                                    ),
+                                    Container(
+                                      child : ThemeText(
+                                        theText: "Lorem ipsum dolor sit amet,",
+                                        thefontSize: 11.0.sp,
+                                        theColor: Color(0xFF848484),
+                                        theFontWeight: FontWeight.w500,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                      ),
+                      SizedBox(width: 4.0.wp,),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(6.5.wp),
+                          boxShadow: themeBoxShadowCard,
+                        ),
+                        margin: EdgeInsets.only(bottom: 2.0.hp),
+                        child:   
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 75.0.wp,
+                                // height: 15.0.hp,
+                                child: Image.asset("assets/images/model_on_mirror.png"),
+                              ),
+                              SizedBox(height: 2.0.hp,),
+                              Container(
+                                width: 75.0.wp,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only( 
+                                        left: 3.0.wp,
+                                      ),
+                                      child : ThemeText(
+                                        theText: "Lorem ipsum",
+                                        thefontSize: 14.0.sp,
+                                        theColor: black,
+                                        theFontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only( 
+                                        right: 3.0.wp,
+                                      ),
+                                      child: SvgPicture.asset("assets/icons/btn.svg"),
+                                    )
+                                    
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 2.0.hp,),
+                              Container(
+                                width: 75.0.wp,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only( 
+                                        left: 4.0.wp,
+                                        right: 4.0.wp,
+                                      ),
+                                      child: SvgPicture.asset("assets/icons/localization.svg",width: 4.0.wp,height: 4.0.wp,),
+                                    ),
+                                    Container(
+                                      child : ThemeText(
+                                        theText: "Lorem ipsum dolor sit amet,",
+                                        thefontSize: 11.0.sp,
+                                        theColor: Color(0xFF848484),
+                                        theFontWeight: FontWeight.w500,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 1.0.hp,),
+                              Container(
+                                width: 75.0.wp,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only( 
+                                        left: 4.0.wp,
+                                        right: 4.0.wp,
+                                      ),
+                                      child: SvgPicture.asset("assets/icons/star.svg",width: 4.0.wp,height: 4.0.wp,),
+                                    ),
+                                    Container(
+                                      child : ThemeText(
+                                        theText: "Lorem ipsum dolor sit amet,",
+                                        thefontSize: 11.0.sp,
+                                        theColor: Color(0xFF848484),
+                                        theFontWeight: FontWeight.w500,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                      ),
+                      SizedBox(width: 4.0.wp,)
+                    ],
+
+                  ),
+                ),
+                SizedBox(height: 13.0.hp,)
               ],
-            )
+            ),
+          ),
+        ),
+
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Container(
+        child: Container(
+          width: 92.0.wp,
+          height: 9.0.hp,
+
+          decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.circular(6.5.wp),
           ),
           
+          child: Row(
+            children:[
+              ElevatedButton( onPressed:() => {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                ),
+                child: Image.asset('assets/images/icon2active.png')
+              ),
+              ElevatedButton( onPressed:() => {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                ),
+                child: Image.asset('assets/images/icon4.png')
+              ),
+              ElevatedButton( onPressed:() => {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                ),
+                child: Image.asset('assets/images/icon3.png')
+              ),
+              ElevatedButton( onPressed:() => {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                ),
+                child: Image.asset('assets/images/icon1.png')
+              ),
+            ]
+          ),
         ),
+      ),
     );
   }
 }
