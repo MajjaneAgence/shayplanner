@@ -145,12 +145,12 @@ class ShopsScreenLoaded extends StatelessWidget {
                             borderRadius: BorderRadius.circular(25)),
                         child: Column(children: [
                           Container(
-                            height: 25.0.hp,
-                            width: 97.0.wp,
+                            height: 20.0.hp,
+                            width: 92.0.wp,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(25),
-                                  topRight: Radius.circular(25)),
+                                  topLeft: Radius.circular(10.0.sp),
+                                  topRight: Radius.circular(10.0.sp)),
                               image: DecorationImage(
                                 image: AssetImage(
                                   "assets/images/model_on_mirror.png",
@@ -161,18 +161,18 @@ class ShopsScreenLoaded extends StatelessWidget {
                           ),
                           Container(
                             height: 9.0.hp,
-                            width: 97.0.wp,
+                            width: 92.0.wp,
                             child: Row(
                               children: [
                                 Container(
-                                  width: 65.0.wp,
+                                  width: 60.0.wp,
                                   padding: EdgeInsets.only(left: 5.0.wp),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        width: 60.0.wp,
+                                        width: 55.0.wp,
                                         height: 4.0.hp,
                                         padding: EdgeInsets.only(top: 0.5.hp),
                                         child: ThemeText(
@@ -191,7 +191,7 @@ class ShopsScreenLoaded extends StatelessWidget {
                                         ),
                                         Center(
                                           child: Container(
-                                            width: 55.0.wp,
+                                            width: 50.0.wp,
                                             color: Colors.white,
                                             child: ThemeText(
                                               theText:
@@ -215,14 +215,12 @@ class ShopsScreenLoaded extends StatelessWidget {
                                         ),
                                         Center(
                                           child: Container(
-                                            width: 55.0.wp,
+                                            width: 50.0.wp,
                                             child: ThemeText(
                                               theText: "4,9 (317 avis)  MAD",
                                               thefontSize: 10.0.sp,
                                               theColor: grey,
                                               theMaxOfLines: 1,
-                                              theTextDecoration:
-                                                  TextDecoration.underline,
                                             ),
                                           ),
                                         ),
@@ -263,7 +261,7 @@ class ShopsScreenLoaded extends StatelessWidget {
                             height: 10.0.sp,
                           ),
                           Container(
-                            width: 97.0.wp,
+                            width: 92.0.wp,
                             padding: EdgeInsets.symmetric(horizontal: 5.0.wp),
                             child: Column(
                               children: [
@@ -294,7 +292,7 @@ class ShopsScreenLoaded extends StatelessWidget {
                                 Obx(() => shopsController
                                         .isShowingWorkHours.value
                                     ? Container(
-                                        width: 97.0.wp,
+                                        width: 92.0.wp,
                                         height: 5.0.hp,
                                         child: Row(
                                           children: [
@@ -493,12 +491,12 @@ class ShopsScreenUnLoaded extends StatelessWidget {
                                 baseColor: Colors.grey[300]!,
                                 highlightColor: Colors.grey[100]!,
                                 child: Container(
-                                  height: 25.0.hp,
-                                  width: 97.0.wp,
+                                  height: 20.0.hp,
+                                  width: 92.0.wp,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(25),
-                                        topRight: Radius.circular(25)),
+                                        topLeft: Radius.circular(10.0.sp),
+                                        topRight: Radius.circular(10.0.sp)),
                                     image: DecorationImage(
                                       image: AssetImage(
                                         "assets/images/model_on_mirror.png",
@@ -510,11 +508,11 @@ class ShopsScreenUnLoaded extends StatelessWidget {
                               ),
                               Container(
                                 height: 9.0.hp,
-                                width: 97.0.wp,
+                                width: 92.0.wp,
                                 child: Row(
                                   children: [
                                     Container(
-                                      width: 65.0.wp,
+                                      width: 60.0.wp,
                                       padding: EdgeInsets.only(left: 5.0.wp),
                                       child: Column(
                                         crossAxisAlignment:
@@ -524,12 +522,12 @@ class ShopsScreenUnLoaded extends StatelessWidget {
                                             baseColor: Colors.grey[300]!,
                                             highlightColor: Colors.grey[100]!,
                                             child: Container(
-                                              width: 60.0.wp,
+                                              width: 55.0.wp,
                                               height: 4.0.hp,
                                               padding:
                                                   EdgeInsets.only(top: 1.5.hp,bottom:1.5.hp,right:10.0.wp),
                                               child: Container(
-                                                  width:50.0.wp,
+                                                  width:45.0.wp,
                                                   height:2.0.hp,
                                                   color: Colors.red,),
                                             ),
@@ -539,13 +537,13 @@ class ShopsScreenUnLoaded extends StatelessWidget {
                                             highlightColor: Colors.grey[100]!,
                                             child:
                                           Container(
-                                                width: 55.0.wp,
+                                                width: 50.0.wp,
                                                 //color: Colors.white,
                                                 height: 2.0.hp,
                                                  padding:
                                                   EdgeInsets.only(top: 0.5.hp,bottom:0.5.hp,right:10.0.wp),
                                               child: Container(
-                                                  width:50.0.wp,
+                                                  width:45.0.wp,
                                                   height:1.0.hp,
                                                   color: Colors.red,)
                                               ),
@@ -555,13 +553,13 @@ class ShopsScreenUnLoaded extends StatelessWidget {
                                             highlightColor: Colors.grey[100]!,
                                             child:
                                            Container(
-                                                width: 55.0.wp,
+                                                width: 50.0.wp,
                                               //  color: Colors.white,
                                                 height: 2.0.hp,
                                                  padding:
                                                   EdgeInsets.only(top: 0.5.hp,bottom:0.5.hp,right:10.0.wp),
                                               child: Container(
-                                                  width:50.0.wp,
+                                                  width:45.0.wp,
                                                   height:1.0.hp,
                                                   color: Colors.red,)
                                               ),
@@ -610,7 +608,7 @@ class ShopsScreenUnLoaded extends StatelessWidget {
                                 height: 10.0.sp,
                               ),
                               Container(
-                                width: 97.0.wp,
+                                width: 92.0.wp,
                                 padding:
                                     EdgeInsets.symmetric(horizontal: 5.0.wp),
                                 child: Column(

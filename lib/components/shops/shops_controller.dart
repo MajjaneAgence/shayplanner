@@ -82,8 +82,8 @@ class ShopsController extends GetxController {
           child:
           Container(
           margin: EdgeInsets.only(left: 2.0.wp, top:5.0.sp,bottom:5.0.sp),
-          padding: EdgeInsets.symmetric(horizontal: 3.0.sp, vertical: 2.0.sp),
-          height:8.0.sp,
+          padding: EdgeInsets.symmetric(horizontal: 4.0.sp, vertical: 2.0.sp),
+          width: 8.0.hp,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
             color: grey,
@@ -107,6 +107,6 @@ class ShopsController extends GetxController {
   }
 
    getData() async {
-    await Future.delayed(Duration(seconds: 4));
+    await Future.delayed(Duration(seconds: 10));
   }
 }
