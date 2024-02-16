@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
+String fontBold ="Montserrat-Bold";
+String fontRegular ="Montserrat-regular";
+String fontThin ="Montserrat-Light";
 
 Color black = Colors.black;
 Color white = Colors.white;
 Color lightYellow = Color(0xFFFBF6EA);
+Color brown = Color(0xFFCEB971);
 Color yellow = Color(0xFFD5A702);
 Color grey = Color(0xFF2D2D2D);
 Color lightYellowTransparent = Color.fromRGBO(251, 246, 234, 0.6);

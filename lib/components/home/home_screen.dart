@@ -2,6 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:shayplanner/components/home/home_controller.dart';
+import 'package:shayplanner/components/shops/shops_screen.dart';
 import 'package:shayplanner/theme/theme_app_bar.dart';
 import 'package:shayplanner/theme/theme_button.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
@@ -13,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'dart:ui' as ui;
-
 import 'package:shimmer/shimmer.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -471,7 +471,8 @@ class HomeScreenLoaded extends StatelessWidget {
                         Container(
                           width: 87.0.wp,
                           height: 3.0.hp,
-                          padding: EdgeInsets.only(left: 5.0.wp,right:5.0.wp,bottom: 0),
+                          padding: EdgeInsets.only(
+                              left: 5.0.wp, right: 5.0.wp, bottom: 0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -502,7 +503,8 @@ class HomeScreenLoaded extends StatelessWidget {
                         Container(
                           width: 87.0.wp,
                           height: 3.0.hp,
-                          padding: EdgeInsets.only(left: 5.0.wp,right:5.0.wp,top: 0),
+                          padding: EdgeInsets.only(
+                              left: 5.0.wp, right: 5.0.wp, top: 0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -510,8 +512,7 @@ class HomeScreenLoaded extends StatelessWidget {
                                 width: 5.0.wp,
                                 height: 5.0.wp,
                                 margin: EdgeInsets.only(right: 2.0.sp),
-                                child: SvgPicture.asset(
-                                    'assets/icons/star.svg',
+                                child: SvgPicture.asset('assets/icons/star.svg',
                                     color: grey),
                               ),
                               Center(
@@ -538,10 +539,45 @@ class HomeScreenLoaded extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 10.0.sp)
+              SizedBox(height: 15.0.hp)
             ],
           ),
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Container(
+        width: 92.0.wp,
+        height: 8.0.hp,
+        decoration: BoxDecoration(
+          color: grey,
+          borderRadius: BorderRadius.circular(6.5.wp),
+        ),
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          InkWell(
+              onTap: () => {Get.toNamed(HomeScreen.routename)},
+              child:SizedBox(
+                width: 9.0.wp,
+                height: 9.0.wp,
+                child:Image.asset('assets/icons/floating_app_bar/home-active.png'),) ,),
+          InkWell(
+              onTap: () => {},
+              child: SizedBox(
+                width: 9.0.wp,
+                height: 9.0.wp,
+                child:Image.asset('assets/icons/floating_app_bar/map.png'),),),
+          InkWell(
+              onTap: () => {Get.toNamed(ShopsScreen.routename)},
+              child: SizedBox(
+                width: 9.0.wp,
+                height: 9.0.wp,
+                child:Image.asset('assets/icons/floating_app_bar/calendar.png'),),),
+          InkWell(
+              onTap: () => {},
+              child:SizedBox(
+                width: 9.0.wp,
+                height: 9.0.wp,
+                child: Image.asset('assets/icons/floating_app_bar/profile.png'),),),
+        ]),
       ),
     );
   }

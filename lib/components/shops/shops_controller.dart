@@ -90,7 +90,7 @@ class ShopsController extends GetxController {
           ),
           child:Center(child: ThemeText(
             theText: dayName,
-            thefontSize: 9.0.sp,
+            thefontSize: 8.0.sp,
             theColor: white,
             theFontWeight: FontWeight.bold,
           ),)
@@ -107,6 +107,6 @@ class ShopsController extends GetxController {
   }
 
    getData() async {
-    await Future.delayed(Duration(seconds: 10));
+    await Future.delayed(Duration(seconds: 4));
   }
 }

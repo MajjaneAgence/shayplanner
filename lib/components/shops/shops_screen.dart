@@ -45,7 +45,7 @@ class ShopsScreenLoaded extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // for the appBar we're going to give it 10% of the height
-      backgroundColor: lightYellow,
+      backgroundColor: white,
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that
         // was created by the App.build method, and use it to set
@@ -142,15 +142,16 @@ class ShopsScreenLoaded extends StatelessWidget {
                         margin: EdgeInsets.symmetric(vertical: 1.0.wp),
                         decoration: BoxDecoration(
                             boxShadow: themeBoxShadowCard,
-                            borderRadius: BorderRadius.circular(25)),
+                            borderRadius: BorderRadius.circular(10.0.sp)),
                         child: Column(children: [
                           Container(
                             height: 20.0.hp,
                             width: 92.0.wp,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(10.0.sp),
-                                  topRight: Radius.circular(10.0.sp)),
+                                topLeft: Radius.circular(10.0.sp),
+                                topRight: Radius.circular(10.0.sp),
+                              ),
                               image: DecorationImage(
                                 image: AssetImage(
                                   "assets/images/model_on_mirror.png",
@@ -160,20 +161,20 @@ class ShopsScreenLoaded extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            height: 9.0.hp,
+                            height: 11.0.hp,
                             width: 92.0.wp,
                             child: Row(
                               children: [
                                 Container(
                                   width: 60.0.wp,
-                                  padding: EdgeInsets.only(left: 5.0.wp),
+                                  padding: EdgeInsets.only(left: 3.0.wp),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Container(
                                         width: 55.0.wp,
-                                        height: 4.0.hp,
+                                        height: 5.0.hp,
                                         padding: EdgeInsets.only(top: 0.5.hp),
                                         child: ThemeText(
                                             theText: "Lorem ipsum",
@@ -181,61 +182,68 @@ class ShopsScreenLoaded extends StatelessWidget {
                                             theColor: black,
                                             theFontFamily: "Montserrat-Bold"),
                                       ),
-                                      Row(children: [
-                                        Container(
-                                          width: 5.0.wp,
-                                          height: 5.0.wp,
-                                          child: SvgPicture.asset(
-                                              'assets/icons/localization.svg',
-                                              color: grey),
-                                        ),
-                                        Center(
-                                          child: Container(
-                                            width: 50.0.wp,
-                                            color: Colors.white,
-                                            child: ThemeText(
-                                              theText:
-                                                  "Lorem ipsum dolor sit amet",
-                                              thefontSize: 10.0.sp,
-                                              theColor: grey,
-                                              theMaxOfLines: 1,
-                                              theTextDecoration:
-                                                  TextDecoration.underline,
+                                      Container(
+                                        width: 55.0.wp,
+                                        height: 2.0.hp,
+                                        child: Row(children: [
+                                          Container(
+                                            width: 5.0.wp,
+                                            height: 5.0.wp,
+                                            child: SvgPicture.asset(
+                                                'assets/icons/localization.svg',
+                                                color: grey),
+                                          ),
+                                          Center(
+                                            child: Container(
+                                              width: 50.0.wp,
+                                              child: ThemeText(
+                                                theText:
+                                                    "Lorem ipsum dolor sit amet",
+                                                thefontSize: 10.0.sp,
+                                                theColor: grey,
+                                                theMaxOfLines: 1,
+                                                theTextDecoration:
+                                                    TextDecoration.underline,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ]),
-                                      Row(children: [
-                                        Container(
-                                          width: 5.0.wp,
-                                          height: 5.0.wp,
-                                          child: SvgPicture.asset(
-                                              'assets/icons/star.svg',
-                                              color: grey),
-                                        ),
-                                        Center(
-                                          child: Container(
-                                            width: 50.0.wp,
-                                            child: ThemeText(
-                                              theText: "4,9 (317 avis)  MAD",
-                                              thefontSize: 10.0.sp,
-                                              theColor: grey,
-                                              theMaxOfLines: 1,
+                                        ]),
+                                      ),
+                                      Container(
+                                          width: 55.0.wp,
+                                          height: 4.0.hp,
+                                          child: Row(children: [
+                                            Container(
+                                              width: 5.0.wp,
+                                              height: 5.0.wp,
+                                              child: SvgPicture.asset(
+                                                  'assets/icons/star.svg',
+                                                  color: grey),
                                             ),
-                                          ),
-                                        ),
-                                      ])
+                                            Center(
+                                              child: Container(
+                                                width: 50.0.wp,
+                                                child: ThemeText(
+                                                  theText:
+                                                      "4,9 (317 avis)  MAD",
+                                                  thefontSize: 10.0.sp,
+                                                  theColor: grey,
+                                                  theMaxOfLines: 1,
+                                                ),
+                                              ),
+                                            ),
+                                          ])),
                                     ],
                                   ),
                                 ),
                                 Container(
                                   width: 32.0.wp,
-                                  height: 9.0.hp,
+                                  height: 11.0.hp,
                                   child: InkWell(
                                     onTap: () => shopsController.goToSalonSheet,
                                     child: Container(
                                         margin: EdgeInsets.only(
-                                            bottom: 3.0.hp,
+                                            bottom: 4.0.hp,
                                             top: 2.0.hp,
                                             right: 3.0.wp),
                                         decoration: BoxDecoration(
@@ -262,7 +270,7 @@ class ShopsScreenLoaded extends StatelessWidget {
                           ),
                           Container(
                             width: 92.0.wp,
-                            padding: EdgeInsets.symmetric(horizontal: 5.0.wp),
+                            padding: EdgeInsets.symmetric(horizontal: 3.0.wp),
                             child: Column(
                               children: [
                                 Container(
@@ -348,7 +356,7 @@ class ShopsScreenLoaded extends StatelessWidget {
                           ),
                         ]),
                       ),
-                      SizedBox(height: 1.0.hp),
+                      SizedBox(height: 2.0.hp),
                       ThemeButton(
                           theContent: ThemeGradContainer(
                             theWith: 40.0.wp,
@@ -358,11 +366,11 @@ class ShopsScreenLoaded extends StatelessWidget {
                                 theText: "Prendre Rdv",
                                 thefontSize: 12.0.sp,
                                 theColor: white,
-                                theFontWeight: FontWeight.bold),
+                                theFontFamily: fontBold),
                           ),
                           theAction: shopsController.book,
                           theLoadingStatus: shopsController.isLoading.value),
-                      SizedBox(height: 4.0.hp)
+                      SizedBox(height: 10.0.hp)
                     ],
                   ),
                 ]),
@@ -371,8 +379,41 @@ class ShopsScreenLoaded extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton:
-          ElevatedButton(onPressed: () => {}, child: Text("hhhhh")),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Container(
+        width: 92.0.wp,
+        height: 8.0.hp,
+        decoration: BoxDecoration(
+          color: grey,
+          borderRadius: BorderRadius.circular(6.5.wp),
+        ),
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          InkWell(
+              onTap: () => {Get.toNamed(HomeScreen.routename)},
+              child:SizedBox(
+                width: 9.0.wp,
+                height: 9.0.wp,
+                child:Image.asset('assets/icons/floating_app_bar/home.png'),) ,),
+          InkWell(
+              onTap: () => {},
+              child: SizedBox(
+                width: 9.0.wp,
+                height: 9.0.wp,
+                child:Image.asset('assets/icons/floating_app_bar/map.png'),),),
+          InkWell(
+              onTap: () => {Get.toNamed(ShopsScreen.routename)},
+              child: SizedBox(
+                width: 9.0.wp,
+                height: 9.0.wp,
+                child:Image.asset('assets/icons/floating_app_bar/calendar.png'),),),
+          InkWell(
+              onTap: () => {},
+              child:SizedBox(
+                  width: 9.0.wp,
+                height: 9.0.wp,
+                child: Image.asset('assets/icons/floating_app_bar/profile.png'),),),
+        ]),
+      ),
     );
   }
 }
@@ -386,7 +427,7 @@ class ShopsScreenUnLoaded extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // for the appBar we're going to give it 10% of the height
-      backgroundColor: lightYellow,
+      backgroundColor: white,
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that
         // was created by the App.build method, and use it to set
@@ -507,13 +548,13 @@ class ShopsScreenUnLoaded extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                height: 9.0.hp,
+                                height: 11.0.hp,
                                 width: 92.0.wp,
                                 child: Row(
                                   children: [
                                     Container(
                                       width: 60.0.wp,
-                                      padding: EdgeInsets.only(left: 5.0.wp),
+                                      padding: EdgeInsets.only(left: 3.0.wp),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -523,84 +564,88 @@ class ShopsScreenUnLoaded extends StatelessWidget {
                                             highlightColor: Colors.grey[100]!,
                                             child: Container(
                                               width: 55.0.wp,
-                                              height: 4.0.hp,
-                                              padding:
-                                                  EdgeInsets.only(top: 1.5.hp,bottom:1.5.hp,right:10.0.wp),
+                                              height: 5.0.hp,
+                                              padding: EdgeInsets.only(
+                                                  top: 1.5.hp,
+                                                  bottom: 1.5.hp,
+                                                  right: 10.0.wp),
                                               child: Container(
-                                                  width:45.0.wp,
-                                                  height:2.0.hp,
-                                                  color: Colors.red,),
+                                                width: 45.0.wp,
+                                                height: 2.0.hp,
+                                                color: Colors.white,
+                                              ),
                                             ),
                                           ),
-       Shimmer.fromColors(
+                                          Shimmer.fromColors(
                                             baseColor: Colors.grey[300]!,
                                             highlightColor: Colors.grey[100]!,
-                                            child:
-                                          Container(
+                                            child: Container(
                                                 width: 50.0.wp,
                                                 //color: Colors.white,
                                                 height: 2.0.hp,
-                                                 padding:
-                                                  EdgeInsets.only(top: 0.5.hp,bottom:0.5.hp,right:10.0.wp),
-                                              child: Container(
-                                                  width:45.0.wp,
-                                                  height:1.0.hp,
-                                                  color: Colors.red,)
-                                              ),
-       ),
-              Shimmer.fromColors(
+                                                padding: EdgeInsets.only(
+                                                    top: 0.5.hp,
+                                                    bottom: 0.5.hp,
+                                                    right: 10.0.wp),
+                                                child: Container(
+                                                  width: 45.0.wp,
+                                                  height: 1.0.hp,
+                                                  color: Colors.white,
+                                                )),
+                                          ),
+                                          Shimmer.fromColors(
                                             baseColor: Colors.grey[300]!,
                                             highlightColor: Colors.grey[100]!,
-                                            child:
-                                           Container(
+                                            child: Container(
                                                 width: 50.0.wp,
-                                              //  color: Colors.white,
-                                                height: 2.0.hp,
-                                                 padding:
-                                                  EdgeInsets.only(top: 0.5.hp,bottom:0.5.hp,right:10.0.wp),
-                                              child: Container(
-                                                  width:45.0.wp,
-                                                  height:1.0.hp,
-                                                  color: Colors.red,)
-                                              ),
-              ),
-                                          
+                                                //  color: Colors.white,
+                                                height: 4.0.hp,
+                                                padding: EdgeInsets.only(
+                                                    top: 1.5.hp,
+                                                    bottom: 1.5.hp,
+                                                    right: 10.0.wp),
+                                                child: Container(
+                                                  width: 45.0.wp,
+                                                  height: 1.0.hp,
+                                                  color: Colors.white,
+                                                )),
+                                          ),
                                         ],
                                       ),
                                     ),
-                                           Shimmer.fromColors(
-                                            baseColor: Colors.grey[300]!,
-                                            highlightColor: Colors.grey[100]!,
-                                            child:
-                                    Container(
-                                      width: 32.0.wp,
-                                      height: 9.0.hp,
-                                      child: InkWell(
-                                        onTap: () =>
-                                            shopsController.goToSalonSheet,
-                                        child: Container(
-                                            margin: EdgeInsets.only(
-                                                bottom: 3.0.hp,
-                                                top: 2.0.hp,
-                                                right: 3.0.wp),
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              color: grey,
-                                            ),
-                                            child: Center(
-                                              child: ThemeText(
-                                                theText: "Fiche du salon",
-                                                thefontSize: 9.0.sp,
-                                                theColor: white,
-                                                theFontWeight: FontWeight.bold,
-                                                theFontFamily:
-                                                    "Montserrat-Bold",
+                                    Shimmer.fromColors(
+                                      baseColor: Colors.grey[300]!,
+                                      highlightColor: Colors.grey[100]!,
+                                      child: Container(
+                                        width: 32.0.wp,
+                                        height: 11.0.hp,
+                                        child: InkWell(
+                                          onTap: () =>
+                                              shopsController.goToSalonSheet,
+                                          child: Container(
+                                              margin: EdgeInsets.only(
+                                                  bottom: 4.0.hp,
+                                                  top: 2.0.hp,
+                                                  right: 3.0.wp),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                color: grey,
                                               ),
-                                            )),
+                                              child: Center(
+                                                child: ThemeText(
+                                                  theText: "Fiche du salon",
+                                                  thefontSize: 9.0.sp,
+                                                  theColor: white,
+                                                  theFontWeight:
+                                                      FontWeight.bold,
+                                                  theFontFamily:
+                                                      "Montserrat-Bold",
+                                                ),
+                                              )),
+                                        ),
                                       ),
                                     ),
-                                           ),
                                   ],
                                 ),
                               ),
@@ -610,7 +655,7 @@ class ShopsScreenUnLoaded extends StatelessWidget {
                               Container(
                                 width: 92.0.wp,
                                 padding:
-                                    EdgeInsets.symmetric(horizontal: 5.0.wp),
+                                    EdgeInsets.symmetric(horizontal: 3.0.wp),
                                 child: Column(
                                   children: [
                                     Container(
@@ -629,14 +674,15 @@ class ShopsScreenUnLoaded extends StatelessWidget {
                                           ),
                                           Expanded(
                                             flex: 3,
-                                            child:        Shimmer.fromColors(
-                                            baseColor: Colors.grey[300]!,
-                                            highlightColor: Colors.grey[100]!,
-                                            child:ListView(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                children: shopsController
-                                                    .buildDaysList())),
+                                            child: Shimmer.fromColors(
+                                                baseColor: Colors.grey[300]!,
+                                                highlightColor:
+                                                    Colors.grey[100]!,
+                                                child: ListView(
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    children: shopsController
+                                                        .buildDaysList())),
                                           ),
                                         ],
                                       ),
@@ -658,14 +704,15 @@ class ShopsScreenUnLoaded extends StatelessWidget {
                                           ),
                                           Expanded(
                                             flex: 3,
-                                            child:        Shimmer.fromColors(
-                                            baseColor: Colors.grey[300]!,
-                                            highlightColor: Colors.grey[100]!,
-                                            child:ListView(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                children: shopsController
-                                                    .buildDaysList())),
+                                            child: Shimmer.fromColors(
+                                                baseColor: Colors.grey[300]!,
+                                                highlightColor:
+                                                    Colors.grey[100]!,
+                                                child: ListView(
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    children: shopsController
+                                                        .buildDaysList())),
                                           ),
                                         ],
                                       ),
@@ -676,21 +723,20 @@ class ShopsScreenUnLoaded extends StatelessWidget {
                               ),
                             ]),
                           ),
-                          SizedBox(height: 1.0.hp),
-                          ThemeButton(
-                              theContent: ThemeGradContainer(
-                                theWith: 40.0.wp,
-                                theHeight: 5.0.hp,
-                                theLinearGradient: greyYellowLinearGradient,
-                                theContent: ThemeText(
-                                    theText: "Prendre Rdv",
-                                    thefontSize: 12.0.sp,
-                                    theColor: white,
-                                    theFontWeight: FontWeight.bold),
-                              ),
-                              theAction: shopsController.book,
-                              theLoadingStatus:
-                                  shopsController.isLoading.value),
+                          SizedBox(height: 2.0.hp),
+                          Shimmer.fromColors(
+                            baseColor: Colors.grey[300]!,
+                            highlightColor: Colors.grey[100]!,
+                            child: ThemeButton(
+                                theContent: ThemeGradContainer(
+                                  theWith: 40.0.wp,
+                                  theHeight: 5.0.hp,
+                                  theLinearGradient: greyYellowLinearGradient,
+                                ),
+                                theAction: shopsController.book,
+                                theLoadingStatus:
+                                    shopsController.isLoading.value),
+                          ),
                           SizedBox(height: 4.0.hp)
                         ],
                       );
@@ -700,8 +746,6 @@ class ShopsScreenUnLoaded extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton:
-          ElevatedButton(onPressed: () => {}, child: Text("hhhhh")),
     );
   }
 }
