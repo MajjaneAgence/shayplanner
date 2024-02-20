@@ -11,6 +11,9 @@ import 'package:shayplanner/components/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/components/shops/shops_screen.dart';
+import 'package:shayplanner/theme/theme_colors.dart';
+import 'package:shayplanner/theme/theme_snackbar.dart';
+import 'package:shayplanner/tools/extension.dart';
 
 class LoginController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -43,36 +46,23 @@ class LoginController extends GetxController {
   }
 
   connect() {
+    isLoading.value=true;
+    isLoading.refresh();
     const FlutterSecureStorage secureStorage = FlutterSecureStorage();
     LoginService()
         .apiLogin(
             usernameEditingController.text, passwordEditingController.text)
         .then((value) async {
       var body = jsonDecode(value.body);
+      isLoading.value=false;
+      isLoading.refresh();
       print(body);
       if (body["success"]) {
         await secureStorage.write(
             key: "token", value: body["data"]['api_token']);
         print(await secureStorage.read(key: "token"));
       } else {
-        // final snackBar = SnackBar(
-        //           /// need to set following properties for best effect of awesome_snackbar_content
-        //           elevation: 0,
-        //           behavior: SnackBarBehavior.floating,
-        //           backgroundColor: Colors.transparent,
-        //           content: AwesomeSnackbarContent(
-        //             title: 'On Snap!',
-        //             message:
-        //                 'This is an example error message that will be shown in the body of snackbar!',
-
-        //             /// change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
-        //             contentType: ContentType.failure,
-        //           ),
-        //         );
-
-        //         ScaffoldMessenger.of(context)
-        //           ..hideCurrentSnackBar()
-        //           ..showSnackBar(snackBar);
+       themeSnackBar(body["message"]);
       }
     });
   }

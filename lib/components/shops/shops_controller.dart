@@ -7,12 +7,14 @@ import 'package:shayplanner/tools/extension.dart';
 
 class ShopsController extends GetxController {
   TextEditingController keywordEditingController = TextEditingController();
-   RxBool isShowingWorkHours = false.obs;
-  RxBool isLoading = false.obs;
+  RxBool isShowingWorkHours = false.obs;
+  RxBool isLoadingShops = false.obs;
+  RxBool isLoadingBookAppointment = false.obs;
 
   @override
   void onInit() async {
     super.onInit();
+    getShops();
   }
 
   validateFirstName(String email) {
@@ -51,62 +53,61 @@ class ShopsController extends GetxController {
     }
   }
 
-  register() async {
-    print('here');
-    isLoading.value = true;
-    isLoading.refresh();
-    await Future.delayed(const Duration(seconds: 3));
-    isLoading.value = false;
-    isLoading.refresh();
-  }
-
   searchShop(String keyword) {
     print("searching");
   }
 
   book() {}
-  goToSalonSheet() {print("ggg");}
+  goToSalonSheet() {
+    print("ggg");
+  }
 
   List<Widget> buildDaysList() {
     List<Widget> daysList = [];
     DateTime now = DateTime.now();
-    final dateFormat = DateFormat('EEE d','fr');
+    final dateFormat = DateFormat('EEE d', 'fr');
     for (int i = 0; i < 7; i++) {
       DateTime day = now.add(Duration(days: i));
       String dayName = dateFormat.format(day);
       daysList.add(
         InkWell(
-          onTap: () {
-            showWorkHours();
-          },
-          child:
-          Container(
-          margin: EdgeInsets.only(left: 2.0.wp, top:5.0.sp,bottom:5.0.sp),
-          padding: EdgeInsets.symmetric(horizontal: 4.0.sp, vertical: 2.0.sp),
-          width: 8.0.hp,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.0),
-            color: grey,
-          ),
-          child:Center(child: ThemeText(
-            theText: dayName,
-            thefontSize: 8.0.sp,
-            theColor: white,
-            theFontWeight: FontWeight.bold,
-          ),)
-        )),
+            onTap: () {
+              showWorkHours();
+            },
+            child: Container(
+                margin:
+                    EdgeInsets.only(left: 2.0.wp, top: 5.0.sp, bottom: 5.0.sp),
+                padding:
+                    EdgeInsets.symmetric(horizontal: 4.0.sp, vertical: 2.0.sp),
+                width: 8.0.hp,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
+                  color: grey,
+                ),
+                child: Center(
+                  child: ThemeText(
+                    theText: dayName,
+                    thefontSize: 8.0.sp,
+                    theColor: white,
+                    theFontWeight: FontWeight.bold,
+                  ),
+                ))),
       );
     }
 
     return daysList;
   }
 
-  showWorkHours(){
-    isShowingWorkHours.value=!isShowingWorkHours.value;
+  showWorkHours() {
+    isShowingWorkHours.value = !isShowingWorkHours.value;
     isShowingWorkHours.refresh();
   }
 
-   getData() async {
+  getShops() async {
+    isLoadingShops.value = true;
+    isLoadingShops.refresh();
     await Future.delayed(Duration(seconds: 4));
+    isLoadingShops.value = false;
+    isLoadingShops.refresh();
   }
 }

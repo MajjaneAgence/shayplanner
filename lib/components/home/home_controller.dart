@@ -1,15 +1,22 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shayplanner/components/forgot_password/forgot_password_screen.dart';
+import 'package:shayplanner/components/home/home_service.dart';
 import 'package:shayplanner/components/register/register_screen.dart';
 import 'package:get/get.dart';
+import 'package:shayplanner/main.dart';
+import 'package:shayplanner/models/category_model.dart';
+import 'package:shayplanner/theme/theme_snackbar.dart';
 
 class HomeController extends GetxController {
   final formKey = GlobalKey<FormState>();
   TextEditingController shopNameEditingController = TextEditingController();
   TextEditingController shopAddressEditingController = TextEditingController();
-  RxBool isLoading = false.obs;
+  RxBool isLoadingCategories = false.obs;
+  RxBool isLoadingLatestSalons = false.obs;
   RxString selectedLanguage = 'Fr'.obs;
-
+  RxList<CategoryModel> categories = <CategoryModel>[].obs;
   // List of items in our dropdown menu
   final List<String> lanuages = [
     'Français',
@@ -18,43 +25,51 @@ class HomeController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    await Future.delayed(const Duration(seconds: 3));
-    print("hello");
+    getCatgories();
+    getLatestSalons();
   }
 
-  validateUsername(String email) {
+   getCatgories()async {
+    isLoadingCategories.value=true;
+    isLoadingCategories.refresh();
+    HomeService().apiGetCategories().then((value) async {
+          isLoadingCategories.value=false;
+          isLoadingCategories.refresh();
+      var body = jsonDecode(value.body);
+      print(body);
+      if (body["success"]) {
+        categories.clear();
+        for (var category in body["data"]) {
+          categories.add(CategoryModel.fromJson(category));
+        }
+        categories.refresh();
+      } else {
+        themeSnackBar(body["message"]);
+      }
+    });
+  }
+
+  getLatestSalons()async{
+     isLoadingLatestSalons.value=true;
+    isLoadingLatestSalons.refresh();
+    await Future.delayed(Duration(seconds: 5));
+    isLoadingLatestSalons.value=false;
+    isLoadingLatestSalons.refresh();
+  }
+
+  changeLanguage(String lang)async{
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('language',lang);
+ Get.updateLocale(Locale(lang));
+
+  }
+  
+
+  validateFirstName(String email) {
     if (GetUtils.isEmail(email)) {
       return null;
     } else {
-      return "tr_enter_valid_email_address".tr;
+      return "tr_enter_valid_firstname".tr;
     }
-  }
-
-  validatePassword(String password) {
-    if (password.isNotEmpty) {
-      return null;
-    } else {
-      return "tr_enter_password".tr;
-    }
-  }
-
-  connect() async {
-    isLoading.value = true;
-    isLoading.refresh();
-    await Future.delayed(const Duration(seconds: 3));
-    isLoading.value = false;
-    isLoading.refresh();
-  }
-
-  goToRestPassword() {
-    Get.toNamed(ForgotPasswordScreen.routename);
-  }
-
-  goToRegister() {
-    Get.toNamed(RegisterScreen.routename);
-  }
-
-  getData() async {
-    await Future.delayed(Duration(seconds: 5));
   }
 }

@@ -12,6 +12,7 @@ class ThemeInput extends StatelessWidget {
   Widget? theIconWidget;
   double theContentPadding;
   FloatingLabelBehavior? theFloatingLabelBehaviour;
+  double? theInputHeight;
   ThemeInput(
       {Key? key,
       this.theLabelText,
@@ -20,12 +21,13 @@ class ThemeInput extends StatelessWidget {
       required this.theValidation,
       this.theIconWidget,
       required this.theContentPadding,
-      this.theFloatingLabelBehaviour})
+      this.theFloatingLabelBehaviour,
+      this.theInputHeight})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 5.0.hp,
+      height: theInputHeight ?? 10.0.hp,
       child:TextFormField(
       controller: theTextEditingController,
       validator: (value) {
