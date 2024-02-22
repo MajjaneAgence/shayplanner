@@ -4,10 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ThemeAppBar extends StatelessWidget implements PreferredSizeWidget{
-String thePreviousRoute;
   ThemeAppBar(
-      {Key? key,
-      required this.thePreviousRoute})
+      {Key? key})
       : super(key: key);
           @override
   Size get preferredSize =>  Size.fromHeight(10.0.hp);
@@ -18,7 +16,7 @@ String thePreviousRoute;
         backgroundColor: Colors.white,
         leading: InkWell(
             onTap: () {
-              Get.toNamed(thePreviousRoute);
+              Get.back();
             },
             child: Container(
               padding: EdgeInsets.only(left: 2.0.sp),

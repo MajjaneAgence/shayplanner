@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shayplanner/components/forgot_password/forgot_password_screen.dart';
+import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/login/login_service.dart';
 import 'package:shayplanner/components/register/register_screen.dart';
@@ -57,6 +58,7 @@ class LoginController extends GetxController {
         await secureStorage.write(
             key: "token", value: body["data"]['api_token']);
         print(await secureStorage.read(key: "token"));
+        Get.toNamed(HomeScreen.routename);
       } else {
        themeSnackBar(body["message"]);
       }

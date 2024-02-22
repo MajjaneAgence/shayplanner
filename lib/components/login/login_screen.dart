@@ -23,9 +23,7 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: white,
-      appBar: ThemeAppBar(
-        thePreviousRoute: IntroductionScreen.routename,
-      ),
+      appBar: ThemeAppBar(),
       body: Container(
         width: Get.width,
         height: 90.0.hp,
@@ -295,8 +293,10 @@ class LoginScreenForPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(toolbarHeight: 10.0.hp),
+         backgroundColor: white,
+      appBar:ThemeAppBar(),
       body: Container(
+        color: biege,
         padding: EdgeInsets.symmetric(horizontal: 8.0.wp),
         width: Get.width,
         height: 90.0.hp,
@@ -314,7 +314,8 @@ class LoginScreenForPassword extends StatelessWidget {
                       theTextEditingController:
                           loginController.passwordEditingController,
                       theValidation: loginController.validatePassword,
-                      theContentPadding: 5.0.sp),
+                      theContentPadding: 5.0.sp,
+                      theTextVisibilty: true,),
                   SizedBox(height: 2.0.hp),
                   Container(
                     width: double.infinity,

@@ -35,7 +35,6 @@ final Map<String, String> fr = {
       "Confirmation de mot de passe", // other fields are common with login
   "tr_mobile_number": "Numéro de téléphone",
   "tr_address": "Adresse",
-  "tr_register": "S'inscrire",
   "tr_alread_have_account": "Vous avez déjà un compte",
   "tr_enter_valid_firstname": "Veuillez saisir votre prénom",
   "tr_enter_valid_lastname": "Veuillez saisir votre nom",
