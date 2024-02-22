@@ -27,7 +27,7 @@ class ThemeInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: theInputHeight ?? 10.0.hp,
+      height: theInputHeight ?? 8.0.hp,
       child:TextFormField(
       controller: theTextEditingController,
       validator: (value) {
@@ -38,6 +38,7 @@ class ThemeInput extends StatelessWidget {
         labelText: theLabelText ?? '',
         hintText: theHintText,
         fillColor: white,
+        errorStyle: TextStyle(height: 0.1),
         hintStyle: TextStyle(
           fontSize: 10.0.sp
         ),

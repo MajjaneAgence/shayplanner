@@ -5,7 +5,6 @@ import 'package:shayplanner/components/home/home_controller.dart';
 import 'package:shayplanner/components/home/home_loading/categories_loading.dart';
 import 'package:shayplanner/components/home/home_loading/latest_salons_loading.dart';
 import 'package:shayplanner/components/shops/shops_screen.dart';
-import 'package:shayplanner/models/language_model.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_grad_container.dart';
 import 'package:shayplanner/theme/theme_input.dart';
@@ -440,13 +439,17 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Container(
+       bottomSheet: Container(
+        width: MediaQuery.of(context).size.width,
+        child:  Container(
         width: 92.0.wp,
-        height: 8.0.hp,
+        height: 10.0.hp,
         decoration: BoxDecoration(
           color: grey,
-          borderRadius: BorderRadius.circular(6.5.wp),
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(8.5.wp),
+                topRight: Radius.circular(8.5.wp),
+              ),
         ),
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
           InkWell(
@@ -484,6 +487,8 @@ class HomeScreen extends StatelessWidget {
           ),
         ]),
       ),
+      ),
+  
     );
   }
 

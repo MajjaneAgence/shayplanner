@@ -35,6 +35,7 @@ class ThemeText extends StatelessWidget {
         fontFamily: theFontFamily ?? "Montserrat-regular",
         fontWeight: theFontWeight ?? FontWeight.normal,
         decoration: theTextDecoration ?? TextDecoration.none,
+        decorationColor: theColor
       ),
     );
   }

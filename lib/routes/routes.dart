@@ -9,8 +9,12 @@ import 'package:shayplanner/components/shops/shops_screen.dart';
 
 var router = [
   GetPage(
-    name: LoginScreen.routename,
-    page: () => LoginScreen(),
+    name: LoginScreenForEmailAndSocial.routename,
+    page: () => LoginScreenForEmailAndSocial(),
+  ),
+    GetPage(
+    name: LoginScreenForPassword.routename,
+    page: () => LoginScreenForPassword(),
   ),
   GetPage(
     name: RegisterScreen.routename,

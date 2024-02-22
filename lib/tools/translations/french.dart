@@ -1,15 +1,23 @@
 final Map<String, String> fr = {
   // Login screen
-  'tr_username': "Nom d'utilisateur",
+  "tr_already_have_an_account": "Vous avez déjà un compte",
+  'tr_email': "E-mail*",
   "tr_password": "Mot de passe",
   "tr_connect": "Se connecter",
   "tr_enter_valid_email_address": "Merci de saisir une adresse email valide",
   "tr_enter_password": "Merci de saisir votre mot de passe",
   "tr_forgot_password": "Mot de passe oublié ?",
-  "tr_you_dont_have_account": "Vous n'avez pas de compte",
+  "tr_you_dont_have_account": "Vous n'avez pas de compte ?",
+  "tr_continue_with_google": "Continuer avec Google",
+  "tr_continue_with_facebook": "Continuer avec Facebook",
+  "tr_continue_with_apple": "Continuer avec Apple",
+  "tr_or": "OU",
+  "tr_continue": "Continuer",
+  "tr_new_on_planner": "Nouveau sur PLANNER",
+  "tr_register":"S'inscrire",
+  "tr_continue_without_registration":"Continuer sans s'incrire",
 
   // Forgot password screen
-  "tr_email": "Adresse email",
   "tr_try_something_else": "Essayer une autre méthode",
   "tr_send": "Envoyer",
   "tr_enter_email_to_receive_code":

@@ -4,6 +4,7 @@ String fontBold ="Montserrat-Bold";
 String fontRegular ="Montserrat-regular";
 String fontThin ="Montserrat-Light";
 
+Color biege = Color(0xFFBA9C54).withOpacity(0.33);
 Color black = Colors.black;
 Color white = Colors.white;
 Color lightYellow = Color(0xFFFBF6EA);

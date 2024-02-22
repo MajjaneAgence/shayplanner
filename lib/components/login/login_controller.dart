@@ -1,22 +1,18 @@
 import 'dart:convert';
 
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shayplanner/components/api/api_helper.dart';
 import 'package:shayplanner/components/forgot_password/forgot_password_screen.dart';
-import 'package:shayplanner/components/home/home_screen.dart';
+import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/login/login_service.dart';
 import 'package:shayplanner/components/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shayplanner/components/shops/shops_screen.dart';
-import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_snackbar.dart';
-import 'package:shayplanner/tools/extension.dart';
 
 class LoginController extends GetxController {
-  final formKey = GlobalKey<FormState>();
+   final formKey = GlobalKey<FormState>();
+   final formKey2 = GlobalKey<FormState>();
+
   TextEditingController usernameEditingController = TextEditingController();
   TextEditingController passwordEditingController = TextEditingController();
   RxBool isLoading = false.obs;
@@ -73,5 +69,21 @@ class LoginController extends GetxController {
 
   goToRegister() {
     Get.toNamed(RegisterScreen.routename);
+  }
+
+  loginWithGoogle(){
+
+  }
+
+  loginWithApple(){
+    
+  }
+
+  loginWithFacebook(){
+    
+  }
+
+  goToPasswordScreen(){
+    Get.toNamed(LoginScreenForPassword.routename);
   }
 }

@@ -1,11 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shayplanner/components/forgot_password/forgot_password_screen.dart';
 import 'package:shayplanner/components/home/home_service.dart';
-import 'package:shayplanner/components/register/register_screen.dart';
 import 'package:get/get.dart';
-import 'package:shayplanner/main.dart';
 import 'package:shayplanner/models/category_model.dart';
 import 'package:shayplanner/theme/theme_snackbar.dart';
 

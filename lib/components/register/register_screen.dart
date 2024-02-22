@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,7 +14,7 @@ class RegisterScreen extends StatelessWidget {
   RegisterScreen({
     Key? key,
   }) : super(key: key);
-  RegisterController registerController = Get.put(RegisterController());
+  final  RegisterController registerController = Get.put(RegisterController());
   static const routename = '/register';
   @override
   Widget build(BuildContext context) {
