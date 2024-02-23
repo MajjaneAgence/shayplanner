@@ -11,13 +11,15 @@ import 'package:get/get.dart';
 import 'package:shayplanner/theme/theme_snackbar.dart';
 
 class LoginController extends GetxController {
-   final formKey = GlobalKey<FormState>();
-   final formKey2 = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
 
   TextEditingController usernameEditingController = TextEditingController();
   TextEditingController passwordEditingController = TextEditingController();
   RxBool isLoading = false.obs;
   LoginService loginService = LoginService();
+  RxBool isChecked = false.obs;
+  RxBool isObscure = true.obs;
 
   @override
   void onInit() async {
@@ -43,7 +45,7 @@ class LoginController extends GetxController {
   }
 
   connect() {
-    isLoading.value=true;
+    isLoading.value = true;
     isLoading.refresh();
     const FlutterSecureStorage secureStorage = FlutterSecureStorage();
     LoginService()
@@ -51,7 +53,7 @@ class LoginController extends GetxController {
             usernameEditingController.text, passwordEditingController.text)
         .then((value) async {
       var body = jsonDecode(value.body);
-      isLoading.value=false;
+      isLoading.value = false;
       isLoading.refresh();
       print(body);
       if (body["success"]) {
@@ -60,7 +62,7 @@ class LoginController extends GetxController {
         print(await secureStorage.read(key: "token"));
         Get.toNamed(HomeScreen.routename);
       } else {
-       themeSnackBar(body["message"]);
+        themeSnackBar(body["message"]);
       }
     });
   }
@@ -73,19 +75,29 @@ class LoginController extends GetxController {
     Get.toNamed(RegisterScreen.routename);
   }
 
-  loginWithGoogle(){
+  loginWithGoogle() {}
 
-  }
+  loginWithApple() {}
 
-  loginWithApple(){
-    
-  }
+  loginWithFacebook() {}
 
-  loginWithFacebook(){
-    
-  }
-
-  goToPasswordScreen(){
+  goToPasswordScreen() {
     Get.toNamed(LoginScreenForPassword.routename);
+  }
+
+  changeCheckbox(value) {
+    print(isChecked.value);
+    isChecked.value = !value;
+    isChecked.refresh();
+        print(isChecked.value);
+
+  }
+
+  togglePasswordVisibilty(bool visibilty) {
+    print(isObscure.value);
+    isObscure.value = !visibilty;
+    isObscure.refresh();
+        print(isObscure.value);
+
   }
 }

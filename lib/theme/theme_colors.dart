@@ -8,10 +8,12 @@ Color biege = Color(0xFFBA9C54).withOpacity(0.33);
 Color black = Colors.black;
 Color white = Colors.white;
 Color lightYellow = Color(0xFFFBF6EA);
-Color brown = Color(0xFFCEB971);
+Color brown = Color(0xFFAA886A);
 Color yellow = Color(0xFFD5A702);
 Color grey = Color(0xFF2D2D2D);
+Color lightGrey = Color(0xFF848484);
 Color lightYellowTransparent = Color.fromRGBO(251, 246, 234, 0.6);
+Color darkOrange= Color(0xFFBE6412);
 const BoxShadow themeBoxShadowInput = BoxShadow(
   color: Color.fromARGB(255, 224, 217, 217),
   offset: Offset(

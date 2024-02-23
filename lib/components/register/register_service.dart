@@ -4,8 +4,7 @@ import 'package:http/http.dart' as http;
 class RegisterService {
   String apiUri = "/register";
 
-  Future apiRegister(firstname, lastname, email, password,
-      password_confirmation, mobile, address, picture) async {
+  Future apiRegister(firstname, lastname, email, password,passwordConfirmation, mobile) async {
     final registerUrl = Uri.parse(ApiHelper().getUrl() + apiUri);
 
     http.MultipartRequest request = http.MultipartRequest(
@@ -16,15 +15,14 @@ class RegisterService {
       ..fields['lastname'] = lastname
       ..fields['email'] = email
       ..fields['password'] = password
-      ..fields['password_confirmation'] = password_confirmation
-      ..fields['mobile'] = mobile
-      ..fields['address'] = 'address';
+      ..fields['password_confirmation'] = passwordConfirmation
+      ..fields['mobile'] = mobile;
 
-    request.files.add(await http.MultipartFile.fromPath(
-      'picture',
-      picture.path,
-      filename: picture.path.split('/').last,
-    ));
+    // request.files.add(await http.MultipartFile.fromPath(
+    //   'picture',
+    //   picture.path,
+    //   filename: picture.path.split('/').last,
+    // ));
 
      var response = await http.Response.fromStream(await request.send());
 

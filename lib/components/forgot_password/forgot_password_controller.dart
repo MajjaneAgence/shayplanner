@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shayplanner/components/forgot_password/set_new_password_screen.dart';
+import 'package:shayplanner/components/login/login_screen.dart';
 
 class ForgotPasswordController extends GetxController {
-  final formKey = GlobalKey<FormState>();
+  final formKeyForgetPassword = GlobalKey<FormState>();
+  final formKeySetNewPassword = GlobalKey<FormState>();
   TextEditingController emailEditingController = TextEditingController();
   TextEditingController phoneEditingController = TextEditingController();
+  TextEditingController passwordEditingController = TextEditingController();
+  TextEditingController confirmPasswordEditingController =
+  TextEditingController();
   RxString forgotPasswordMethod = "email".obs;
-  RxBool isLoading = false.obs;
+  RxBool isLoadingSendVerificationCode = false.obs;
+  RxBool isLoadingChnagePassword = false.obs;
+  RxBool isObscurePassword = true.obs;
+  RxBool isObscureConfirmation = true.obs;
 
   @override
   void onInit() async {
@@ -37,10 +46,50 @@ class ForgotPasswordController extends GetxController {
   }
 
   sendVerificationCode() async {
-    isLoading.value = true;
-    isLoading.refresh();
+    isLoadingSendVerificationCode.value = true;
+    isLoadingSendVerificationCode.refresh();
     await Future.delayed(const Duration(seconds: 3));
-    isLoading.value = false;
-    isLoading.refresh();
+    isLoadingSendVerificationCode.value = false;
+    isLoadingSendVerificationCode.refresh();
+    Get.toNamed(SetNewPasswordScreen.routename);
+  }
+
+  validatePassword(String password) {
+    if (password.isNotEmpty) {
+      return null;
+    } else {
+      return "tr_enter_password".tr;
+    }
+  }
+
+  validatePasswordConfirmation(String passwordConfirmation) {
+    if (passwordConfirmation.isEmpty) {
+      return "tr_enter_password".tr;
+    } else if (passwordConfirmation != passwordEditingController.text) {
+      return "tr_incorrect_password_confirmation".tr;
+    }
+  }
+
+  togglePasswordVisibilty(bool visibilty) {
+    print(isObscurePassword.value);
+    isObscurePassword.value = !visibilty;
+    isObscurePassword.refresh();
+    print(isObscurePassword.value);
+  }
+
+   togglePasswordConfirmationVisibilty(bool visibilty) {
+    print(isObscureConfirmation.value);
+    isObscureConfirmation.value = !visibilty;
+    isObscureConfirmation.refresh();
+    print(isObscureConfirmation.value);
+  }
+
+  changePassword()async{
+   isLoadingChnagePassword.value = true;
+    isLoadingChnagePassword.refresh();
+    await Future.delayed(const Duration(seconds: 3));
+    isLoadingChnagePassword.value = false;
+    isLoadingChnagePassword.refresh();
+    Get.offAllNamed(LoginScreenForEmailAndSocial.routename);
   }
 }

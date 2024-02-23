@@ -14,6 +14,8 @@ class ThemeInput extends StatelessWidget {
   FloatingLabelBehavior? theFloatingLabelBehaviour;
   double? theInputHeight;
   bool? theTextVisibilty;
+  TextInputType? theKeyboardType;
+  Widget? thePrefixWidget;
   ThemeInput(
       {Key? key,
       this.theLabelText,
@@ -24,15 +26,18 @@ class ThemeInput extends StatelessWidget {
       required this.theContentPadding,
       this.theFloatingLabelBehaviour,
       this.theInputHeight,
-      this.theTextVisibilty})
+      this.theTextVisibilty,
+      this.theKeyboardType,
+      this.thePrefixWidget})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: theInputHeight ?? 8.0.hp,
+      height: theInputHeight ?? 5.0.hp,
       child:TextFormField(
       controller: theTextEditingController,
       obscureText: theTextVisibilty ?? false,
+      keyboardType: theKeyboardType?? TextInputType.text,
       validator: (value) {
         var result = theValidation(value);
         return result;
@@ -41,17 +46,19 @@ class ThemeInput extends StatelessWidget {
         labelText: theLabelText ?? '',
         hintText: theHintText,
         fillColor: white,
-        errorStyle: TextStyle(height: 0.1),
+        errorStyle: TextStyle(height: 0.1,
+        fontSize: 8.0.sp),
         hintStyle: TextStyle(
           fontSize: 10.0.sp
         ),
         labelStyle: TextStyle(fontSize: 10.0.sp),
-       floatingLabelBehavior: theFloatingLabelBehaviour ??  FloatingLabelBehavior.auto ,
+       floatingLabelBehavior: theFloatingLabelBehaviour ??  FloatingLabelBehavior.never ,
         contentPadding: EdgeInsets.all(theContentPadding),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
         filled: true,
+        prefix: thePrefixWidget ,
         suffixIcon: theIconWidget,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
