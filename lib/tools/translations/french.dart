@@ -54,5 +54,21 @@ final Map<String, String> fr = {
   "tr_select_salon": "Sélectionnez un salon",
   "tr_book_elegance_at_its_peak": "Réservez l'élégenca à son apogée",
   "tr_accept_general_condions":
-      "Veuillez accepter les conditions générales d'utilistaion"
+      "Veuillez accepter les conditions générales d'utilistaion",
+
+
+  // rating
+
+  "tr_title_rating_app": "Cela nous permet d'améliorer notre plateforme",
+
+  "tr_question_rating_app": "Comment évaluez-vous le service PLANNER ?",
+
+  "tr_end": "Terminer",
+
+  "tr_less_comment": "Laissez un commantaire...",
+
+  "tr_question_rating_salon": "Comment évaluez-vous le service du salon ?"
+
+
+
 };

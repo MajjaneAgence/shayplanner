@@ -12,6 +12,7 @@ Color brown = Color(0xFFAA886A);
 Color yellow = Color(0xFFD5A702);
 Color grey = Color(0xFF2D2D2D);
 Color lightGrey = Color(0xFF848484);
+Color crem = Color(0xFFD79F6C);
 Color lightYellowTransparent = Color.fromRGBO(251, 246, 234, 0.6);
 Color darkOrange= Color(0xFFBE6412);
 const BoxShadow themeBoxShadowInput = BoxShadow(

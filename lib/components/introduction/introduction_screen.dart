@@ -66,7 +66,7 @@ class IntroductionScreen extends StatelessWidget {
                     width: 65.0.wp,
                     height: 65.0.wp,
                     child: Image.asset(
-                      'assets/images/logo.png',
+                      'assets/images/logo103.png',
                     ),
                   ),
                   SizedBox(
@@ -108,7 +108,7 @@ class IntroductionScreen extends StatelessWidget {
                     height: 7.0.hp,
                     child: ElevatedButton(
                       onPressed: () {
-                        introductionController.bookAppointement();
+                        introductionController.onButton2Pressed();
                       },
                       child: ThemeText(
                         theText: "Ajouter mon établissement",

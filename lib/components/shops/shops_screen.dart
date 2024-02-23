@@ -43,7 +43,7 @@ class ShopsScreen extends StatelessWidget {
             )),
         leadingWidth: 10.0.wp,
         title: (Image.asset(
-          "assets/images/logo.png",
+          "assets/images/logo103.png",
           width: 9.0.hp,
           height: 9.0.hp,
         )),

@@ -5,8 +5,11 @@ import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/introduction/introduction_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/register/register_screen.dart';
+import 'package:shayplanner/components/home_page/home_page_screen.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/components/shops/shops_screen.dart';
+import 'package:shayplanner/components/rating_app/rating_app_screen.dart';
+import 'package:shayplanner/components/rating_salon/rating_salon_screen.dart';
 
 var router = [
   GetPage(
@@ -40,5 +43,19 @@ var router = [
    GetPage(
     name: SetNewPasswordScreen.routename,
     page: () => SetNewPasswordScreen(),
+   ),
+  GetPage(
+    name: HomePageScreen.routename,
+    page: () => HomePageScreen(),
+  ),
+
+  GetPage(
+    name: RatingAppScreen.routename,
+    page: () => RatingAppScreen(),
+  ),
+
+  GetPage(
+    name: RatingSalonScreen.routename,
+    page: () => RatingSalonScreen(),
   ),
 ];

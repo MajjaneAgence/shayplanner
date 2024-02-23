@@ -22,13 +22,13 @@ class SplashScreen extends StatelessWidget{
         ),
         child: Center(
           child:SizedBox(
-           width: 40.0.wp,
-            height: 40.0.wp,
-          child: Image.asset(
-            'assets/images/logo.png',
-           
+            width: 60.0.wp,
+            height: 60.0.wp,
+            child: Image.asset(
+              'assets/images/logo103.png',
+            
+            ),
           ),
-        ),
         ),
       ),
     );
