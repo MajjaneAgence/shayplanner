@@ -1,15 +1,23 @@
+import 'dart:convert';
+
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shayplanner/components/forgot_password/forgot_password_screen.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
+import 'package:shayplanner/components/login/login_screen.dart';
+import 'package:shayplanner/components/login/login_service.dart';
 import 'package:shayplanner/components/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shayplanner/components/shops/shops_screen.dart';
+import 'package:shayplanner/theme/theme_snackbar.dart';
 
 class LoginController extends GetxController {
-  final formKey = GlobalKey<FormState>();
+   final formKey = GlobalKey<FormState>();
+   final formKey2 = GlobalKey<FormState>();
+
   TextEditingController usernameEditingController = TextEditingController();
   TextEditingController passwordEditingController = TextEditingController();
   RxBool isLoading = false.obs;
+  LoginService loginService = LoginService();
 
   @override
   void onInit() async {
@@ -34,15 +42,27 @@ class LoginController extends GetxController {
     }
   }
 
-  connect() async {
-    isLoading.value = true;
+  connect() {
+    isLoading.value=true;
     isLoading.refresh();
-    await Future.delayed(const Duration(seconds: 3));
-    isLoading.value = false;
-    isLoading.refresh();
-    //Get.toNamed(HomeScreen.routename);
-    Get.toNamed(ShopsScreen.routename);
-
+    const FlutterSecureStorage secureStorage = FlutterSecureStorage();
+    LoginService()
+        .apiLogin(
+            usernameEditingController.text, passwordEditingController.text)
+        .then((value) async {
+      var body = jsonDecode(value.body);
+      isLoading.value=false;
+      isLoading.refresh();
+      print(body);
+      if (body["success"]) {
+        await secureStorage.write(
+            key: "token", value: body["data"]['api_token']);
+        print(await secureStorage.read(key: "token"));
+        Get.toNamed(HomeScreen.routename);
+      } else {
+       themeSnackBar(body["message"]);
+      }
+    });
   }
 
   goToRestPassword() {
@@ -51,5 +71,21 @@ class LoginController extends GetxController {
 
   goToRegister() {
     Get.toNamed(RegisterScreen.routename);
+  }
+
+  loginWithGoogle(){
+
+  }
+
+  loginWithApple(){
+    
+  }
+
+  loginWithFacebook(){
+    
+  }
+
+  goToPasswordScreen(){
+    Get.toNamed(LoginScreenForPassword.routename);
   }
 }

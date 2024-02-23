@@ -10,7 +10,6 @@ import 'package:shayplanner/tools/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class HomePageScreen extends StatelessWidget {
   const HomePageScreen({super.key});

@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
-import 'package:shayplanner/components/home_page/home_page_screen.dart';
+import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
-import 'package:shayplanner/components/shops/shops_screen.dart';
+import 'package:shayplanner/components/rating_app/rating_app_screen.dart';
+import 'package:shayplanner/components/rating_salon/rating_salon_screen.dart';
 
 class IntroductionController extends GetxController {
   // Data properties (if any)
@@ -10,11 +11,11 @@ class IntroductionController extends GetxController {
 
   // Functions for interaction (e.g., button presses, fetching data)
   void bookAppointement() async {
-    Get.toNamed(ShopsScreen.routename);
+    Get.toNamed(LoginScreenForEmailAndSocial.routename);
   }
 
   void onButton2Pressed() async {
-    Get.toNamed(HomePageScreen.routename);
+    Get.toNamed(RatingSalonScreen.routename);
   }
 
   // Additional functions and logic as needed

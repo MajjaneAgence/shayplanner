@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shayplanner/theme/theme_colors.dart';
+import 'package:shayplanner/tools/extension.dart';
 
 class ThemeGradContainer extends StatelessWidget {
   final double theWith;
@@ -25,7 +27,7 @@ class ThemeGradContainer extends StatelessWidget {
       margin: EdgeInsets.all(theMargin ?? 0),
       padding: EdgeInsets.all(thePadding ?? 0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(6.0.sp),
         gradient: theLinearGradient,
       ),
       child: theContent,

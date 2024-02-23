@@ -12,6 +12,8 @@ class ThemeInput extends StatelessWidget {
   Widget? theIconWidget;
   double theContentPadding;
   FloatingLabelBehavior? theFloatingLabelBehaviour;
+  double? theInputHeight;
+  bool? theTextVisibilty;
   ThemeInput(
       {Key? key,
       this.theLabelText,
@@ -20,14 +22,17 @@ class ThemeInput extends StatelessWidget {
       required this.theValidation,
       this.theIconWidget,
       required this.theContentPadding,
-      this.theFloatingLabelBehaviour})
+      this.theFloatingLabelBehaviour,
+      this.theInputHeight,
+      this.theTextVisibilty})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 5.0.hp,
+      height: theInputHeight ?? 8.0.hp,
       child:TextFormField(
       controller: theTextEditingController,
+      obscureText: theTextVisibilty ?? false,
       validator: (value) {
         var result = theValidation(value);
         return result;
@@ -36,6 +41,7 @@ class ThemeInput extends StatelessWidget {
         labelText: theLabelText ?? '',
         hintText: theHintText,
         fillColor: white,
+        errorStyle: TextStyle(height: 0.1),
         hintStyle: TextStyle(
           fontSize: 10.0.sp
         ),

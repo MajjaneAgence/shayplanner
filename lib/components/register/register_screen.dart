@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,7 @@ class RegisterScreen extends StatelessWidget {
   RegisterScreen({
     Key? key,
   }) : super(key: key);
-  RegisterController registerController = Get.put(RegisterController());
+  final  RegisterController registerController = Get.put(RegisterController());
   static const routename = '/register';
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class RegisterScreen extends StatelessWidget {
                           theLabelText: "tr_firstname".tr,
                           theHintText: "tr_firstname".tr,
                           theTextEditingController:
-                              registerController.emailEditingController,
+                              registerController.firstNameEditingController,
                           theValidation: registerController.validateFirstName,
                           theContentPadding: 5.0.sp,
                         ),
@@ -52,7 +53,7 @@ class RegisterScreen extends StatelessWidget {
                             theLabelText: "tr_lastname".tr,
                             theHintText: "tr_lastname".tr,
                             theTextEditingController:
-                                registerController.emailEditingController,
+                                registerController.lastNameEditingController,
                             theValidation: registerController.validateLastName,
                             theContentPadding: 5.0.sp),
                       )
@@ -78,20 +79,39 @@ class RegisterScreen extends StatelessWidget {
                         theLabelText: "tr_confirm_password".tr,
                         theHintText: "tr_confirm_password".tr,
                         theTextEditingController:
-                            registerController.passwordEditingController,
+                            registerController.confirmPasswordEditingController,
                         theValidation:
                             registerController.validateConfirmPassword,
                         theContentPadding: 5.0.sp),
                     SizedBox(height: 2.0.hp),
-                    SizedBox(
-                      height: 200,
-                      child: CupertinoDatePicker(
-                        mode: CupertinoDatePickerMode.date,
-                        initialDateTime: DateTime(1969, 1, 1),
-                        onDateTimeChanged: (DateTime newDateTime) {},
-                      ),
-                    ),
+                    ThemeInput(
+                        theLabelText: "tr_mobile_number".tr,
+                        theHintText: "tr_mobile_number".tr,
+                        theTextEditingController:
+                            registerController.mobileEditingController,
+                        theValidation:
+                            registerController.validateConfirmPassword,
+                        theContentPadding: 5.0.sp),
                     SizedBox(height: 2.0.hp),
+                    ThemeInput(
+                      theInputHeight: 10.0.hp,
+                        theLabelText: "tr_address".tr,
+                        theHintText: "tr_address".tr,
+                        theTextEditingController:
+                            registerController.addressEditingController,
+                        theValidation:
+                            registerController.validateConfirmPassword,
+                        theContentPadding: 5.0.sp),
+                    SizedBox(height: 2.0.hp),
+                     InkWell(
+                                          onTap: () {
+                                            registerController.updateProfilePicture();
+                                          },
+                                          child: CircleAvatar(
+                                            backgroundImage: AssetImage('assets/icons/user.png')
+                                            as ImageProvider,
+                                          ),
+                                        ),
                     Obx(
                       () => ThemeButton(
                         theContent: Text("tr_register".tr),

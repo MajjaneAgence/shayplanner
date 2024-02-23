@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
+String fontBold ="Montserrat-Bold";
+String fontRegular ="Montserrat-regular";
+String fontThin ="Montserrat-Light";
 
+Color biege = Color(0xFFBA9C54).withOpacity(0.33);
 Color black = Colors.black;
 Color white = Colors.white;
 Color lightYellow = Color(0xFFFBF6EA);
+Color brown = Color(0xFFCEB971);
 Color yellow = Color(0xFFD5A702);
 Color grey = Color(0xFF2D2D2D);
+Color crem = Color(0xFFD79F6C);
+Color lightYellowTransparent = Color.fromRGBO(251, 246, 234, 0.6);
 const BoxShadow themeBoxShadowInput = BoxShadow(
   color: Color.fromARGB(255, 224, 217, 217),
   offset: Offset(
@@ -45,6 +52,16 @@ const LinearGradient yellowFadeGradient = LinearGradient(
   colors: [
     Color(0xFFCFB83F), // D5A702
     Color(0xFFD5A702), // 2D2D2D
+  ],
+  begin: Alignment.topCenter,
+  end: Alignment.bottomCenter,
+);
+
+const LinearGradient goldenLinearGradient = LinearGradient(
+  colors: [
+     Color(0xFFCFB83F),
+      Color(0xFFF4E282),
+    Color(0xFFC7AB48), 
   ],
   begin: Alignment.topCenter,
   end: Alignment.bottomCenter,

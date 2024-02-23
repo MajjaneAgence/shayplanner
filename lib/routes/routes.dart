@@ -7,11 +7,17 @@ import 'package:shayplanner/components/register/register_screen.dart';
 import 'package:shayplanner/components/home_page/home_page_screen.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/components/shops/shops_screen.dart';
+import 'package:shayplanner/components/rating_app/rating_app_screen.dart';
+import 'package:shayplanner/components/rating_salon/rating_salon_screen.dart';
 
 var router = [
   GetPage(
-    name: LoginScreen.routename,
-    page: () => LoginScreen(),
+    name: LoginScreenForEmailAndSocial.routename,
+    page: () => LoginScreenForEmailAndSocial(),
+  ),
+    GetPage(
+    name: LoginScreenForPassword.routename,
+    page: () => LoginScreenForPassword(),
   ),
   GetPage(
     name: RegisterScreen.routename,
@@ -36,5 +42,15 @@ var router = [
   GetPage(
     name: HomePageScreen.routename,
     page: () => HomePageScreen(),
+  ),
+
+  GetPage(
+    name: RatingAppScreen.routename,
+    page: () => RatingAppScreen(),
+  ),
+
+  GetPage(
+    name: RatingSalonScreen.routename,
+    page: () => RatingSalonScreen(),
   ),
 ];
