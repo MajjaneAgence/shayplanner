@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:shayplanner/components/shops/shops_screen.dart';
 import 'package:shayplanner/components/rating_app/rating_app_screen.dart';
 import 'package:shayplanner/components/rating_salon/rating_salon_screen.dart';
+import 'package:shayplanner/components/setting/setting_screen.dart';
 
 var router = [
   GetPage(
@@ -52,5 +53,10 @@ var router = [
   GetPage(
     name: RatingSalonScreen.routename,
     page: () => RatingSalonScreen(),
+  ),
+
+  GetPage(
+    name: SettingScreen.routename,
+    page: () => SettingScreen(),
   ),
 ];

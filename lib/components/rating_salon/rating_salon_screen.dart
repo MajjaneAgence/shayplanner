@@ -79,8 +79,9 @@ class RatingSalonScreen extends StatelessWidget {
                   filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.25),
-                        borderRadius: BorderRadius.circular(25)),
+                      color: Colors.white.withOpacity(0.25),
+                      borderRadius: BorderRadius.circular(25)
+                    ),
                     child: Container(
                       padding: EdgeInsets.only(
                         left: 5.0.wp,
@@ -100,7 +101,6 @@ class RatingSalonScreen extends StatelessWidget {
                             // SvgPicture.asset("assets/svg/rating_logo_app.svg"),
                             Image.asset("assets/images/rating_salon.png"),
                             SizedBox(height: 4.0.hp,),
-                            // Image.asset("assets/images/stars.png"),
                             RatingBar.builder(
                               initialRating: 0,
                               minRating: 1,
@@ -183,11 +183,7 @@ class RatingSalonScreen extends StatelessWidget {
             ),
           ]),
         ),
-        
       ),
     );
-
-
   }
-
 }
