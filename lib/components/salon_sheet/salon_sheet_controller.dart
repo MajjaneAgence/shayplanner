@@ -4,9 +4,8 @@ import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/rating_app/rating_app_screen.dart';
 import 'package:shayplanner/components/rating_salon/rating_salon_screen.dart';
-import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
 
-class IntroductionController extends GetxController {
+class SalonSheetController extends GetxController {
   // Data properties (if any)
   RxBool isLoading = false.obs;
   RxString? errorMessage;
@@ -14,7 +13,6 @@ class IntroductionController extends GetxController {
   // Functions for interaction (e.g., button presses, fetching data)
   void bookAppointement() async {
     FlutterSecureStorage storage = FlutterSecureStorage();
-
     // String? token = await storage.read(key: 'token');
     // if (token != null) {
       Get.toNamed(LoginScreenForEmailAndSocial.routename);
@@ -24,8 +22,7 @@ class IntroductionController extends GetxController {
   }
 
   void onButton2Pressed() async {
-   // Get.toNamed(RatingAppScreen.routename);
-   Get.toNamed(SalonSheetScreen.routename);
+    Get.toNamed(RatingAppScreen.routename);
   }
 
   // Additional functions and logic as needed

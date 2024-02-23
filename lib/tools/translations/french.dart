@@ -67,8 +67,9 @@ final Map<String, String> fr = {
 
   "tr_less_comment": "Laissez un commantaire...",
 
-  "tr_question_rating_salon": "Comment évaluez-vous le service du salon ?"
+  "tr_question_rating_salon": "Comment évaluez-vous le service du salon ?",
 
-
+  // salon sheet 
+  "tr_salon_sheet":"Fiche de salon"
 
 };
