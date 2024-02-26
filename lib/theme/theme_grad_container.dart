@@ -6,7 +6,8 @@ class ThemeGradContainer extends StatelessWidget {
   final double theWith;
   final double theHeight;
   final double? theMargin;
-  final LinearGradient theLinearGradient;
+  final LinearGradient? theLinearGradient;
+  final Color? theColor;
   final double? thePadding;
   final Widget? theContent;
   const ThemeGradContainer({
@@ -14,7 +15,8 @@ class ThemeGradContainer extends StatelessWidget {
     required this.theWith,
     required this.theHeight,
     this.theMargin,
-    required this.theLinearGradient,
+    this.theColor,
+    this.theLinearGradient,
     this.thePadding,
     this.theContent,
   }) : super(key: key);
