@@ -19,6 +19,11 @@ class SalonSheetController extends GetxController {
   ];
 CarouselController carouselController = CarouselController();
 RxInt currentIndex = 0.obs;
+var isExpanded = false.obs;
+  void toggleExpanded() {
+    isExpanded.value = !isExpanded.value;
+  }
+  String salonDesc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat";
   // Functions for interaction (e.g., button presses, fetching data)
   void bookAppointement() async {
     FlutterSecureStorage storage = FlutterSecureStorage();
@@ -34,5 +39,8 @@ RxInt currentIndex = 0.obs;
     Get.toNamed(RatingAppScreen.routename);
   }
 
-  // Additional functions and logic as needed
+  doSomething(){
+    
+  }
+
 }

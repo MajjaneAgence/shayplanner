@@ -8,6 +8,7 @@ import 'package:shayplanner/theme/theme_button.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_grad_container.dart';
 import 'package:shayplanner/theme/theme_input.dart';
+import 'package:shayplanner/theme/theme_navigation_bottom_bar.dart';
 import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
 import 'package:flutter/material.dart';
@@ -220,7 +221,7 @@ class ShopsScreen extends StatelessWidget {
                                   width: 32.0.wp,
                                   height: 11.0.hp,
                                   child: InkWell(
-                                    onTap: () => shopsController.goToSalonSheet,
+                                    onTap: () => shopsController.goToSalonSheet(),
                                     child: Container(
                                         margin: EdgeInsets.only(
                                             bottom: 4.0.hp,
@@ -359,49 +360,8 @@ class ShopsScreen extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Container(
-        width: 92.0.wp,
-        height: 8.0.hp,
-        decoration: BoxDecoration(
-          color: grey,
-          borderRadius: BorderRadius.circular(6.5.wp),
-        ),
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-          InkWell(
-            onTap: () => {Get.offNamed(HomeScreen.routename)},
-            child: SizedBox(
-              width: 9.0.wp,
-              height: 9.0.wp,
-              child: Image.asset('assets/icons/floating_app_bar/home.png'),
-            ),
-          ),
-          InkWell(
-            onTap: () => {},
-            child: SizedBox(
-              width: 9.0.wp,
-              height: 9.0.wp,
-              child: Image.asset('assets/icons/floating_app_bar/map.png'),
-            ),
-          ),
-          InkWell(
-            onTap: () => {Get.toNamed(ShopsScreen.routename)},
-            child: SizedBox(
-              width: 9.0.wp,
-              height: 9.0.wp,
-              child: Image.asset('assets/icons/floating_app_bar/calendar.png'),
-            ),
-          ),
-          InkWell(
-            onTap: () => {},
-            child: SizedBox(
-              width: 9.0.wp,
-              height: 9.0.wp,
-              child: Image.asset('assets/icons/floating_app_bar/profile.png'),
-            ),
-          ),
-        ]),
-      ),
+      bottomNavigationBar: ThemeNavigationBottomBar()
+
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
@@ -59,7 +60,8 @@ class ShopsController extends GetxController {
 
   book() {}
   goToSalonSheet() {
-    print("ggg");
+    print("test");
+    Get.toNamed(SalonSheetScreen.routename);
   }
 
   List<Widget> buildDaysList() {

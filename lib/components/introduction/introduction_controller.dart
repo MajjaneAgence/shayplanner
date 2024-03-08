@@ -15,12 +15,12 @@ class IntroductionController extends GetxController {
   void bookAppointement() async {
     FlutterSecureStorage storage = FlutterSecureStorage();
 
-    // String? token = await storage.read(key: 'token');
-    // if (token != null) {
-      Get.toNamed(LoginScreenForEmailAndSocial.routename);
-    // } else {
-    //   Get.toNamed(HomeScreen.routename);
-    // }
+    String? token = await storage.read(key: 'token');
+    if (token != null) {
+    Get.toNamed(LoginScreenForEmailAndSocial.routename);
+    } else {
+      Get.toNamed(HomeScreen.routename);
+    }
   }
 
   void onButton2Pressed() async {

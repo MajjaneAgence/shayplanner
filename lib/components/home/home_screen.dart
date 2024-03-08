@@ -4,10 +4,12 @@ import 'dart:ui';
 import 'package:shayplanner/components/home/home_controller.dart';
 import 'package:shayplanner/components/home/home_loading/categories_loading.dart';
 import 'package:shayplanner/components/home/home_loading/latest_salons_loading.dart';
+import 'package:shayplanner/components/shops/shops_controller.dart';
 import 'package:shayplanner/components/shops/shops_screen.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_grad_container.dart';
 import 'package:shayplanner/theme/theme_input.dart';
+import 'package:shayplanner/theme/theme_navigation_bottom_bar.dart';
 import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
 import 'package:flutter/material.dart';
@@ -439,55 +441,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-       bottomSheet: Container(
-        width: MediaQuery.of(context).size.width,
-        child:  Container(
-        width: 92.0.wp,
-        height: 10.0.hp,
-        decoration: BoxDecoration(
-          color: grey,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(8.5.wp),
-                topRight: Radius.circular(8.5.wp),
-              ),
-        ),
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-          InkWell(
-            onTap: () => {Get.toNamed(HomeScreen.routename)},
-            child: SizedBox(
-              width: 9.0.wp,
-              height: 9.0.wp,
-              child:
-                  Image.asset('assets/icons/floating_app_bar/home-active.png'),
-            ),
-          ),
-          InkWell(
-            onTap: () => {},
-            child: SizedBox(
-              width: 9.0.wp,
-              height: 9.0.wp,
-              child: Image.asset('assets/icons/floating_app_bar/map.png'),
-            ),
-          ),
-          InkWell(
-            onTap: () => {Get.toNamed(ShopsScreen.routename)},
-            child: SizedBox(
-              width: 9.0.wp,
-              height: 9.0.wp,
-              child: Image.asset('assets/icons/floating_app_bar/calendar.png'),
-            ),
-          ),
-          InkWell(
-            onTap: () => {},
-            child: SizedBox(
-              width: 9.0.wp,
-              height: 9.0.wp,
-              child: Image.asset('assets/icons/floating_app_bar/profile.png'),
-            ),
-          ),
-        ]),
-      ),
-      ),
+       bottomSheet:ThemeNavigationBottomBar()
   
     );
   }

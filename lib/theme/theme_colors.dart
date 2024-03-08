@@ -17,6 +17,7 @@ Color lightYellowTransparent = Color.fromRGBO(251, 246, 234, 0.6);
 Color darkOrange= Color(0xFFBE6412);
 Color lightOrange =Color(0xFFFBF0E5);
 Color transparent = Colors.transparent;
+Color verylightGrey = Color(0xFFF7F7F7);
 const BoxShadow themeBoxShadowInput = BoxShadow(
   color: Color.fromARGB(255, 224, 217, 217),
   offset: Offset(
