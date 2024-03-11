@@ -5,6 +5,7 @@ import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/introduction/introduction_controller.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_controller.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_tab_bar_screens/salon_sheet_about.dart';
+import 'package:shayplanner/components/salon_sheet/salon_sheet_tab_bar_screens/salon_sheet_rating.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_tab_bar_screens/salon_sheet_services.dart';
 import 'package:shayplanner/components/shops/shops_screen.dart';
 import 'package:shayplanner/theme/theme_app_bar.dart';
@@ -74,7 +75,7 @@ class SalonSheetScreen extends StatelessWidget {
                 ),
                 Obx(
                   () => Positioned(
-                    top: 22.0.hp,
+                    top: 18.0.hp,
                     left: 40.0.wp,
                     child: DotsIndicator(
                       onTap: (position) {
@@ -102,7 +103,7 @@ class SalonSheetScreen extends StatelessWidget {
         ),
         bottomSheet: Container(
           width: 100.0.wp,
-          height: 42.0.hp,
+          height: 47.0.hp,
           decoration: BoxDecoration(
             color: white,
             borderRadius: BorderRadius.only(
@@ -186,10 +187,10 @@ class SalonSheetScreen extends StatelessWidget {
                       unselectedLabelColor: lightGrey,
                     ),
                     views: [
-                      Container(color: Colors.red),
+                      Container(color: biege),
                       SalonSheetServices(),
                       SalonSheetAbout(),
-                      Container(color: Colors.green)
+                     SalonSheetRating()
                     ],
                     onChange: (index) => print(index),
                   ),

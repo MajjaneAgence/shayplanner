@@ -56,7 +56,6 @@ final Map<String, String> fr = {
   "tr_accept_general_condions":
       "Veuillez accepter les conditions générales d'utilistaion",
 
-
   // rating
 
   "tr_title_rating_app": "Cela nous permet d'améliorer notre plateforme",
@@ -69,7 +68,12 @@ final Map<String, String> fr = {
 
   "tr_question_rating_salon": "Comment évaluez-vous le service du salon ?",
 
-  // salon sheet 
-  "tr_salon_sheet":"Fiche de salon"
-
+  // salon sheet
+  "tr_salon_sheet": "Fiche de salon",
+  "tr_show_more": "Voir plus",
+  "tr_show_less": "Voir moins",
+  "tr_pictures": "Photos",
+  "tr_services": "Services",
+  "tr_about": "À propos",
+  "tr_rating": "Avis",
 };

@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shayplanner/components/home/home_controller.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
 import 'package:shayplanner/components/shops/shops_screen.dart';
@@ -26,7 +27,9 @@ class ThemeNavigationBottomBar extends StatelessWidget {
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             InkWell(
-              onTap: () => {Get.toNamed(HomeScreen.routename)},
+              onTap: () {Get.toNamed(HomeScreen.routename);
+             // Get.delete<HomeController>();
+              },
               child: SizedBox(
                 width: 9.0.wp,
                 height: 9.0.wp,
@@ -52,7 +55,8 @@ class ThemeNavigationBottomBar extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () => {Get.toNamed(ShopsScreen.routename)},
+              onTap: () {
+                 Get.toNamed(ShopsScreen.routename);},
               child: SizedBox(
                 width: 9.0.wp,
                 height: 9.0.wp,

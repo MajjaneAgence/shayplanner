@@ -1,9 +1,7 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_controller.dart';
-import 'package:shayplanner/theme/theme_app_bar.dart';
 import 'package:shayplanner/theme/theme_button.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
-import 'package:shayplanner/theme/theme_grad_container.dart';
 import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
 import 'package:flutter/material.dart';
