@@ -29,6 +29,7 @@ class SalonSheetScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: ThemeAppBar(),
+        extendBody: true,
         body: Container(
           width: 100.0.wp,
           height: 100.0.hp,

@@ -14,9 +14,9 @@ class IntroductionController extends GetxController {
   // Functions for interaction (e.g., button presses, fetching data)
   void bookAppointement() async {
     FlutterSecureStorage storage = FlutterSecureStorage();
-
     String? token = await storage.read(key: 'token');
-    if (token != null) {
+    print(token);
+    if (token == null) {
     Get.toNamed(LoginScreenForEmailAndSocial.routename);
     } else {
       Get.toNamed(HomeScreen.routename);

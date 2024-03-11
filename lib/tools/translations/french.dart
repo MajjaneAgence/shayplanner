@@ -76,4 +76,18 @@ final Map<String, String> fr = {
   "tr_services": "Services",
   "tr_about": "À propos",
   "tr_rating": "Avis",
+
+  //profile
+  "tr_upload_profile_picture":"Photo de profil",
+  "tr_add_profile_picture":"Ajouter une photo de profil",
+  "tr_change_profile_picture":"Changer la photo de profil",
+  "tr_take_picture":"Prendre une photo",
+  "tr_choose_picture":"Choisir une photo",
+  "tr_personal_informations":"Informations personelles",
+  "tr_favorite":"Mes favoris",
+  "tr_booking_history":"Historique de réservations",
+   "tr_about_PLANNER":"À propos de PLANNER",
+   "tr_support":"Aide",
+   "tr_logout":"Se déconnecter"
+
 };

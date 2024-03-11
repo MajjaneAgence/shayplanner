@@ -45,6 +45,7 @@ class ThemeInput extends StatelessWidget {
       decoration: InputDecoration(
         labelText: theLabelText ?? '',
         hintText: theHintText,
+        counterText: "",
         fillColor: white,
         errorStyle: TextStyle(height: 0.1,
         fontSize: 8.0.sp),

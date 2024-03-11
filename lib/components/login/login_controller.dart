@@ -58,7 +58,7 @@ class LoginController extends GetxController {
       print(body);
       if (body["success"]) {
         await secureStorage.write(
-            key: "token", value: body["data"]['api_token']);
+            key: "token", value: body["data"]['token']);
         print(await secureStorage.read(key: "token"));
         Get.toNamed(HomeScreen.routename);
       } else {

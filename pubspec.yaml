@@ -80,6 +80,7 @@ flutter:
      - assets/icons/floating_app_bar/
      - assets/icons/social_media/
      - assets/icons/salon_sheet/
+     - assets/icons/profile/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

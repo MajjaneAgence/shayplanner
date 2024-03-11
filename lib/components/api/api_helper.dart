@@ -33,7 +33,7 @@ class ApiHelper{
   //   );
   // }
 
-Map<String, String> getHeaders(String token) {
+Map<String, String> getHeaders(token) {
   return {
     'Content-type': 'application/json',
     'Accept': 'application/json',

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/components/home/home_controller.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
+import 'package:shayplanner/components/profile/profile_screen.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
 import 'package:shayplanner/components/shops/shops_screen.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
@@ -12,11 +13,12 @@ import 'package:shayplanner/tools/extension.dart';
 class ThemeNavigationBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return
+     Container(
         width: MediaQuery.of(context).size.width,
         child: Container(
           width: 92.0.wp,
-          height: 10.0.hp,
+          height: 9.0.hp,
           decoration: BoxDecoration(
             color: grey,
             borderRadius: BorderRadius.only(
@@ -70,7 +72,7 @@ class ThemeNavigationBottomBar extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () => {},
+              onTap: () {Get.toNamed(ProfileScreen.routename);},
               child: SizedBox(
                 width: 9.0.wp,
                 height: 9.0.wp,
