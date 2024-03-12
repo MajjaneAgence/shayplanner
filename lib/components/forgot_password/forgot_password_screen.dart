@@ -61,7 +61,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                                 children: [
                                   SizedBox(height: 3.0.hp),
                                   ThemeText(
-                                      theText: "tr_email".tr,
+                                      theText: "tr_email_star".tr,
                                       thefontSize: 12.0.sp,
                                       theColor: black),
                                   SizedBox(height: 1.0.hp),

@@ -184,12 +184,12 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ThemeText(
-                              theText: "tr_email".tr,
+                              theText: "tr_email_star".tr,
                               thefontSize: 12.0.sp,
                               theColor: grey),
                           ThemeInput(
-                            theLabelText: "tr_email".tr,
-                            theHintText: "tr_email".tr,
+                            theLabelText: "tr_email_star".tr,
+                            theHintText: "tr_email_star".tr,
                             theTextEditingController:
                                 loginController.usernameEditingController,
                             theValidation: loginController.validateUsername,
@@ -318,15 +318,15 @@ class LoginScreenForPassword extends StatelessWidget {
                         children: [
                           SizedBox(height: 2.0.hp),
                           ThemeText(
-                              theText: "tr_password".tr,
+                              theText: "tr_password_star".tr,
                               thefontSize: 12.0.sp,
                               theColor: black),
                           SizedBox(height: 1.0.hp),
                           Obx(
                             () => Container(
                               child: ThemeInput(
-                                theLabelText: "tr_password".tr,
-                                theHintText: "tr_password".tr,
+                                theLabelText: "tr_password_star".tr,
+                                theHintText: "tr_password_star".tr,
                                 theTextEditingController:
                                     loginController.passwordEditingController,
                                 theValidation: loginController.validatePassword,

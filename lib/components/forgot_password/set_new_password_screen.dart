@@ -45,7 +45,7 @@ class SetNewPasswordScreen extends StatelessWidget {
                 margin: EdgeInsets.symmetric(horizontal: 7.0.wp),
                 width: 90.0.wp,
                 child: ThemeText(
-                    theText: "tr_password".tr,
+                    theText: "tr_password_star".tr,
                     thefontSize: 12.0.sp,
                     theColor: black),
               ),
@@ -55,8 +55,8 @@ class SetNewPasswordScreen extends StatelessWidget {
                   margin: EdgeInsets.symmetric(horizontal: 7.0.wp),
                   width: 90.0.wp,
                   child: ThemeInput(
-                    theLabelText: "tr_password".tr,
-                    theHintText: "tr_password".tr,
+                    theLabelText: "tr_password_star".tr,
+                    theHintText: "tr_password_star".tr,
                     theTextEditingController:
                         forgotPasswordController.passwordEditingController,
                     theValidation: forgotPasswordController.validatePassword,
@@ -94,8 +94,8 @@ class SetNewPasswordScreen extends StatelessWidget {
                   margin: EdgeInsets.symmetric(horizontal: 7.0.wp),
                   width: 90.0.wp,
                   child: ThemeInput(
-                    theLabelText: "tr_password".tr,
-                    theHintText: "tr_password".tr,
+                    theLabelText: "tr_password_star".tr,
+                    theHintText: "tr_password_star".tr,
                     theTextEditingController: forgotPasswordController
                         .confirmPasswordEditingController,
                     theValidation:

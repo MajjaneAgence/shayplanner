@@ -7,7 +7,7 @@ void themeSnackBar(String message) {
   Get.snackbar(
     message,
     '',
-    backgroundColor: yellow,
+    backgroundColor: crem,
     borderRadius: 4.0.sp,
     messageText: Container(),
     colorText: Colors.white,

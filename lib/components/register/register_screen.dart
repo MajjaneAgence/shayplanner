@@ -39,200 +39,198 @@ class RegisterScreen extends StatelessWidget {
               ),
               SizedBox(height: 2.0.hp),
               Form(
-                  key: registerController.formKey,
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ThemeText(
-                            theText: "tr_lastname".tr,
-                            thefontSize: 12.0.sp,
-                            theColor: black),
-                        SizedBox(height: 0.5.hp),
-                        ThemeInput(
-                          theLabelText: "tr_lastname".tr,
-                          theHintText: "tr_lastname".tr,
-                          theTextEditingController:
-                              registerController.lastNameEditingController,
-                          theValidation: registerController.validateLastName,
-                          theContentPadding: 5.0.sp,
+                key: registerController.formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ThemeText(
+                        theText: "tr_lastname_star".tr,
+                        thefontSize: 12.0.sp,
+                        theColor: black),
+                    SizedBox(height: 0.5.hp),
+                    ThemeInput(
+                      theLabelText: "tr_lastname_star".tr,
+                      theHintText: "tr_lastname_star".tr,
+                      theTextEditingController:
+                          registerController.lastNameEditingController,
+                      theValidation: registerController.validateLastName,
+                      theContentPadding: 5.0.sp,
+                    ),
+                    SizedBox(height: 2.0.hp),
+                    ThemeText(
+                        theText: "tr_firstname_star".tr,
+                        thefontSize: 12.0.sp,
+                        theColor: black),
+                    SizedBox(height: 0.5.hp),
+                    ThemeInput(
+                      theLabelText: "tr_firstname_star".tr,
+                      theHintText: "tr_firstname_star".tr,
+                      theTextEditingController:
+                          registerController.firstNameEditingController,
+                      theValidation: registerController.validateFirstName,
+                      theContentPadding: 5.0.sp,
+                    ),
+                    SizedBox(height: 2.0.hp),
+                    ThemeText(
+                        theText: "tr_address_email_star".tr,
+                        thefontSize: 12.0.sp,
+                        theColor: black),
+                    SizedBox(height: 0.5.hp),
+                    ThemeInput(
+                        theLabelText: "tr_address_email_star".tr,
+                        theHintText: "tr_address_email_star".tr,
+                        theTextEditingController:
+                            registerController.emailEditingController,
+                        theValidation: registerController.validateEmail,
+                        theContentPadding: 5.0.sp),
+                    SizedBox(height: 2.0.hp),
+                    ThemeText(
+                        theText: "tr_phone_number_star".tr,
+                        thefontSize: 12.0.sp,
+                        theColor: black),
+                    SizedBox(height: 0.5.hp),
+                    ThemeInput(
+                        theLabelText: "+212-600-000000",
+                        theHintText: "+212-600-000000",
+                        theTextEditingController:
+                            registerController.mobileEditingController,
+                        theValidation: registerController.validatePhoneNumber,
+                        theKeyboardType: TextInputType.phone,
+                        //thePrefixWidget: ThemeText(theText: "+212", thefontSize: 4.0.wp, theColor: lightGrey),
+                        theContentPadding: 5.0.sp),
+                    SizedBox(height: 2.0.hp),
+                    ThemeText(
+                        theText: "tr_password_star".tr,
+                        thefontSize: 12.0.sp,
+                        theColor: black),
+                    SizedBox(height: 0.5.hp),
+                    Obx(
+                      () => ThemeInput(
+                        theLabelText: "tr_password_star".tr,
+                        theHintText: "tr_password_star".tr,
+                        theTextEditingController:
+                            registerController.passwordEditingController,
+                        theValidation: registerController.validatePassword,
+                        theContentPadding: 5.0.sp,
+                        theTextVisibilty:
+                            registerController.isObscurePassword.value,
+                        theIconWidget: IconButton(
+                          icon: Icon(
+                            registerController.isObscurePassword.value
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Colors.grey,
+                          ),
+                          onPressed: () {
+                            registerController.togglePasswordVisibilty(
+                                registerController.isObscurePassword.value);
+                          },
                         ),
-                        SizedBox(height: 2.0.hp),
-                        ThemeText(
-                            theText: "tr_firstname".tr,
-                            thefontSize: 12.0.sp,
-                            theColor: black),
-                        SizedBox(height: 0.5.hp),
-                        ThemeInput(
-                          theLabelText: "tr_firstname".tr,
-                          theHintText: "tr_firstname".tr,
-                          theTextEditingController:
-                              registerController.firstNameEditingController,
-                          theValidation: registerController.validateFirstName,
-                          theContentPadding: 5.0.sp,
+                      ),
+                    ),
+                    SizedBox(height: 2.0.hp),
+                    ThemeText(
+                        theText: "tr_password_confirmation".tr,
+                        thefontSize: 12.0.sp,
+                        theColor: black),
+                    SizedBox(height: 0.5.hp),
+                    Obx(
+                      () => ThemeInput(
+                        theLabelText: "tr_password_star".tr,
+                        theHintText: "tr_password_star".tr,
+                        theTextEditingController:
+                            registerController.confirmPasswordEditingController,
+                        theValidation:
+                            registerController.validatePasswordConfirmation,
+                        theContentPadding: 5.0.sp,
+                        theTextVisibilty:
+                            registerController.isObscureConfirmation.value,
+                        theFloatingLabelBehaviour: FloatingLabelBehavior.never,
+                        theIconWidget: IconButton(
+                          icon: Icon(
+                            registerController.isObscureConfirmation.value
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Colors.grey,
+                          ),
+                          onPressed: () {
+                            registerController
+                                .togglePasswordConfirmationVisibilty(
+                                    registerController
+                                        .isObscureConfirmation.value);
+                          },
                         ),
-                        SizedBox(height: 2.0.hp),
-                        ThemeText(
-                            theText: "tr_address_email".tr,
-                            thefontSize: 12.0.sp,
-                            theColor: black),
-                        SizedBox(height: 0.5.hp),
-                        ThemeInput(
-                            theLabelText: "tr_address_email".tr,
-                            theHintText: "tr_address_email".tr,
-                            theTextEditingController:
-                                registerController.emailEditingController,
-                            theValidation: registerController.validateEmail,
-                            theContentPadding: 5.0.sp),
-                        SizedBox(height: 2.0.hp),
-                        ThemeText(
-                            theText: "tr_phone_number".tr,
-                            thefontSize: 12.0.sp,
-                            theColor: black),
-                        SizedBox(height: 0.5.hp),
-                        ThemeInput(
-                            theLabelText: "+212-600-000000",
-                            theHintText: "+212-600-000000",
-                            theTextEditingController:
-                                registerController.mobileEditingController,
-                            theValidation:
-                                registerController.validatePhoneNumber,
-                                theKeyboardType: TextInputType.phone,
-                                //thePrefixWidget: ThemeText(theText: "+212", thefontSize: 4.0.wp, theColor: lightGrey),
-                            theContentPadding: 5.0.sp),
-                        SizedBox(height: 2.0.hp),
-                        ThemeText(
-                            theText: "tr_password".tr,
-                            thefontSize: 12.0.sp,
-                            theColor: black),
-                        SizedBox(height: 0.5.hp),
-                        Obx(
-                          () => ThemeInput(
-                            theLabelText: "tr_password".tr,
-                            theHintText: "tr_password".tr,
-                            theTextEditingController:
-                                registerController.passwordEditingController,
-                            theValidation: registerController.validatePassword,
-                            theContentPadding: 5.0.sp,
-                            theTextVisibilty:
-                                registerController.isObscurePassword.value,
-                            theIconWidget: IconButton(
-                              icon: Icon(
-                                registerController.isObscurePassword.value
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                                color: Colors.grey,
+                      ),
+                    ),
+                    Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                      Obx(
+                        () => Checkbox(
+                          activeColor: grey,
+                          value: registerController.isChecked.value,
+                          onChanged: (value) {
+                            registerController.changeCheckbox(
+                                registerController.isChecked.value);
+                          },
+                        ),
+                      ),
+                      Container(
+                          width: 60.0.wp,
+                          child: ThemeText(
+                              theText:
+                                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+                              thefontSize: 9.0.sp,
+                              theColor: grey)),
+                      SizedBox(width: 5.0.wp),
+                    ]),
+                    SizedBox(height: 2.0.hp),
+                    Obx(
+                      () => Center(
+                        child: ThemeButton(
+                            theContent: Container(
+                              alignment: Alignment.center,
+                              width: 60.0.wp,
+                              height: 5.0.hp,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 5.0.wp, vertical: 1.0.hp),
+                              decoration: BoxDecoration(
+                                color: grey,
+                                borderRadius: BorderRadius.circular(2.0.wp),
                               ),
-                              onPressed: () {
-                                registerController.togglePasswordVisibilty(
-                                    registerController.isObscurePassword.value);
-                              },
+                              child: ThemeText(
+                                  theText: "tr_register".tr,
+                                  thefontSize: 12.0.sp,
+                                  theFontWeight: FontWeight.bold,
+                                  theColor: white),
                             ),
-                          ),
-                        ),
-                        SizedBox(height: 2.0.hp),
-                        ThemeText(
-                            theText: "tr_password_confirmation".tr,
-                            thefontSize: 12.0.sp,
-                            theColor: black),
-                        SizedBox(height: 0.5.hp),
-                        Obx(
-                          () => ThemeInput(
-                            theLabelText: "tr_password".tr,
-                            theHintText: "tr_password".tr,
-                            theTextEditingController: registerController
-                                .confirmPasswordEditingController,
-                            theValidation:
-                                registerController.validatePasswordConfirmation,
-                            theContentPadding: 5.0.sp,
-                            theTextVisibilty:
-                                registerController.isObscureConfirmation.value,
-                            theFloatingLabelBehaviour:
-                                FloatingLabelBehavior.never,
-                            theIconWidget: IconButton(
-                              icon: Icon(
-                                registerController.isObscureConfirmation.value
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                                color: Colors.grey,
-                              ),
-                              onPressed: () {
-                                registerController
-                                    .togglePasswordConfirmationVisibilty(
-                                        registerController
-                                            .isObscureConfirmation.value);
-                              },
-                            ),
-                          ),
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Obx(
-                                () => Checkbox(
-                                  activeColor: grey,
-                                  value: registerController.isChecked.value,
-                                  onChanged: (value) {
-                                    registerController.changeCheckbox(
-                                        registerController.isChecked.value);
-                                  },
-                                ),
-                              ),
-                              Container(
-                                  width: 60.0.wp,
-                                  child: ThemeText(
-                                      theText:
-                                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-                                      thefontSize: 9.0.sp,
-                                      theColor: grey)),
-                              SizedBox(width: 5.0.wp),
-                            ]),
-                        SizedBox(height: 2.0.hp),
-                        Obx(
-                          () => Center(
-                            child: ThemeButton(
-                                theContent: Container(
-                                  alignment: Alignment.center,
-                                  width: 60.0.wp,
-                                  height: 5.0.hp,
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 5.0.wp, vertical: 1.0.hp),
-                                  decoration: BoxDecoration(
-                                    color: grey,
-                                    borderRadius: BorderRadius.circular(2.0.wp),
-                                  ),
-                                  child: ThemeText(
-                                      theText: "tr_register".tr,
-                                      thefontSize: 12.0.sp,
-                                      theFontWeight: FontWeight.bold,
-                                      theColor: white),
-                                ),
-                                theFormKey: registerController.formKey,
-                                theAction: registerController.register,
-                                theLoadingStatus:
-                                    registerController.isLoading.value),
-                          ),
-                        ),
-                        // SizedBox(height: 2.0.hp),
-                        // InkWell(
-                        //   onTap: () {
-                        //     registerController.updateProfilePicture();
-                        //   },
-                        //   child: CircleAvatar(
-                        //     backgroundImage: AssetImage('assets/icons/user.png')
-                        //         as ImageProvider,
-                        //   ),
-                        // ),
-                        // Obx(
-                        //   () => ThemeButton(
-                        //     theContent: Text("tr_register".tr),
-                        //     theAction: registerController.register,
-                        //     theFormKey: registerController.formKey,
-                        //     theLoadingStatus:
-                        //         registerController.isLoading.value,
-                        //   ),
-                        // ),
-                        SizedBox(height: 2.0.hp),
-                      ]))
+                            theFormKey: registerController.formKey,
+                            theAction: registerController.register,
+                            theLoadingStatus:
+                                registerController.isLoading.value),
+                      ),
+                    ),
+                    // SizedBox(height: 2.0.hp),
+                    // InkWell(
+                    //   onTap: () {
+                    //     registerController.updateProfilePicture();
+                    //   },
+                    //   child: CircleAvatar(
+                    //     backgroundImage: AssetImage('assets/icons/user.png')
+                    //         as ImageProvider,
+                    //   ),
+                    // ),
+                    // Obx(
+                    //   () => ThemeButton(
+                    //     theContent: Text("tr_register".tr),
+                    //     theAction: registerController.register,
+                    //     theFormKey: registerController.formKey,
+                    //     theLoadingStatus:
+                    //         registerController.isLoading.value,
+                    //   ),
+                    // ),
+                    SizedBox(height: 2.0.hp),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
