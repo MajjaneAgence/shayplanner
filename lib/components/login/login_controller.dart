@@ -100,4 +100,7 @@ class LoginController extends GetxController {
         print(isObscure.value);
 
   }
+  gotohome(){
+    Get.toNamed(HomeScreen.routename);
+  }
 }

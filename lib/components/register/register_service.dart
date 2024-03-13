@@ -5,8 +5,6 @@ class RegisterService {
   String apiUri = "/register";
 
   Future apiRegister(firstname, lastname, email, password,passwordConfirmation, mobile) async {
-    final registerUrl = Uri.parse(ApiHelper().getUrl() + apiUri);
-
     http.MultipartRequest request = http.MultipartRequest(
       "POST",
       Uri.parse(ApiHelper().getUrl() + apiUri),

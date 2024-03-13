@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
-import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
 import 'package:shimmer/shimmer.dart';
 

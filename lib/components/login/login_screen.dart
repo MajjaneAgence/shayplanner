@@ -1,11 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter_svg/svg.dart';
-import 'package:shayplanner/components/introduction/introduction_screen.dart';
 import 'package:shayplanner/components/register/register_screen.dart';
 import 'package:shayplanner/theme/theme_app_bar.dart';
 import 'package:shayplanner/theme/theme_button.dart';
-import 'package:shayplanner/theme/theme_checkbox.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_input.dart';
 import 'package:shayplanner/theme/theme_text.dart';
@@ -264,7 +260,7 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
                                         thefontSize: 12.0.sp,
                                         theFontWeight: FontWeight.bold,
                                         theColor: black)),
-                                theAction: loginController.loginWithFacebook,
+                                theAction: loginController.gotohome,
                                 theLoadingStatus:
                                     loginController.isLoading.value),
                           )

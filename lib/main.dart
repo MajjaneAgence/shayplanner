@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,9 +16,10 @@ void main() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? savedLanguage = prefs.getString('language');
   Locale locale = savedLanguage != null ? Locale(savedLanguage) : Locale('fr', 'FR');
-
   runApp(MyApp(locale: locale));
 }
+
+
 
 class MyApp extends StatelessWidget {
   final Locale locale;

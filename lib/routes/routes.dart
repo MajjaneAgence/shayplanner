@@ -34,10 +34,12 @@ var router = [
   GetPage(
     name: HomeScreen.routename,
     page: () => HomeScreen(),
+    transition: Transition.noTransition
   ),
    GetPage(
     name: ShopsScreen.routename,
     page: () => ShopsScreen(),
+    transition: Transition.noTransition
   ),
   GetPage(
     name: IntroductionScreen.routename,
@@ -64,6 +66,7 @@ var router = [
    GetPage(
     name: ProfileScreen.routename,
     page: () => ProfileScreen(),
+    transition: Transition.noTransition
   ),
    GetPage(
     name: PersonalInfosScreen.routename,

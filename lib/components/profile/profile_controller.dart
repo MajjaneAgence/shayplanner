@@ -1,17 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
-
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:shayplanner/components/forgot_password/forgot_password_screen.dart';
-import 'package:shayplanner/components/home/home_screen.dart';
-import 'package:shayplanner/components/login/login_screen.dart';
-import 'package:shayplanner/components/login/login_service.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/change_password_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/personal_infos_screen.dart';
-import 'package:shayplanner/components/profile/profile_screen.dart';
 import 'package:shayplanner/components/profile/profile_service.dart';
-import 'package:shayplanner/components/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/models/user_model.dart';

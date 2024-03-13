@@ -4,17 +4,12 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:shayplanner/components/home/home_controller.dart';
 import 'package:shayplanner/components/login/login_controller.dart';
 import 'package:shayplanner/components/rating_app/rating_app_controller.dart';
-import 'package:shayplanner/theme/theme_app_bar.dart';
 import 'package:shayplanner/theme/theme_button.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
-import 'package:shayplanner/theme/theme_grad_container.dart';
-import 'package:shayplanner/theme/theme_input.dart';
 import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:text_area/text_area.dart';
 
 class RatingAppScreen extends StatelessWidget {
 

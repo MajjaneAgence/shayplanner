@@ -1,4 +1,3 @@
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shayplanner/components/profile/profile_controller.dart';
 import 'package:shayplanner/theme/theme_app_bar.dart';
 import 'package:shayplanner/theme/theme_button.dart';
@@ -8,8 +7,6 @@ import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../theme/theme_circle_painter.dart';
 
 class ChangePasswordScreen extends StatelessWidget {
   ChangePasswordScreen({
