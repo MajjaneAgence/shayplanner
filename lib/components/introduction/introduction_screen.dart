@@ -41,7 +41,7 @@ class IntroductionScreen extends StatelessWidget {
                 theContent: Container(
                   alignment: Alignment.center,
                   width: 80.0.wp,
-                  height: 8.0.hp,
+                  height: 7.0.hp,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4.0.sp),
                     color: darkBiege
@@ -59,7 +59,7 @@ class IntroductionScreen extends StatelessWidget {
                 theContent: Container(
                   alignment: Alignment.center,
                   width: 80.0.wp,
-                  height: 8.0.hp,
+                  height: 7.0.hp,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4.0.sp),
                     color: darkBiege

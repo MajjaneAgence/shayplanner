@@ -1,4 +1,5 @@
 import 'package:flutter_svg/svg.dart';
+import 'package:shayplanner/components/notifications/notifications_screen.dart';
 import 'package:shayplanner/components/profile/profile_controller.dart';
 import 'package:shayplanner/components/profile/profile_loading/user_info_loading.dart';
 import 'package:shayplanner/theme/theme_app_bar.dart';
@@ -153,7 +154,7 @@ class ProfileScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           SvgPicture.asset("assets/icons/profile/user.svg",
-                              width: 15.0.sp, height: 15.0.sp),
+                              width: 18.0.sp, height: 18.0.sp),
                           SizedBox(width: 5.0.wp),
                           ThemeText(
                             theText: "tr_personal_informations".tr,
@@ -192,7 +193,7 @@ class ProfileScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           SvgPicture.asset("assets/icons/profile/card.svg",
-                              width: 15.0.sp, height: 15.0.sp),
+                              width: 18.0.sp, height: 18.0.sp),
                           SizedBox(width: 5.0.wp),
                           ThemeText(
                             theText: "tr_booking_history".tr,
@@ -205,7 +206,9 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 4.0.hp),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(NotificationsScreen.routename);
+                      },
                       child: Row(
                         children: [
                           SvgPicture.asset("assets/icons/profile/bell.svg",
@@ -226,7 +229,7 @@ class ProfileScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           SvgPicture.asset("assets/icons/profile/infos.svg",
-                              width: 15.0.sp, height: 15.0.sp),
+                              width: 18.0.sp, height: 18.0.sp),
                           SizedBox(width: 5.0.wp),
                           ThemeText(
                             theText: "tr_about_PLANNER".tr,
@@ -243,7 +246,7 @@ class ProfileScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           SvgPicture.asset("assets/icons/profile/support.svg",
-                              width: 15.0.sp, height: 15.0.sp),
+                              width: 18.0.sp, height: 18.0.sp),
                           SizedBox(width: 5.0.wp),
                           ThemeText(
                             theText: "tr_support".tr,
@@ -258,7 +261,7 @@ class ProfileScreen extends StatelessWidget {
                     Row(
                       children: [
                         SvgPicture.asset("assets/icons/profile/logout.svg",
-                            width: 15.0.sp, height: 15.0.sp),
+                            width: 18.0.sp, height: 18.0.sp),
                         SizedBox(width: 5.0.wp),
                         ThemeText(
                           theText: "tr_logout".tr,

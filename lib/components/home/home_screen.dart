@@ -1,11 +1,13 @@
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:shayplanner/components/home/home_controller.dart';
 import 'package:shayplanner/components/home/home_loading/categories_loading.dart';
 import 'package:shayplanner/components/home/home_loading/latest_salons_loading.dart';
 import 'package:shayplanner/components/shops/shops_controller.dart';
 import 'package:shayplanner/components/shops/shops_screen.dart';
+import 'package:shayplanner/theme/theme_circle_painter.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_grad_container.dart';
 import 'package:shayplanner/theme/theme_input.dart';
@@ -50,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                               onTap: () => {homeController.changeLanguage(str)},
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color: Color.fromRGBO(253, 250, 242, 1),
+                                    color: biege,
                                     borderRadius: BorderRadius.circular(5.0)),
                                 padding: EdgeInsets.all(4.0.sp),
                                 margin: EdgeInsets.all(2.0.sp),
@@ -130,7 +132,7 @@ class HomeScreen extends StatelessWidget {
         ),
         // first we're going to add a container that will occupy the whole width and 90% of the height
         body: Container(
-          color: lightYellowTransparent,
+          color: biege,
           //we're going to add some padding horizontally for the container in order
           //that the content will not stick to the edge of the screen
           padding: EdgeInsets.all(0),
@@ -146,21 +148,37 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stack(children: [
-                  Container(
-                    width: Get.width,
-                    height: 75.0.hp,
-                    decoration: BoxDecoration(
-                      boxShadow: themeBoxShadowCard,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(40.0.sp),
-                          topRight: Radius.circular(40.0.sp)),
-                      image: DecorationImage(
-                        image: AssetImage(
-                            'assets/images/models.png'), // Replace 'assets/image.jpg' with your image path
-                        fit: BoxFit.cover,
-                        alignment: Alignment.topCenter,
-                      ),
-                    ),
+                  CarouselSlider(
+                    // carouselController: homeController.carouselController,
+                    options: CarouselOptions(
+                        height: 75.0.hp,
+                        viewportFraction: 1.5,
+                        initialPage: 0,
+                        scrollDirection: Axis.horizontal,
+                        onPageChanged: (index, reason) {
+                          homeController.currentIndex.value = index;
+                          homeController.currentIndex.refresh();
+                        }),
+                    items: homeController.modelsImages
+                        .map(
+                          (item) => Container(
+                            width: Get.width,
+                            height: 75.0.hp,
+                            decoration: BoxDecoration(
+                              boxShadow: themeBoxShadowCard,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(40.0.sp),
+                                  topRight: Radius.circular(40.0.sp)),
+                              image: DecorationImage(
+                                image:
+                                    AssetImage('assets/images/home/models.jpg'),
+                                fit: BoxFit.cover,
+                                alignment: Alignment.topCenter,
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList(),
                   ),
                   Positioned(
                     top: 40.0.hp,
@@ -184,7 +202,7 @@ class HomeScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   ThemeText(
-                                    theText: "tr_book_elegance_at_its_peak".tr,
+                                    theText: "tr_book_ur_beauty_appointment".tr,
                                     thefontSize: 18.0.sp,
                                     theColor: white,
                                     theFontWeight: FontWeight.bold,
@@ -193,8 +211,8 @@ class HomeScreen extends StatelessWidget {
                                   SizedBox(height: 1.0.hp),
                                   ThemeInput(
                                     theInputHeight: 5.0.hp,
-                                    theLabelText: "Nom du Salon",
-                                    theHintText: "Nom du salon",
+                                    theLabelText: "tr_salon_service".tr,
+                                    theHintText: "tr_salon_service".tr,
                                     theTextEditingController: homeController
                                         .shopNameEditingController,
                                     theValidation:
@@ -204,11 +222,11 @@ class HomeScreen extends StatelessWidget {
                                       theHeight: 3.0.wp,
                                       theWith: 3.0.wp,
                                       theMargin: 5.0.sp,
-                                      theLinearGradient: yellowFadeGradient,
-                                      theContent: Image.asset(
-                                        "assets/icons/shop.png",
-                                        color: Colors.white,
-                                      ),
+                                      theColor: crem,
+                                      theContent: SvgPicture.asset(
+                                          "assets/icons/home/salon.svg",
+                                          width: 5.0.wp,
+                                          height: 5.0.wp),
                                     ),
                                     theFloatingLabelBehaviour:
                                         FloatingLabelBehavior.never,
@@ -216,8 +234,8 @@ class HomeScreen extends StatelessWidget {
                                   SizedBox(height: 1.0.hp),
                                   ThemeInput(
                                     theInputHeight: 5.0.hp,
-                                    theLabelText: "Adresse du Salon",
-                                    theHintText: "Adresse du salon",
+                                    theLabelText: "tr_address_city".tr,
+                                    theHintText: "tr_address_city".tr,
                                     theTextEditingController: homeController
                                         .shopAddressEditingController,
                                     theValidation:
@@ -226,11 +244,12 @@ class HomeScreen extends StatelessWidget {
                                     theIconWidget: ThemeGradContainer(
                                       theHeight: 3.0.wp,
                                       theWith: 3.0.wp,
-                                      theLinearGradient: yellowFadeGradient,
+                                      theColor: crem,
                                       theMargin: 5.0.sp,
-                                      theContent: Image.asset(
-                                        "assets/icons/localization.png",
-                                      ),
+                                      theContent: SvgPicture.asset(
+                                          "assets/icons/home/position.svg",
+                                          width: 5.0.wp,
+                                          height: 5.0.wp),
                                     ),
                                     theFloatingLabelBehaviour:
                                         FloatingLabelBehavior.never,
@@ -248,7 +267,7 @@ class HomeScreen extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(left: 4.0.wp),
                   child: ThemeText(
-                    theText: "Catégories",
+                    theText: "tr_categories".tr,
                     theColor: black,
                     thefontSize: 14.0.sp,
                     theFontWeight: FontWeight.bold,
@@ -264,33 +283,48 @@ class HomeScreen extends StatelessWidget {
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: [
-                              SizedBox(width: 3.0.wp),
-                              ...homeController.categories
-                                  .map((category) => Container(
-                                        width: 12.0.hp,
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            CustomPaint(
-                                                size: Size(4.0.hp * 2, 4.0 * 2),
-                                                painter: CirclePainter(
-                                                  percentage: 0.8,
-                                                  // backgroundColor: Colors.red,
-                                                  progressColor: yellow,
-                                                ),
-                                                child: CircleAvatar(
-                                                  radius: 4.0.hp,
-                                                  backgroundImage: NetworkImage(
-                                                      category.pictureUrl),
-                                                )),
-                                            ThemeText(
-                                                theText: category.name,
-                                                thefontSize: 8.0.sp,
-                                                theColor: black)
-                                          ],
+                              SizedBox(width: 4.0.wp),
+                              ...homeController.categories.map(
+                                (category) => Container(
+                                  width: 12.5.hp,
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Row(children: [
+                                        CustomPaint(
+                                          size: Size(4.5.hp * 2, 4.5 * 2),
+                                          painter: CirclePainter(
+                                            percentage: 0.8,
+                                            // backgroundColor: Colors.red,
+                                            progressColor: crem,
+                                          ),
+                                          child: CircleAvatar(
+                                            radius: 4.5.hp,
+                                            backgroundImage: NetworkImage(
+                                                category.pictureUrl),
+                                          ),
                                         ),
-                                      ))
+                                      ]),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            width: 15.0.wp,
+                                            child: ThemeText(
+                                              theText: category.name,
+                                              thefontSize: 8.0.sp,
+                                              theColor: black,
+                                              theMaxOfLines: 1,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
                             ],
                           ),
                         ),
@@ -303,7 +337,7 @@ class HomeScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 14.0.sp, color: black),
                       children: [
                         TextSpan(
-                          text: 'Nouveau sur ',
+                          text: 'tr_new_on'.tr,
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextSpan(
@@ -345,6 +379,7 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
+                                  SizedBox(height: 2.0.hp),
                                   Container(
                                     height: 5.0.hp,
                                     width: 87.0.wp,
@@ -359,15 +394,28 @@ class HomeScreen extends StatelessWidget {
                                             thefontSize: 14.0.sp,
                                             theColor: black,
                                             theFontFamily: "Montserrat-Bold"),
-                                        ThemeGradContainer(
-                                            theWith: 6.0.hp,
-                                            theHeight: 4.0.hp,
-                                            thePadding: 4.0.sp,
-                                            theLinearGradient:
-                                                yellowFadeGradient,
-                                            theContent: SvgPicture.asset(
-                                              "assets/icons/arrow_right.svg",
-                                            )),
+                                        // ThemeGradContainer(
+                                        //   theWith: 6.0.hp,
+                                        //   theHeight: 4.0.hp,
+                                        //   thePadding: 4.0.sp,
+                                        //   theColor: crem,
+                                        //   theContent: SvgPicture.asset(
+                                        //     "assets/icons/arrow_right.svg",
+                                        //   ),
+                                        // ),
+                                        Container(
+                                          width: 6.0.hp,
+                                          height: 4.0.hp,
+                                          padding: EdgeInsets.all(4.0.sp),
+                                          decoration: BoxDecoration(
+                                            color: crem,
+                                            borderRadius:
+                                                BorderRadius.circular(2.0.wp),
+                                          ),
+                                          child: SvgPicture.asset(
+                                            "assets/icons/arrow_right.svg",
+                                          ),
+                                        )
                                       ],
                                     ),
                                   ),
@@ -459,58 +507,5 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         bottomSheet: ThemeNavigationBottomBar());
-  }
-}
-
-class CirclePainter extends CustomPainter {
-  final double percentage;
-  final Color progressColor;
-  final double
-      strokeWidth; // Added strokeWidth to control the thickness of the progress arc
-
-  CirclePainter({
-    required this.percentage,
-    required this.progressColor,
-    this.strokeWidth = 4.0, // Default stroke width
-  });
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint bgPaint = Paint()..style = PaintingStyle.fill;
-    Offset center = Offset(size.width / 2, size.height / 2);
-    double radius = min(size.width / 2, size.height / 2);
-
-    Paint progressPaint = Paint()
-      ..shader = LinearGradient(
-        begin: Alignment.centerLeft,
-        end: Alignment.centerRight,
-        colors: [
-          Color(0xFFCFB83F),
-          Color(0xFFF4E282),
-          Color(0xFFC7AB48),
-        ], // Example gradient colors
-      ).createShader(Rect.fromCircle(center: center, radius: radius))
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = strokeWidth;
-
-    // Calculate the inner radius by subtracting the strokeWidth from the outer radius
-    double innerRadius = radius + strokeWidth / 2 + 2.0.sp;
-
-    canvas.drawCircle(center, radius, bgPaint);
-
-    double sweepAngle = 2 * pi * percentage;
-    canvas.drawArc(
-      Rect.fromCircle(
-          center: center, radius: innerRadius), // Use the inner radius here
-      -pi / 2,
-      sweepAngle,
-      false,
-      progressPaint,
-    );
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return true;
   }
 }

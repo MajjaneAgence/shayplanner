@@ -13,7 +13,6 @@ final Map<String, String> ar = {
   "tr_continue_with_apple": "المتابعة بواسطة آبل",
   "tr_or": "أو",
   "tr_continue": "المتابعة",
-  "tr_new_on_planner": "جديد على بلانر",
   "tr_register": "تسجيل",
   "tr_continue_without_registration": "المتابعة بدون التسجيل",
   "tr_remember_me": "تذكرني",
@@ -45,8 +44,6 @@ final Map<String, String> ar = {
   "tr_enter_valid_lastname": "الرجاء إدخال الاسم الأخير الصحيح",
   "tr_enter_valid_phone_number": "الرجاء إدخال رقم هاتف صالح",
   "tr_confirm_password_doent_math": "تأكيد كلمة المرور غير صحيح",
-  "tr_select_salon": "اختر صالونًا",
-  "tr_book_elegance_at_its_peak": "احجز الأناقة في أوجها",
   "tr_accept_general_condions": "يرجى قبول الشروط والأحكام العامة",
 
   // rating
@@ -102,5 +99,19 @@ final Map<String, String> ar = {
 
   // introduction
   "tr_book_appointment": "حجز موعد",
-  "tr_professional_space": "المساحة المهنية"
+  "tr_professional_space": "المساحة المهنية",
+
+  // home 
+"tr_book_ur_beauty_appointment": "احجز موعدك للتجميل",
+"tr_salon_service": "اسم الصالون، الخدمة (قص الشعر...)",
+"tr_address_city": "العنوان، المدينة...",
+"tr_categories": "الفئة",
+"tr_new_on": " جديد على",
+
+
+  //salons
+    "tr_select_salon": "اختر صالونًا",
+      //notifications
+  "tr_notification":"الإشعارات"
+
 };

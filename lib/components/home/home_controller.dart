@@ -16,6 +16,8 @@ class HomeController extends GetxController {
   RxList<CategoryModel> categories = <CategoryModel>[].obs;
   // List of items in our dropdown menu
   final List<String> lanuages = ['Français', 'English', 'العربية'];
+  final List<String> modelsImages =['assets/images/home/models.jpg','assets/images/home/models.jpg'];
+  RxInt currentIndex = 0.obs;
   @override
   void onInit() async {
     super.onInit();
@@ -66,6 +68,7 @@ class HomeController extends GetxController {
     prefs.setString('language', lang);
     Get.updateLocale(Locale(lang));
     print(Get.locale);
+    Get.back();
   }
 
   validateFirstName(String email) {

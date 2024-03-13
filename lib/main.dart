@@ -19,8 +19,6 @@ void main() async {
   runApp(MyApp(locale: locale));
 }
 
-
-
 class MyApp extends StatelessWidget {
   final Locale locale;
 

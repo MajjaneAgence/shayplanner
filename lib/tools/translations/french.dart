@@ -13,7 +13,6 @@ final Map<String, String> fr = {
   "tr_continue_with_apple": "Continuer avec Apple",
   "tr_or": "ou",
   "tr_continue": "Continuer",
-  "tr_new_on_planner": "Nouveau sur PLANNER",
   "tr_register": "S'inscrire",
   "tr_continue_without_registration": "Continuer sans s'incrire",
   "tr_remember_me": "Se souvenir de moi",
@@ -51,8 +50,6 @@ final Map<String, String> fr = {
       "Veuillez saisir un numéro de téléphone valide",
   "tr_confirm_password_doent_math":
       "La confirmation du mot de passe est incorrecte",
-  "tr_select_salon": "Sélectionnez un salon",
-  "tr_book_elegance_at_its_peak": "Réservez l'élégenca à son apogée",
   "tr_accept_general_condions":
       "Veuillez accepter les conditions générales d'utilistaion",
 
@@ -111,5 +108,19 @@ final Map<String, String> fr = {
 
   // introduction
   "tr_book_appointment": "Prendre un redez-vous",
-  "tr_professional_space": "Espace professionnel"
+  "tr_professional_space": "Espace professionnel",
+
+//home
+  "tr_book_ur_beauty_appointment": "Réservez votre rendez-vous beauté",
+  "tr_salon_service":"Nom du Salon, prestation (coupe...)",
+  "tr_address_city":"Adress, ville...",
+  "tr_categories":"Catégorie",
+  "tr_new_on": "Nouveau sur ",
+
+  //salons
+  "tr_select_salon": "Sélectionnez un salon",
+
+
+  //notifications
+  "tr_notification":"Notifications"
 };

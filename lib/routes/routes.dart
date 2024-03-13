@@ -4,6 +4,7 @@ import 'package:shayplanner/components/forgot_password/set_new_password_screen.d
 import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/introduction/introduction_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
+import 'package:shayplanner/components/notifications/notifications_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/change_password_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/personal_infos_screen.dart';
 import 'package:shayplanner/components/profile/profile_screen.dart';
@@ -75,5 +76,10 @@ var router = [
      GetPage(
     name: ChangePasswordScreen.routename,
     page: () => ChangePasswordScreen(),
+  ),
+   GetPage(
+    name: NotificationsScreen.routename,
+    page: () => NotificationsScreen(),
+    transition: Transition.upToDown
   ),
 ];

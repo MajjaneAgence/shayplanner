@@ -1,14 +1,13 @@
-import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiHelper{
   final String _url = 'https://shayplanner.majjane.agency/api';
 
    getToken() async {
-    FlutterSecureStorage secureStorage =FlutterSecureStorage();
+    FlutterSecureStorage secureStorage =const FlutterSecureStorage();
     var token = await secureStorage.read(key: "token");
-    print("token : $token");
+    log("token : $token");
     return token;
   }
   

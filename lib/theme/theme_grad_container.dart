@@ -28,10 +28,14 @@ class ThemeGradContainer extends StatelessWidget {
       width: theWith,
       margin: EdgeInsets.all(theMargin ?? 0),
       padding: EdgeInsets.all(thePadding ?? 0),
-      decoration: BoxDecoration(
+      decoration: theLinearGradient !=null ?  BoxDecoration(
         borderRadius: BorderRadius.circular(6.0.sp),
         gradient: theLinearGradient,
-      ),
+      ):BoxDecoration(
+        borderRadius: BorderRadius.circular(6.0.sp),
+        color: theColor,
+      )
+      ,
       child: theContent,
     );
   }
