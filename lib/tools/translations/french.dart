@@ -100,11 +100,16 @@ final Map<String, String> fr = {
   "tr_change_password": "Changer le mot de passe",
   "tr_enter_valid_address": "Veuillez saisir une addresse valide",
   "tr_your_infos_have_been_updated_successfully":
-  "Vos information ont été mises à jour avec succès",
+      "Vos information ont été mises à jour avec succès",
 
   // change password
   "tr_current_password": "Mot de passe actuel",
   "tr_new_password": "Nouveau mot de passe",
   "tr_new_password_confirmation": "Confirmation du nouveau mot de passe",
-  "tr_you_re_password_has_been_chnaged_sucessfully":"Votre mot de passe a été modifié avec succès"
+  "tr_you_re_password_has_been_chnaged_sucessfully":
+      "Votre mot de passe a été modifié avec succès",
+
+  // introduction
+  "tr_book_appointment": "Prendre un redez-vous",
+  "tr_professional_space": "Espace professionnel"
 };

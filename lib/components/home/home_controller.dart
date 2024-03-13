@@ -12,13 +12,10 @@ class HomeController extends GetxController {
   TextEditingController shopAddressEditingController = TextEditingController();
   RxBool isLoadingCategories = false.obs;
   RxBool isLoadingLatestSalons = false.obs;
-  RxString selectedLanguage = 'Fr'.obs;
+  RxString selectedLanguage = Get.locale!.languageCode.obs;
   RxList<CategoryModel> categories = <CategoryModel>[].obs;
   // List of items in our dropdown menu
-  final List<String> lanuages = [
-    'Français',
-    'Anglais',
-  ];
+  final List<String> lanuages = ['Français', 'English', 'العربية'];
   @override
   void onInit() async {
     super.onInit();
@@ -26,12 +23,12 @@ class HomeController extends GetxController {
     getLatestSalons();
   }
 
-   getCatgories()async {
-    isLoadingCategories.value=true;
+  getCatgories() async {
+    isLoadingCategories.value = true;
     isLoadingCategories.refresh();
     HomeService().apiGetCategories().then((value) async {
-          isLoadingCategories.value=false;
-          isLoadingCategories.refresh();
+      isLoadingCategories.value = false;
+      isLoadingCategories.refresh();
       var body = jsonDecode(value.body);
       print(body);
       if (body["success"]) {
@@ -46,21 +43,30 @@ class HomeController extends GetxController {
     });
   }
 
-  getLatestSalons()async{
-     isLoadingLatestSalons.value=true;
+  getLatestSalons() async {
+    isLoadingLatestSalons.value = true;
     isLoadingLatestSalons.refresh();
     await Future.delayed(Duration(seconds: 5));
-    isLoadingLatestSalons.value=false;
+    isLoadingLatestSalons.value = false;
     isLoadingLatestSalons.refresh();
   }
 
-  changeLanguage(String lang)async{
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('language',lang);
- Get.updateLocale(Locale(lang));
-
+  changeLanguage(String language) async {
+    var lang="fr";
+    if (language == "Français") {
+      lang = "fr";
+    } else if (language == "English") {
+      lang = "en";
+    } else {
+      lang = "ar";
+    }
+    selectedLanguage.value=lang;
+    selectedLanguage.refresh();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('language', lang);
+    Get.updateLocale(Locale(lang));
+    print(Get.locale);
   }
-  
 
   validateFirstName(String email) {
     if (GetUtils.isEmail(email)) {

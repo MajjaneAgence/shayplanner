@@ -10,14 +10,14 @@ import 'package:get/get.dart';
 class ThemeButton extends StatelessWidget {
   Widget theContent;
   Function? theAction;
-  bool theLoadingStatus;
+  bool? theLoadingStatus;
   var theFormKey;
   ThemeButton(
       {Key? key,
       required this.theContent,
        this.theAction,
       this.theFormKey,
-      required this.theLoadingStatus})
+      this.theLoadingStatus})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

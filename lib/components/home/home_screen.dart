@@ -21,434 +21,446 @@ class HomeScreen extends StatelessWidget {
   static const routename = '/home';
   HomeScreen({super.key});
   @override
- Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: white,
-      // for the appBar we're going to give it 10% of the height
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that
-        // was created by the App.build method, and use it to set
-        // our appbar title.
-        ///tresse
-        backgroundColor: Colors.white,
-        leading: Padding(
-            padding: EdgeInsets.only(left: 4.0.wp),
-            child: Row(
-              children: [
-               Obx(
-                  () => PopupMenuButton<String>(
-                    position: PopupMenuPosition.under,
-                    //offset: Offset(-10, 0),
-                    color: Colors.transparent,
-                    elevation: 0,
-                    itemBuilder: (context) {
-                      return homeController.lanuages.map((str) {
-                        return
-                           PopupMenuItem(
-                          value: str,
-                          height: 8.0.wp,
-                          child: InkWell(
-                          onTap: () => {homeController.changeLanguage("fr")},
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Color.fromRGBO(253, 250, 242, 1),
-                                borderRadius: BorderRadius.circular(5.0)),
-                            padding: EdgeInsets.all(4.0.sp),
-                            width: 25.0.wp,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                ThemeText(
-                                    theText: str,
-                                    thefontSize: 10.0.sp,
-                                    theColor: black),
-                                SizedBox(width: 5.0.sp),
-                                SvgPicture.asset(
-                                    "assets/icons/language_chose_arrow.svg")
-                              ],
-                            ),
-                          ),
-                        ),);
-                      }).toList();
-                    },
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        homeController.selectedLanguage.value == "Fr"
-                            ? ThemeText(
-                                theText: "Fr",
-                                thefontSize: 12.0.sp,
-                                theColor: black,
-                                theFontWeight: FontWeight.bold)
-                            : ThemeText(
-                                theText: "An",
-                                thefontSize: 12.0.sp,
-                                theColor: black,
-                                theFontWeight: FontWeight.bold),
-                        SizedBox(width: 4.0.sp),
-                        SvgPicture.asset("assets/icons/drop_down.svg"),
-                      ],
-                    ),
-                    onSelected: (v) {
-                      print(v);
-                      if (v == "Français") {
-                        homeController.selectedLanguage.value = "Fr";
-                        homeController.selectedLanguage.refresh();
-                      } else {
-                        homeController.selectedLanguage.value = "An";
-                        homeController.selectedLanguage.refresh();
-                      }
-                    },
-                  ),
-                ),
-                SizedBox(width: 3.0.wp),
-                SvgPicture.asset(
-                  "assets/icons/bell.svg",
-                  width: 20,
-                  height: 20,
-                ),
-              ],
-            )),
-        leadingWidth: 25.0.wp,
-        title: Image.asset(
-          "assets/images/logo103.png",
-          width: 9.0.hp,
-          height: 9.0.hp,
-        ),
-        centerTitle: true,
-        actions: [
-          ThemeGradContainer(
-              theWith: 5.0.hp,
-              theHeight: 5.0.hp,
-              theMargin: 2.5.hp,
-              theLinearGradient: greyYellowLinearGradient,
-              theContent: Image.asset(
-                "assets/icons/user.png",
-              )),
-          SizedBox(width: 3.0.wp),
-        ],
-        toolbarHeight: 10.0.hp,
-      ),
-      // first we're going to add a container that will occupy the whole width and 90% of the height
-      body: Container(
-        color: lightYellowTransparent,
-        //we're going to add some padding horizontally for the container in order
-        //that the content will not stick to the edge of the screen
-        padding: EdgeInsets.all(0),
-        width: Get.width,
-        height:
-            90.0.hp, // 10 percent of the height is a lready taken by the appbar
-        // inside the container we're going to use SingleScrollView so that if the screen is not
-        // long enought he content will scroll
-        child: SingleChildScrollView(
-          // we're going to use the Column widget inside the SingleChildScrollView in order
-          //to place multiple widget whithin the SingleChildScrollView Widget
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(children: [
-                Container(
-                  width: Get.width,
-                  height: 75.0.hp,
-                  decoration: BoxDecoration(
-                    boxShadow: themeBoxShadowCard,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40.0.sp),
-                        topRight: Radius.circular(40.0.sp)),
-                    image: DecorationImage(
-                      image: AssetImage(
-                          'assets/images/models.png'), // Replace 'assets/image.jpg' with your image path
-                      fit: BoxFit.cover,
-                      alignment: Alignment.topCenter,
-                    ),
-                  ),
-                ),
-                Positioned(
-                  top: 40.0.hp,
-                  left: 7.0.wp,
-                  right: 7.0.wp,
-                  bottom: 7.0.hp,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(25),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.25),
-                            borderRadius: BorderRadius.circular(25)),
-                        child: Container(
-                          padding: EdgeInsets.only(
-                            left: 5.0.wp,
-                            right: 5.0.wp,
-                          ),
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                ThemeText(
-                                  theText: "tr_book_elegance_at_its_peak".tr,
-                                  thefontSize: 18.0.sp,
-                                  theColor: white,
-                                  theFontWeight: FontWeight.bold,
-                                  theTextAlign: TextAlign.center,
+        backgroundColor: white,
+        // for the appBar we're going to give it 10% of the height
+        appBar: AppBar(
+          // Here we take the value from the MyHomePage object that
+          // was created by the App.build method, and use it to set
+          // our appbar title.
+          ///tresse
+          backgroundColor: Colors.white,
+          leading: Padding(
+              padding: EdgeInsets.only(left: 4.0.wp),
+              child: Row(
+                children: [
+                  Obx(
+                    () => PopupMenuButton<String>(
+                      position: PopupMenuPosition.under,
+                      //offset: Offset(-10, 0),
+                      color: Colors.transparent,
+                      elevation: 0,
+                      itemBuilder: (context) {
+                        return homeController.lanuages.map((str) {
+                          return PopupMenuItem(
+                            value: str,
+                            height: 8.0.wp,
+                            child: InkWell(
+                              onTap: () => {homeController.changeLanguage(str)},
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Color.fromRGBO(253, 250, 242, 1),
+                                    borderRadius: BorderRadius.circular(5.0)),
+                                padding: EdgeInsets.all(4.0.sp),
+                                margin: EdgeInsets.all(2.0.sp),
+                                width: 25.0.wp,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    ThemeText(
+                                        theText: str,
+                                        thefontSize: 10.0.sp,
+                                        theColor: black),
+                                    SizedBox(width: 5.0.sp),
+                                    SvgPicture.asset(
+                                        "assets/icons/language_chose_arrow.svg")
+                                  ],
                                 ),
-                                SizedBox(height: 1.0.hp),
-                                ThemeInput(
-                                  theInputHeight: 5.0.hp,
-                                  theLabelText: "Nom du Salon",
-                                  theHintText: "Nom du salon",
-                                  theTextEditingController:
-                                      homeController.shopNameEditingController,
-                                  theValidation:
-                                      homeController.validateFirstName,
-                                  theContentPadding: 5.0.sp,
-                                  theIconWidget: ThemeGradContainer(
-                                    theHeight: 3.0.wp,
-                                    theWith: 3.0.wp,
-                                    theMargin: 5.0.sp,
-                                    theLinearGradient: yellowFadeGradient,
-                                    theContent: Image.asset(
-                                      "assets/icons/shop.png",
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  theFloatingLabelBehaviour:
-                                      FloatingLabelBehavior.never,
-                                ),
-                                SizedBox(height: 1.0.hp),
-                                ThemeInput(
-                                  theInputHeight: 5.0.hp,
-                                  theLabelText: "Adresse du Salon",
-                                  theHintText: "Adresse du salon",
-                                  theTextEditingController: homeController
-                                      .shopAddressEditingController,
-                                  theValidation:
-                                      homeController.validateFirstName,
-                                  theContentPadding: 5.0.sp,
-                                  theIconWidget: ThemeGradContainer(
-                                    theHeight: 3.0.wp,
-                                    theWith: 3.0.wp,
-                                    theLinearGradient: yellowFadeGradient,
-                                    theMargin: 5.0.sp,
-                                    theContent: Image.asset(
-                                      "assets/icons/localization.png",
-                                    ),
-                                  ),
-                                  theFloatingLabelBehaviour:
-                                      FloatingLabelBehavior.never,
-                                ),
-                                SizedBox(height: 1.0.hp),
-                              ]),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ]),
-              // ),
-              SizedBox(height: 2.0.hp),
-              Container(
-                margin: EdgeInsets.only(left: 4.0.wp),
-                child: ThemeText(
-                  theText: "Catégories",
-                  theColor: black,
-                  thefontSize: 14.0.sp,
-                  theFontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 1.0.hp),
-              Obx(()=> 
-              homeController.isLoadingCategories.value==true ?
-              CategoriesLoading():
-              Container(
-                alignment: Alignment.center,
-                height: 16.0.hp,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    SizedBox(width: 3.0.wp),
-                   ...homeController.categories.map((category) => Container( 
-                    width:12.0.hp,
-                      child:
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        CustomPaint(
-                            size: Size(4.0.hp * 2, 4.0 * 2),
-                            painter: CirclePainter(
-                              percentage: 0.8,
-                              // backgroundColor: Colors.red,
-                              progressColor: yellow,
-                            ),
-                            child: CircleAvatar(
-                              radius: 4.0.hp,
-                              backgroundImage: NetworkImage(category.pictureUrl),
-                            )),
-                        ThemeText(
-                            theText: category.name,
-                            thefontSize: 8.0.sp,
-                            theColor: black)
-                      ],
-                    ),
-                    ))
-                  ],
-                ),
-              ),),
-              SizedBox(height: 1.0.hp),
-              Container(
-                margin: EdgeInsets.only(left: 4.0.wp),
-                child: RichText(
-                  text: TextSpan(
-                    style: TextStyle(fontSize: 14.0.sp, color: black),
-                    children: [
-                      TextSpan(
-                        text: 'Nouveau sur ',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(
-                        text: 'PLANNER',
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 1.0.hp),
-             Obx(()=>
-             homeController.isLoadingLatestSalons.value==true ?
-             LatestSalonsLoading() :
-              Container(
-                height: 40.0.hp,
-                margin: EdgeInsets.symmetric(horizontal: 8.0.sp),
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(right: 4.0.wp, bottom: 1.0.hp),
-                      decoration: BoxDecoration(
-                          boxShadow: themeBoxShadowCard,
-                          borderRadius: BorderRadius.circular(25)),
-                      child: Column(children: [
-                        Container(
-                          height: 25.0.hp,
-                          width: 87.0.wp,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(18.0.sp),
-                                topRight: Radius.circular(18.0.sp)),
-                            image: DecorationImage(
-                              image: AssetImage(
-                                "assets/images/model_on_mirror.png",
                               ),
-                              fit: BoxFit.cover,
                             ),
-                          ),
-                        ),
-                        Container(
-                          height: 5.0.hp,
-                          width: 87.0.wp,
-                          padding: EdgeInsets.symmetric(horizontal: 5.0.wp),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              ThemeText(
-                                  theText: "Lorem ipsum",
-                                  thefontSize: 14.0.sp,
+                          );
+                        }).toList();
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          homeController.selectedLanguage.value == "fr"
+                              ? ThemeText(
+                                  theText: "Fr",
+                                  thefontSize: 12.0.sp,
                                   theColor: black,
-                                  theFontFamily: "Montserrat-Bold"),
-                              ThemeGradContainer(
-                                  theWith: 6.0.hp,
-                                  theHeight: 4.0.hp,
-                                  thePadding: 4.0.sp,
-                                  theLinearGradient: yellowFadeGradient,
-                                  theContent: SvgPicture.asset(
-                                    "assets/icons/arrow_right.svg",
-                                  )),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: 87.0.wp,
-                          height: 3.0.hp,
-                          padding: EdgeInsets.only(
-                              left: 5.0.wp, right: 5.0.wp, bottom: 0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 5.0.wp,
-                                height: 5.0.wp,
-                                margin: EdgeInsets.only(right: 2.0.sp),
-                                child: SvgPicture.asset(
-                                    'assets/icons/localization.svg',
-                                    color: grey),
-                              ),
-                              Center(
-                                child: Container(
-                                  width: 50.0.wp,
-                                  margin: EdgeInsets.only(right: 6.0.sp),
-                                  child: ThemeText(
-                                    theText: "Lorem ipsum dolor sit amet",
-                                    thefontSize: 10.0.sp,
-                                    theColor: grey,
-                                    theMaxOfLines: 1,
-                                    theTextDecoration: TextDecoration.underline,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: 87.0.wp,
-                          height: 3.0.hp,
-                          padding: EdgeInsets.only(
-                              left: 5.0.wp, right: 5.0.wp, top: 0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 5.0.wp,
-                                height: 5.0.wp,
-                                margin: EdgeInsets.only(right: 2.0.sp),
-                                child: SvgPicture.asset('assets/icons/star.svg',
-                                    color: grey),
-                              ),
-                              Center(
-                                child: Container(
-                                  width: 50.0.wp,
-                                  margin: EdgeInsets.only(right: 6.0.sp),
-                                  child: ThemeText(
-                                    theText: "4,9 (317 avis)  MAD",
-                                    thefontSize: 10.0.sp,
-                                    theColor: grey,
-                                    theMaxOfLines: 1,
-                                    theTextDecoration: TextDecoration.underline,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 1.0.hp),
-
-                        //  Text("hhhhhh")
-                      ]),
+                                  theFontWeight: FontWeight.bold)
+                              : homeController.selectedLanguage.value == "en"
+                                  ? ThemeText(
+                                      theText: "En",
+                                      thefontSize: 12.0.sp,
+                                      theColor: black,
+                                      theFontWeight: FontWeight.bold)
+                                  : ThemeText(
+                                      theText: "ع",
+                                      thefontSize: 12.0.sp,
+                                      theColor: black,
+                                      theFontWeight: FontWeight.bold),
+                          SizedBox(width: 4.0.sp),
+                          SvgPicture.asset("assets/icons/drop_down.svg"),
+                        ],
+                      ),
+                      onSelected: (v) {
+                        print(v);
+                        if (v == "Français") {
+                          homeController.selectedLanguage.value = "Fr";
+                          homeController.selectedLanguage.refresh();
+                        } else {
+                          homeController.selectedLanguage.value = "An";
+                          homeController.selectedLanguage.refresh();
+                        }
+                      },
                     ),
-                  ],
+                  ),
+                ],
+              )),
+          leadingWidth: 25.0.wp,
+          title: Container(
+            //color:Colors.red,
+            child: SvgPicture.asset("assets/icons/app_logos/logo_app_bar.svg",
+                width: 70.0.wp, height: 70.0.wp),
+          ),
+          centerTitle: true,
+          actions: [
+            SvgPicture.asset(
+              "assets/icons/bell.svg",
+              width: 5.0.wp,
+              height: 5.0.wp,
+            ),
+            SizedBox(width: 8.0.wp),
+          ],
+          toolbarHeight: 10.0.hp,
+        ),
+        // first we're going to add a container that will occupy the whole width and 90% of the height
+        body: Container(
+          color: lightYellowTransparent,
+          //we're going to add some padding horizontally for the container in order
+          //that the content will not stick to the edge of the screen
+          padding: EdgeInsets.all(0),
+          width: Get.width,
+          height: 90.0
+              .hp, // 10 percent of the height is a lready taken by the appbar
+          // inside the container we're going to use SingleScrollView so that if the screen is not
+          // long enought he content will scroll
+          child: SingleChildScrollView(
+            // we're going to use the Column widget inside the SingleChildScrollView in order
+            //to place multiple widget whithin the SingleChildScrollView Widget
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Stack(children: [
+                  Container(
+                    width: Get.width,
+                    height: 75.0.hp,
+                    decoration: BoxDecoration(
+                      boxShadow: themeBoxShadowCard,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(40.0.sp),
+                          topRight: Radius.circular(40.0.sp)),
+                      image: DecorationImage(
+                        image: AssetImage(
+                            'assets/images/models.png'), // Replace 'assets/image.jpg' with your image path
+                        fit: BoxFit.cover,
+                        alignment: Alignment.topCenter,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 40.0.hp,
+                    left: 7.0.wp,
+                    right: 7.0.wp,
+                    bottom: 7.0.hp,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(25),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.25),
+                              borderRadius: BorderRadius.circular(25)),
+                          child: Container(
+                            padding: EdgeInsets.only(
+                              left: 5.0.wp,
+                              right: 5.0.wp,
+                            ),
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ThemeText(
+                                    theText: "tr_book_elegance_at_its_peak".tr,
+                                    thefontSize: 18.0.sp,
+                                    theColor: white,
+                                    theFontWeight: FontWeight.bold,
+                                    theTextAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(height: 1.0.hp),
+                                  ThemeInput(
+                                    theInputHeight: 5.0.hp,
+                                    theLabelText: "Nom du Salon",
+                                    theHintText: "Nom du salon",
+                                    theTextEditingController: homeController
+                                        .shopNameEditingController,
+                                    theValidation:
+                                        homeController.validateFirstName,
+                                    theContentPadding: 5.0.sp,
+                                    theIconWidget: ThemeGradContainer(
+                                      theHeight: 3.0.wp,
+                                      theWith: 3.0.wp,
+                                      theMargin: 5.0.sp,
+                                      theLinearGradient: yellowFadeGradient,
+                                      theContent: Image.asset(
+                                        "assets/icons/shop.png",
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    theFloatingLabelBehaviour:
+                                        FloatingLabelBehavior.never,
+                                  ),
+                                  SizedBox(height: 1.0.hp),
+                                  ThemeInput(
+                                    theInputHeight: 5.0.hp,
+                                    theLabelText: "Adresse du Salon",
+                                    theHintText: "Adresse du salon",
+                                    theTextEditingController: homeController
+                                        .shopAddressEditingController,
+                                    theValidation:
+                                        homeController.validateFirstName,
+                                    theContentPadding: 5.0.sp,
+                                    theIconWidget: ThemeGradContainer(
+                                      theHeight: 3.0.wp,
+                                      theWith: 3.0.wp,
+                                      theLinearGradient: yellowFadeGradient,
+                                      theMargin: 5.0.sp,
+                                      theContent: Image.asset(
+                                        "assets/icons/localization.png",
+                                      ),
+                                    ),
+                                    theFloatingLabelBehaviour:
+                                        FloatingLabelBehavior.never,
+                                  ),
+                                  SizedBox(height: 1.0.hp),
+                                ]),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ]),
+                // ),
+                SizedBox(height: 2.0.hp),
+                Container(
+                  margin: EdgeInsets.only(left: 4.0.wp),
+                  child: ThemeText(
+                    theText: "Catégories",
+                    theColor: black,
+                    thefontSize: 14.0.sp,
+                    theFontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),),
-              SizedBox(height: 15.0.hp)
-            ],
+                SizedBox(height: 1.0.hp),
+                Obx(
+                  () => homeController.isLoadingCategories.value == true
+                      ? CategoriesLoading()
+                      : Container(
+                          alignment: Alignment.center,
+                          height: 16.0.hp,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              SizedBox(width: 3.0.wp),
+                              ...homeController.categories
+                                  .map((category) => Container(
+                                        width: 12.0.hp,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            CustomPaint(
+                                                size: Size(4.0.hp * 2, 4.0 * 2),
+                                                painter: CirclePainter(
+                                                  percentage: 0.8,
+                                                  // backgroundColor: Colors.red,
+                                                  progressColor: yellow,
+                                                ),
+                                                child: CircleAvatar(
+                                                  radius: 4.0.hp,
+                                                  backgroundImage: NetworkImage(
+                                                      category.pictureUrl),
+                                                )),
+                                            ThemeText(
+                                                theText: category.name,
+                                                thefontSize: 8.0.sp,
+                                                theColor: black)
+                                          ],
+                                        ),
+                                      ))
+                            ],
+                          ),
+                        ),
+                ),
+                SizedBox(height: 1.0.hp),
+                Container(
+                  margin: EdgeInsets.only(left: 4.0.wp),
+                  child: RichText(
+                    text: TextSpan(
+                      style: TextStyle(fontSize: 14.0.sp, color: black),
+                      children: [
+                        TextSpan(
+                          text: 'Nouveau sur ',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(
+                          text: 'PLANNER',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(height: 1.0.hp),
+                Obx(
+                  () => homeController.isLoadingLatestSalons.value == true
+                      ? LatestSalonsLoading()
+                      : Container(
+                          height: 40.0.hp,
+                          margin: EdgeInsets.symmetric(horizontal: 8.0.sp),
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(
+                                    right: 4.0.wp, bottom: 1.0.hp),
+                                decoration: BoxDecoration(
+                                    boxShadow: themeBoxShadowCard,
+                                    borderRadius: BorderRadius.circular(25)),
+                                child: Column(children: [
+                                  Container(
+                                    height: 25.0.hp,
+                                    width: 87.0.wp,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(18.0.sp),
+                                          topRight: Radius.circular(18.0.sp)),
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                          "assets/images/model_on_mirror.png",
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 5.0.hp,
+                                    width: 87.0.wp,
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 5.0.wp),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        ThemeText(
+                                            theText: "Lorem ipsum",
+                                            thefontSize: 14.0.sp,
+                                            theColor: black,
+                                            theFontFamily: "Montserrat-Bold"),
+                                        ThemeGradContainer(
+                                            theWith: 6.0.hp,
+                                            theHeight: 4.0.hp,
+                                            thePadding: 4.0.sp,
+                                            theLinearGradient:
+                                                yellowFadeGradient,
+                                            theContent: SvgPicture.asset(
+                                              "assets/icons/arrow_right.svg",
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 87.0.wp,
+                                    height: 3.0.hp,
+                                    padding: EdgeInsets.only(
+                                        left: 5.0.wp, right: 5.0.wp, bottom: 0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          width: 5.0.wp,
+                                          height: 5.0.wp,
+                                          margin:
+                                              EdgeInsets.only(right: 2.0.sp),
+                                          child: SvgPicture.asset(
+                                              'assets/icons/localization.svg',
+                                              color: grey),
+                                        ),
+                                        Center(
+                                          child: Container(
+                                            width: 50.0.wp,
+                                            margin:
+                                                EdgeInsets.only(right: 6.0.sp),
+                                            child: ThemeText(
+                                              theText:
+                                                  "Lorem ipsum dolor sit amet",
+                                              thefontSize: 10.0.sp,
+                                              theColor: grey,
+                                              theMaxOfLines: 1,
+                                              theTextDecoration:
+                                                  TextDecoration.underline,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 87.0.wp,
+                                    height: 3.0.hp,
+                                    padding: EdgeInsets.only(
+                                        left: 5.0.wp, right: 5.0.wp, top: 0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          width: 5.0.wp,
+                                          height: 5.0.wp,
+                                          margin:
+                                              EdgeInsets.only(right: 2.0.sp),
+                                          child: SvgPicture.asset(
+                                              'assets/icons/star.svg',
+                                              color: grey),
+                                        ),
+                                        Center(
+                                          child: Container(
+                                            width: 50.0.wp,
+                                            margin:
+                                                EdgeInsets.only(right: 6.0.sp),
+                                            child: ThemeText(
+                                              theText: "4,9 (317 avis)  MAD",
+                                              thefontSize: 10.0.sp,
+                                              theColor: grey,
+                                              theMaxOfLines: 1,
+                                              theTextDecoration:
+                                                  TextDecoration.underline,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 1.0.hp),
+
+                                  //  Text("hhhhhh")
+                                ]),
+                              ),
+                            ],
+                          ),
+                        ),
+                ),
+                SizedBox(height: 15.0.hp)
+              ],
+            ),
           ),
         ),
-      ),
-       bottomSheet:ThemeNavigationBottomBar()
-  
-    );
+        bottomSheet: ThemeNavigationBottomBar());
   }
-
-  
 }
-
 
 class CirclePainter extends CustomPainter {
   final double percentage;
@@ -502,4 +514,3 @@ class CirclePainter extends CustomPainter {
     return true;
   }
 }
-
