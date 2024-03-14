@@ -5,9 +5,10 @@ class HomeService {
   String apiUri = "/get-categories";
 
   Future apiGetCategories() async {
-    final loginUrl = Uri.parse(ApiHelper().getUrl()+apiUri);
+    
+    final getCategoriesUrl = Uri.parse(ApiHelper().getUrl()+apiUri);
     final response =
-        await http.get(loginUrl,headers: ApiHelper().getHeaders("1|xesudvlGZvfwWMqJgzOw9gxZYQ5XT6I6vi6GFwz8"));
+        await http.get(getCategoriesUrl);
     return response;
   }
 }

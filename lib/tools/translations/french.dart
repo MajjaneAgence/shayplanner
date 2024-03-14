@@ -17,6 +17,7 @@ final Map<String, String> fr = {
   "tr_continue_without_registration": "Continuer sans s'incrire",
   "tr_remember_me": "Se souvenir de moi",
   "tr_type_your_password": "Saisir votre mot de passe",
+  "tr_new_on_planner":"Nouveau sur PLANNER",
 
   // Forgot password screen
   "tr_try_something_else": "Essayer une autre méthode",
@@ -83,10 +84,11 @@ final Map<String, String> fr = {
   "tr_personal_informations": "Informations personelles",
   "tr_favorite": "Mes favoris",
   "tr_booking_history": "Historique de réservations",
-  "tr_notifications": "Historique de réservations",
+  "tr_notifications": "Notifications",
   "tr_about_PLANNER": "À propos de PLANNER",
   "tr_support": "Aide",
   "tr_logout": "Se déconnecter",
+  "tr_Logging_out...":"Déconnexion....",
 
   // editing personal infos
   "tr_firstname": "Prénom",
@@ -112,15 +114,19 @@ final Map<String, String> fr = {
 
 //home
   "tr_book_ur_beauty_appointment": "Réservez votre rendez-vous beauté",
-  "tr_salon_service":"Nom du Salon, prestation (coupe...)",
-  "tr_address_city":"Adress, ville...",
-  "tr_categories":"Catégorie",
+  "tr_salon_service": "Nom du Salon, prestation (coupe...)",
+  "tr_address_city": "Adress, ville...",
+  "tr_categories": "Catégorie",
   "tr_new_on": "Nouveau sur ",
 
   //salons
   "tr_select_salon": "Sélectionnez un salon",
 
-
   //notifications
-  "tr_notification":"Notifications"
+  "tr_notification": "Notifications",
+  "tr_delete_confirmation": "Confirmer la suppression",
+  "tr_are_you_sure_you_wanna_delete_notification":
+      "Êtes-vous sûr de vouloir supprimer la notification",
+  "tr_no_answer": "Non",
+  "tr_yes_answer": "Oui"
 };

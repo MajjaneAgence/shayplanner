@@ -1,4 +1,5 @@
 import 'package:flutter_svg/svg.dart';
+import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/tools/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,26 +13,38 @@ class ThemeAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
-      leading: InkWell(
-        onTap: () {
-          Get.back();
-        },
-        child: Container(
-          padding: EdgeInsets.only(left: 2.0.sp),
-          margin: EdgeInsets.symmetric(horizontal: 6.0.sp, vertical: 8.0.sp),
-          child: SvgPicture.asset(
-            "assets/icons/arrow_left.svg",
-          ),
-        ),
-      ),
+      leading: Get.locale!.languageCode != "ar"
+          ? InkWell(
+              onTap: () {
+                Get.back();
+              },
+              child: Container(
+                  padding: EdgeInsets.only(left: 2.0.sp),
+                  margin: EdgeInsets.symmetric(
+                      horizontal: 6.0.sp, vertical: 8.0.sp),
+                  child: SvgPicture.asset("assets/icons/arrow_left.svg",
+                      width: 4.0.sp, height: 4.0.sp)),
+            )
+          : const SizedBox(),
       leadingWidth: 10.0.wp,
-      title: SvgPicture.asset(
-        "assets/icons/app_logos/logo_app_bar.svg",
-        width:70.0.wp,
-        height:70.0.wp
-      ),
+      title: SvgPicture.asset("assets/icons/app_logos/logo_app_bar.svg",
+           width: 40.0.wp, height: 40.0.wp),
       centerTitle: true,
       toolbarHeight: 10.0.hp,
+      actions: [
+        Get.locale!.languageCode == "ar"
+            ? InkWell(
+                onTap: () {
+                  Get.back();
+                },
+                child: Container(
+                    padding: EdgeInsets.only(right: 2.0.sp),
+                    margin: EdgeInsets.symmetric(
+                        horizontal: 6.0.sp, vertical: 8.0.sp),
+                    child: SvgPicture.asset("assets/icons/arrow_left.svg",
+                        width: 4.0.wp, height: 4.0.wp)))
+            : const SizedBox(),
+      ],
     );
   }
 }

@@ -1,12 +1,16 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shayplanner/components/api/api_helper.dart';
+import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/change_password_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/personal_infos_screen.dart';
 import 'package:shayplanner/components/profile/profile_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/models/user_model.dart';
+import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_snackbar.dart';
 import 'package:shayplanner/tools/extension.dart';
 
@@ -31,6 +35,7 @@ class ProfileController extends GetxController {
   RxBool isOldPasswordObscure = true.obs;
   RxBool isNewPasswordObscure = true.obs;
   RxBool isObscureConfirmation = true.obs;
+  RxBool isLogggingOut = false.obs;
   Rx<UserModel?> user = UserModel().obs;
   Rx<File> picture = Rx<File>(File(''));
 
@@ -48,11 +53,15 @@ class ProfileController extends GetxController {
       isLoadingCurrentUser.refresh();
       var body = jsonDecode(value.body);
       print(body);
-      if (body["success"]) {
-        user.value = UserModel.fromJson(body["data"]);
-        print(user.value?.picture);
+      if (body["message"] == "Unauthenticated.") {
+        Get.offAllNamed(LoginScreenForEmailAndSocial.routename);
       } else {
-        themeSnackBar(body["message"]);
+        if (body["success"]) {
+          user.value = UserModel.fromJson(body["data"]);
+          print(user.value?.picture);
+        } else {
+          themeSnackBar(body["message"]);
+        }
       }
     });
   }
@@ -306,6 +315,57 @@ class ProfileController extends GetxController {
       print(body);
       if (body["success"]) {
         themeSnackBar("tr_you_re_password_has_been_chnaged_sucessfully".tr);
+      } else {
+        if (body["message"] == "validationError") {
+          String errorMessage = '';
+          body["data"].forEach((key, value) {
+            //errorMessage += '$key: ${value.join(', ')}\n';
+            errorMessage += '${value.join(', ')}\n';
+          });
+          themeSnackBar(errorMessage);
+        } else {
+          themeSnackBar(body["message"]);
+        }
+      }
+    });
+  }
+
+  logout() {
+    profileService().apiLogout().then((value) async {
+      var body = jsonDecode(value.body);
+      Get.dialog(Dialog(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        child: Center(
+          child: Container(
+            decoration: BoxDecoration(
+              color: white,
+              borderRadius: BorderRadius.circular(10.0.sp),
+            ),
+            padding: EdgeInsets.all(20.0.sp),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircularProgressIndicator(color: crem),
+                SizedBox(height: 3.0.hp),
+                Text(
+                  'tr_Logging_out...'.tr,
+                  style: TextStyle(
+                    fontSize: 12.0.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ));
+      await Future.delayed(Duration(seconds: 1));
+      print(body);
+      if (body["success"]) {
+        FlutterSecureStorage secureStorage = const FlutterSecureStorage();
+        await secureStorage.delete(key: 'token');
+        Get.offAllNamed(LoginScreenForEmailAndSocial.routename);
       } else {
         if (body["message"] == "validationError") {
           String errorMessage = '';

@@ -17,6 +17,7 @@ final Map<String, String> en = {
   "tr_continue_without_registration": "Continue without registering",
   "tr_remember_me": "Remember me",
   "tr_type_your_password": "Type your password",
+"tr_new_on_planner": "New to PLANNER",
 
   // Forgot password screen
   "tr_try_something_else": "Try something else",
@@ -83,6 +84,8 @@ final Map<String, String> en = {
   "tr_about_PLANNER": "About PLANNER",
   "tr_support": "Support",
   "tr_logout": "Logout",
+    "tr_Logging_out...":"Logging out....",
+
 
   // editing personal infos
   "tr_firstname": "First name",
@@ -117,5 +120,9 @@ final Map<String, String> en = {
   "tr_select_salon": "Select a salon",
 
     //notifications
-  "tr_notification":"Notifications"
+"tr_notification": "Notifications",
+"tr_delete_confirmation": "Delete Confirmation",
+"tr_are_you_sure_you_wanna_delete_notification": "Are you sure you want to delete the notification",
+"tr_no_answer": "No",
+"tr_yes_answer": "Yes"
 };

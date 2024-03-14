@@ -6,6 +6,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
+import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/register/register_service.dart';
 import 'package:shayplanner/theme/theme_snackbar.dart';
 
@@ -127,7 +128,7 @@ class RegisterController extends GetxController {
           await secureStorage.write(
               key: "token", value: body["data"]['token']);
           print(await secureStorage.read(key: "token"));
-          Get.toNamed(HomeScreen.routename);
+          Get.toNamed(LoginScreenForEmailAndSocial.routename);
         } else {
           themeSnackBar(body["message"]);
         }

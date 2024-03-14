@@ -16,7 +16,7 @@ class IntroductionController extends GetxController {
     FlutterSecureStorage storage = FlutterSecureStorage();
     String? token = await storage.read(key: 'token');
     print(token);
-    if (token == null) {
+   if (token == null) {
     Get.toNamed(LoginScreenForEmailAndSocial.routename);
     } else {
       Get.toNamed(HomeScreen.routename);

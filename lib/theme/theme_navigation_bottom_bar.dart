@@ -14,18 +14,18 @@ class ThemeNavigationBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
-      child: Container(
-        width: 92.0.wp,
-        height: 9.0.hp,
-        decoration: BoxDecoration(
-          color: grey,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(8.5.wp),
-            topRight: Radius.circular(8.5.wp),
-          ),
+      width: 100.0.wp,
+      height: 9.0.hp,
+      decoration: BoxDecoration(
+        color: grey,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(8.5.wp),
+          topRight: Radius.circular(8.5.wp),
         ),
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
           InkWell(
               onTap: () {
                 Get.toNamed(HomeScreen.routename);
@@ -41,30 +41,28 @@ class ThemeNavigationBottomBar extends StatelessWidget {
           InkWell(
             onTap: () => {},
             child: Get.currentRoute == ProfileScreen.routename
-                  ? SvgPicture.asset('assets/icons/floating_app_bar/map-active.svg',
-                      width: 8.0.wp,
-                      height: 8.0.wp)
-                  : SvgPicture.asset('assets/icons/floating_app_bar/map.svg',
-                      width: 8.0.wp,
-                      height: 8.0.wp),
+                ? SvgPicture.asset(
+                    'assets/icons/floating_app_bar/map-active.svg',
+                    width: 8.0.wp,
+                    height: 8.0.wp)
+                : SvgPicture.asset('assets/icons/floating_app_bar/map.svg',
+                    width: 8.0.wp, height: 8.0.wp),
           ),
           InkWell(
             onTap: () {
               Get.toNamed(ShopsScreen.routename);
             },
-            child:  (Get.currentRoute == ShopsScreen.routename ||
-                      Get.currentRoute == SalonSheetScreen.routename)
-                  ?
-                  // Image.asset(
-                  // 'assets/icons/floating_app_bar/calendar-active.png'):
-                  SvgPicture.asset(
-                      'assets/icons/floating_app_bar/calendar-active.svg',
-                      width: 8.0.wp,
-                      height: 8.0.wp)
-                  : SvgPicture.asset(
-                      'assets/icons/floating_app_bar/calendar.svg',
-                      width: 8.0.wp,
-                      height: 8.0.wp),
+            child: (Get.currentRoute == ShopsScreen.routename ||
+                    Get.currentRoute == SalonSheetScreen.routename)
+                ?
+                // Image.asset(
+                // 'assets/icons/floating_app_bar/calendar-active.png'):
+                SvgPicture.asset(
+                    'assets/icons/floating_app_bar/calendar-active.svg',
+                    width: 8.0.wp,
+                    height: 8.0.wp)
+                : SvgPicture.asset('assets/icons/floating_app_bar/calendar.svg',
+                    width: 8.0.wp, height: 8.0.wp),
           ),
           InkWell(
             onTap: () {
@@ -82,7 +80,7 @@ class ThemeNavigationBottomBar extends StatelessWidget {
                     height: 9.0.wp,
                   ),
           ),
-        ]),
+        ],
       ),
     );
   }

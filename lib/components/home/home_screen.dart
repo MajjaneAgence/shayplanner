@@ -26,130 +26,123 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: white,
-        // for the appBar we're going to give it 10% of the height
+        extendBody: true,
         appBar: AppBar(
-          // Here we take the value from the MyHomePage object that
-          // was created by the App.build method, and use it to set
-          // our appbar title.
-          ///tresse
           backgroundColor: Colors.white,
           leading: Padding(
-              padding: EdgeInsets.only(left: 4.0.wp),
-              child: Row(
-                children: [
-                  Obx(
-                    () => PopupMenuButton<String>(
-                      position: PopupMenuPosition.under,
-                      //offset: Offset(-10, 0),
-                      color: Colors.transparent,
-                      elevation: 0,
-                      itemBuilder: (context) {
-                        return homeController.lanuages.map((str) {
-                          return PopupMenuItem(
-                            value: str,
-                            height: 8.0.wp,
-                            child: InkWell(
-                              onTap: () => {homeController.changeLanguage(str)},
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    color: biege,
-                                    borderRadius: BorderRadius.circular(5.0)),
-                                padding: EdgeInsets.all(4.0.sp),
-                                margin: EdgeInsets.all(2.0.sp),
-                                width: 25.0.wp,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    ThemeText(
-                                        theText: str,
-                                        thefontSize: 10.0.sp,
-                                        theColor: black),
-                                    SizedBox(width: 5.0.sp),
-                                    SvgPicture.asset(
-                                        "assets/icons/language_chose_arrow.svg")
-                                  ],
-                                ),
+            padding: EdgeInsets.only(left: 4.0.wp),
+            child: Row(
+              children: [
+                Obx(
+                  () => PopupMenuButton<String>(
+                    position: PopupMenuPosition.under,
+                  offset: Get.locale!.languageCode=="ar" ?  Offset(0, -30) : Offset.zero,
+                    color: Colors.transparent,
+                    elevation: 0,
+                    itemBuilder: (context) {
+                      return homeController.lanuages.map((str) {
+                        return PopupMenuItem(
+                          value: str,
+                          height: 8.0.wp,
+                          child: InkWell(
+                            onTap: () => {homeController.changeLanguage(str)},
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: biege,
+                                  borderRadius: BorderRadius.circular(5.0)),
+                              padding: EdgeInsets.all(4.0.sp),
+                              margin: EdgeInsets.all(2.0.sp),
+                              width: 25.0.wp,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  ThemeText(
+                                      theText: str,
+                                      thefontSize: 10.0.sp,
+                                      theColor: black),
+                                  SizedBox(width: 5.0.sp),
+                                  SvgPicture.asset(
+                                      "assets/icons/language_chose_arrow.svg")
+                                ],
                               ),
                             ),
-                          );
-                        }).toList();
-                      },
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          homeController.selectedLanguage.value == "fr"
-                              ? ThemeText(
-                                  theText: "Fr",
-                                  thefontSize: 12.0.sp,
-                                  theColor: black,
-                                  theFontWeight: FontWeight.bold)
-                              : homeController.selectedLanguage.value == "en"
-                                  ? ThemeText(
-                                      theText: "En",
-                                      thefontSize: 12.0.sp,
-                                      theColor: black,
-                                      theFontWeight: FontWeight.bold)
-                                  : ThemeText(
-                                      theText: "ع",
-                                      thefontSize: 12.0.sp,
-                                      theColor: black,
-                                      theFontWeight: FontWeight.bold),
-                          SizedBox(width: 4.0.sp),
-                          SvgPicture.asset("assets/icons/drop_down.svg"),
-                        ],
-                      ),
-                      onSelected: (v) {
-                        print(v);
-                        if (v == "Français") {
-                          homeController.selectedLanguage.value = "Fr";
-                          homeController.selectedLanguage.refresh();
-                        } else {
-                          homeController.selectedLanguage.value = "An";
-                          homeController.selectedLanguage.refresh();
-                        }
-                      },
+                          ),
+                        );
+                      }).toList();
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Get.locale!.languageCode=="ar"?Container(width:4.0.wp):SizedBox(),
+                        homeController.selectedLanguage.value == "fr"
+                            ? ThemeText(
+                                theText: "Fr",
+                                thefontSize: 12.0.sp,
+                                theColor: black,
+                                theFontWeight: FontWeight.bold)
+                            : homeController.selectedLanguage.value == "en"
+                                ? ThemeText(
+                                    theText: "En",
+                                    thefontSize: 12.0.sp,
+                                    theColor: black,
+                                    theFontWeight: FontWeight.bold)
+                                : ThemeText(
+                                    theText: "ع",
+                                    thefontSize: 12.0.sp,
+                                    theColor: black,
+                                    theFontWeight: FontWeight.bold),
+                        SizedBox(width: 4.0.sp),
+                        SvgPicture.asset("assets/icons/drop_down.svg"),
+                      ],
                     ),
+                    onSelected: (v) {
+                      print(v);
+                      if (v == "Français") {
+                        homeController.selectedLanguage.value = "Fr";
+                        homeController.selectedLanguage.refresh();
+                      } else {
+                        homeController.selectedLanguage.value = "An";
+                        homeController.selectedLanguage.refresh();
+                      }
+                    },
                   ),
-                ],
-              )),
-          leadingWidth: 25.0.wp,
+                ),
+              ],
+            ),
+          ),
+          //leadingWidth: 10.0.wp,
           title: Container(
             //color:Colors.red,
             child: SvgPicture.asset("assets/icons/app_logos/logo_app_bar.svg",
-                width: 70.0.wp, height: 70.0.wp),
+                width: 40.0.wp, height: 40.0.wp),
           ),
           centerTitle: true,
           actions: [
-            SvgPicture.asset(
-              "assets/icons/bell.svg",
-              width: 5.0.wp,
-              height: 5.0.wp,
-            ),
-            SizedBox(width: 8.0.wp),
+            Row(
+              children: [
+                SvgPicture.asset(
+                  "assets/icons/bell.svg",
+                  width: 5.0.wp,
+                  height: 5.0.wp,
+                ),
+                SizedBox(width: 8.0.wp),
+              ],
+            )
           ],
           toolbarHeight: 10.0.hp,
         ),
-        // first we're going to add a container that will occupy the whole width and 90% of the height
         body: Container(
           color: biege,
-          //we're going to add some padding horizontally for the container in order
-          //that the content will not stick to the edge of the screen
           padding: EdgeInsets.all(0),
           width: Get.width,
-          height: 90.0
-              .hp, // 10 percent of the height is a lready taken by the appbar
-          // inside the container we're going to use SingleScrollView so that if the screen is not
-          // long enought he content will scroll
+          height: 90.0.hp,
           child: SingleChildScrollView(
-            // we're going to use the Column widget inside the SingleChildScrollView in order
-            //to place multiple widget whithin the SingleChildScrollView Widget
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stack(children: [
                   CarouselSlider(
-                    // carouselController: homeController.carouselController,
                     options: CarouselOptions(
                         height: 75.0.hp,
                         viewportFraction: 1.5,
@@ -506,6 +499,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        bottomSheet: ThemeNavigationBottomBar());
+        bottomNavigationBar: ThemeNavigationBottomBar());
   }
 }

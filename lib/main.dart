@@ -45,4 +45,6 @@ class MyApp extends StatelessWidget {
       fallbackLocale: Locale('fr', 'FR'),
     );
   }
+
+  //missing svg icons trash for deleting notifications
 }

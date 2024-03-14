@@ -82,6 +82,7 @@ flutter:
      - assets/icons/salon_sheet/
      - assets/icons/profile/
      - assets/icons/app_logos/
+     - assets/icons/notifications/
      - assets/icons/home/
      - assets/images/home/
 

@@ -1,13 +1,16 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:image_picker/image_picker.dart';
+import 'package:shayplanner/components/api/api_helper.dart';
+import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/change_password_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/personal_infos_screen.dart';
 import 'package:shayplanner/components/profile/profile_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/models/user_model.dart';
+import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_snackbar.dart';
+import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
 
 class NotificationsController extends GetxController {
@@ -37,112 +40,95 @@ class NotificationsController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    getCurrentUser();
   }
 
-  getCurrentUser() async {
-    isLoadingCurrentUser.value = true;
-    isLoadingCurrentUser.refresh();
-    profileService().apiGetCurrentUser().then((value) async {
-      isLoadingCurrentUser.value = false;
-      isLoadingCurrentUser.refresh();
-      var body = jsonDecode(value.body);
-      print(body);
-      if (body["success"]) {
-        user.value = UserModel.fromJson(body["data"]);
-        print(user.value?.picture);
-      } else {
-        themeSnackBar(body["message"]);
-      }
-    });
-  }
-
-  updateProfilePicture() async {
-    Get.defaultDialog(
-        title: "tr_upload_profile_picture".tr,
-        titleStyle: TextStyle(fontSize: 14.0.sp, fontWeight: FontWeight.bold),
-        content: Obx(
-          () {
-            return Column(
-              children: [
-                if (picture.value.path != '')
-                  CircleAvatar(
-                    radius: 75,
-                    backgroundImage: FileImage(picture.value),
-                  ),
-                if (picture.value.path != '')
-                  TextButton(
-                      onPressed: () async {
-                        isLoadingCurrentUser.value = true;
-                        isLoadingCurrentUser.refresh();
-                        profileService()
-                            .apiUploadProfilePicture(picture.value)
-                            .then((value) async {
-                          isLoadingCurrentUser.value = false;
-                          isLoadingCurrentUser.refresh();
-                          var body = jsonDecode(value.body);
-                          print(body);
-                          if (body["success"]) {
-                            user.value!.picture =
-                                body['data']['user']['picture'];
-                            user.refresh();
-                            picture.value = File('');
-                            picture.refresh();
-                            Get.back();
-                          } else {
-                            themeSnackBar(body["message"]);
-                          }
-                        });
-                      },
-                      child: user.value!.picture == null
-                          ? Text('tr_add_profile_picture'.tr)
-                          : Text('tr_change_profile_picture'.tr)),
-                ListTile(
-                  leading: Icon(
-                    Icons.camera_alt,
-                    size: 24,
-                  ),
-                  title: Text("tr_take_picture".tr,
-                      style: TextStyle(
-                          fontSize: 14.0.sp, fontWeight: FontWeight.bold)),
-                  onTap: () async {
-                    var image = await ImagePicker()
-                        .pickImage(source: ImageSource.camera);
-                    if (image != null) {
-                      picture.value = File(image.path);
-                      update();
-                    }
-                  },
+  Future<bool?> confirmDismiss(direction) async {
+    bool dismiss = false;
+    await Get.dialog(
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.0.wp),
+            child: Container(
+              decoration: BoxDecoration(
+                color: white,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20.0.sp),
                 ),
-                ListTile(
-                  leading: Icon(Icons.photo),
-                  title: Text("tr_choose_picture".tr,
-                      style: TextStyle(
-                          fontSize: 14.0.sp, fontWeight: FontWeight.bold)),
-                  onTap: () async {
-                    var image = await ImagePicker()
-                        .pickImage(source: ImageSource.gallery);
-                    if (image != null) {
-                      picture.value = File(image.path);
-                      update();
-                    }
-                  },
-                )
-              ],
-            );
-          },
-        ));
-  }
-
-  String transformFirstLetterToupperCase(name) {
-    if (name != null) {
-      String capitalizedName = name.replaceFirstMapped(
-        RegExp(r'^\w'),
-        (match) => match.group(0)!.toUpperCase().toString(),
-      );
-      return capitalizedName;
-    }
-    return "";
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(10.0.wp),
+                child: Material(
+                  child: Column(
+                    children: [
+                      SizedBox(height: 3.0.hp),
+                      ThemeText(
+                        theText: "tr_delete_confirmation".tr,
+                        thefontSize: 13.0.sp,
+                        theColor: black,
+                        theFontWeight: FontWeight.bold,
+                      ),
+                      SizedBox(height: 2.0.hp),
+                      ThemeText(
+                        theText:
+                            "tr_are_you_sure_you_wanna_delete_notification".tr,
+                        thefontSize: 12.0.sp,
+                        theColor: black,
+                        theTextAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 4.0.hp),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: crem,
+                                foregroundColor: white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              onPressed: () {
+                                dismiss = false;
+                                Get.back();
+                              },
+                              child: Text(
+                                'tr_no_answer'.tr,
+                              ),
+                            ),
+                          ),
+                           SizedBox(width: 5.0.wp),
+                          Expanded(
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: crem,
+                                foregroundColor: white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              onPressed: () {
+                                dismiss = true;
+                                Get.back();
+                              },
+                              child: Text(
+                                'tr_yes_answer'.tr,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+    return dismiss;
   }
 
   String? validateFirstName(String firstname) {
@@ -227,7 +213,10 @@ class NotificationsController extends GetxController {
     isEditingEnabled.refresh();
   }
 
-  goToProfileEditing() {
+  goToProfileEditing()async {
+
+     String? token  = await ApiHelper().getToken();
+    if(token!=null){ 
     isEditingEnabled.value = false;
     isEditingEnabled.refresh();
     firstNameEditingController.text = user.value!.firstname ?? "";
@@ -236,6 +225,9 @@ class NotificationsController extends GetxController {
     mobileEditingContoller.text = user.value!.mobile ?? "";
     addressEditingContoller.text = user.value!.address ?? "";
     Get.toNamed(PersonalInfosScreen.routename);
+    }else{
+      Get.toNamed(LoginScreenForEmailAndSocial.routename);
+    }
   }
 
   String? validateOldPassword(String password) {

@@ -37,7 +37,7 @@ class profileService {
       "lastname": lastname,
       "email": email,
       "mobile": mobile,
-      "address":address
+      "address": address
     };
     print(jsonEncode(data));
     final response = await http.post(updatePersonalInfos,
@@ -46,9 +46,8 @@ class profileService {
     return response;
   }
 
- 
-
-   Future apiChangePassword(oldPassword,newPassword,newPasswordConfirmation) async {
+  Future apiChangePassword(
+      oldPassword, newPassword, newPasswordConfirmation) async {
     final changePassword =
         Uri.parse(ApiHelper().getUrl() + '/profile/change-password');
     final data = {
@@ -59,6 +58,13 @@ class profileService {
     print(jsonEncode(data));
     final response = await http.post(changePassword,
         body: jsonEncode(data),
+        headers: ApiHelper().getHeaders(await ApiHelper().getToken()));
+    return response;
+  }
+
+  Future apiLogout() async {
+    final logout = Uri.parse(ApiHelper().getUrl() + '/logout');
+    final response = await http.post(logout,
         headers: ApiHelper().getHeaders(await ApiHelper().getToken()));
     return response;
   }

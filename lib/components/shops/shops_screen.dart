@@ -211,7 +211,7 @@ class ShopsScreen extends StatelessWidget {
                                               ),
                                               child: ThemeText(
                                                   theText: "Fiche du salon",
-                                                  thefontSize: 9.0.sp,
+                                                  thefontSize: 8.0.sp,
                                                   theColor: white,
                                                   theFontWeight:
                                                       FontWeight.bold,

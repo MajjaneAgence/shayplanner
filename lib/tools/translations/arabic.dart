@@ -17,12 +17,14 @@ final Map<String, String> ar = {
   "tr_continue_without_registration": "المتابعة بدون التسجيل",
   "tr_remember_me": "تذكرني",
   "tr_type_your_password": "أدخل كلمة المرور",
+"tr_new_on_planner": "جديد على PLANNER",
 
   // Forgot password screen
   "tr_try_something_else": "جرب شيئًا آخر",
   "tr_send": "إرسال",
   "tr_enter_email_to_receive_code": "أدخل عنوان بريدك الإلكتروني لاستلام الرمز",
-  "tr_enter_phone_to_receive_code": "الرجاء إدخال رقم هاتفك لتلقي الرمز لإعادة تعيين كلمة المرور",
+  "tr_enter_phone_to_receive_code":
+      "الرجاء إدخال رقم هاتفك لتلقي الرمز لإعادة تعيين كلمة المرور",
   "tr_phone": "رقم الهاتف",
   "tr_forget_password": "نسيت كلمة المرور",
   "tr_enter_email_address": "أدخل عنوان بريدك الإلكتروني",
@@ -36,7 +38,8 @@ final Map<String, String> ar = {
   "tr_create_your_account": "أنشئ حسابك",
   "tr_firstname_star": "الاسم الأول*",
   'tr_lastname_star': "الاسم الأخير*",
-  "tr_confirm_password": "تأكيد كلمة المرور*", // other fields are common with login
+  "tr_confirm_password":
+      "تأكيد كلمة المرور*", // other fields are common with login
   "tr_phone_number_star": "رقم الهاتف*",
   "tr_address_email_star": "البريد الإلكتروني*",
   "tr_alread_have_account": "هل لديك حساب بالفعل",
@@ -80,6 +83,8 @@ final Map<String, String> ar = {
   "tr_about_PLANNER": "عن بلانر",
   "tr_support": "الدعم",
   "tr_logout": "تسجيل الخروج",
+    "tr_Logging_out...":"تسجيل الخروج....",
+
 
   // editing personal infos
   "tr_firstname": "الاسم الأول",
@@ -95,23 +100,28 @@ final Map<String, String> ar = {
   "tr_current_password": "كلمة المرور الحالية",
   "tr_new_password": "كلمة مرور جديدة",
   "tr_new_password_confirmation": "تأكيد كلمة المرور الجديدة",
-  "tr_you_re_password_has_been_chnaged_sucessfully": "تم تغيير كلمة المرور بنجاح",
+  "tr_you_re_password_has_been_chnaged_sucessfully":
+      "تم تغيير كلمة المرور بنجاح",
 
   // introduction
   "tr_book_appointment": "حجز موعد",
   "tr_professional_space": "المساحة المهنية",
 
-  // home 
-"tr_book_ur_beauty_appointment": "احجز موعدك للتجميل",
-"tr_salon_service": "اسم الصالون، الخدمة (قص الشعر...)",
-"tr_address_city": "العنوان، المدينة...",
-"tr_categories": "الفئة",
-"tr_new_on": " جديد على",
-
+  // home
+  "tr_book_ur_beauty_appointment": "احجز موعدك للتجميل",
+  "tr_salon_service": "اسم الصالون، الخدمة (قص الشعر...)",
+  "tr_address_city": "العنوان، المدينة...",
+  "tr_categories": "الفئة",
+  "tr_new_on": " جديد على",
 
   //salons
-    "tr_select_salon": "اختر صالونًا",
-      //notifications
-  "tr_notification":"الإشعارات"
-
+  "tr_select_salon": "اختر صالونًا",
+  
+  //notifications
+  "tr_notification": "الإشعارات",
+  "tr_delete_confirmation": "تأكيد الحذف",
+  "tr_are_you_sure_you_wanna_delete_notification":
+      "هل أنت متأكد أنك تريد حذف الإشعار",
+  "tr_no_answer": "لا",
+  "tr_yes_answer": "نعم"
 };
