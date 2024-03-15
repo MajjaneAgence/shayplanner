@@ -44,7 +44,9 @@ var router = [
   ),
   GetPage(
     name: IntroductionScreen.routename,
-    page: () => IntroductionScreen(),
+    page: () => const IntroductionScreen(),
+    transition: Transition.fadeIn,
+    transitionDuration: Duration(seconds: 1)
   ),
    GetPage(
     name: SetNewPasswordScreen.routename,

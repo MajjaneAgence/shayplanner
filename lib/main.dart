@@ -15,7 +15,8 @@ void main() async {
   await initializeDateFormatting();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? savedLanguage = prefs.getString('language');
-  Locale locale = savedLanguage != null ? Locale(savedLanguage) : Locale('fr', 'FR');
+  Locale locale =
+      savedLanguage != null ? Locale(savedLanguage) : Locale('fr', 'FR');
   runApp(MyApp(locale: locale));
 }
 
@@ -33,7 +34,6 @@ class MyApp extends StatelessWidget {
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
       theme: ThemeData(
         useMaterial3: true,
         fontFamily: 'Montserrat-regular',
@@ -41,10 +41,12 @@ class MyApp extends StatelessWidget {
       ),
       getPages: router,
       translationsKeys: AppTranslation.translationsKeys,
+      home: SplashScreen(),
       locale: locale,
       fallbackLocale: Locale('fr', 'FR'),
     );
   }
 
   //missing svg icons trash for deleting notifications
+  //svg for arrow language when chosing among the drop down the opposite for the arabic case
 }

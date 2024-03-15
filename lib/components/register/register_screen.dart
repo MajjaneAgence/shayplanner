@@ -96,6 +96,7 @@ class RegisterScreen extends StatelessWidget {
                             registerController.mobileEditingController,
                         theValidation: registerController.validatePhoneNumber,
                         theKeyboardType: TextInputType.phone,
+                        theMaxLength: 13,
                         //thePrefixWidget: ThemeText(theText: "+212", thefontSize: 4.0.wp, theColor: lightGrey),
                         theContentPadding: 5.0.sp),
                     SizedBox(height: 2.0.hp),

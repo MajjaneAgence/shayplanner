@@ -31,8 +31,8 @@ class IntroductionScreen extends StatelessWidget {
               ),
               SvgPicture.asset(
                 "assets/icons/app_logos/logo_introduction.svg",
-               // height: 50.0.hp,
-                width: 50.0.hp,
+               height: 80.0.wp,
+                width: 80.0.wp,
               ),
               // SizedBox(
               //   height: 20.0.hp,

@@ -128,10 +128,19 @@ class RegisterController extends GetxController {
           await secureStorage.write(
               key: "token", value: body["data"]['token']);
           print(await secureStorage.read(key: "token"));
-          Get.toNamed(LoginScreenForEmailAndSocial.routename);
+         Get.offAllNamed(LoginScreenForEmailAndSocial.routename);
+        } else {
+        if (body["message"] == "validationError") {
+          String errorMessage = '';
+          body["data"].forEach((key, value) {
+            //errorMessage += '$key: ${value.join(', ')}\n';
+            errorMessage += '${value.join(', ')}\n';
+          });
+          themeSnackBar(errorMessage);
         } else {
           themeSnackBar(body["message"]);
         }
+      }
       });
     } else {
       themeSnackBar("tr_accept_general_condions".tr);

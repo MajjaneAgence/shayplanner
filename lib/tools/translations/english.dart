@@ -117,7 +117,10 @@ final Map<String, String> en = {
 "tr_new_on": "New to ",
 
   //salons
-  "tr_select_salon": "Select a salon",
+"tr_select_salon": "Select a salon",
+"tr_salon_sheet_": "Salon Sheet",
+"tr_afternoon": "Afternoon",
+"tr_morning": "Morning",
 
     //notifications
 "tr_notification": "Notifications",

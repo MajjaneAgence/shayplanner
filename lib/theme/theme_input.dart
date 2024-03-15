@@ -17,6 +17,7 @@ class ThemeInput extends StatelessWidget {
   TextInputType? theKeyboardType;
   Widget? thePrefixWidget;
   bool? theReadOnly;
+  int? theMaxLength;
   ThemeInput(
       {Key? key,
       this.theLabelText,
@@ -30,7 +31,8 @@ class ThemeInput extends StatelessWidget {
       this.theTextVisibilty,
       this.theKeyboardType,
       this.thePrefixWidget,
-      this.theReadOnly})
+      this.theReadOnly,
+      this.theMaxLength})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -41,6 +43,7 @@ class ThemeInput extends StatelessWidget {
       obscureText: theTextVisibilty ?? false,
       keyboardType: theKeyboardType?? TextInputType.text,
       readOnly: theReadOnly ?? false,
+      maxLength: theMaxLength  ,
       validator: (value) {
         var result = theValidation(value);
         return result;

@@ -24,8 +24,6 @@ class LoginController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    await Future.delayed(const Duration(seconds: 3));
-    print("hello");
   }
 
   validateUsername(String email) {

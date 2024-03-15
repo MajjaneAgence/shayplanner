@@ -115,7 +115,10 @@ final Map<String, String> ar = {
   "tr_new_on": " جديد على",
 
   //salons
-  "tr_select_salon": "اختر صالونًا",
+"tr_select_salon": "اختر صالونًا",
+"tr_salon_sheet_": "ورقة الصالون",
+"tr_afternoon": "بعد الظهر",
+"tr_morning": "صباحًا",
   
   //notifications
   "tr_notification": "الإشعارات",

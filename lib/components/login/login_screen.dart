@@ -402,7 +402,7 @@ class LoginScreenForPassword extends StatelessWidget {
                                           theFontWeight: FontWeight.bold,
                                           theColor: white),
                                     ),
-                                    theFormKey: loginController.formKey,
+                                    theFormKey: loginController.formKey2,
                                     theAction: loginController.connect,
                                     theLoadingStatus:
                                         loginController.isLoading.value),

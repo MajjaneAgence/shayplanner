@@ -116,11 +116,14 @@ final Map<String, String> fr = {
   "tr_book_ur_beauty_appointment": "Réservez votre rendez-vous beauté",
   "tr_salon_service": "Nom du Salon, prestation (coupe...)",
   "tr_address_city": "Adress, ville...",
-  "tr_categories": "Catégorie",
+  "tr_categories": "Catégories",
   "tr_new_on": "Nouveau sur ",
 
   //salons
   "tr_select_salon": "Sélectionnez un salon",
+  "tr_salon_sheet_":"Fiche du salon",
+  "tr_afternoon":"Après-midi",
+  "tr_morning":"Matin",
 
   //notifications
   "tr_notification": "Notifications",

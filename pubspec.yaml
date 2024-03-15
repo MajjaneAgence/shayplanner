@@ -84,6 +84,7 @@ flutter:
      - assets/icons/app_logos/
      - assets/icons/notifications/
      - assets/icons/home/
+     - assets/icons/splash/planner.gif
      - assets/images/home/
 
 

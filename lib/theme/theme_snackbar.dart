@@ -13,6 +13,7 @@ void themeSnackBar(String message) {
     colorText: Colors.white,
     snackPosition: SnackPosition.TOP,
     padding: EdgeInsets.all(10.0.sp),
-    icon: const Icon(Icons.error, color: Colors.white),
+    //icon: const Icon(Icons.error, 
+    //color: Colors.white),
   );
 }

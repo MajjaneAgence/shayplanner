@@ -114,7 +114,8 @@ class NotificationsScreen extends StatelessWidget {
                                     theColor: lightGrey,
                                   )
                                 ],
-                              )
+                              ),
+                              const Divider()
                             ],
                           ),
                         ),

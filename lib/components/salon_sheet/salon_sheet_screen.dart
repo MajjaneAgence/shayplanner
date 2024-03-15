@@ -35,12 +35,14 @@ class SalonSheetScreen extends StatelessWidget {
           height: 100.0.hp,
           child: SingleChildScrollView(
             child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Column(crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height:2.0.hp),
               Container(
                 color: biege,
                 height: 8.0.hp,
                 width: 100.0.wp,
-                padding: EdgeInsets.only(left: 10.0.wp, top: 2.0.hp),
+                padding: EdgeInsets.symmetric(horizontal: 10.0.wp),
                 child: ThemeText(
                   theText: "tr_salon_sheet".tr,
                   thefontSize: 18.0.sp,

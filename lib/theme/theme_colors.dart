@@ -21,23 +21,25 @@ Color transparent = Colors.transparent;
 Color verylightGrey = Color(0xFFF7F7F7);
 Color darkBiege =Color(0xFFBA9C54);
 const BoxShadow themeBoxShadowInput = BoxShadow(
-  color: Color.fromARGB(255, 224, 217, 217),
+  color: Colors.grey,
   offset: Offset(
-    1.0,
-    5.0,
+    0.0,
+    2.0,
   ),
-  blurRadius: 5.0,
-  spreadRadius: 2.0,
+  blurRadius: 8.0,
+    spreadRadius: 
+    -1,
 );
 const List<BoxShadow> themeBoxShadowCard = [
   BoxShadow(
     color: Colors.grey,
     offset: const Offset(
-      5.0,
-      5.0,
+      4.0,
+      4.0,
     ),
-    blurRadius: 10.0,
-    //spreadRadius: 2.0,
+  blurRadius: 8.0,
+    spreadRadius: 
+    -1,
   ), //BoxShadow
   BoxShadow(
     color: const Color.fromRGBO(255, 255, 255, 1),

@@ -60,23 +60,25 @@ class ShopsScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                SizedBox(height:1.0.hp),
                 Container(
-                  margin: EdgeInsets.only(left: 6.0.wp, bottom: 1.0.hp),
+                  margin: EdgeInsets.symmetric(horizontal: 6.0.wp),
                   child: ThemeText(
                       theText: "tr_select_salon".tr,
                       theColor: black,
                       thefontSize: 14.0.sp,
                       theFontWeight: FontWeight.bold),
                 ),
-                Container(
-                  margin: EdgeInsets.only(left: 6.0.wp, bottom: 1.0.hp),
-                  child: ThemeText(
-                    theText:
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit,",
-                    theColor: black,
-                    thefontSize: 11.0.sp,
-                  ),
-                ),
+                SizedBox(height:1.0.hp),
+                // Container(
+                //   margin: EdgeInsets.symmetric(horizontal: 6.0.wp),
+                //   child: ThemeText(
+                //     theText:
+                //         "Lorem ipsum dolor sit amet, consectetur adipiscing elit,",
+                //     theColor: black,
+                //     thefontSize: 11.0.sp,
+                //   ),
+                // ),
                 Obx(() => shopsController.isLoadingShops.value == true
                     ? ShopsLoading()
                     : Container(
@@ -118,8 +120,9 @@ class ShopsScreen extends StatelessWidget {
                                       children: [
                                         Container(
                                           width: 60.0.wp,
-                                          padding:
-                                              EdgeInsets.only(left: 3.0.wp),
+                                          padding: Get.locale!.languageCode!="ar" ?
+                                              EdgeInsets.only(left: 3.0.wp,right:1.0.wp)
+                                               :EdgeInsets.only(left: 1.0.wp,right:3.0.wp),
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
@@ -203,21 +206,22 @@ class ShopsScreen extends StatelessWidget {
                                                   bottom: 4.0.hp,
                                                   top: 2.0.hp,
                                                   right: 3.0.wp),
-                                                  padding: EdgeInsets.symmetric(vertical: 1.5.wp,horizontal: 2.0.wp),
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: 2.5.wp,
+                                                  horizontal: 2.0.wp),
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                                 color: grey,
                                               ),
                                               child: ThemeText(
-                                                  theText: "Fiche du salon",
-                                                  thefontSize: 8.0.sp,
-                                                  theColor: white,
-                                                  theFontWeight:
-                                                      FontWeight.bold,
-                                                  theFontFamily:
-                                                      "Montserrat-Bold",
-                                                ),
+                                                theText: "tr_salon_sheet_".tr,
+                                                thefontSize: 9.0.sp,
+                                                theColor: white,
+                                                theFontWeight: FontWeight.bold,
+                                                theFontFamily:
+                                                    "Montserrat-Bold",
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -241,7 +245,7 @@ class ShopsScreen extends StatelessWidget {
                                               Expanded(
                                                 flex: 1,
                                                 child: ThemeText(
-                                                  theText: "Matin",
+                                                  theText: "tr_morning".tr,
                                                   thefontSize: 10.0.sp,
                                                   theColor: grey,
                                                   theFontWeight:
@@ -296,7 +300,7 @@ class ShopsScreen extends StatelessWidget {
                                               Expanded(
                                                 flex: 1,
                                                 child: ThemeText(
-                                                  theText: "Après-midi",
+                                                  theText: "tr_afternoon".tr,
                                                   thefontSize: 10.0.sp,
                                                   theColor: grey,
                                                   theFontWeight:
@@ -322,15 +326,29 @@ class ShopsScreen extends StatelessWidget {
                               ),
                               SizedBox(height: 2.0.hp),
                               ThemeButton(
-                                  theContent: ThemeGradContainer(
-                                    theWith: 40.0.wp,
-                                    theHeight: 5.0.hp,
-                                    theColor: crem,
-                                    theContent: ThemeText(
+                                  theContent: Container(
+                                    alignment: Alignment.center,
+                                    width: 40.0.wp,
+                                    height: 5.0.hp,
+                                    child: ThemeText(
                                         theText: "Prendre Rdv",
                                         thefontSize: 12.0.sp,
                                         theColor: white,
                                         theFontFamily: fontBold),
+                                    decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.circular(6.0.sp),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Color.fromARGB(
+                                                255, 185, 126, 70)),
+                                        BoxShadow(
+                                            color: crem,
+                                            spreadRadius: -1.5,
+                                            offset: Offset(-3, -3),
+                                            blurRadius: 0.5),
+                                      ],
+                                    ),
                                   ),
                                   theAction: shopsController.book,
                                   theLoadingStatus: shopsController
