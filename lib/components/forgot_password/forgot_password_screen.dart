@@ -78,37 +78,38 @@ class ForgotPasswordScreen extends StatelessWidget {
                                         FloatingLabelBehavior.never,
                                   ),
                                   SizedBox(height: 4.0.hp),
-                                  Obx(() => Center(
-                                        child: ThemeButton(
-                                            theContent: Container(
-                                              alignment: Alignment.center,
-                                              width: 60.0.wp,
-                                              height: 5.0.hp,
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 5.0.wp,
-                                                  vertical: 1.0.hp),
-                                              decoration: BoxDecoration(
-                                                color: grey,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        2.0.wp),
-                                              ),
-                                              child: ThemeText(
-                                                  theText: "tr_continue".tr,
-                                                  thefontSize: 12.0.sp,
-                                                  theFontWeight:
-                                                      FontWeight.bold,
-                                                  theColor: white),
+                                  Obx(
+                                    () => Center(
+                                      child: ThemeButton(
+                                          theColor: grey,
+                                          theContent: Container(
+                                            alignment: Alignment.center,
+                                            width: 60.0.wp,
+                                            height: 5.0.hp,
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 5.0.wp,
+                                                vertical: 1.0.hp),
+                                            decoration: BoxDecoration(
+                                              color: transparent,
+                                              borderRadius:
+                                                  BorderRadius.circular(2.0.wp),
                                             ),
-                                            theFormKey: forgotPasswordController
-                                                .formKeyForgetPassword,
-                                            theAction: forgotPasswordController
-                                                .sendVerificationCode,
-                                            theLoadingStatus:
-                                                forgotPasswordController
-                                                    .isLoadingSendVerificationCode.value),
-                                      ),
-                                      ),
+                                            child: ThemeText(
+                                                theText: "tr_continue".tr,
+                                                thefontSize: 12.0.sp,
+                                                theFontWeight: FontWeight.bold,
+                                                theColor: white),
+                                          ),
+                                          theFormKey: forgotPasswordController
+                                              .formKeyForgetPassword,
+                                          theAction: forgotPasswordController
+                                              .sendVerificationCode,
+                                          theLoadingStatus:
+                                              forgotPasswordController
+                                                  .isLoadingSendVerificationCode
+                                                  .value),
+                                    ),
+                                  ),
                                 ]),
                           )),
                     ],
@@ -136,12 +137,14 @@ class ForgotPasswordScreen extends StatelessWidget {
                           SizedBox(height: 2.0.hp),
                           Obx(
                             () => ThemeButton(
+                              theColor: grey,
                               theContent: Text("tr_send".tr),
                               theAction:
                                   forgotPasswordController.sendVerificationCode,
-                              theFormKey: forgotPasswordController.formKeyForgetPassword,
-                              theLoadingStatus:
-                                  forgotPasswordController.isLoadingSendVerificationCode.value,
+                              theFormKey: forgotPasswordController
+                                  .formKeyForgetPassword,
+                              theLoadingStatus: forgotPasswordController
+                                  .isLoadingSendVerificationCode.value,
                             ),
                           )
                         ]),

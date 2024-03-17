@@ -82,7 +82,7 @@ class ChangePasswordScreen extends StatelessWidget {
                               ThemeText(
                                   theText: "tr_new_password".tr,
                                   thefontSize: 10.0.sp,
-                                 theColor: lightGrey,
+                                  theColor: lightGrey,
                                   theFontWeight: FontWeight.bold),
                               SizedBox(height: 0.5.hp),
                               ThemeInput(
@@ -117,7 +117,7 @@ class ChangePasswordScreen extends StatelessWidget {
                               ThemeText(
                                   theText: "tr_new_password_confirmation".tr,
                                   thefontSize: 10.0.sp,
-                                 theColor: lightGrey,
+                                  theColor: lightGrey,
                                   theFontWeight: FontWeight.bold),
                               SizedBox(height: 0.5.hp),
                               ThemeInput(
@@ -148,9 +148,10 @@ class ChangePasswordScreen extends StatelessWidget {
                                   },
                                 ),
                               ),
-                              SizedBox(height:4.0.hp),
+                              SizedBox(height: 4.0.hp),
                               Center(
                                 child: ThemeButton(
+                                    theColor: grey,
                                     theContent: Container(
                                       alignment: Alignment.center,
                                       width: 60.0.wp,
@@ -158,7 +159,7 @@ class ChangePasswordScreen extends StatelessWidget {
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 5.0.wp, vertical: 1.0.hp),
                                       decoration: BoxDecoration(
-                                        color: grey,
+                                        color: transparent,
                                         borderRadius:
                                             BorderRadius.circular(2.0.wp),
                                       ),
@@ -170,8 +171,7 @@ class ChangePasswordScreen extends StatelessWidget {
                                     ),
                                     theFormKey:
                                         profileController.formKeyChangePassword,
-                                    theAction: profileController
-                                        .changePassword,
+                                    theAction: profileController.changePassword,
                                     theLoadingStatus: profileController
                                         .isloadingChangePassword.value),
                               ),

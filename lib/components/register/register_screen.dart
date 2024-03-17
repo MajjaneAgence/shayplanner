@@ -187,6 +187,7 @@ class RegisterScreen extends StatelessWidget {
                     Obx(
                       () => Center(
                         child: ThemeButton(
+                            theColor: grey,
                             theContent: Container(
                               alignment: Alignment.center,
                               width: 60.0.wp,
@@ -194,7 +195,7 @@ class RegisterScreen extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   horizontal: 5.0.wp, vertical: 1.0.hp),
                               decoration: BoxDecoration(
-                                color: grey,
+                                color: transparent,
                                 borderRadius: BorderRadius.circular(2.0.wp),
                               ),
                               child: ThemeText(

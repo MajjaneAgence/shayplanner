@@ -67,8 +67,7 @@ class NotificationsScreen extends StatelessWidget {
                     children: [
                       Dismissible(
                         key: Key("value"),
-                        background:
-                         Container(
+                        background: Container(
                           decoration: BoxDecoration(
                             color: Colors.red,
                             borderRadius: BorderRadius.circular(10.0.sp),
@@ -78,10 +77,9 @@ class NotificationsScreen extends StatelessWidget {
                           child: Icon(Icons.delete, color: white),
                         ),
                         direction: DismissDirection.startToEnd,
-                        onDismissed: (direction) {
-                          
-                        },
-                        confirmDismiss:(direction) =>  notificationsController.confirmDismiss(direction),
+                        onDismissed: (direction) {},
+                        confirmDismiss: (direction) =>
+                            notificationsController.confirmDismiss(direction),
                         child: Container(
                           //color: Colors.red,
                           child: Column(
@@ -115,7 +113,8 @@ class NotificationsScreen extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              const Divider()
+                              SizedBox(height: 1.0.hp),
+                              Divider()
                             ],
                           ),
                         ),

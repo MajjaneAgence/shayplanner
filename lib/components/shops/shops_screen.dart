@@ -60,7 +60,7 @@ class ShopsScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height:1.0.hp),
+                SizedBox(height: 1.0.hp),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 6.0.wp),
                   child: ThemeText(
@@ -69,7 +69,7 @@ class ShopsScreen extends StatelessWidget {
                       thefontSize: 14.0.sp,
                       theFontWeight: FontWeight.bold),
                 ),
-                SizedBox(height:1.0.hp),
+                SizedBox(height: 1.0.hp),
                 // Container(
                 //   margin: EdgeInsets.symmetric(horizontal: 6.0.wp),
                 //   child: ThemeText(
@@ -120,9 +120,14 @@ class ShopsScreen extends StatelessWidget {
                                       children: [
                                         Container(
                                           width: 60.0.wp,
-                                          padding: Get.locale!.languageCode!="ar" ?
-                                              EdgeInsets.only(left: 3.0.wp,right:1.0.wp)
-                                               :EdgeInsets.only(left: 1.0.wp,right:3.0.wp),
+                                          padding:
+                                              Get.locale!.languageCode != "ar"
+                                                  ? EdgeInsets.only(
+                                                      left: 3.0.wp,
+                                                      right: 1.0.wp)
+                                                  : EdgeInsets.only(
+                                                      left: 1.0.wp,
+                                                      right: 3.0.wp),
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
@@ -326,6 +331,7 @@ class ShopsScreen extends StatelessWidget {
                               ),
                               SizedBox(height: 2.0.hp),
                               ThemeButton(
+                                  theColor: white,
                                   theContent: Container(
                                     alignment: Alignment.center,
                                     width: 40.0.wp,

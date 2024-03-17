@@ -124,8 +124,8 @@ class ProfileScreen extends StatelessWidget {
               Expanded(
                 child: Container(
                   width: 100.0.wp,
-                  padding:
-                    EdgeInsets.symmetric(horizontal: 6.0.hp, vertical: 12.0.wp),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 6.0.hp, vertical: 12.0.wp),
                   decoration: BoxDecoration(
                     color: white,
                     borderRadius: BorderRadius.only(
@@ -161,7 +161,9 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 4.0.hp),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            profileController.goToFvoris();
+                          },
                           child: Row(
                             children: [
                               SvgPicture.asset("assets/icons/profile/heart.svg",
@@ -178,7 +180,9 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 4.0.hp),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            profileController.goToBookingHistory();
+                          },
                           child: Row(
                             children: [
                               SvgPicture.asset("assets/icons/profile/card.svg",
@@ -249,24 +253,25 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 5.0.hp),
-                        InkWell( 
-                          onTap: (){
+                        InkWell(
+                          onTap: () {
                             profileController.logout();
                           },
-                          child:
-                        Row(
-                          children: [
-                            SvgPicture.asset("assets/icons/profile/logout.svg",
-                                width: 18.0.sp, height: 18.0.sp),
-                            SizedBox(width: 5.0.wp),
-                            ThemeText(
-                              theText: "tr_logout".tr,
-                              thefontSize: 11.0.sp,
-                              theColor: Colors.red,
-                              theFontWeight: FontWeight.bold,
-                            ),
-                          ],
-                        ),
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(
+                                  "assets/icons/profile/logout.svg",
+                                  width: 18.0.sp,
+                                  height: 18.0.sp),
+                              SizedBox(width: 5.0.wp),
+                              ThemeText(
+                                theText: "tr_logout".tr,
+                                thefontSize: 11.0.sp,
+                                theColor: Colors.red,
+                                theFontWeight: FontWeight.bold,
+                              ),
+                            ],
+                          ),
                         ),
                         SizedBox(height: 10.0.hp)
                       ],

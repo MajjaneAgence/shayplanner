@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/components/home/home_controller.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
+import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/profile/profile_screen.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
 import 'package:shayplanner/components/shops/shops_screen.dart';
@@ -65,8 +67,15 @@ class ThemeNavigationBottomBar extends StatelessWidget {
                     width: 8.0.wp, height: 8.0.wp),
           ),
           InkWell(
-            onTap: () {
-              Get.toNamed(ProfileScreen.routename);
+            onTap: () async {
+              FlutterSecureStorage storage = FlutterSecureStorage();
+              String? token = await storage.read(key: 'token');
+              print(token);
+              if (token == null) {
+                Get.offAllNamed(LoginScreenForEmailAndSocial.routename);
+              } else {
+                Get.toNamed(ProfileScreen.routename);
+              }
             },
             child: Get.currentRoute == ProfileScreen.routename
                 ? SvgPicture.asset(

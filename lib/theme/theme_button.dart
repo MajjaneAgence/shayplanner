@@ -12,18 +12,27 @@ class ThemeButton extends StatelessWidget {
   Function? theAction;
   bool? theLoadingStatus;
   var theFormKey;
+  Color theColor;
   ThemeButton(
       {Key? key,
       required this.theContent,
-       this.theAction,
+      this.theAction,
       this.theFormKey,
-      this.theLoadingStatus})
+      this.theLoadingStatus,
+      required this.theColor})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     return theLoadingStatus == false
-        ? (InkWell(
-            onTap: () {
+        ? (ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: theColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10), // Border radius
+                side: BorderSide(color: Colors.black), // Border color
+              ),
+            ),
+            onPressed: () {
               if (theFormKey == null) {
                 theAction!();
               } else {
@@ -34,11 +43,11 @@ class ThemeButton extends StatelessWidget {
             },
             child: theContent))
         : const CircularProgressIndicator();
-        
-      //   Center(
-      // child: LoadingAnimationWidget.staggeredDotsWave(
-      //   color: yellow,
-      //   size: 30.0.sp,
-      // ));
+
+    //   Center(
+    // child: LoadingAnimationWidget.staggeredDotsWave(
+    //   color: yellow,
+    //   size: 30.0.sp,
+    // ));
   }
 }

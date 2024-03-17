@@ -25,9 +25,9 @@ class SetNewPasswordScreen extends StatelessWidget {
         width: Get.width,
         height: 90.0.hp,
         child: SingleChildScrollView(
-          child:  Form(
-                        key: forgotPasswordController.formKeySetNewPassword,
-                        child:
+          child: Form(
+            key: forgotPasswordController.formKeySetNewPassword,
+            child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               SizedBox(height: 5.0.hp),
               Container(
@@ -122,37 +122,33 @@ class SetNewPasswordScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 5.0.hp),
-                                              Obx(() => Center(
-                                        child: ThemeButton(
-                                            theContent: Container(
-                                              alignment: Alignment.center,
-                                              width: 60.0.wp,
-                                              height: 5.0.hp,
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 5.0.wp,
-                                                  vertical: 1.0.hp),
-                                              decoration: BoxDecoration(
-                                                color: grey,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        2.0.wp),
-                                              ),
-                                              child: ThemeText(
-                                                  theText: "tr_continue".tr,
-                                                  thefontSize: 12.0.sp,
-                                                  theFontWeight:
-                                                      FontWeight.bold,
-                                                  theColor: white),
-                                            ),
-                                            theFormKey: forgotPasswordController
-                                                .formKeySetNewPassword,
-                                            theAction: forgotPasswordController
-                                                .changePassword,
-                                            theLoadingStatus:
-                                                forgotPasswordController
-                                                    .isLoadingChnagePassword.value),
-                                      ),
-                                      ),
+              Obx(
+                () => Center(
+                  child: ThemeButton(
+                      theColor: grey,
+                      theContent: Container(
+                        alignment: Alignment.center,
+                        width: 60.0.wp,
+                        height: 5.0.hp,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 5.0.wp, vertical: 1.0.hp),
+                        decoration: BoxDecoration(
+                          color: transparent,
+                          borderRadius: BorderRadius.circular(2.0.wp),
+                        ),
+                        child: ThemeText(
+                            theText: "tr_continue".tr,
+                            thefontSize: 12.0.sp,
+                            theFontWeight: FontWeight.bold,
+                            theColor: white),
+                      ),
+                      theFormKey:
+                          forgotPasswordController.formKeySetNewPassword,
+                      theAction: forgotPasswordController.changePassword,
+                      theLoadingStatus: forgotPasswordController
+                          .isLoadingChnagePassword.value),
+                ),
+              ),
             ]),
           ),
         ),

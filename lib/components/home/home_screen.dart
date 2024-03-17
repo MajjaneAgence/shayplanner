@@ -62,11 +62,11 @@ class HomeScreen extends StatelessWidget {
                                       thefontSize: 10.0.sp,
                                       theColor: black),
                                   SizedBox(width: 5.0.sp),
-                                  Get.locale!.languageCode!="ar" ?
-                                  SvgPicture.asset(
-                                      "assets/icons/home/arrow_left.svg"):
-                                       SvgPicture.asset(
-                                      "assets/icons/home/arrow_right.svg")
+                                  Get.locale!.languageCode != "ar"
+                                      ? SvgPicture.asset(
+                                          "assets/icons/home/arrow_left.svg")
+                                      : SvgPicture.asset(
+                                          "assets/icons/home/arrow_right.svg")
                                 ],
                               ),
                             ),
@@ -124,16 +124,20 @@ class HomeScreen extends StatelessWidget {
           ),
           centerTitle: true,
           actions: [
-            Row(
-              children: [
-                SvgPicture.asset(
-                  "assets/icons/bell.svg",
-                  width: 5.0.wp,
-                  height: 5.0.wp,
-                ),
-                SizedBox(width: 8.0.wp),
-              ],
-            )
+            GestureDetector(
+                onTap: () {
+                  homeController.gotoNotifcation();
+                },
+                child: Row(
+                  children: [
+                    SvgPicture.asset(
+                      "assets/icons/bell.svg",
+                      width: 5.0.wp,
+                      height: 5.0.wp,
+                    ),
+                    SizedBox(width: 8.0.wp),
+                  ],
+                ))
           ],
           toolbarHeight: 10.0.hp,
         ),
@@ -512,7 +516,6 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                     ),
-                    SizedBox(height: 100.0.hp)
                   ],
                 ),
               )

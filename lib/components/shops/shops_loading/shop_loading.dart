@@ -242,6 +242,7 @@ class ShopsLoading extends StatelessWidget {
                   baseColor: Colors.grey[300]!,
                   highlightColor: Colors.grey[100]!,
                   child: ThemeButton(
+                      theColor: transparent,
                       theContent: ThemeGradContainer(
                         theWith: 40.0.wp,
                         theHeight: 5.0.hp,

@@ -1,10 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shayplanner/components/api/api_helper.dart';
+import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/home/home_service.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
+import 'package:shayplanner/components/notifications/notifications_screen.dart';
 import 'package:shayplanner/models/category_model.dart';
 import 'package:shayplanner/theme/theme_snackbar.dart';
 
@@ -18,7 +21,10 @@ class HomeController extends GetxController {
   RxList<CategoryModel> categories = <CategoryModel>[].obs;
   // List of items in our dropdown menu
   final List<String> lanuages = ['Français', 'English', 'العربية'];
-  final List<String> modelsImages =['assets/images/home/models.jpg','assets/images/home/models.jpg'];
+  final List<String> modelsImages = [
+    'assets/images/home/models.jpg',
+    'assets/images/home/models.jpg'
+  ];
   RxInt currentIndex = 0.obs;
   @override
   void onInit() async {
@@ -56,7 +62,7 @@ class HomeController extends GetxController {
   }
 
   changeLanguage(String language) async {
-    var lang="fr";
+    var lang = "fr";
     if (language == "Français") {
       lang = "fr";
     } else if (language == "English") {
@@ -64,7 +70,7 @@ class HomeController extends GetxController {
     } else {
       lang = "ar";
     }
-    selectedLanguage.value=lang;
+    selectedLanguage.value = lang;
     selectedLanguage.refresh();
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('language', lang);
@@ -78,6 +84,17 @@ class HomeController extends GetxController {
       return null;
     } else {
       return "tr_enter_valid_firstname".tr;
+    }
+  }
+
+  gotoNotifcation() async {
+    FlutterSecureStorage storage = FlutterSecureStorage();
+    String? token = await storage.read(key: 'token');
+    print(token);
+    if (token == null) {
+      Get.offAllNamed(LoginScreenForEmailAndSocial.routename);
+    } else {
+      Get.toNamed(NotificationsScreen.routename);
     }
   }
 }

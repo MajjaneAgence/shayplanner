@@ -60,8 +60,7 @@ class SalonSheetRating extends StatelessWidget {
                             border: const Border(
                                 right: BorderSide(
                                     color: Color(0xFFF38827), width: 2),
-                                left: BorderSide(
-                                    color: Color(0xFFF38827), width: 0),
+                                left: BorderSide.none,
                                 top: BorderSide(
                                     color: Color(0xFFF38827), width: 2),
                                 bottom: BorderSide(
@@ -74,7 +73,10 @@ class SalonSheetRating extends StatelessWidget {
                           child: Container(
                             padding: EdgeInsets.symmetric(horizontal: 3.0.wp),
                             child: Column(
-                              crossAxisAlignment: Get.locale!.languageCode!="ar" ? CrossAxisAlignment.start :CrossAxisAlignment.end,
+                              crossAxisAlignment:
+                                  Get.locale!.languageCode != "ar"
+                                      ? CrossAxisAlignment.start
+                                      : CrossAxisAlignment.end,
                               children: [
                                 SizedBox(height: 1.0.hp),
                                 RichText(

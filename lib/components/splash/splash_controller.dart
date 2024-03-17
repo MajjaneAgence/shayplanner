@@ -4,14 +4,12 @@ import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/components/register/register_screen.dart';
 
-class SplashController extends GetxController{
-
+class SplashController extends GetxController {
   @override
-  void onInit()async{
+  void onInit() async {
     super.onInit();
-    await Future.delayed(const Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 3));
     //Get.to(LoginScreen());
-    Get.toNamed(IntroductionScreen.routename);
+    Get.offAllNamed(IntroductionScreen.routename);
   }
-
 }

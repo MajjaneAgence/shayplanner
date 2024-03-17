@@ -1,4 +1,6 @@
 import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:shayplanner/components/booking_history/booking_history_screen.dart';
+import 'package:shayplanner/components/favoris/favoris_screen.dart';
 import 'package:shayplanner/components/forgot_password/forgot_password_screen.dart';
 import 'package:shayplanner/components/forgot_password/set_new_password_screen.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
@@ -20,10 +22,10 @@ var router = [
     name: LoginScreenForEmailAndSocial.routename,
     page: () => LoginScreenForEmailAndSocial(),
   ),
-    GetPage(
-    name: LoginScreenForPassword.routename,
-    page: () => LoginScreenForPassword(),
-  ),
+  GetPage(
+      name: LoginScreenForPassword.routename,
+      page: () => LoginScreenForPassword(),
+      transition: Transition.leftToRight),
   GetPage(
     name: RegisterScreen.routename,
     page: () => RegisterScreen(),
@@ -33,55 +35,56 @@ var router = [
     page: () => ForgotPasswordScreen(),
   ),
   GetPage(
-    name: HomeScreen.routename,
-    page: () => HomeScreen(),
-    transition: Transition.noTransition
-  ),
-   GetPage(
-    name: ShopsScreen.routename,
-    page: () => ShopsScreen(),
-    transition: Transition.noTransition
-  ),
+      name: HomeScreen.routename,
+      page: () => HomeScreen(),
+      transition: Transition.noTransition),
   GetPage(
-    name: IntroductionScreen.routename,
-    page: () => const IntroductionScreen(),
-    transition: Transition.fadeIn,
-    transitionDuration: Duration(seconds: 1)
-  ),
-   GetPage(
+      name: ShopsScreen.routename,
+      page: () => ShopsScreen(),
+      transition: Transition.noTransition),
+  GetPage(
+      name: IntroductionScreen.routename,
+      page: () => const IntroductionScreen(),
+      transition: Transition.fadeIn,
+      transitionDuration: Duration(seconds: 1)),
+  GetPage(
     name: SetNewPasswordScreen.routename,
     page: () => SetNewPasswordScreen(),
-   ),
-
+  ),
   GetPage(
     name: RatingAppScreen.routename,
     page: () => RatingAppScreen(),
   ),
-
   GetPage(
     name: RatingSalonScreen.routename,
     page: () => RatingSalonScreen(),
   ),
-   GetPage(
+  GetPage(
     name: SalonSheetScreen.routename,
     page: () => SalonSheetScreen(),
   ),
-   GetPage(
-    name: ProfileScreen.routename,
-    page: () => ProfileScreen(),
-    transition: Transition.noTransition
-  ),
-   GetPage(
+  GetPage(
+      name: ProfileScreen.routename,
+      page: () => ProfileScreen(),
+      transition: Transition.noTransition),
+  GetPage(
     name: PersonalInfosScreen.routename,
     page: () => PersonalInfosScreen(),
   ),
-     GetPage(
+  GetPage(
     name: ChangePasswordScreen.routename,
     page: () => ChangePasswordScreen(),
   ),
-   GetPage(
-    name: NotificationsScreen.routename,
-    page: () => NotificationsScreen(),
-    transition: Transition.upToDown
-  ),
+  GetPage(
+      name: NotificationsScreen.routename,
+      page: () => NotificationsScreen(),
+      transition: Transition.upToDown),
+  GetPage(
+      name: BookingHistoryScreen.routename,
+      page: () => BookingHistoryScreen(),
+      transition: Transition.native),
+  GetPage(
+      name: FavorisScreen.routename,
+      page: () => FavorisScreen(),
+      transition: Transition.native),
 ];

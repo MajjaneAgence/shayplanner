@@ -27,6 +27,7 @@ class SalonSheetServices extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               children: [
                 ThemeButton(
+                    theColor: lightOrange,
                     theAction: salonSheetController.doSomething,
                     theContent: Container(
                       alignment: Alignment.center,
@@ -34,7 +35,7 @@ class SalonSheetServices extends StatelessWidget {
                       height: 7.0.hp,
                       margin: EdgeInsets.only(bottom: 1.0.hp),
                       decoration: BoxDecoration(
-                          color: lightOrange,
+                          color: transparent,
                           borderRadius: BorderRadius.circular(8.0.sp),
                           boxShadow: [themeBoxShadowInput],
                           border: Border.all(color: darkOrange)),
@@ -46,6 +47,7 @@ class SalonSheetServices extends StatelessWidget {
                     theLoadingStatus: salonSheetController.isLoading.value),
                 SizedBox(width: 3.0.wp),
                 ThemeButton(
+                    theColor: lightOrange,
                     theAction: salonSheetController.doSomething,
                     theContent: Container(
                       alignment: Alignment.center,
@@ -53,7 +55,7 @@ class SalonSheetServices extends StatelessWidget {
                       height: 7.0.hp,
                       margin: EdgeInsets.only(bottom: 1.0.hp),
                       decoration: BoxDecoration(
-                          color: lightOrange,
+                          color: transparent,
                           borderRadius: BorderRadius.circular(8.0.sp),
                           boxShadow: [themeBoxShadowInput],
                           border: Border.all(color: darkOrange)),
@@ -65,6 +67,7 @@ class SalonSheetServices extends StatelessWidget {
                     theLoadingStatus: salonSheetController.isLoading.value),
                 SizedBox(width: 3.0.wp),
                 ThemeButton(
+                    theColor: verylightGrey,
                     theAction: salonSheetController.doSomething,
                     theContent: Container(
                       alignment: Alignment.center,
@@ -72,7 +75,7 @@ class SalonSheetServices extends StatelessWidget {
                       height: 7.0.hp,
                       margin: EdgeInsets.only(bottom: 1.0.hp),
                       decoration: BoxDecoration(
-                        color: verylightGrey,
+                        color: transparent,
                         borderRadius: BorderRadius.circular(8.0.sp),
                         boxShadow: [themeBoxShadowInput],
                       ),
@@ -111,6 +114,7 @@ class SalonSheetServices extends StatelessWidget {
                                 theColor: black,
                               ),
                               ThemeButton(
+                                  theColor: white,
                                   theAction: salonSheetController.doSomething,
                                   theContent: Container(
                                     alignment: Alignment.center,
@@ -118,7 +122,7 @@ class SalonSheetServices extends StatelessWidget {
                                     height: 3.5.hp,
                                     margin: EdgeInsets.only(bottom: 1.0.hp),
                                     decoration: BoxDecoration(
-                                        color: white,
+                                        color: transparent,
                                         borderRadius:
                                             BorderRadius.circular(5.0.sp),
                                         boxShadow: [themeBoxShadowInput],
@@ -171,7 +175,7 @@ class SalonSheetServices extends StatelessWidget {
                           Divider()
                         ]),
                   ),
-                    Container(
+                  Container(
                     margin: EdgeInsets.only(bottom: 1.0.hp),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,6 +189,7 @@ class SalonSheetServices extends StatelessWidget {
                                 theColor: black,
                               ),
                               ThemeButton(
+                                  theColor: white,
                                   theAction: salonSheetController.doSomething,
                                   theContent: Container(
                                     alignment: Alignment.center,
@@ -192,7 +197,7 @@ class SalonSheetServices extends StatelessWidget {
                                     height: 3.5.hp,
                                     margin: EdgeInsets.only(bottom: 1.0.hp),
                                     decoration: BoxDecoration(
-                                        color: white,
+                                        color: transparent,
                                         borderRadius:
                                             BorderRadius.circular(5.0.sp),
                                         boxShadow: [themeBoxShadowInput],
