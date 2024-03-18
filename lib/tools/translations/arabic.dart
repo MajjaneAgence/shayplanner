@@ -126,5 +126,10 @@ final Map<String, String> ar = {
   "tr_are_you_sure_you_wanna_delete_notification":
       "هل أنت متأكد أنك تريد حذف الإشعار",
   "tr_no_answer": "لا",
-  "tr_yes_answer": "نعم"
+  "tr_yes_answer": "نعم",
+
+  //about 
+  "tr_faqs":"الأسئلة الشائعة",
+  "Lorem ipsum dolor sit amet?" :"AR(Lorem ipsum dolor sit amet?)",
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat":"AR('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')"
 };

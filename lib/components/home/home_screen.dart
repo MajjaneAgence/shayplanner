@@ -5,6 +5,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:shayplanner/components/home/home_controller.dart';
 import 'package:shayplanner/components/home/home_loading/categories_loading.dart';
 import 'package:shayplanner/components/home/home_loading/latest_salons_loading.dart';
+import 'package:shayplanner/components/home/home_search/home_search_screen.dart';
+import 'package:shayplanner/components/shops/shops_screen.dart';
 import 'package:shayplanner/theme/theme_circle_painter.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_grad_container.dart';
@@ -62,11 +64,11 @@ class HomeScreen extends StatelessWidget {
                                       thefontSize: 10.0.sp,
                                       theColor: black),
                                   SizedBox(width: 5.0.sp),
-                                  Get.locale!.languageCode!="ar" ?
-                                  SvgPicture.asset(
-                                      "assets/icons/home/arrow_left.svg"):
-                                       SvgPicture.asset(
-                                      "assets/icons/home/arrow_right.svg")
+                                  Get.locale!.languageCode != "ar"
+                                      ? SvgPicture.asset(
+                                          "assets/icons/home/arrow_left.svg")
+                                      : SvgPicture.asset(
+                                          "assets/icons/home/arrow_right.svg")
                                 ],
                               ),
                             ),
@@ -218,12 +220,18 @@ class HomeScreen extends StatelessWidget {
                                   theIconWidget: ThemeGradContainer(
                                     theHeight: 3.0.wp,
                                     theWith: 3.0.wp,
-                                    theMargin: 5.0.sp,
                                     theColor: crem,
-                                    theContent: SvgPicture.asset(
-                                        "assets/icons/home/salon.svg",
-                                        width: 5.0.wp,
-                                        height: 5.0.wp),
+                                    theMargin: 5.0.sp,
+                                    theContent: InkWell(
+                                      onTap: () {
+                                        Get.toNamed(ShopsScreen.routename,
+                                            arguments: "nom");
+                                      },
+                                      child: SvgPicture.asset(
+                                          "assets/icons/home/salon.svg",
+                                          width: 5.0.wp,
+                                          height: 5.0.wp),
+                                    ),
                                   ),
                                   theFloatingLabelBehaviour:
                                       FloatingLabelBehavior.never,
@@ -243,10 +251,16 @@ class HomeScreen extends StatelessWidget {
                                     theWith: 3.0.wp,
                                     theColor: crem,
                                     theMargin: 5.0.sp,
-                                    theContent: SvgPicture.asset(
-                                        "assets/icons/home/position.svg",
-                                        width: 5.0.wp,
-                                        height: 5.0.wp),
+                                    theContent: InkWell(
+                                      onTap: () {
+                                        Get.toNamed(ShopsScreen.routename,
+                                            arguments: "adreess");
+                                      },
+                                      child: SvgPicture.asset(
+                                          "assets/icons/home/position.svg",
+                                          width: 5.0.wp,
+                                          height: 5.0.wp),
+                                    ),
                                   ),
                                   theFloatingLabelBehaviour:
                                       FloatingLabelBehavior.never,
@@ -287,43 +301,55 @@ class HomeScreen extends StatelessWidget {
                                 children: [
                                   SizedBox(width: 4.0.wp),
                                   ...homeController.categories.map(
-                                    (category) => Container(
-                                      width: 12.5.hp,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Row(children: [
-                                            CustomPaint(
-                                              size: Size(4.5.hp * 2, 4.5 * 2),
-                                              painter: CirclePainter(
-                                                percentage: 0.8,
-                                                // backgroundColor: Colors.red,
-                                                progressColor: crem,
-                                              ),
-                                              child: CircleAvatar(
-                                                radius: 4.5.hp,
-                                                backgroundImage: NetworkImage(
-                                                    category.pictureUrl),
-                                              ),
-                                            ),
-                                          ]),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              SizedBox(
-                                                width: 15.0.wp,
-                                                child: ThemeText(
-                                                  theText: category.name,
-                                                  thefontSize: 8.0.sp,
-                                                  theColor: black,
-                                                  theMaxOfLines: 1,
+                                    (category) => InkWell(
+                                      onTap: () {
+                                        Get.toNamed(ShopsScreen.routename,
+                                            arguments: 'address');
+                                      },
+                                      child: Container(
+                                        width: 12.5.hp,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  CustomPaint(
+                                                    size: Size(
+                                                        4.5.hp * 2, 4.5 * 2),
+                                                    painter: CirclePainter(
+                                                      percentage: 0.8,
+                                                      // backgroundColor: Colors.red,
+                                                      progressColor: crem,
+                                                    ),
+                                                    child: CircleAvatar(
+                                                      radius: 4.5.hp,
+                                                      backgroundImage:
+                                                          NetworkImage(category
+                                                              .pictureUrl),
+                                                    ),
+                                                  ),
+                                                ]),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Expanded(
+                                                  child: ThemeText(
+                                                    theText: category.name,
+                                                    thefontSize: 8.0.sp,
+                                                    theColor: black,
+                                                    theMaxOfLines: 1,
+                                                    theTextAlign:
+                                                        TextAlign.center,
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   )
@@ -359,160 +385,169 @@ class HomeScreen extends StatelessWidget {
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: [
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        right: 4.0.wp, bottom: 1.0.hp),
-                                    decoration: BoxDecoration(
-                                        boxShadow: themeBoxShadowCard,
-                                        borderRadius:
-                                            BorderRadius.circular(25)),
-                                    child: Column(children: [
-                                      Container(
-                                        height: 25.0.hp,
-                                        width: 87.0.wp,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(18.0.sp),
-                                              topRight:
-                                                  Radius.circular(18.0.sp)),
-                                          image: DecorationImage(
-                                            image: AssetImage(
-                                              "assets/images/model_on_mirror.png",
+                                  InkWell(
+                                    onTap: () {
+                                      Get.toNamed(ShopsScreen.routename,
+                                          arguments: 'nom');
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.only(
+                                          right: 4.0.wp, bottom: 1.0.hp),
+                                      decoration: BoxDecoration(
+                                          boxShadow: themeBoxShadowCard,
+                                          borderRadius:
+                                              BorderRadius.circular(25)),
+                                      child: Column(children: [
+                                        Container(
+                                          height: 25.0.hp,
+                                          width: 87.0.wp,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                                topLeft:
+                                                    Radius.circular(18.0.sp),
+                                                topRight:
+                                                    Radius.circular(18.0.sp)),
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                "assets/images/model_on_mirror.png",
+                                              ),
+                                              fit: BoxFit.cover,
                                             ),
-                                            fit: BoxFit.cover,
                                           ),
                                         ),
-                                      ),
-                                      SizedBox(height: 2.0.hp),
-                                      Container(
-                                        height: 5.0.hp,
-                                        width: 87.0.wp,
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 5.0.wp),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            ThemeText(
-                                                theText: "Lorem ipsum",
-                                                thefontSize: 14.0.sp,
-                                                theColor: black,
-                                                theFontFamily:
-                                                    "Montserrat-Bold"),
-                                            // ThemeGradContainer(
-                                            //   theWith: 6.0.hp,
-                                            //   theHeight: 4.0.hp,
-                                            //   thePadding: 4.0.sp,
-                                            //   theColor: crem,
-                                            //   theContent: SvgPicture.asset(
-                                            //     "assets/icons/arrow_right.svg",
-                                            //   ),
-                                            // ),
-                                            Container(
-                                              width: 6.0.hp,
-                                              height: 4.0.hp,
-                                              padding: EdgeInsets.all(4.0.sp),
-                                              decoration: BoxDecoration(
-                                                color: crem,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        2.0.wp),
-                                              ),
-                                              child: SvgPicture.asset(
-                                                "assets/icons/arrow_right.svg",
-                                              ),
-                                            )
-                                          ],
+                                        SizedBox(height: 2.0.hp),
+                                        Container(
+                                          height: 5.0.hp,
+                                          width: 87.0.wp,
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 5.0.wp),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              ThemeText(
+                                                  theText: "Lorem ipsum",
+                                                  thefontSize: 14.0.sp,
+                                                  theColor: black,
+                                                  theFontFamily:
+                                                      "Montserrat-Bold"),
+                                              // ThemeGradContainer(
+                                              //   theWith: 6.0.hp,
+                                              //   theHeight: 4.0.hp,
+                                              //   thePadding: 4.0.sp,
+                                              //   theColor: crem,
+                                              //   theContent: SvgPicture.asset(
+                                              //     "assets/icons/arrow_right.svg",
+                                              //   ),
+                                              // ),
+                                              Container(
+                                                width: 6.0.hp,
+                                                height: 4.0.hp,
+                                                padding: EdgeInsets.all(4.0.sp),
+                                                decoration: BoxDecoration(
+                                                  color: crem,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          2.0.wp),
+                                                ),
+                                                child: SvgPicture.asset(
+                                                  "assets/icons/arrow_right.svg",
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      Container(
-                                        width: 87.0.wp,
-                                        height: 3.0.hp,
-                                        padding: EdgeInsets.only(
-                                            left: 5.0.wp,
-                                            right: 5.0.wp,
-                                            bottom: 0),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              width: 5.0.wp,
-                                              height: 5.0.wp,
-                                              margin: EdgeInsets.only(
-                                                  right: 2.0.sp),
-                                              child: SvgPicture.asset(
-                                                  'assets/icons/localization.svg',
-                                                  color: grey),
-                                            ),
-                                            Center(
-                                              child: Container(
-                                                width: 50.0.wp,
+                                        Container(
+                                          width: 87.0.wp,
+                                          height: 3.0.hp,
+                                          padding: EdgeInsets.only(
+                                              left: 5.0.wp,
+                                              right: 5.0.wp,
+                                              bottom: 0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                width: 5.0.wp,
+                                                height: 5.0.wp,
                                                 margin: EdgeInsets.only(
-                                                    right: 6.0.sp),
-                                                child: ThemeText(
-                                                  theText:
-                                                      "Lorem ipsum dolor sit amet",
-                                                  thefontSize: 10.0.sp,
-                                                  theColor: grey,
-                                                  theMaxOfLines: 1,
-                                                  theTextDecoration:
-                                                      TextDecoration.underline,
+                                                    right: 2.0.sp),
+                                                child: SvgPicture.asset(
+                                                    'assets/icons/localization.svg',
+                                                    color: grey),
+                                              ),
+                                              Center(
+                                                child: Container(
+                                                  width: 50.0.wp,
+                                                  margin: EdgeInsets.only(
+                                                      right: 6.0.sp),
+                                                  child: ThemeText(
+                                                    theText:
+                                                        "Lorem ipsum dolor sit amet",
+                                                    thefontSize: 10.0.sp,
+                                                    theColor: grey,
+                                                    theMaxOfLines: 1,
+                                                    theTextDecoration:
+                                                        TextDecoration
+                                                            .underline,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      Container(
-                                        width: 87.0.wp,
-                                        height: 3.0.hp,
-                                        padding: EdgeInsets.only(
-                                            left: 5.0.wp,
-                                            right: 5.0.wp,
-                                            top: 0),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              width: 5.0.wp,
-                                              height: 5.0.wp,
-                                              margin: EdgeInsets.only(
-                                                  right: 2.0.sp),
-                                              child: SvgPicture.asset(
-                                                  'assets/icons/star.svg',
-                                                  color: grey),
-                                            ),
-                                            Center(
-                                              child: Container(
-                                                width: 50.0.wp,
+                                        Container(
+                                          width: 87.0.wp,
+                                          height: 3.0.hp,
+                                          padding: EdgeInsets.only(
+                                              left: 5.0.wp,
+                                              right: 5.0.wp,
+                                              top: 0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                width: 5.0.wp,
+                                                height: 5.0.wp,
                                                 margin: EdgeInsets.only(
-                                                    right: 6.0.sp),
-                                                child: ThemeText(
-                                                  theText:
-                                                      "4,9 (317 avis)  MAD",
-                                                  thefontSize: 10.0.sp,
-                                                  theColor: grey,
-                                                  theMaxOfLines: 1,
-                                                  theTextDecoration:
-                                                      TextDecoration.underline,
+                                                    right: 2.0.sp),
+                                                child: SvgPicture.asset(
+                                                    'assets/icons/star.svg',
+                                                    color: grey),
+                                              ),
+                                              Center(
+                                                child: Container(
+                                                  width: 50.0.wp,
+                                                  margin: EdgeInsets.only(
+                                                      right: 6.0.sp),
+                                                  child: ThemeText(
+                                                    theText:
+                                                        "4,9 (317 avis)  MAD",
+                                                    thefontSize: 10.0.sp,
+                                                    theColor: grey,
+                                                    theMaxOfLines: 1,
+                                                    theTextDecoration:
+                                                        TextDecoration
+                                                            .underline,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      SizedBox(height: 1.0.hp),
+                                        SizedBox(height: 1.0.hp),
 
-                                      //  Text("hhhhhh")
-                                    ]),
+                                        //  Text("hhhhhh")
+                                      ]),
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
                     ),
-                    SizedBox(height: 100.0.hp)
+                    SizedBox(height: 20.0.hp)
                   ],
                 ),
               )

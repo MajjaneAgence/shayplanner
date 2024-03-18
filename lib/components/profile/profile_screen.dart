@@ -1,4 +1,5 @@
 import 'package:flutter_svg/svg.dart';
+import 'package:shayplanner/components/about/about_screen.dart';
 import 'package:shayplanner/components/notifications/notifications_screen.dart';
 import 'package:shayplanner/components/profile/profile_controller.dart';
 import 'package:shayplanner/components/profile/profile_loading/user_info_loading.dart';
@@ -214,7 +215,9 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 4.0.hp),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Get.toNamed(AboutScreen.routename);
+                          },
                           child: Row(
                             children: [
                               SvgPicture.asset("assets/icons/profile/infos.svg",

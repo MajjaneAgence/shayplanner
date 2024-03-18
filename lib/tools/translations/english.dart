@@ -127,5 +127,9 @@ final Map<String, String> en = {
 "tr_delete_confirmation": "Delete Confirmation",
 "tr_are_you_sure_you_wanna_delete_notification": "Are you sure you want to delete the notification",
 "tr_no_answer": "No",
-"tr_yes_answer": "Yes"
+"tr_yes_answer": "Yes",
+
+  "tr_faqs":"FAQs",
+  "Lorem ipsum dolor sit amet?" :"EN(Lorem ipsum dolor sit amet?)",
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat":"EN('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')"
 };

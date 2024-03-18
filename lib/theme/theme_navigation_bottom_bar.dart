@@ -42,7 +42,7 @@ class ThemeNavigationBottomBar extends StatelessWidget {
             onTap: () => {},
             child: Get.currentRoute == ProfileScreen.routename
                 ? SvgPicture.asset(
-                    'assets/icons/floating_app_bar/map-active.svg',
+                    'assets/icons/floating_app_bar/map.svg',
                     width: 8.0.wp,
                     height: 8.0.wp)
                 : SvgPicture.asset('assets/icons/floating_app_bar/map.svg',
@@ -50,7 +50,7 @@ class ThemeNavigationBottomBar extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Get.toNamed(ShopsScreen.routename);
+             // Get.toNamed(ShopsScreen.routename);
             },
             child: (Get.currentRoute == ShopsScreen.routename ||
                     Get.currentRoute == SalonSheetScreen.routename)
@@ -58,7 +58,7 @@ class ThemeNavigationBottomBar extends StatelessWidget {
                 // Image.asset(
                 // 'assets/icons/floating_app_bar/calendar-active.png'):
                 SvgPicture.asset(
-                    'assets/icons/floating_app_bar/calendar-active.svg',
+                    'assets/icons/floating_app_bar/calendar.svg',
                     width: 8.0.wp,
                     height: 8.0.wp)
                 : SvgPicture.asset('assets/icons/floating_app_bar/calendar.svg',

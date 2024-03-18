@@ -81,7 +81,7 @@ class SalonSheetRating extends StatelessWidget {
                                   text: TextSpan(
                                     children: [
                                       TextSpan(
-                                          text: "Acceuil ",
+                                          text: "Acceuil",
                                           style: TextStyle(
                                               fontFamily: fontThin,
                                               fontSize: 8.0.sp,

@@ -108,7 +108,7 @@ class ShopsController extends GetxController {
   getShops() async {
     isLoadingShops.value = true;
     isLoadingShops.refresh();
-    await Future.delayed(Duration(seconds: 4));
+    await Future.delayed(Duration(seconds: 3));
     isLoadingShops.value = false;
     isLoadingShops.refresh();
   }

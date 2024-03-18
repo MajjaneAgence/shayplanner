@@ -109,7 +109,7 @@ final Map<String, String> fr = {
       "Votre mot de passe a été modifié avec succès",
 
   // introduction
-  "tr_book_appointment": "Prendre un redez-vous",
+  "tr_book_appointment": "Prendre un rendez-vous",
   "tr_professional_space": "Espace professionnel",
 
 //home
@@ -131,5 +131,10 @@ final Map<String, String> fr = {
   "tr_are_you_sure_you_wanna_delete_notification":
       "Êtes-vous sûr de vouloir supprimer la notification",
   "tr_no_answer": "Non",
-  "tr_yes_answer": "Oui"
+  "tr_yes_answer": "Oui",
+
+  //about 
+  "tr_faqs":"FAQs",
+  "Lorem ipsum dolor sit amet?" :"FR(Lorem ipsum dolor sit amet?)",
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat":"FR('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')"
 };

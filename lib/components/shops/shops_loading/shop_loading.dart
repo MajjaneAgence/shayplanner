@@ -144,12 +144,9 @@ class ShopsLoading extends StatelessWidget {
                               child: InkWell(
                                 onTap: () => shopsController.goToSalonSheet(),
                                 child: Container(
-                                  margin: EdgeInsets.only(
-                                      bottom: 4.0.hp,
-                                      top: 2.0.hp,
-                                      right: 3.0.wp),
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 2.5.wp, horizontal: 2.0.wp),
+                                  width: 28.0.wp,
+                                  height: 5.0.hp,
+                                  alignment: Alignment.center,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8.0),
                                     color: grey,
@@ -251,7 +248,7 @@ class ShopsLoading extends StatelessWidget {
                       theLoadingStatus:
                           shopsController.isLoadingBookAppointment.value),
                 ),
-                SizedBox(height: 4.0.hp)
+                SizedBox(height: 2.0.hp)
               ],
             );
           }),

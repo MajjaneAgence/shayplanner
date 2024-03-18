@@ -100,7 +100,7 @@ class ChangePasswordScreen extends StatelessWidget {
                                 theIconWidget: IconButton(
                                   icon: Icon(
                                     profileController
-                                            .isObscureConfirmation.value
+                                            .isNewPasswordObscure.value
                                         ? Icons.visibility
                                         : Icons.visibility_off,
                                     color: Colors.grey,
