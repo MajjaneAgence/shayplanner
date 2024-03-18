@@ -82,7 +82,7 @@ class ChangePasswordScreen extends StatelessWidget {
                               ThemeText(
                                   theText: "tr_new_password".tr,
                                   thefontSize: 10.0.sp,
-                                 theColor: lightGrey,
+                                  theColor: lightGrey,
                                   theFontWeight: FontWeight.bold),
                               SizedBox(height: 0.5.hp),
                               ThemeInput(
@@ -117,7 +117,7 @@ class ChangePasswordScreen extends StatelessWidget {
                               ThemeText(
                                   theText: "tr_new_password_confirmation".tr,
                                   thefontSize: 10.0.sp,
-                                 theColor: lightGrey,
+                                  theColor: lightGrey,
                                   theFontWeight: FontWeight.bold),
                               SizedBox(height: 0.5.hp),
                               ThemeInput(
@@ -148,30 +148,22 @@ class ChangePasswordScreen extends StatelessWidget {
                                   },
                                 ),
                               ),
-                              SizedBox(height:4.0.hp),
+                              SizedBox(height: 4.0.hp),
                               Center(
                                 child: ThemeButton(
-                                    theContent: Container(
-                                      alignment: Alignment.center,
-                                      width: 60.0.wp,
-                                      height: 5.0.hp,
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 5.0.wp, vertical: 1.0.hp),
-                                      decoration: BoxDecoration(
-                                        color: grey,
-                                        borderRadius:
-                                            BorderRadius.circular(2.0.wp),
-                                      ),
-                                      child: ThemeText(
+                                  theWidth: 60.0.wp,
+                                  theHeight:5.0.hp,
+                                  theHorizontalPadding: 5.0.wp,
+                                  theVerticalPadding:1.0.hp,
+                                    theColor: grey,
+                                    theContent:ThemeText(
                                           theText: "tr_save".tr,
                                           thefontSize: 12.0.sp,
                                           theFontWeight: FontWeight.bold,
                                           theColor: white),
-                                    ),
                                     theFormKey:
                                         profileController.formKeyChangePassword,
-                                    theAction: profileController
-                                        .changePassword,
+                                    theAction: profileController.changePassword,
                                     theLoadingStatus: profileController
                                         .isloadingChangePassword.value),
                               ),

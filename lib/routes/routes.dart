@@ -1,5 +1,7 @@
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:shayplanner/components/about/about_screen.dart';
+import 'package:shayplanner/components/booking_history/booking_history_screen.dart';
+import 'package:shayplanner/components/favoris/favoris_screen.dart';
 import 'package:shayplanner/components/forgot_password/forgot_password_screen.dart';
 import 'package:shayplanner/components/forgot_password/set_new_password_screen.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
@@ -87,4 +89,12 @@ var router = [
       name: HomeSearchScreen.routename,
       page: () => HomeSearchScreen(),
       transition: Transition.downToUp),
+           GetPage(
+      name: BookingHistoryScreen.routename,
+      page: () => BookingHistoryScreen(),
+      transition: Transition.native),
+  GetPage(
+      name: FavorisScreen.routename,
+      page: () => FavorisScreen(),
+      transition: Transition.native),
 ];

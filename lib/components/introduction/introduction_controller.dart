@@ -16,16 +16,16 @@ class IntroductionController extends GetxController {
     FlutterSecureStorage storage = FlutterSecureStorage();
     String? token = await storage.read(key: 'token');
     print(token);
-   if (token == null) {
-    Get.toNamed(LoginScreenForEmailAndSocial.routename);
+    if (token == null) {
+      Get.offAllNamed(LoginScreenForEmailAndSocial.routename);
     } else {
       Get.toNamed(HomeScreen.routename);
     }
   }
 
   void onButton2Pressed() async {
-   // Get.toNamed(RatingAppScreen.routename);
-   Get.toNamed(SalonSheetScreen.routename);
+    // Get.toNamed(RatingAppScreen.routename);
+    Get.toNamed(SalonSheetScreen.routename);
   }
 
   // Additional functions and logic as needed

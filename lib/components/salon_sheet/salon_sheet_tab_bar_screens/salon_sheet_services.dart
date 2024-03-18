@@ -26,62 +26,56 @@ class SalonSheetServices extends StatelessWidget {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                ThemeButton(
-                    theAction: salonSheetController.doSomething,
-                    theContent: Container(
-                      alignment: Alignment.center,
-                      width: 30.0.wp,
-                      height: 7.0.hp,
-                      margin: EdgeInsets.only(bottom: 1.0.hp),
-                      decoration: BoxDecoration(
-                          color: lightOrange,
-                          borderRadius: BorderRadius.circular(8.0.sp),
-                          boxShadow: [themeBoxShadowInput],
-                          border: Border.all(color: darkOrange)),
-                      child: ThemeText(
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 0.5.hp),
+                  child: ThemeButton(
+                      theWidth: 30.0.wp,
+                      theHeight: 3.5.hp,
+                      theBorderColor: darkOrange,
+                      theBorderRadius: 6.0.sp,
+                      theColor: lightOrange,
+                      theAction: salonSheetController.doSomething,
+                      theHorizontalPadding: 2.0.wp,
+                      theContent: ThemeText(
                           theText: "Lorem ipsum",
-                          thefontSize: 10.0.sp,
+                          thefontSize: 9.0.sp,
                           theColor: darkOrange),
-                    ),
-                    theLoadingStatus: salonSheetController.isLoading.value),
+                      theLoadingStatus: salonSheetController.isLoading.value),
+                ),
                 SizedBox(width: 3.0.wp),
-                ThemeButton(
-                    theAction: salonSheetController.doSomething,
-                    theContent: Container(
-                      alignment: Alignment.center,
-                      width: 30.0.wp,
-                      height: 7.0.hp,
-                      margin: EdgeInsets.only(bottom: 1.0.hp),
-                      decoration: BoxDecoration(
-                          color: lightOrange,
-                          borderRadius: BorderRadius.circular(8.0.sp),
-                          boxShadow: [themeBoxShadowInput],
-                          border: Border.all(color: darkOrange)),
-                      child: ThemeText(
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 0.5.hp),
+                  child: ThemeButton(
+                      theWidth: 30.0.wp,
+                      theHeight: 3.5.hp,
+                      theBorderColor: darkOrange,
+                      theBorderRadius: 6.0.sp,
+                      theColor: lightOrange,
+                      theAction: salonSheetController.doSomething,
+                      theHorizontalPadding: 2.0.wp,
+                      theContent: ThemeText(
                           theText: "Lorem ipsum",
-                          thefontSize: 10.0.sp,
+                          thefontSize: 9.0.sp,
                           theColor: darkOrange),
-                    ),
-                    theLoadingStatus: salonSheetController.isLoading.value),
+                      theLoadingStatus: salonSheetController.isLoading.value),
+                ),
                 SizedBox(width: 3.0.wp),
-                ThemeButton(
-                    theAction: salonSheetController.doSomething,
-                    theContent: Container(
-                      alignment: Alignment.center,
-                      width: 30.0.wp,
-                      height: 7.0.hp,
-                      margin: EdgeInsets.only(bottom: 1.0.hp),
-                      decoration: BoxDecoration(
-                        color: verylightGrey,
-                        borderRadius: BorderRadius.circular(8.0.sp),
-                        boxShadow: [themeBoxShadowInput],
-                      ),
-                      child: ThemeText(
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 0.5.hp),
+                  child: ThemeButton(
+                      theWidth: 30.0.wp,
+                      theHeight: 3.5.hp,
+                      theBorderColor: lightGrey,
+                      theBorderRadius: 6.0.sp,
+                      theColor: verylightGrey,
+                      theAction: salonSheetController.doSomething,
+                      theHorizontalPadding: 2.0.wp,
+                      theContent: ThemeText(
                           theText: "Lorem ipsum",
-                          thefontSize: 10.0.sp,
-                          theColor: lightGrey),
-                    ),
-                    theLoadingStatus: salonSheetController.isLoading.value),
+                          thefontSize: 9.0.sp,
+                          theColor: grey),
+                      theLoadingStatus: salonSheetController.isLoading.value),
+                ),
               ],
             ),
           ),
@@ -111,33 +105,26 @@ class SalonSheetServices extends StatelessWidget {
                                 theColor: black,
                               ),
                               ThemeButton(
+                                  theWidth: 30.0.wp,
+                                  theHeight: 3.5.hp,
+                                  theBorderColor: darkOrange,
+                                  theBorderRadius: 6.0.sp,
+                                  theColor: white,
                                   theAction: salonSheetController.doSomething,
-                                  theContent: Container(
-                                    alignment: Alignment.center,
-                                    width: 26.0.wp,
-                                    height: 3.5.hp,
-                                    margin: EdgeInsets.only(bottom: 1.0.hp),
-                                    decoration: BoxDecoration(
-                                        color: white,
-                                        borderRadius:
-                                            BorderRadius.circular(5.0.sp),
-                                        boxShadow: [themeBoxShadowInput],
-                                        border: Border.all(color: darkOrange)),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        ThemeText(
-                                            theText: "Ajouter",
-                                            thefontSize: 10.0.sp,
-                                            theColor: darkOrange),
-                                        SvgPicture.asset(
-                                          "assets/icons/plus.svg",
-                                          color: darkOrange,
-                                          width: 14.0.sp,
-                                        )
-                                      ],
-                                    ),
+                                  theContent: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      ThemeText(
+                                          theText: "Ajouter",
+                                          thefontSize: 10.0.sp,
+                                          theColor: darkOrange),
+                                      SvgPicture.asset(
+                                        "assets/icons/plus.svg",
+                                        color: darkOrange,
+                                        width: 14.0.sp,
+                                      )
+                                    ],
                                   ),
                                   theLoadingStatus:
                                       salonSheetController.isLoading.value),
@@ -171,7 +158,7 @@ class SalonSheetServices extends StatelessWidget {
                           Divider()
                         ]),
                   ),
-                    Container(
+                  Container(
                     margin: EdgeInsets.only(bottom: 1.0.hp),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,33 +172,26 @@ class SalonSheetServices extends StatelessWidget {
                                 theColor: black,
                               ),
                               ThemeButton(
+                                  theWidth: 30.0.wp,
+                                  theHeight: 3.5.hp,
+                                  theBorderColor: darkOrange,
+                                  theBorderRadius: 6.0.sp,
+                                  theColor: white,
                                   theAction: salonSheetController.doSomething,
-                                  theContent: Container(
-                                    alignment: Alignment.center,
-                                    width: 26.0.wp,
-                                    height: 3.5.hp,
-                                    margin: EdgeInsets.only(bottom: 1.0.hp),
-                                    decoration: BoxDecoration(
-                                        color: white,
-                                        borderRadius:
-                                            BorderRadius.circular(5.0.sp),
-                                        boxShadow: [themeBoxShadowInput],
-                                        border: Border.all(color: darkOrange)),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        ThemeText(
-                                            theText: "Ajouter",
-                                            thefontSize: 10.0.sp,
-                                            theColor: darkOrange),
-                                        SvgPicture.asset(
-                                          "assets/icons/plus.svg",
-                                          color: darkOrange,
-                                          width: 14.0.sp,
-                                        )
-                                      ],
-                                    ),
+                                  theContent: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      ThemeText(
+                                          theText: "Ajouter",
+                                          thefontSize: 10.0.sp,
+                                          theColor: darkOrange),
+                                      SvgPicture.asset(
+                                        "assets/icons/plus.svg",
+                                        color: darkOrange,
+                                        width: 14.0.sp,
+                                      )
+                                    ],
                                   ),
                                   theLoadingStatus:
                                       salonSheetController.isLoading.value),

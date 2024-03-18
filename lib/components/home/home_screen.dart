@@ -126,16 +126,20 @@ class HomeScreen extends StatelessWidget {
           ),
           centerTitle: true,
           actions: [
-            Row(
-              children: [
-                SvgPicture.asset(
-                  "assets/icons/bell.svg",
-                  width: 5.0.wp,
-                  height: 5.0.wp,
-                ),
-                SizedBox(width: 8.0.wp),
-              ],
-            )
+            GestureDetector(
+                onTap: () {
+                  homeController.gotoNotifcation();
+                },
+                child: Row(
+                  children: [
+                    SvgPicture.asset(
+                      "assets/icons/bell.svg",
+                      width: 5.0.wp,
+                      height: 5.0.wp,
+                    ),
+                    SizedBox(width: 8.0.wp),
+                  ],
+                ))
           ],
           toolbarHeight: 10.0.hp,
         ),
@@ -547,7 +551,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                     ),
-                    SizedBox(height: 20.0.hp)
+                    SizedBox(height: 100.0.hp)
                   ],
                 ),
               )

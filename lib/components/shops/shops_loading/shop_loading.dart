@@ -238,15 +238,11 @@ class ShopsLoading extends StatelessWidget {
                 Shimmer.fromColors(
                   baseColor: Colors.grey[300]!,
                   highlightColor: Colors.grey[100]!,
-                  child: ThemeButton(
-                      theContent: ThemeGradContainer(
-                        theWith: 40.0.wp,
-                        theHeight: 5.0.hp,
-                        theLinearGradient: greyYellowLinearGradient,
-                      ),
-                      theAction: shopsController.book,
-                      theLoadingStatus:
-                          shopsController.isLoadingBookAppointment.value),
+                  child: ThemeGradContainer(
+                    theWith: 40.0.wp,
+                    theHeight: 5.0.hp,
+                    theLinearGradient: greyYellowLinearGradient,
+                  ),
                 ),
                 SizedBox(height: 2.0.hp)
               ],

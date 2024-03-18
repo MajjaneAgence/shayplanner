@@ -17,7 +17,7 @@ final Map<String, String> fr = {
   "tr_continue_without_registration": "Continuer sans s'incrire",
   "tr_remember_me": "Se souvenir de moi",
   "tr_type_your_password": "Saisir votre mot de passe",
-  "tr_new_on_planner":"Nouveau sur PLANNER",
+  "tr_new_on_planner": "Nouveau sur PLANNER",
 
   // Forgot password screen
   "tr_try_something_else": "Essayer une autre méthode",
@@ -88,7 +88,7 @@ final Map<String, String> fr = {
   "tr_about_PLANNER": "À propos de PLANNER",
   "tr_support": "Aide",
   "tr_logout": "Se déconnecter",
-  "tr_Logging_out...":"Déconnexion....",
+  "tr_Logging_out...": "Déconnexion....",
 
   // editing personal infos
   "tr_firstname": "Prénom",
@@ -121,9 +121,9 @@ final Map<String, String> fr = {
 
   //salons
   "tr_select_salon": "Sélectionnez un salon",
-  "tr_salon_sheet_":"Fiche du salon",
-  "tr_afternoon":"Après-midi",
-  "tr_morning":"Matin",
+  "tr_salon_sheet_": "Fiche du salon",
+  "tr_afternoon": "Après-midi",
+  "tr_morning": "Matin",
 
   //notifications
   "tr_notification": "Notifications",
@@ -136,5 +136,9 @@ final Map<String, String> fr = {
   //about 
   "tr_faqs":"FAQs",
   "Lorem ipsum dolor sit amet?" :"FR(Lorem ipsum dolor sit amet?)",
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat":"FR('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')"
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat":"FR('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')",
+  //booking history
+  "tr_book_again": "Réserver à nouveau"
+
+  //favorite
 };

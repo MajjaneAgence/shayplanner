@@ -226,7 +226,7 @@ class PersonalInfosScreen extends StatelessWidget {
                               SizedBox(height: 2.0.hp),
                               InkWell(
                                 onTap: () {
-                                   profileController.goTochangePassword();
+                                  profileController.goTochangePassword();
                                 },
                                 child: ThemeText(
                                   theText: "tr_change_password".tr,
@@ -237,32 +237,27 @@ class PersonalInfosScreen extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(height: 3.0.hp),
-                              profileController.isEditingEnabled.value ?
-                              Center(
-                                child: ThemeButton(
-                                    theContent: Container(
-                                      alignment: Alignment.center,
-                                      width: 60.0.wp,
-                                      height: 5.0.hp,
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 5.0.wp, vertical: 1.0.hp),
-                                      decoration: BoxDecoration(
-                                        color: grey,
-                                        borderRadius:
-                                            BorderRadius.circular(2.0.wp),
-                                      ),
-                                      child: ThemeText(
-                                          theText: "tr_save".tr,
-                                          thefontSize: 12.0.sp,
-                                          theFontWeight: FontWeight.bold,
-                                          theColor: white),
-                                    ),
-                                    theFormKey: profileController.formKeyEditPersoInfos,
-                                    theAction: profileController
-                                        .updatePersonalInformations,
-                                    theLoadingStatus: profileController
-                                        .isSubmittingForm.value),
-                              ):const SizedBox(),
+                              profileController.isEditingEnabled.value
+                                  ? Center(
+                                      child: ThemeButton(
+                                        theWidth: 60.0.wp,
+                                        theHeight:  5.0.hp,
+                                        theHorizontalPadding:5.0.wp,
+                                        theVerticalPadding:1.0.hp,
+                                          theColor: grey,
+                                          theContent:  ThemeText(
+                                                theText: "tr_save".tr,
+                                                thefontSize: 12.0.sp,
+                                                theFontWeight: FontWeight.bold,
+                                                theColor: white),
+                                          theFormKey: profileController
+                                              .formKeyEditPersoInfos,
+                                          theAction: profileController
+                                              .updatePersonalInformations,
+                                          theLoadingStatus: profileController
+                                              .isSubmittingForm.value),
+                                    )
+                                  : const SizedBox(),
                               SizedBox(height: 2.0.hp),
                             ],
                           ),

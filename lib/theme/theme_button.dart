@@ -12,18 +12,47 @@ class ThemeButton extends StatelessWidget {
   Function? theAction;
   bool? theLoadingStatus;
   var theFormKey;
+  Color theColor;
+  Color? theBorderColor;
+  double? theWidth;
+  double? theHeight;
+  double? theVerticalPadding;
+  double? theHorizontalPadding;
+  double? theBorderRadius;
+  Color? theShadowColor;
   ThemeButton(
       {Key? key,
       required this.theContent,
-       this.theAction,
+      this.theAction,
       this.theFormKey,
-      this.theLoadingStatus})
+      this.theLoadingStatus,
+      required this.theColor,
+      this.theBorderColor,
+       this.theHeight,
+      this.theWidth,
+      this.theVerticalPadding,
+      this.theHorizontalPadding,
+      this.theBorderRadius,
+      this.theShadowColor})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     return theLoadingStatus == false
-        ? (InkWell(
-            onTap: () {
+        ? (ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.symmetric(horizontal: 4.0.wp),
+              backgroundColor: theColor,
+              surfaceTintColor: theColor,
+              shadowColor: theShadowColor,
+              elevation: 5,
+              fixedSize:Size(theWidth??40, theHeight?? 5),
+              minimumSize: Size(theWidth??40, theHeight?? 5),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(theBorderRadius ?? 4.0.sp), // Border radius
+                side: BorderSide(color: theBorderColor ?? Colors.transparent), 
+              ),
+            ),
+            onPressed: () {
               if (theFormKey == null) {
                 theAction!();
               } else {
@@ -34,11 +63,11 @@ class ThemeButton extends StatelessWidget {
             },
             child: theContent))
         : const CircularProgressIndicator();
-        
-      //   Center(
-      // child: LoadingAnimationWidget.staggeredDotsWave(
-      //   color: yellow,
-      //   size: 30.0.sp,
-      // ));
+
+    //   Center(
+    // child: LoadingAnimationWidget.staggeredDotsWave(
+    //   color: yellow,
+    //   size: 30.0.sp,
+    // ));
   }
 }

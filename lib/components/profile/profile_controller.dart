@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shayplanner/components/api/api_helper.dart';
+import 'package:shayplanner/components/booking_history/booking_history_screen.dart';
+import 'package:shayplanner/components/favoris/favoris_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/change_password_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/personal_infos_screen.dart';
@@ -379,5 +381,13 @@ class ProfileController extends GetxController {
         }
       }
     });
+  }
+
+  goToBookingHistory() {
+    Get.toNamed(BookingHistoryScreen.routename);
+  }
+
+  goToFvoris() {
+    Get.toNamed(FavorisScreen.routename);
   }
 }

@@ -83,6 +83,8 @@ flutter:
      - assets/icons/profile/
      - assets/icons/app_logos/
      - assets/icons/notifications/
+     - assets/icons/booking_history/
+     - assets/icons/favorite/
      - assets/icons/home/
      - assets/icons/about/
      - assets/icons/splash/planner.gif

@@ -74,7 +74,10 @@ class SalonSheetRating extends StatelessWidget {
                           child: Container(
                             padding: EdgeInsets.symmetric(horizontal: 3.0.wp),
                             child: Column(
-                              crossAxisAlignment: Get.locale!.languageCode!="ar" ? CrossAxisAlignment.start :CrossAxisAlignment.end,
+                              crossAxisAlignment:
+                                  Get.locale!.languageCode != "ar"
+                                      ? CrossAxisAlignment.start
+                                      : CrossAxisAlignment.end,
                               children: [
                                 SizedBox(height: 1.0.hp),
                                 RichText(

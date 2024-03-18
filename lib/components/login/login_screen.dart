@@ -43,11 +43,12 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.0.wp),
                 child: ThemeButton(
+                    theColor: white,
                     theContent: Container(
                       padding: EdgeInsets.symmetric(
                           horizontal: 5.0.wp, vertical: 1.0.hp),
                       decoration: BoxDecoration(
-                        color: white,
+                        color: transparent,
                         borderRadius: BorderRadius.circular(2.0.wp),
                         border: Border.all(
                           color: brown,
@@ -76,11 +77,12 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.0.wp),
                 child: ThemeButton(
+                    theColor: white,
                     theContent: Container(
                       padding: EdgeInsets.symmetric(
                           horizontal: 5.0.wp, vertical: 1.0.hp),
                       decoration: BoxDecoration(
-                        color: white,
+                        color: transparent,
                         borderRadius: BorderRadius.circular(2.0.wp),
                         border: Border.all(
                           color: brown,
@@ -109,11 +111,12 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.0.wp),
                 child: ThemeButton(
+                    theColor: white,
                     theContent: Container(
                       padding: EdgeInsets.symmetric(
                           horizontal: 5.0.wp, vertical: 1.0.hp),
                       decoration: BoxDecoration(
-                        color: white,
+                        color: transparent,
                         borderRadius: BorderRadius.circular(2.0.wp),
                         border: Border.all(
                           color: brown,
@@ -194,6 +197,7 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
                           SizedBox(height: 2.0.hp),
                           Center(
                             child: ThemeButton(
+                                theColor: grey,
                                 theContent: Container(
                                   alignment: Alignment.center,
                                   width: 60.0.wp,
@@ -201,7 +205,7 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
                                   padding: EdgeInsets.symmetric(
                                       horizontal: 5.0.wp, vertical: 1.0.hp),
                                   decoration: BoxDecoration(
-                                    color: grey,
+                                    color: transparent,
                                     borderRadius: BorderRadius.circular(2.0.wp),
                                   ),
                                   child: ThemeText(
@@ -241,11 +245,12 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
                           SizedBox(height: 2.0.hp),
                           Center(
                             child: ThemeButton(
+                                theColor: transparent,
                                 theContent: Container(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 5.0.wp, vertical: 1.0.hp),
                                     decoration: BoxDecoration(
-                                      color: white,
+                                      color: transparent,
                                       borderRadius:
                                           BorderRadius.circular(2.0.wp),
                                       border: Border.all(
@@ -385,6 +390,7 @@ class LoginScreenForPassword extends StatelessWidget {
                           SizedBox(height: 2.0.hp),
                           Obx(() => Center(
                                 child: ThemeButton(
+                                    theColor: grey,
                                     theContent: Container(
                                       alignment: Alignment.center,
                                       width: 60.0.wp,
@@ -392,7 +398,7 @@ class LoginScreenForPassword extends StatelessWidget {
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 5.0.wp, vertical: 1.0.hp),
                                       decoration: BoxDecoration(
-                                        color: grey,
+                                        color: transparent,
                                         borderRadius:
                                             BorderRadius.circular(2.0.wp),
                                       ),
