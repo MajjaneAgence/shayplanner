@@ -303,7 +303,7 @@ class HomeScreen extends StatelessWidget {
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: [
-                                  SizedBox(width: 4.0.wp),
+                                  SizedBox(width: 3.0.wp),
                                   ...homeController.categories.map(
                                     (category) => InkWell(
                                       onTap: () {
@@ -311,6 +311,7 @@ class HomeScreen extends StatelessWidget {
                                             arguments: 'address');
                                       },
                                       child: Container(
+                                        // color:Colors.red,
                                         width: 12.5.hp,
                                         child: Column(
                                           mainAxisAlignment:
@@ -447,13 +448,21 @@ class HomeScreen extends StatelessWidget {
                                               Container(
                                                 width: 6.0.hp,
                                                 height: 4.0.hp,
-                                                padding: EdgeInsets.all(4.0.sp),
+                                                padding: EdgeInsets.all(5.0.sp),
                                                 decoration: BoxDecoration(
-                                                  color: crem,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          2.0.wp),
-                                                ),
+                                          borderRadius:
+                                              BorderRadius.circular(6.0.sp),
+                                          boxShadow: [
+                                            BoxShadow(
+                                                color: Color.fromARGB(
+                                                    255, 185, 126, 70)),
+                                            BoxShadow(
+                                                color: crem,
+                                                spreadRadius: -0.5,
+                                                offset: Offset(-2, -3),
+                                                blurRadius: 0),
+                                          ],
+                                        ),
                                                 child: SvgPicture.asset(
                                                   "assets/icons/arrow_right.svg",
                                                 ),
@@ -551,7 +560,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                     ),
-                    SizedBox(height: 100.0.hp)
+                    SizedBox(height: 15.0.hp)
                   ],
                 ),
               )

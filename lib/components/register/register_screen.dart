@@ -188,22 +188,14 @@ class RegisterScreen extends StatelessWidget {
                       () => Center(
                         child: ThemeButton(
                             theColor: grey,
-                            theContent: Container(
-                              alignment: Alignment.center,
-                              width: 60.0.wp,
-                              height: 5.0.hp,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 5.0.wp, vertical: 1.0.hp),
-                              decoration: BoxDecoration(
-                                color: transparent,
-                                borderRadius: BorderRadius.circular(2.0.wp),
-                              ),
-                              child: ThemeText(
-                                  theText: "tr_register".tr,
-                                  thefontSize: 12.0.sp,
-                                  theFontWeight: FontWeight.bold,
-                                  theColor: white),
-                            ),
+                            theWidth: 65.0.wp,
+                            theHeight: 6.5.hp,
+                            theBorderRadius: 2.0.wp,
+                            theContent: ThemeText(
+                                theText: "tr_register".tr,
+                                thefontSize: 12.0.sp,
+                                theFontWeight: FontWeight.bold,
+                                theColor: white),
                             theFormKey: registerController.formKey,
                             theAction: registerController.register,
                             theLoadingStatus:

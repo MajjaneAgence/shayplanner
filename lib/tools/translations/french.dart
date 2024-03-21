@@ -111,6 +111,7 @@ final Map<String, String> fr = {
   // introduction
   "tr_book_appointment": "Prendre un rendez-vous",
   "tr_professional_space": "Espace professionnel",
+  "tr_follow_us":"suivez-nous",
 
 //home
   "tr_book_ur_beauty_appointment": "Réservez votre rendez-vous beauté",
@@ -135,10 +136,13 @@ final Map<String, String> fr = {
 
   //about 
   "tr_faqs":"FAQs",
+  "tr_about_":"À propos de",
   "Lorem ipsum dolor sit amet?" :"FR(Lorem ipsum dolor sit amet?)",
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat":"FR('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')",
+
   //booking history
-  "tr_book_again": "Réserver à nouveau"
+  "tr_book_again": "Réserver à nouveau",
+  "tr_done":"Complétée"
 
   //favorite
 };

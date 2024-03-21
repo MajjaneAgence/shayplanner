@@ -108,6 +108,8 @@ final Map<String, String> en = {
   // introduction
   "tr_book_appointment": "Book an appointment",
   "tr_professional_space": "Professional space",
+  "tr_follow_us": "Follow us",
+
 
   // home
 "tr_book_ur_beauty_appointment": "Book your beauty appointment",
@@ -129,7 +131,14 @@ final Map<String, String> en = {
 "tr_no_answer": "No",
 "tr_yes_answer": "Yes",
 
+//about
   "tr_faqs":"FAQs",
+  "tr_about_":"About",
   "Lorem ipsum dolor sit amet?" :"EN(Lorem ipsum dolor sit amet?)",
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat":"EN('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')"
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat":"EN('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')",
+
+  // Booking history
+"tr_book_again": "Book Again",
+"tr_done": "Completed",
+
 };

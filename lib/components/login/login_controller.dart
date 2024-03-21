@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shayplanner/components/forgot_password/forgot_password_screen.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
@@ -73,7 +75,56 @@ class LoginController extends GetxController {
     Get.toNamed(RegisterScreen.routename);
   }
 
-  loginWithGoogle() {}
+  loginWithGoogle()async{
+    //  SharedPreferences preferences = await SharedPreferences.getInstance();
+    // //Trigger the authentication flow
+    // final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    // if (googleUser == null) {
+    //   await GoogleSignIn().signOut();
+    // } else {
+    //   // Obtain the auth details from the request
+    //   final GoogleSignInAuthentication googleAuth =
+    //       await googleUser.authentication;
+
+    //       print(googleAuth.accessToken);
+    // }
+      // Create a new credential
+      // final credential = GoogleAuthProvider.credential(
+      //   accessToken: googleAuth.accessToken,
+      //   idToken: googleAuth.idToken,
+      // );
+
+      // // Once signed in, return the UserCredential
+      // return await FirebaseAuth.instance
+      //     .signInWithCredential(credential)
+      //     .then((value) {
+      //   userProvider
+      //       .loginSocial(value.additionalUserInfo!.profile!['email'])
+      //       .then((result) async {
+      //     var responseDecode = jsonDecode(result.body);
+      //     if (responseDecode['success'] == 1) {
+      //       await flutterSecureStorage.write(
+      //           key: "token", value: responseDecode['data']['customer_token']);
+      //       preferences.setString("id", responseDecode['data']['customer_id']);
+      //       preferences.setBool("isSocial", true);
+      //       Get.offAllNamed(MainApp.routename);
+      //     } else {
+      //       preferences.setBool("isSocial", true);
+      //       Get.toNamed(Inscription.routename, arguments: [
+      //         value.additionalUserInfo!.profile!['email'],
+      //         value.additionalUserInfo!.profile!['given_name'],
+      //         value.additionalUserInfo!.profile!['family_name']
+      //       ]);
+      //     }
+      //   });
+      // });
+
+      //   return value;
+      // });
+    }
+
+
+
 
   loginWithApple() {}
 

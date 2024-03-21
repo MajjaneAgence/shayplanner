@@ -222,7 +222,8 @@ class SalonSheetServices extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Divider()
+                          Divider(),
+                          SizedBox(height:10.0.hp)
                         ]),
                   ),
                   // SizedBox(

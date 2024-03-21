@@ -47,11 +47,7 @@ class AboutController extends GetxController {
         faqList.refresh();
 
     var itemToUpdate = faqList.firstWhere((item) => item['id'] == id);
-    print(itemToUpdate['isExpanded']);
     itemToUpdate['isExpanded'] = !itemToUpdate['isExpanded'];
-        print(itemToUpdate['isExpanded']);
-
     faqList.refresh();
-    print(faqList);
   }
 }

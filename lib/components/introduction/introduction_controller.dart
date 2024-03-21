@@ -17,7 +17,7 @@ class IntroductionController extends GetxController {
     String? token = await storage.read(key: 'token');
     print(token);
     if (token == null) {
-      Get.offAllNamed(LoginScreenForEmailAndSocial.routename);
+      Get.toNamed(LoginScreenForEmailAndSocial.routename);
     } else {
       Get.toNamed(HomeScreen.routename);
     }

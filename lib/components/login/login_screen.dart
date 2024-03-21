@@ -44,32 +44,24 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 10.0.wp),
                 child: ThemeButton(
                     theColor: white,
-                    theContent: Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 5.0.wp, vertical: 1.0.hp),
-                      decoration: BoxDecoration(
-                        color: transparent,
-                        borderRadius: BorderRadius.circular(2.0.wp),
-                        border: Border.all(
-                          color: brown,
-                          width: 1,
-                        ),
-                      ),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SvgPicture.asset(
-                                "assets/icons/social_media/google.svg",
-                                width: 8.0.wp,
-                                height: 8.0.wp),
-                            SizedBox(width: 8.0.wp),
-                            ThemeText(
-                                theText: "tr_continue_with_google".tr,
-                                thefontSize: 10.0.sp,
-                                theFontWeight: FontWeight.bold,
-                                theColor: black)
-                          ]),
-                    ),
+                    theWidth: 90.0.wp,
+                    theHeight: 6.5.hp,
+                    theBorderRadius: 2.0.wp,
+                    theBorderColor: brown,
+                    theContent: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SvgPicture.asset(
+                              "assets/icons/social_media/google.svg",
+                              width: 8.0.wp,
+                              height: 8.0.wp),
+                          SizedBox(width: 9.0.wp),
+                          ThemeText(
+                              theText: "tr_continue_with_google".tr,
+                              thefontSize: 10.0.sp,
+                              theFontWeight: FontWeight.bold,
+                              theColor: black)
+                        ]),
                     theAction: loginController.loginWithGoogle,
                     theLoadingStatus: loginController.isLoading.value),
               ),
@@ -78,32 +70,24 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 10.0.wp),
                 child: ThemeButton(
                     theColor: white,
-                    theContent: Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 5.0.wp, vertical: 1.0.hp),
-                      decoration: BoxDecoration(
-                        color: transparent,
-                        borderRadius: BorderRadius.circular(2.0.wp),
-                        border: Border.all(
-                          color: brown,
-                          width: 1,
-                        ),
-                      ),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SvgPicture.asset(
-                                "assets/icons/social_media/apple.svg",
-                                width: 8.0.wp,
-                                height: 8.0.wp),
-                            SizedBox(width: 8.0.wp),
-                            ThemeText(
-                                theText: "tr_continue_with_apple".tr,
-                                thefontSize: 10.0.sp,
-                                theFontWeight: FontWeight.bold,
-                                theColor: black)
-                          ]),
-                    ),
+                    theWidth: 90.0.wp,
+                    theHeight: 6.5.hp,
+                    theBorderRadius: 2.0.wp,
+                    theBorderColor: brown,
+                    theContent: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SvgPicture.asset(
+                              "assets/icons/social_media/apple.svg",
+                              width: 8.0.wp,
+                              height: 8.0.wp),
+                          SizedBox(width: 9.0.wp),
+                          ThemeText(
+                              theText: "tr_continue_with_apple".tr,
+                              thefontSize: 10.0.sp,
+                              theFontWeight: FontWeight.bold,
+                              theColor: black)
+                        ]),
                     theAction: loginController.loginWithApple,
                     theLoadingStatus: loginController.isLoading.value),
               ),
@@ -112,32 +96,24 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 10.0.wp),
                 child: ThemeButton(
                     theColor: white,
-                    theContent: Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 5.0.wp, vertical: 1.0.hp),
-                      decoration: BoxDecoration(
-                        color: transparent,
-                        borderRadius: BorderRadius.circular(2.0.wp),
-                        border: Border.all(
-                          color: brown,
-                          width: 1,
-                        ),
-                      ),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SvgPicture.asset(
-                                "assets/icons/social_media/facebook.svg",
-                                width: 8.0.wp,
-                                height: 8.0.wp),
-                            SizedBox(width: 8.0.wp),
-                            ThemeText(
-                                theText: "tr_continue_with_facebook".tr,
-                                thefontSize: 10.0.sp,
-                                theFontWeight: FontWeight.bold,
-                                theColor: black)
-                          ]),
-                    ),
+                    theWidth: 90.0.wp,
+                    theHeight: 6.5.hp,
+                    theBorderRadius: 2.0.wp,
+                    theBorderColor: brown,
+                    theContent: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SvgPicture.asset(
+                              "assets/icons/social_media/facebook.svg",
+                              width: 8.0.wp,
+                              height: 8.0.wp),
+                          SizedBox(width: 9.0.wp),
+                          ThemeText(
+                              theText: "tr_continue_with_facebook".tr,
+                              thefontSize: 10.0.sp,
+                              theFontWeight: FontWeight.bold,
+                              theColor: black)
+                        ]),
                     theAction: loginController.loginWithFacebook,
                     theLoadingStatus: loginController.isLoading.value),
               ),
@@ -183,9 +159,12 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ThemeText(
-                              theText: "tr_email_star".tr,
-                              thefontSize: 12.0.sp,
-                              theColor: grey),
+                            theText: "tr_email_star".tr,
+                            thefontSize: 12.0.sp,
+                            theColor: lightGrey,
+                            theFontWeight: FontWeight.bold,
+                          ),
+                          SizedBox(height:1.0.hp),
                           ThemeInput(
                             theLabelText: "tr_email_star".tr,
                             theHintText: "tr_email_star".tr,
@@ -194,32 +173,26 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
                             theValidation: loginController.validateUsername,
                             theContentPadding: 5.0.sp,
                           ),
-                          SizedBox(height: 2.0.hp),
+                          SizedBox(height: 3.0.hp),
                           Center(
                             child: ThemeButton(
+                                theWidth: 65.0.wp,
+                                theHeight: 6.5.hp,
                                 theColor: grey,
-                                theContent: Container(
-                                  alignment: Alignment.center,
-                                  width: 60.0.wp,
-                                  height: 5.0.hp,
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 5.0.wp, vertical: 1.0.hp),
-                                  decoration: BoxDecoration(
-                                    color: transparent,
-                                    borderRadius: BorderRadius.circular(2.0.wp),
-                                  ),
-                                  child: ThemeText(
-                                      theText: "tr_continue".tr,
-                                      thefontSize: 12.0.sp,
-                                      theFontWeight: FontWeight.bold,
-                                      theColor: white),
+                                theBorderRadius: 2.0.wp,
+                                theContent: ThemeText(
+                                  theText: "tr_continue".tr,
+                                  thefontSize: 12.0.sp,
+                                  theFontWeight: FontWeight.bold,
+                                  theColor: white,
+                                  theTextAlign: TextAlign.center,
                                 ),
                                 theFormKey: loginController.formKey,
                                 theAction: loginController.goToPasswordScreen,
                                 theLoadingStatus:
                                     loginController.isLoading.value),
                           ),
-                          SizedBox(height: 2.0.hp),
+                          SizedBox(height: 5.0.hp),
                           Center(
                             child: ThemeText(
                                 theText: "tr_new_on_planner".tr,
@@ -229,8 +202,8 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
                                 theColor: black),
                           ),
                           Center(
-                            child: TextButton(
-                              onPressed: () {
+                            child: InkWell(
+                              onTap: () {
                                 Get.toNamed(RegisterScreen.routename);
                               },
                               child: ThemeText(
@@ -245,26 +218,18 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
                           SizedBox(height: 2.0.hp),
                           Center(
                             child: ThemeButton(
-                                theColor: transparent,
-                                theContent: Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 5.0.wp, vertical: 1.0.hp),
-                                    decoration: BoxDecoration(
-                                      color: transparent,
-                                      borderRadius:
-                                          BorderRadius.circular(2.0.wp),
-                                      border: Border.all(
-                                        color: brown,
-                                        width: 1,
-                                      ),
-                                    ),
-                                    child: ThemeText(
-                                        theText:
-                                            "tr_continue_without_registration"
-                                                .tr,
-                                        thefontSize: 12.0.sp,
-                                        theFontWeight: FontWeight.bold,
-                                        theColor: black)),
+                                theWidth: 65.0.wp,
+                                theHeight: 6.5.hp,
+                                theColor: white,
+                                theBorderRadius: 2.0.wp,
+                                theContent: ThemeText(
+                                  theText:
+                                      "tr_continue_without_registration".tr,
+                                  thefontSize: 11.0.sp,
+                                  theFontWeight: FontWeight.bold,
+                                  theColor: black,
+                                  theTextAlign: TextAlign.center,
+                                ),
                                 theAction: loginController.gotohome,
                                 theLoadingStatus:
                                     loginController.isLoading.value),
@@ -319,9 +284,11 @@ class LoginScreenForPassword extends StatelessWidget {
                         children: [
                           SizedBox(height: 2.0.hp),
                           ThemeText(
-                              theText: "tr_password_star".tr,
-                              thefontSize: 12.0.sp,
-                              theColor: black),
+                            theText: "tr_password_star".tr,
+                            thefontSize: 12.0.sp,
+                            theColor: lightGrey,
+                            theFontWeight: FontWeight.bold,
+                          ),
                           SizedBox(height: 1.0.hp),
                           Obx(
                             () => Container(
@@ -356,23 +323,30 @@ class LoginScreenForPassword extends StatelessWidget {
                               height: 8.0.hp,
                               width: double.infinity,
                               child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Obx(
-                                      () => Checkbox(
-                                        activeColor: grey,
-                                        value: loginController.isChecked.value,
-                                        onChanged: (value) {
-                                          loginController.changeCheckbox(
-                                              loginController.isChecked.value);
-                                        },
-                                      ),
-                                    ),
-                                    ThemeText(
-                                        theText: "tr_remember_me".tr,
-                                        thefontSize: 9.0.sp,
-                                        theColor: grey),
-                                    SizedBox(width: 5.0.wp),
+                                    Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Obx(
+                                            () => Checkbox(
+                                              activeColor: grey,
+                                              value: loginController
+                                                  .isChecked.value,
+                                              onChanged: (value) {
+                                                loginController.changeCheckbox(
+                                                    loginController
+                                                        .isChecked.value);
+                                              },
+                                            ),
+                                          ),
+                                          ThemeText(
+                                              theText: "tr_remember_me".tr,
+                                              thefontSize: 9.0.sp,
+                                              theColor: grey),
+                                        ]),
                                     TextButton(
                                       onPressed: () {
                                         loginController.goToRestPassword();
@@ -390,23 +364,16 @@ class LoginScreenForPassword extends StatelessWidget {
                           SizedBox(height: 2.0.hp),
                           Obx(() => Center(
                                 child: ThemeButton(
+                                    theWidth: 65.0.wp,
+                                    theHeight: 6.5.hp,
                                     theColor: grey,
-                                    theContent: Container(
-                                      alignment: Alignment.center,
-                                      width: 60.0.wp,
-                                      height: 5.0.hp,
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 5.0.wp, vertical: 1.0.hp),
-                                      decoration: BoxDecoration(
-                                        color: transparent,
-                                        borderRadius:
-                                            BorderRadius.circular(2.0.wp),
-                                      ),
-                                      child: ThemeText(
-                                          theText: "tr_connect".tr,
-                                          thefontSize: 12.0.sp,
-                                          theFontWeight: FontWeight.bold,
-                                          theColor: white),
+                                    theBorderRadius: 2.0.wp,
+                                    theContent: ThemeText(
+                                      theText: "tr_connect".tr,
+                                      thefontSize: 12.0.sp,
+                                      theFontWeight: FontWeight.bold,
+                                      theColor: white,
+                                      theTextAlign: TextAlign.center,
                                     ),
                                     theFormKey: loginController.formKey2,
                                     theAction: loginController.connect,

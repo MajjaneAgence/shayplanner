@@ -77,23 +77,24 @@ class SalonSheetAbout extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: 25.0.wp,
+                          Expanded(
                             child: ThemeText(
-                              theText: "category.name",
+                              theText: "lorem ipsum",
                               thefontSize: 8.0.sp,
                               theColor: black,
                               theMaxOfLines: 1,
+                              theTextAlign: TextAlign.center,
                             ),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
-          )
+          ),
+          SizedBox(height: 10.0.hp)
         ]),
       ),
     );

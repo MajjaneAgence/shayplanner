@@ -1,4 +1,5 @@
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shayplanner/components/api/api_helper.dart';
 import 'package:shayplanner/components/profile/profile_controller.dart';
 import 'package:shayplanner/theme/theme_app_bar.dart';
 import 'package:shayplanner/theme/theme_button.dart';
@@ -53,7 +54,8 @@ class PersonalInfosScreen extends StatelessWidget {
                                 progressColor: yellow,
                               ),
                               child: profileController.user.value!.picture ==
-                                      null
+                                      ApiHelper().getAssetsUrl() +
+                                          '/user_picture'
                                   ? CircleAvatar(
                                       radius: 6.0.hp,
                                       backgroundImage: AssetImage(
@@ -240,16 +242,17 @@ class PersonalInfosScreen extends StatelessWidget {
                               profileController.isEditingEnabled.value
                                   ? Center(
                                       child: ThemeButton(
-                                        theWidth: 60.0.wp,
-                                        theHeight:  5.0.hp,
-                                        theHorizontalPadding:5.0.wp,
-                                        theVerticalPadding:1.0.hp,
+                                          theWidth: 65.0.wp,
+                                          theHeight: 6.5.hp,
+                                          theBorderRadius: 2.0.wp,
+                                          theHorizontalPadding: 5.0.wp,
+                                          theVerticalPadding: 1.0.hp,
                                           theColor: grey,
-                                          theContent:  ThemeText(
-                                                theText: "tr_save".tr,
-                                                thefontSize: 12.0.sp,
-                                                theFontWeight: FontWeight.bold,
-                                                theColor: white),
+                                          theContent: ThemeText(
+                                              theText: "tr_save".tr,
+                                              thefontSize: 12.0.sp,
+                                              theFontWeight: FontWeight.bold,
+                                              theColor: white),
                                           theFormKey: profileController
                                               .formKeyEditPersoInfos,
                                           theAction: profileController

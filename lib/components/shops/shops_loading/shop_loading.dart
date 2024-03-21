@@ -17,16 +17,18 @@ class ShopsLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       height: 62.0.hp,
-      decoration: BoxDecoration(
-          color: white, borderRadius: BorderRadius.circular(25.0.sp)),
+                        padding: EdgeInsets.only(top:25.0.sp),
+                        decoration: BoxDecoration(
+                            color: white,
+                            borderRadius: BorderRadius.circular(25.0.sp)),
       child: ListView.builder(
           itemCount: 5, // Adjust the count based on your needs
           itemBuilder: (context, index) {
             return Column(
               children: [
-                SizedBox(height: 3.0.hp),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 1.0.wp),
                   decoration: BoxDecoration(

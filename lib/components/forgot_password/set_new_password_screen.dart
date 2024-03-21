@@ -29,9 +29,9 @@ class SetNewPasswordScreen extends StatelessWidget {
             key: forgotPasswordController.formKeySetNewPassword,
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              SizedBox(height: 5.0.hp),
+              SizedBox(height: 15.0.hp),
               Container(
-                margin: EdgeInsets.only(left: 7.0.wp),
+                margin: EdgeInsets.symmetric(horizontal: 7.0.wp),
                 width: 90.0.wp,
                 child: ThemeText(
                   theText: "tr_set_new_password".tr,
@@ -47,7 +47,8 @@ class SetNewPasswordScreen extends StatelessWidget {
                 child: ThemeText(
                     theText: "tr_password_star".tr,
                     thefontSize: 12.0.sp,
-                    theColor: black),
+                    theColor: lightGrey,
+                    theFontWeight: FontWeight.bold,),
               ),
               SizedBox(height: 1.0.hp),
               Obx(
@@ -86,7 +87,8 @@ class SetNewPasswordScreen extends StatelessWidget {
                 child: ThemeText(
                     theText: "tr_password_confirmation".tr,
                     thefontSize: 12.0.sp,
-                    theColor: black),
+                     theColor: lightGrey,
+                    theFontWeight: FontWeight.bold,),
               ),
               SizedBox(height: 1.0.hp),
               Obx(
@@ -125,23 +127,15 @@ class SetNewPasswordScreen extends StatelessWidget {
               Obx(
                 () => Center(
                   child: ThemeButton(
+                      theWidth: 65.0.wp,
+                      theHeight: 6.5.hp,
+                      theBorderRadius: 2.0.wp,
                       theColor: grey,
-                      theContent: Container(
-                        alignment: Alignment.center,
-                        width: 60.0.wp,
-                        height: 5.0.hp,
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 5.0.wp, vertical: 1.0.hp),
-                        decoration: BoxDecoration(
-                          color: transparent,
-                          borderRadius: BorderRadius.circular(2.0.wp),
-                        ),
-                        child: ThemeText(
-                            theText: "tr_continue".tr,
-                            thefontSize: 12.0.sp,
-                            theFontWeight: FontWeight.bold,
-                            theColor: white),
-                      ),
+                      theContent: ThemeText(
+                          theText: "tr_save".tr,
+                          thefontSize: 12.0.sp,
+                          theFontWeight: FontWeight.bold,
+                          theColor: white),
                       theFormKey:
                           forgotPasswordController.formKeySetNewPassword,
                       theAction: forgotPasswordController.changePassword,

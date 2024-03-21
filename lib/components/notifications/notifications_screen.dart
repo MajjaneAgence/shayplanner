@@ -48,7 +48,7 @@ class NotificationsScreen extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 4.0.hp),
+            SizedBox(height: 2.0.hp),
             Expanded(
               child: Container(
                 width: 100.0.wp,

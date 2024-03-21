@@ -123,11 +123,11 @@ class ShopsScreen extends StatelessWidget {
                     ? ShopsLoading()
                     : Container(
                         height: 62.0.hp,
+                        padding: EdgeInsets.only(top:25.0.sp),
                         decoration: BoxDecoration(
                             color: white,
                             borderRadius: BorderRadius.circular(25.0.sp)),
                         child: ListView(children: [
-                          SizedBox(height: 3.0.hp),
                           test == "nom"
                               ? Column(
                                   children: [

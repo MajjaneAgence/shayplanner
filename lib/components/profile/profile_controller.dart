@@ -216,6 +216,8 @@ class ProfileController extends GetxController {
       print(body);
       if (body["success"]) {
         user.value = UserModel.fromJson(body["data"]);
+        isEditingEnabled.value=false;
+        isEditingEnabled.refresh();
         user.refresh();
         themeSnackBar("tr_your_infos_have_been_updated_successfully".tr);
       } else {

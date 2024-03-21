@@ -32,13 +32,14 @@ class SalonSheetScreen extends StatelessWidget {
         extendBody: true,
         body: Container(
           width: 100.0.wp,
-          height: 100.0.hp,
+          height: 90.0.hp,
           child: SingleChildScrollView(
             child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height:2.0.hp),
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Container(
+                alignment: Get.locale!.languageCode != "ar"
+                    ? Alignment.centerLeft
+                    : Alignment.centerRight,
                 color: biege,
                 height: 8.0.hp,
                 width: 100.0.wp,
@@ -51,6 +52,8 @@ class SalonSheetScreen extends StatelessWidget {
                 ),
               ),
               Stack(children: [
+                Column( 
+                  children:[ 
                 CarouselSlider(
                   carouselController: salonSheetController.carouselController,
                   options: CarouselOptions(
@@ -76,9 +79,14 @@ class SalonSheetScreen extends StatelessWidget {
                       )
                       .toList(),
                 ),
+                Container(height:48.0.hp,
+               // color: Colors.red
+                )
+                 ]
+                ),
                 Obx(
                   () => Positioned(
-                    top: 18.0.hp,
+                    top: 23.0.hp,
                     left: 40.0.wp,
                     child: DotsIndicator(
                       onTap: (position) {
@@ -99,110 +107,119 @@ class SalonSheetScreen extends StatelessWidget {
                           spacing: EdgeInsets.all(2.0.sp)),
                     ),
                   ),
-                )
+                ),
+                 
+                Positioned(
+                    top: 27.0.hp,
+                    child:
+                 Container(
+                    width: 100.0.wp,
+                    height: 52.0.hp,
+                    decoration: BoxDecoration(
+                      color: white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(8.5.wp),
+                        topRight: Radius.circular(8.5.wp),
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(
+                              top: 1.0.hp,
+                              bottom: 0.3.hp,
+                              left: 7.0.wp,
+                              right: 7.0.wp),
+                          child: ThemeText(
+                            theText: "Lorem ipsum ",
+                            thefontSize: 20.0.sp,
+                            theColor: black,
+                            theFontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Container(
+                          // color: Colors.red,
+                          width: 87.0.wp,
+                          padding: EdgeInsets.symmetric(
+                              vertical: 0.2.hp, horizontal: 7.0.wp),
+                          child: ThemeText(
+                            theText: "Lorem ipsum dolor sit amet,",
+                            thefontSize: 10.0.sp,
+                            theColor: black,
+                            theTextDecoration: TextDecoration.underline,
+                          ),
+                        ),
+                        Container(
+                          //color: Colors.yellow,
+                          width: 87.0.wp,
+                          padding: EdgeInsets.symmetric(
+                              vertical: 0.2.hp, horizontal: 7.0.wp),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 5.0.wp,
+                                height: 5.0.wp,
+                                margin: EdgeInsets.only(right: 2.0.sp),
+                                child: SvgPicture.asset('assets/icons/star.svg',
+                                    color: grey),
+                              ),
+                              Container(
+                                width: 50.0.wp,
+                                margin: EdgeInsets.only(right: 6.0.sp),
+                                child: ThemeText(
+                                  theText: "4,9 (317 avis)  MAD",
+                                  thefontSize: 10.0.sp,
+                                  theColor: grey,
+                                  theMaxOfLines: 1,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.all(2.0.wp),
+                            width: 100.0.wp,
+                            child: ContainedTabBarView(
+                              tabs: [
+                                Text('tr_pictures'.tr),
+                                Text('tr_services'.tr),
+                                Text('tr_about'.tr),
+                                Text('tr_rating'.tr),
+                              ],
+                              tabBarProperties: TabBarProperties(
+                                width: 100.0.wp,
+                                height: 5.0.hp,
+                                background: Container(
+                                  color: white,
+                                ),
+                                indicatorColor: grey,
+                                labelColor: grey,
+                                unselectedLabelColor: lightGrey,
+                              ),
+                              views: [
+                                Container(color: biege),
+                                SalonSheetServices(),
+                                SalonSheetAbout(),
+                                SalonSheetRating()
+                              ],
+                              onChange: (index) => print(index),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+
               ])
             ]),
           ),
         ),
-        bottomSheet: Container(
-          width: 100.0.wp,
-          height: 47.0.hp,
-          decoration: BoxDecoration(
-            color: white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(8.5.wp),
-              topRight: Radius.circular(8.5.wp),
-            ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                //color: Colors.green,
-                padding: EdgeInsets.only(
-                    top: 1.0.hp, bottom: 0.3.hp, left: 7.0.wp, right: 7.0.wp),
-                child: ThemeText(
-                  theText: "Lorem ipsum ",
-                  thefontSize: 20.0.sp,
-                  theColor: black,
-                  theFontWeight: FontWeight.bold,
-                ),
-              ),
-              Container(
-                // color: Colors.red,
-                width: 87.0.wp,
-                padding:
-                    EdgeInsets.symmetric(vertical: 0.2.hp, horizontal: 7.0.wp),
-                child: ThemeText(
-                  theText: "Lorem ipsum dolor sit amet,",
-                  thefontSize: 10.0.sp,
-                  theColor: black,
-                  theTextDecoration: TextDecoration.underline,
-                ),
-              ),
-              Container(
-                //color: Colors.yellow,
-                width: 87.0.wp,
-                padding:
-                    EdgeInsets.symmetric(vertical: 0.2.hp, horizontal: 7.0.wp),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: 5.0.wp,
-                      height: 5.0.wp,
-                      margin: EdgeInsets.only(right: 2.0.sp),
-                      child: SvgPicture.asset('assets/icons/star.svg',
-                          color: grey),
-                    ),
-                    Container(
-                      width: 50.0.wp,
-                      margin: EdgeInsets.only(right: 6.0.sp),
-                      child: ThemeText(
-                        theText: "4,9 (317 avis)  MAD",
-                        thefontSize: 10.0.sp,
-                        theColor: grey,
-                        theMaxOfLines: 1,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(2.0.wp),
-                  width: 100.0.wp,
-                  child: ContainedTabBarView(
-                    tabs: [
-                      Text('tr_pictures'.tr),
-                      Text('tr_services'.tr),
-                      Text('tr_about'.tr),
-                      Text('tr_rating'.tr),
-                    ],
-                    tabBarProperties: TabBarProperties(
-                      width: 100.0.wp,
-                      height: 5.0.hp,
-                      background: Container(
-                        color: white,
-                      ),
-                      indicatorColor: grey,
-                      labelColor: grey,
-                      unselectedLabelColor: lightGrey,
-                    ),
-                    views: [
-                      Container(color: biege),
-                      SalonSheetServices(),
-                      SalonSheetAbout(),
-                     SalonSheetRating()
-                    ],
-                    onChange: (index) => print(index),
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-        bottomNavigationBar: ThemeNavigationBottomBar());
+        bottomNavigationBar: ThemeNavigationBottomBar(),
+        );
   }
 }
 

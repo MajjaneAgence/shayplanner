@@ -45,6 +45,7 @@ class ThemeButton extends StatelessWidget {
               surfaceTintColor: theColor,
               shadowColor: theShadowColor,
               elevation: 5,
+              foregroundColor: crem,
               fixedSize:Size(theWidth??40, theHeight?? 5),
               minimumSize: Size(theWidth??40, theHeight?? 5),
               shape: RoundedRectangleBorder(
@@ -62,7 +63,7 @@ class ThemeButton extends StatelessWidget {
               }
             },
             child: theContent))
-        : const CircularProgressIndicator();
+        :  CircularProgressIndicator(color:crem);
 
     //   Center(
     // child: LoadingAnimationWidget.staggeredDotsWave(

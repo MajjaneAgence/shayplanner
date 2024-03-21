@@ -335,6 +335,7 @@ class SalonSheetRating extends StatelessWidget {
             ),
           ),
           Divider(),
+          SizedBox(height: 10.0.hp)
         ]),
       ),
     );

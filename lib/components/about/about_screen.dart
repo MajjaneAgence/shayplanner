@@ -35,16 +35,32 @@ class AboutScreen extends StatelessWidget {
                     width: 8.0.wp, height: 8.0.wp),
                 SizedBox(width: 4.0.wp),
                 Expanded(
-                    child: ThemeText(
-                  theText: "tr_about_PLANNER".tr,
-                  thefontSize: 17.0.sp,
-                  theColor: black,
-                  theFontFamily: fontBold,
-                  theMaxOfLines: 2,
-                )),
+                  child: ThemeText(
+                    theText: "tr_about_".tr,
+                    thefontSize: 17.0.sp,
+                    theColor: black,
+                    theFontFamily: fontBold,
+                    theMaxOfLines: 2,
+                  ),
+                ),
               ],
             ),
-            SizedBox(height: 4.0.hp),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(width: 24.0.wp),
+                Expanded(
+                  child: ThemeText(
+                    theText: "PLANNER".tr,
+                    thefontSize: 17.0.sp,
+                    theColor: black,
+                    theFontFamily: fontBold,
+                    theMaxOfLines: 2,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 2.0.hp),
             Expanded(
               child: Container(
                 width: 100.0.wp,
@@ -114,41 +130,47 @@ class AboutScreen extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 2.0.hp),
-                        ...aboutController.faqList.map((question) => Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    aboutController.openFaqs(question['id']);
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        flex: 4,
-                                        child: ThemeText(
-                                            theText: question['question'] ?? "",
-                                            thefontSize: 11.0.sp,
-                                            theColor: black),
+                        ...aboutController.faqList.map(
+                          (question) => Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  aboutController.openFaqs(question['id']);
+                                },
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 4,
+                                      child: ThemeText(
+                                        theText: question['question'] ?? "",
+                                        thefontSize: 11.0.sp,
+                                        theColor: black,
+                                        theMaxOfLines: 4,
                                       ),
-                                      Expanded(
-                                          flex: 1,
-                                          child: SvgPicture.asset(
-                                              "assets/icons/about/arrow_right.svg")),
-                                    ],
-                                  ),
-                                ),
-                                Divider(),
-                                question['isExpanded']
-                                    ? Text(question['answer'] ?? "",
-                                    style: TextStyle(
-                                      fontSize: 9.0.sp,
-                                      color: grey
                                     ),
+                                    Expanded(
+                                        flex: 1,
+                                        child: SvgPicture.asset(
+                                            "assets/icons/about/arrow_right.svg")),
+                                  ],
+                                ),
+                              ),
+                              Divider(),
+                              question['isExpanded']
+                                  ? Text(
+                                        question['answer'] ?? "",
+                                        style: TextStyle(
+                                            fontSize: 10.0.sp, color: grey),
                                       )
-                                    : SizedBox(),
-                                SizedBox(height: 1.0.hp),
-                              ],
-                            ))
+                                  : SizedBox(),
+                              SizedBox(height: 1.0.hp),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10.0.hp,
+                        )
                       ],
                     ),
                   ),

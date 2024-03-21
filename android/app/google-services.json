@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "806513744369",
+    "project_id": "shayplanner-39db9",
+    "storage_bucket": "shayplanner-39db9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806513744369:android:968f1e8076a26c5cbb4c50",
+        "android_client_info": {
+          "package_name": "com.majjane.shayplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "806513744369-tgfv61rlasqoa6rofb9g688ln5ded86f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.majjane.shayplanner",
+            "certificate_hash": "33a8bb06243c5fd0ca4363c5c3257e594816c631"
+          }
+        },
+        {
+          "client_id": "806513744369-5mc2krod696egledpadlpot4t28me4dp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-YLzwSPvu3cehK6jmWpjzLj4-3cUejwc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "806513744369-5mc2krod696egledpadlpot4t28me4dp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

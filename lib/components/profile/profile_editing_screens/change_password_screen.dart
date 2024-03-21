@@ -99,8 +99,7 @@ class ChangePasswordScreen extends StatelessWidget {
                                     FloatingLabelBehavior.never,
                                 theIconWidget: IconButton(
                                   icon: Icon(
-                                    profileController
-                                            .isNewPasswordObscure.value
+                                    profileController.isNewPasswordObscure.value
                                         ? Icons.visibility
                                         : Icons.visibility_off,
                                     color: Colors.grey,
@@ -151,16 +150,17 @@ class ChangePasswordScreen extends StatelessWidget {
                               SizedBox(height: 4.0.hp),
                               Center(
                                 child: ThemeButton(
-                                  theWidth: 60.0.wp,
-                                  theHeight:5.0.hp,
-                                  theHorizontalPadding: 5.0.wp,
-                                  theVerticalPadding:1.0.hp,
+                                    theWidth: 65.0.wp,
+                                    theHeight: 6.5.hp,
+                                    theBorderRadius: 2.0.wp,
+                                    theHorizontalPadding: 5.0.wp,
+                                    theVerticalPadding: 1.0.hp,
                                     theColor: grey,
-                                    theContent:ThemeText(
-                                          theText: "tr_save".tr,
-                                          thefontSize: 12.0.sp,
-                                          theFontWeight: FontWeight.bold,
-                                          theColor: white),
+                                    theContent: ThemeText(
+                                        theText: "tr_save".tr,
+                                        thefontSize: 12.0.sp,
+                                        theFontWeight: FontWeight.bold,
+                                        theColor: white),
                                     theFormKey:
                                         profileController.formKeyChangePassword,
                                     theAction: profileController.changePassword,

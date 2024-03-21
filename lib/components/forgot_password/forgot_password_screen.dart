@@ -31,9 +31,9 @@ class ForgotPasswordScreen extends StatelessWidget {
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 5.0.hp),
+                      SizedBox(height: 15.0.hp),
                       Container(
-                        margin: EdgeInsets.only(left: 7.0.wp),
+                        margin: EdgeInsets.symmetric(horizontal: 7.0.wp),
                         width: 80.0.wp,
                         child: ThemeText(
                           theText: "tr_forget_password".tr,
@@ -42,14 +42,15 @@ class ForgotPasswordScreen extends StatelessWidget {
                           theFontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 3.0.hp),
+                      SizedBox(height: 2.0.hp),
                       Container(
-                        margin: EdgeInsets.only(left: 7.0.wp),
-                        width: 80.0.wp,
+                        margin: EdgeInsets.symmetric(horizontal: 7.0.wp),
+                        width: 90.0.wp,
                         child: ThemeText(
                           theText: "tr_enter_email_to_receive_code".tr,
-                          theColor: black,
-                          thefontSize: 12.0.sp,
+                          theColor: lightGrey,
+                          thefontSize: 10.0.sp,
+                          theFontWeight: FontWeight.bold,
                         ),
                       ),
                       Container(
@@ -61,9 +62,11 @@ class ForgotPasswordScreen extends StatelessWidget {
                                 children: [
                                   SizedBox(height: 3.0.hp),
                                   ThemeText(
-                                      theText: "tr_email_star".tr,
-                                      thefontSize: 12.0.sp,
-                                      theColor: black),
+                                    theText: "tr_email_star".tr,
+                                    thefontSize: 12.0.sp,
+                                    theColor: lightGrey,
+                                    theFontWeight: FontWeight.bold,
+                                  ),
                                   SizedBox(height: 1.0.hp),
                                   ThemeInput(
                                     theLabelText: "tr_enter_email_address".tr,
@@ -77,29 +80,19 @@ class ForgotPasswordScreen extends StatelessWidget {
                                     theFloatingLabelBehaviour:
                                         FloatingLabelBehavior.never,
                                   ),
-                                  SizedBox(height: 4.0.hp),
+                                  SizedBox(height: 10.0.hp),
                                   Obx(
                                     () => Center(
                                       child: ThemeButton(
+                                          theWidth: 65.0.wp,
+                                          theHeight: 6.5.hp,
+                                          theBorderRadius: 2.0.wp,
                                           theColor: grey,
-                                          theContent: Container(
-                                            alignment: Alignment.center,
-                                            width: 60.0.wp,
-                                            height: 5.0.hp,
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 5.0.wp,
-                                                vertical: 1.0.hp),
-                                            decoration: BoxDecoration(
-                                              color: transparent,
-                                              borderRadius:
-                                                  BorderRadius.circular(2.0.wp),
-                                            ),
-                                            child: ThemeText(
-                                                theText: "tr_continue".tr,
-                                                thefontSize: 12.0.sp,
-                                                theFontWeight: FontWeight.bold,
-                                                theColor: white),
-                                          ),
+                                          theContent: ThemeText(
+                                              theText: "tr_continue".tr,
+                                              thefontSize: 12.0.sp,
+                                              theFontWeight: FontWeight.bold,
+                                              theColor: white),
                                           theFormKey: forgotPasswordController
                                               .formKeyForgetPassword,
                                           theAction: forgotPasswordController

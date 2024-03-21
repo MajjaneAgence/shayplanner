@@ -17,7 +17,7 @@ final Map<String, String> ar = {
   "tr_continue_without_registration": "المتابعة بدون التسجيل",
   "tr_remember_me": "تذكرني",
   "tr_type_your_password": "أدخل كلمة المرور",
-"tr_new_on_planner": "جديد على PLANNER",
+  "tr_new_on_planner": "جديد على PLANNER",
 
   // Forgot password screen
   "tr_try_something_else": "جرب شيئًا آخر",
@@ -83,8 +83,7 @@ final Map<String, String> ar = {
   "tr_about_PLANNER": "عن بلانر",
   "tr_support": "الدعم",
   "tr_logout": "تسجيل الخروج",
-    "tr_Logging_out...":"تسجيل الخروج....",
-
+  "tr_Logging_out...": "تسجيل الخروج....",
 
   // editing personal infos
   "tr_firstname": "الاسم الأول",
@@ -106,6 +105,7 @@ final Map<String, String> ar = {
   // introduction
   "tr_book_appointment": "حجز موعد",
   "tr_professional_space": "المساحة المهنية",
+  "tr_follow_us": "تابعنا",
 
   // home
   "tr_book_ur_beauty_appointment": "احجز موعدك للتجميل",
@@ -115,11 +115,11 @@ final Map<String, String> ar = {
   "tr_new_on": " جديد على",
 
   //salons
-"tr_select_salon": "اختر صالونًا",
-"tr_salon_sheet_": "ورقة الصالون",
-"tr_afternoon": "بعد الظهر",
-"tr_morning": "صباحًا",
-  
+  "tr_select_salon": "اختر صالونًا",
+  "tr_salon_sheet_": "ورقة الصالون",
+  "tr_afternoon": "بعد الظهر",
+  "tr_morning": "صباحًا",
+
   //notifications
   "tr_notification": "الإشعارات",
   "tr_delete_confirmation": "تأكيد الحذف",
@@ -128,8 +128,14 @@ final Map<String, String> ar = {
   "tr_no_answer": "لا",
   "tr_yes_answer": "نعم",
 
-  //about 
-  "tr_faqs":"الأسئلة الشائعة",
-  "Lorem ipsum dolor sit amet?" :"AR(Lorem ipsum dolor sit amet?)",
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat":"AR('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')"
+  //about
+  "tr_faqs": "الأسئلة الشائعة",
+  "tr_about_": "عن",
+  "Lorem ipsum dolor sit amet?": "AR(Lorem ipsum dolor sit amet?)",
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat":
+      "AR('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')",
+
+  // booking history
+  "tr_book_again": "احجز مرة أخرى",
+  "tr_done": "مكتملة",
 };
