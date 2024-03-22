@@ -390,10 +390,10 @@ class HomeScreen extends StatelessWidget {
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: [
-                                  InkWell(
+                                  ...homeController.latestsSalons.map((salon) =>  InkWell(
                                     onTap: () {
                                       Get.toNamed(ShopsScreen.routename,
-                                          arguments: 'nom');
+                                          arguments: salon.id);
                                     },
                                     child: Container(
                                       margin: EdgeInsets.only(
@@ -413,9 +413,7 @@ class HomeScreen extends StatelessWidget {
                                                 topRight:
                                                     Radius.circular(18.0.sp)),
                                             image: DecorationImage(
-                                              image: AssetImage(
-                                                "assets/images/model_on_mirror.png",
-                                              ),
+                                              image: NetworkImage(salon.picture??''),
                                               fit: BoxFit.cover,
                                             ),
                                           ),
@@ -431,7 +429,7 @@ class HomeScreen extends StatelessWidget {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               ThemeText(
-                                                  theText: "Lorem ipsum",
+                                                  theText:salon.name ?? '',
                                                   thefontSize: 14.0.sp,
                                                   theColor: black,
                                                   theFontFamily:
@@ -497,7 +495,7 @@ class HomeScreen extends StatelessWidget {
                                                       right: 6.0.sp),
                                                   child: ThemeText(
                                                     theText:
-                                                        "Lorem ipsum dolor sit amet",
+                                                        salon.address ?? '',
                                                     thefontSize: 10.0.sp,
                                                     theColor: grey,
                                                     theMaxOfLines: 1,
@@ -555,7 +553,8 @@ class HomeScreen extends StatelessWidget {
                                         //  Text("hhhhhh")
                                       ]),
                                     ),
-                                  ),
+                                  ),)
+                                 
                                 ],
                               ),
                             ),

@@ -28,8 +28,8 @@ class ThemeNavigationBottomBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          InkWell(
-              onTap: () {
+          TextButton(
+            onPressed: () {
                 Get.toNamed(HomeScreen.routename);
                 // Get.delete<HomeController>();
               },
@@ -40,8 +40,8 @@ class ThemeNavigationBottomBar extends StatelessWidget {
                       height: 8.0.wp)
                   : SvgPicture.asset('assets/icons/floating_app_bar/home.svg',
                       width: 8.0.wp, height: 8.0.wp)),
-          InkWell(
-            onTap: () => {},
+          TextButton(
+            onPressed: () {},
             child: Get.currentRoute == ProfileScreen.routename
                 ? SvgPicture.asset(
                     'assets/icons/floating_app_bar/map.svg',
@@ -50,10 +50,11 @@ class ThemeNavigationBottomBar extends StatelessWidget {
                 : SvgPicture.asset('assets/icons/floating_app_bar/map.svg',
                     width: 8.0.wp, height: 8.0.wp),
           ),
-          InkWell(
-            onTap: () {
+          TextButton(
+            onPressed: () {
              // Get.toNamed(ShopsScreen.routename);
             },
+            //style: ButtonStyle(surfaceTintColor:MaterialStateProperty.all<Color>(Colors.red)),
             child: (Get.currentRoute == ShopsScreen.routename ||
                     Get.currentRoute == SalonSheetScreen.routename)
                 ?
@@ -66,8 +67,8 @@ class ThemeNavigationBottomBar extends StatelessWidget {
                 : SvgPicture.asset('assets/icons/floating_app_bar/calendar.svg',
                     width: 8.0.wp, height: 8.0.wp),
           ),
-          InkWell(
-            onTap: () async {
+          TextButton(
+            onPressed: ()async{
               FlutterSecureStorage storage = FlutterSecureStorage();
               String? token = await storage.read(key: 'token');
               print(token);

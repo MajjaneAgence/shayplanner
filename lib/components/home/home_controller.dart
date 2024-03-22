@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/notifications/notifications_screen.dart';
 import 'package:shayplanner/models/category_model.dart';
+import 'package:shayplanner/models/salon_model.dart';
 import 'package:shayplanner/theme/theme_snackbar.dart';
 
 class HomeController extends GetxController {
@@ -19,6 +20,7 @@ class HomeController extends GetxController {
   RxBool isLoadingLatestSalons = false.obs;
   RxString selectedLanguage = Get.locale!.languageCode.obs;
   RxList<CategoryModel> categories = <CategoryModel>[].obs;
+  RxList<SalonModel> latestsSalons = <SalonModel>[].obs;
   // List of items in our dropdown menu
   final List<String> lanuages = ['Français', 'English', 'العربية'];
   final List<String> modelsImages = [
@@ -56,9 +58,21 @@ class HomeController extends GetxController {
   getLatestSalons() async {
     isLoadingLatestSalons.value = true;
     isLoadingLatestSalons.refresh();
-    await Future.delayed(Duration(seconds: 5));
-    isLoadingLatestSalons.value = false;
-    isLoadingLatestSalons.refresh();
+    HomeService().apiGetLatestsSalons().then((value) async {
+      isLoadingLatestSalons.value = false;
+      isLoadingLatestSalons.refresh();
+      var body = jsonDecode(value.body);
+      print(body);
+      if (body["success"]) {
+        latestsSalons.clear();
+        for (var salon in body["data"]) {
+          latestsSalons.add(SalonModel.fromJson(salon));
+        }
+        latestsSalons.refresh();
+      } else {
+        themeSnackBar(body["message"]);
+      }
+    });
   }
 
   changeLanguage(String language) async {

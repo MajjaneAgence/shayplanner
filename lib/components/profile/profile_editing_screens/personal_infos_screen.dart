@@ -226,8 +226,8 @@ class PersonalInfosScreen extends StatelessWidget {
                                         : true,
                               ),
                               SizedBox(height: 2.0.hp),
-                              InkWell(
-                                onTap: () {
+                              TextButton(
+                                onPressed: () {
                                   profileController.goTochangePassword();
                                 },
                                 child: ThemeText(

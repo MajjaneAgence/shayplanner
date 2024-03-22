@@ -127,7 +127,7 @@ class ProfileScreen extends StatelessWidget {
                 child: Container(
                   width: 100.0.wp,
                   padding: EdgeInsets.symmetric(
-                      horizontal: 6.0.hp, vertical: 12.0.wp),
+                      horizontal: 4.0.hp, vertical: 12.0.wp),
                   decoration: BoxDecoration(
                     color: white,
                     borderRadius: BorderRadius.only(
@@ -138,11 +138,12 @@ class ProfileScreen extends StatelessWidget {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        InkWell(
-                          onTap: () {
+                        TextButton(
+                          onPressed: () {
                             profileController.goToProfileEditing();
                           },
-                          child: Row(
+                          child: 
+                          Row(
                             children: [
                               SvgPicture.asset("assets/icons/profile/user.svg",
                                   width: 18.0.sp, height: 18.0.sp),
@@ -161,12 +162,12 @@ class ProfileScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(height: 4.0.hp),
-                        InkWell(
-                          onTap: () {
+                        SizedBox(height: 1.0.hp),
+                       TextButton(
+                          onPressed: () {
                             profileController.goToFvoris();
                           },
-                          child: Row(
+                          child:  Row(
                             children: [
                               SvgPicture.asset("assets/icons/profile/heart.svg",
                                   width: 18.0.sp, height: 18.0.sp),
@@ -180,9 +181,9 @@ class ProfileScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(height: 4.0.hp),
-                        InkWell(
-                          onTap: () {
+                        SizedBox(height: 1.0.hp),
+                        TextButton(
+                          onPressed: () {
                             profileController.goToBookingHistory();
                           },
                           child: Row(
@@ -199,12 +200,12 @@ class ProfileScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(height: 4.0.hp),
-                        InkWell(
-                          onTap: () {
+                        SizedBox(height: 1.0.hp),
+                        TextButton(
+                          onPressed: () {
                             Get.toNamed(NotificationsScreen.routename);
                           },
-                          child: Row(
+                          child:  Row(
                             children: [
                               SvgPicture.asset("assets/icons/profile/bell.svg",
                                   width: 18.0.sp, height: 18.0.sp),
@@ -218,12 +219,12 @@ class ProfileScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(height: 4.0.hp),
-                        InkWell(
-                          onTap: () {
+                        SizedBox(height: 1.0.hp),
+                      TextButton(
+                          onPressed: () {
                             Get.toNamed(AboutScreen.routename);
                           },
-                          child: Row(
+                          child:  Row(
                             children: [
                               SvgPicture.asset("assets/icons/profile/infos.svg",
                                   width: 18.0.sp, height: 18.0.sp),
@@ -237,9 +238,11 @@ class ProfileScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(height: 4.0.hp),
-                        InkWell(
-                          onTap: () {},
+                        SizedBox(height: 1.0.hp),
+                        TextButton(
+                          onPressed: () {
+                          //  profileController.goToProfileEditing();
+                          },
                           child: Row(
                             children: [
                               SvgPicture.asset(
@@ -256,12 +259,12 @@ class ProfileScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(height: 5.0.hp),
-                        InkWell(
-                          onTap: () {
+                        SizedBox(height: 3.0.hp),
+                       TextButton(
+                          onPressed: () {
                             profileController.logout();
                           },
-                          child: Row(
+                          child:  Row(
                             children: [
                               SvgPicture.asset(
                                   "assets/icons/profile/logout.svg",
