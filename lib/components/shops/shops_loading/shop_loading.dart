@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
-import 'package:shayplanner/components/shops/shops_controller.dart';
-import 'package:shayplanner/components/shops/shops_screen.dart';
+import 'package:shayplanner/components/shops/salons_controller.dart';
+import 'package:shayplanner/components/shops/salons_screen.dart';
 import 'package:shayplanner/theme/theme_button.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_grad_container.dart';
@@ -12,8 +12,8 @@ import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
 import 'package:shimmer/shimmer.dart';
 
-class ShopsLoading extends StatelessWidget {
-  ShopsController shopsController = Get.put(ShopsController());
+class SalonsLoading extends StatelessWidget {
+  SalonsController shopsController = Get.put(SalonsController(1));
 
   @override
   Widget build(BuildContext context) {
@@ -197,7 +197,7 @@ class ShopsLoading extends StatelessWidget {
                                       child: ListView(
                                           scrollDirection: Axis.horizontal,
                                           children:
-                                              shopsController.buildDaysList())),
+                                              shopsController.buildDaysListLoading())),
                                 ),
                               ],
                             ),
@@ -225,7 +225,7 @@ class ShopsLoading extends StatelessWidget {
                                       child: ListView(
                                           scrollDirection: Axis.horizontal,
                                           children:
-                                              shopsController.buildDaysList())),
+                                              shopsController.buildDaysListLoading())),
                                 ),
                               ],
                             ),

@@ -1,9 +1,14 @@
+import 'dart:convert';
+
+import 'package:shayplanner/models/day_model.dart';
+
 class SalonModel {
   final int? id;
   final String? name;
   final String? picture;
   final String? address;
   final String? about;
+  final List<DayModel>? times;
   final int? isDeleted;
   final DateTime? createdAt;
   final DateTime? updatedAt;
@@ -14,17 +19,21 @@ class SalonModel {
     this.picture,
     this.address,
     this.about,
+    this.times,
     this.isDeleted,
     this.createdAt,
     this.updatedAt,
   });
   factory SalonModel.fromJson(Map<String, dynamic> json) {
+        List<DayModel> dayTimes = [];
+     jsonDecode(json["time"]['configuration']).forEach((day) => dayTimes.add(DayModel.fromJson(day)));
     return SalonModel(
       id: json['id'] ?? 0,
       name: json['name'] ?? '',
       picture: json['picture'] ?? '',
       address: json['address'] ?? '',
       about: json['about'] ?? '',
+      times: dayTimes,
       isDeleted: json['is_deleted'] ?? 0,
       createdAt: json['created_at'] != null
           ? DateTime.parse(json['created_at'])
@@ -33,6 +42,15 @@ class SalonModel {
           ? DateTime.parse(json['updated_at'])
           : null,
     );
+  }
+
+  List<DayModel> getDayTimes(configuration) {
+    List<DayModel> times = [];
+    for (var time in configuration) {
+      times.add(DayModel.fromJson(time));
+    }
+
+    return times;
   }
 
   Map<String, dynamic> toJson() {

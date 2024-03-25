@@ -7,7 +7,7 @@ import 'package:shayplanner/components/salon_sheet/salon_sheet_controller.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_tab_bar_screens/salon_sheet_about.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_tab_bar_screens/salon_sheet_rating.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_tab_bar_screens/salon_sheet_services.dart';
-import 'package:shayplanner/components/shops/shops_screen.dart';
+import 'package:shayplanner/components/shops/salons_screen.dart';
 import 'package:shayplanner/theme/theme_app_bar.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_navigation_bottom_bar.dart';

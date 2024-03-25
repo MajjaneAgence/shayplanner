@@ -7,7 +7,7 @@ import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/profile/profile_screen.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
-import 'package:shayplanner/components/shops/shops_screen.dart';
+import 'package:shayplanner/components/shops/salons_screen.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/tools/extension.dart';
 
@@ -55,7 +55,7 @@ class ThemeNavigationBottomBar extends StatelessWidget {
              // Get.toNamed(ShopsScreen.routename);
             },
             //style: ButtonStyle(surfaceTintColor:MaterialStateProperty.all<Color>(Colors.red)),
-            child: (Get.currentRoute == ShopsScreen.routename ||
+            child: (Get.currentRoute == SalonsScreen.routename ||
                     Get.currentRoute == SalonSheetScreen.routename)
                 ?
                 // Image.asset(

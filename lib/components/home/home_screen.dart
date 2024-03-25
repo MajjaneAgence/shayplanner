@@ -6,7 +6,7 @@ import 'package:shayplanner/components/home/home_controller.dart';
 import 'package:shayplanner/components/home/home_loading/categories_loading.dart';
 import 'package:shayplanner/components/home/home_loading/latest_salons_loading.dart';
 import 'package:shayplanner/components/home/home_search/home_search_screen.dart';
-import 'package:shayplanner/components/shops/shops_screen.dart';
+import 'package:shayplanner/components/shops/salons_screen.dart';
 import 'package:shayplanner/theme/theme_circle_painter.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_grad_container.dart';
@@ -228,7 +228,7 @@ class HomeScreen extends StatelessWidget {
                                     theMargin: 5.0.sp,
                                     theContent: InkWell(
                                       onTap: () {
-                                        Get.toNamed(ShopsScreen.routename,
+                                        Get.toNamed(SalonsScreen.routename,
                                             arguments: "nom");
                                       },
                                       child: SvgPicture.asset(
@@ -257,7 +257,7 @@ class HomeScreen extends StatelessWidget {
                                     theMargin: 5.0.sp,
                                     theContent: InkWell(
                                       onTap: () {
-                                        Get.toNamed(ShopsScreen.routename,
+                                        Get.toNamed(SalonsScreen.routename,
                                             arguments: "adreess");
                                       },
                                       child: SvgPicture.asset(
@@ -307,7 +307,7 @@ class HomeScreen extends StatelessWidget {
                                   ...homeController.categories.map(
                                     (category) => InkWell(
                                       onTap: () {
-                                        Get.toNamed(ShopsScreen.routename,
+                                        Get.toNamed(SalonsScreen.routename,
                                             arguments: 'address');
                                       },
                                       child: Container(
@@ -392,7 +392,7 @@ class HomeScreen extends StatelessWidget {
                                 children: [
                                   ...homeController.latestsSalons.map((salon) =>  InkWell(
                                     onTap: () {
-                                      Get.toNamed(ShopsScreen.routename,
+                                      Get.toNamed(SalonsScreen.routename,
                                           arguments: salon.id);
                                     },
                                     child: Container(
@@ -549,8 +549,6 @@ class HomeScreen extends StatelessWidget {
                                           ),
                                         ),
                                         SizedBox(height: 1.0.hp),
-
-                                        //  Text("hhhhhh")
                                       ]),
                                     ),
                                   ),)
