@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
-import 'package:shayplanner/components/shops/salons_service.dart';
+import 'package:shayplanner/components/salons/salons_service.dart';
 import 'package:shayplanner/models/salon_model.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_snackbar.dart';

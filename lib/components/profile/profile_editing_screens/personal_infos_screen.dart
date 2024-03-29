@@ -1,5 +1,5 @@
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shayplanner/components/api/api_helper.dart';
+import 'package:shayplanner/api/api_helper.dart';
 import 'package:shayplanner/components/profile/profile_controller.dart';
 import 'package:shayplanner/theme/theme_app_bar.dart';
 import 'package:shayplanner/theme/theme_button.dart';

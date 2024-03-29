@@ -15,7 +15,7 @@ import 'package:shayplanner/components/profile/profile_screen.dart';
 import 'package:shayplanner/components/register/register_screen.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
-import 'package:shayplanner/components/shops/salons_screen.dart';
+import 'package:shayplanner/components/salons/salons_screen.dart';
 import 'package:shayplanner/components/rating_app/rating_app_screen.dart';
 import 'package:shayplanner/components/rating_salon/rating_salon_screen.dart';
 

@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:shayplanner/components/home/home_screen.dart';
-import 'package:shayplanner/components/shops/salons_controller.dart';
-import 'package:shayplanner/components/shops/shops_loading/shop_loading.dart';
+import 'package:shayplanner/components/salons/salons_controller.dart';
+import 'package:shayplanner/components/salons/salons_loading/salons_loading.dart';
 import 'package:shayplanner/theme/theme_app_bar.dart';
 import 'package:shayplanner/theme/theme_button.dart';
 import 'package:shayplanner/theme/theme_button.dart';

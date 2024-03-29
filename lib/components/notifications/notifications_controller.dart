@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:shayplanner/components/api/api_helper.dart';
+import 'package:shayplanner/api/api_helper.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/change_password_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/personal_infos_screen.dart';

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:shayplanner/components/api/api_helper.dart';
+import 'package:shayplanner/api/api_helper.dart';
 import 'package:http/http.dart' as http;
 
 class profileService {
