@@ -63,6 +63,7 @@ class IntroductionScreen extends StatelessWidget {
                   theColor: black,
                   theFontWeight: FontWeight.bold,
                 ),
+                                theAction: introductionController.onButton2Pressed,
                 theLoadingStatus: false,
               ),
               SizedBox(height: 7.0.hp),

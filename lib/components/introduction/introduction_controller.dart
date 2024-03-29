@@ -25,7 +25,7 @@ class IntroductionController extends GetxController {
 
   void onButton2Pressed() async {
     // Get.toNamed(RatingAppScreen.routename);
-    Get.toNamed(SalonSheetScreen.routename);
+    Get.toNamed(RatingAppScreen.routename);
   }
 
   // Additional functions and logic as needed

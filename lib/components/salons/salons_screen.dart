@@ -122,81 +122,109 @@ class SalonsScreen extends StatelessWidget {
                     ? SalonsLoading()
                     : Container(
                         height: 62.0.hp,
-                        padding: EdgeInsets.only(top:25.0.sp),
+                        padding: EdgeInsets.only(top: 25.0.sp),
                         decoration: BoxDecoration(
                             color: white,
                             borderRadius: BorderRadius.circular(25.0.sp)),
                         child: ListView(children: [
-
-                          ...salonsController.salons.map((salon) =>  Column(
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.symmetric(
-                                          vertical: 1.0.wp),
-                                      decoration: BoxDecoration(
-                                          boxShadow: themeBoxShadowCard,
-                                          borderRadius:
-                                              BorderRadius.circular(25.0.sp)),
-                                      child: Column(children: [
-                                        Container(
-                                          height: 20.0.hp,
-                                          width: 92.0.wp,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(10.0.sp),
-                                              topRight:
-                                                  Radius.circular(10.0.sp),
+                          ...salonsController.salons.map((salon) => Column(
+                                children: [
+                                  Container(
+                                    margin:
+                                        EdgeInsets.symmetric(vertical: 1.0.wp),
+                                    decoration: BoxDecoration(
+                                        boxShadow: themeBoxShadowCard,
+                                        borderRadius:
+                                            BorderRadius.circular(25.0.sp)),
+                                    child: Column(children: [
+                                      Container(
+                                        height: 20.0.hp,
+                                        width: 92.0.wp,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(10.0.sp),
+                                            topRight: Radius.circular(10.0.sp),
+                                          ),
+                                          image: DecorationImage(
+                                            image: NetworkImage(
+                                              salon.picture ?? "",
                                             ),
-                                            image: DecorationImage(
-                                              image: NetworkImage(
-                                               salon.picture ?? "",
-                                              ),
-                                              fit: BoxFit.cover,
-                                            ),
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
-                                        Container(
-                                          height: 11.0.hp,
-                                          width: 92.0.wp,
-                                          child: Row(
-                                            children: [
-                                              Container(
-                                                width: 60.0.wp,
-                                                padding:
-                                                    Get.locale!.languageCode !=
-                                                            "ar"
-                                                        ? EdgeInsets.only(
-                                                            left: 3.0.wp,
-                                                            right: 1.0.wp)
-                                                        : EdgeInsets.only(
-                                                            left: 1.0.wp,
-                                                            right: 3.0.wp),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Container(
+                                      ),
+                                      Container(
+                                        height: 11.0.hp,
+                                        width: 92.0.wp,
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              width: 60.0.wp,
+                                              padding:
+                                                  Get.locale!.languageCode !=
+                                                          "ar"
+                                                      ? EdgeInsets.only(
+                                                          left: 3.0.wp,
+                                                          right: 1.0.wp)
+                                                      : EdgeInsets.only(
+                                                          left: 1.0.wp,
+                                                          right: 3.0.wp),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Container(
+                                                    width: 55.0.wp,
+                                                    height: 5.0.hp,
+                                                    padding: EdgeInsets.only(
+                                                        top: 0.5.hp),
+                                                    child: ThemeText(
+                                                        theText:
+                                                            salon.name ?? "",
+                                                        thefontSize: 14.0.sp,
+                                                        theColor: black,
+                                                        theFontFamily:
+                                                            "Montserrat-Bold"),
+                                                  ),
+                                                  Container(
+                                                    width: 55.0.wp,
+                                                    height: 2.0.hp,
+                                                    child: Row(children: [
+                                                      Container(
+                                                        width: 5.0.wp,
+                                                        height: 5.0.wp,
+                                                        child: SvgPicture.asset(
+                                                            'assets/icons/localization.svg',
+                                                            color: grey),
+                                                      ),
+                                                      Center(
+                                                        child: Container(
+                                                          width: 50.0.wp,
+                                                          child: ThemeText(
+                                                            theText:
+                                                                salon.address ??
+                                                                    "",
+                                                            thefontSize:
+                                                                10.0.sp,
+                                                            theColor: grey,
+                                                            theMaxOfLines: 1,
+                                                            theTextDecoration:
+                                                                TextDecoration
+                                                                    .underline,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ]),
+                                                  ),
+                                                  Container(
                                                       width: 55.0.wp,
-                                                      height: 5.0.hp,
-                                                      padding: EdgeInsets.only(
-                                                          top: 0.5.hp),
-                                                      child: ThemeText(
-                                                          theText:
-                                                              salon.name ?? "",
-                                                          thefontSize: 14.0.sp,
-                                                          theColor: black,
-                                                          theFontFamily:
-                                                              "Montserrat-Bold"),
-                                                    ),
-                                                    Container(
-                                                      width: 55.0.wp,
-                                                      height: 2.0.hp,
+                                                      height: 4.0.hp,
                                                       child: Row(children: [
                                                         Container(
                                                           width: 5.0.wp,
                                                           height: 5.0.wp,
                                                           child: SvgPicture.asset(
-                                                              'assets/icons/localization.svg',
+                                                              'assets/icons/star.svg',
                                                               color: grey),
                                                         ),
                                                         Center(
@@ -204,183 +232,160 @@ class SalonsScreen extends StatelessWidget {
                                                             width: 50.0.wp,
                                                             child: ThemeText(
                                                               theText:
-                                                                  salon.address ?? "",
+                                                                  "4,9 (317 avis)  MAD",
                                                               thefontSize:
                                                                   10.0.sp,
                                                               theColor: grey,
                                                               theMaxOfLines: 1,
-                                                              theTextDecoration:
-                                                                  TextDecoration
-                                                                      .underline,
                                                             ),
                                                           ),
                                                         ),
-                                                      ]),
-                                                    ),
-                                                    Container(
-                                                        width: 55.0.wp,
-                                                        height: 4.0.hp,
-                                                        child: Row(children: [
-                                                          Container(
-                                                            width: 5.0.wp,
-                                                            height: 5.0.wp,
-                                                            child: SvgPicture.asset(
-                                                                'assets/icons/star.svg',
-                                                                color: grey),
-                                                          ),
-                                                          Center(
-                                                            child: Container(
-                                                              width: 50.0.wp,
-                                                              child: ThemeText(
-                                                                theText:
-                                                                    "4,9 (317 avis)  MAD",
-                                                                thefontSize:
-                                                                    10.0.sp,
-                                                                theColor: grey,
-                                                                theMaxOfLines:
-                                                                    1,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ])),
-                                                  ],
-                                                ),
+                                                      ])),
+                                                ],
                                               ),
-                                              Container(
-                                                width: 32.0.wp,
-                                                height: 11.0.hp,
-                                                alignment: Alignment.center,
-                                                child: InkWell(
-                                                  onTap: () => salonsController
-                                                      .goToSalonSheet(),
-                                                  child: Container(
-                                                    width: 28.0.wp,
-                                                    height: 5.0.hp,
-                                                    alignment: Alignment.center,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      color: grey,
-                                                    ),
-                                                    child: ThemeText(
-                                                      theText:
-                                                          "tr_salon_sheet_".tr,
-                                                      thefontSize: 9.0.sp,
-                                                      theColor: white,
-                                                      theFontWeight:
-                                                          FontWeight.bold,
-                                                      theFontFamily:
-                                                          "Montserrat-Bold",
-                                                    ),
+                                            ),
+                                            Container(
+                                              width: 32.0.wp,
+                                              height: 11.0.hp,
+                                              alignment: Alignment.center,
+                                              child: InkWell(
+                                                onTap: () => salonsController
+                                                    .goToSalonSheet(),
+                                                child: Container(
+                                                  width: 28.0.wp,
+                                                  height: 5.0.hp,
+                                                  alignment: Alignment.center,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                    color: grey,
+                                                  ),
+                                                  child: ThemeText(
+                                                    theText:
+                                                        "tr_salon_sheet_".tr,
+                                                    thefontSize: 9.0.sp,
+                                                    theColor: white,
+                                                    theFontWeight:
+                                                        FontWeight.bold,
+                                                    theFontFamily:
+                                                        "Montserrat-Bold",
                                                   ),
                                                 ),
                                               ),
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 10.0.sp,
-                                        ),
-                                        Container(
-                                          width: 92.0.wp,
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 3.0.wp),
-                                          child: Column(
-                                            children: [
-                                              Container(
-                                                width: 92.0.wp,
-                                                height: 4.0.hp,
-                                                child: Row(
-                                                  children: [
-                                                    Expanded(
-                                                      flex: 1,
-                                                      child: ThemeText(
-                                                        theText:
-                                                            "tr_morning".tr,
-                                                        thefontSize: 10.0.sp,
-                                                        theColor: grey,
-                                                        theFontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      flex: 3,
-                                                      child: ListView(
-                                                          scrollDirection:
-                                                              Axis.horizontal,
-                                                          children: salonsController
-                                                              .buildDaysList(salon.times)),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Container(
-                                                width: 92.0.wp,
-                                                height: 4.0.hp,
-                                                margin: EdgeInsets.only(top: 0),
-                                                child: Row(
-                                                  children: [
-                                                    Expanded(
-                                                      flex: 1,
-                                                      child: ThemeText(
-                                                        theText:
-                                                            "tr_afternoon".tr,
-                                                        thefontSize: 10.0.sp,
-                                                        theColor: grey,
-                                                        theFontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      flex: 3,
-                                                      child: ListView(
-                                                          scrollDirection:
-                                                              Axis.horizontal,
-                                                          children: salonsController
-                                                              .buildDaysList(salon.times)),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              SizedBox(height: 4.0.sp)
-                                            ],
-                                          ),
-                                        ),
-                                      ]),
-                                    ),
-                                    SizedBox(height: 2.0.hp),
-                                    InkWell(
-                                      onTap: () {},
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        width: 40.0.wp,
-                                        height: 5.0.hp,
-                                        child: ThemeText(
-                                            theText: "Prendre Rdv",
-                                            thefontSize: 12.0.sp,
-                                            theColor: white,
-                                            theFontFamily: fontBold),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(6.0.sp),
-                                          boxShadow: [
-                                            BoxShadow(
-                                                color: Color.fromARGB(
-                                                    255, 185, 126, 70)),
-                                            BoxShadow(
-                                                color: crem,
-                                                spreadRadius: -1.5,
-                                                offset: Offset(-3, -3),
-                                                blurRadius: 0.5),
+                                            ),
                                           ],
                                         ),
                                       ),
+                                      SizedBox(
+                                        height: 10.0.sp,
+                                      ),
+                                      Container(
+                                        width: 92.0.wp,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 3.0.wp),
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              width: 92.0.wp,
+                                              height: 4.0.hp,
+                                              child: Row(
+                                                children: [
+                                                  Expanded(
+                                                    flex: 1,
+                                                    child: ThemeText(
+                                                      theText: "tr_morning".tr,
+                                                      thefontSize: 10.0.sp,
+                                                      theColor: grey,
+                                                      theFontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    flex: 3,
+                                                    child: ListView(
+                                                        scrollDirection: Axis
+                                                            .horizontal,
+                                                        children:
+                                                            salonsController
+                                                                .buildDaysList(
+                                                                    salon
+                                                                        .times)),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 92.0.wp,
+                                              height: 4.0.hp,
+                                              margin: EdgeInsets.only(top: 0),
+                                              child: Row(
+                                                children: [
+                                                  Expanded(
+                                                    flex: 1,
+                                                    child: ThemeText(
+                                                      theText:
+                                                          "tr_afternoon".tr,
+                                                      thefontSize: 10.0.sp,
+                                                      theColor: grey,
+                                                      theFontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    flex: 3,
+                                                    child: ListView(
+                                                        scrollDirection: Axis
+                                                            .horizontal,
+                                                        children:
+                                                            salonsController
+                                                                .buildDaysList(
+                                                                    salon
+                                                                        .times)),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            SizedBox(height: 4.0.sp)
+                                          ],
+                                        ),
+                                      ),
+                                    ]),
+                                  ),
+                                  SizedBox(height: 2.0.hp),
+                                  InkWell(
+                                    onTap: () {
+                                      salonsController.goToTakeAppointement();
+                                    },
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      width: 40.0.wp,
+                                      height: 5.0.hp,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(6.0.sp),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: Color.fromARGB(
+                                                  255, 185, 126, 70)),
+                                          BoxShadow(
+                                              color: crem,
+                                              spreadRadius: -1.5,
+                                              offset: Offset(-3, -3),
+                                              blurRadius: 0.5),
+                                        ],
+                                      ),
+                                      child: ThemeText(
+                                          theText: "tr_take_appointment".tr,
+                                          thefontSize: 12.0.sp,
+                                          theColor: white,
+                                          theFontFamily: fontBold,
+                                          theTextAlign: TextAlign.center),
                                     ),
-                                    SizedBox(height: 5.0.hp)
-                                  ],
-                                ) )
-                             
+                                  ),
+                                  SizedBox(height: 5.0.hp)
+                                ],
+                              ))
                         ]),
                       )),
               ],

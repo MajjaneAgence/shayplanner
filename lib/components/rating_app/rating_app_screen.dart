@@ -116,6 +116,7 @@ class RatingAppScreen extends StatelessWidget {
                             color: Colors.amber,
                           ),
                           onRatingUpdate: (rating) {
+                            print(rating);
                             // You can use this callback to get the selected rating
                           },
                         ),

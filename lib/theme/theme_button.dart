@@ -20,6 +20,7 @@ class ThemeButton extends StatelessWidget {
   double? theHorizontalPadding;
   double? theBorderRadius;
   Color? theShadowColor;
+  double? theElevation;
   ThemeButton(
       {Key? key,
       required this.theContent,
@@ -33,18 +34,19 @@ class ThemeButton extends StatelessWidget {
       this.theVerticalPadding,
       this.theHorizontalPadding,
       this.theBorderRadius,
-      this.theShadowColor})
+      this.theShadowColor,
+      this.theElevation})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     return theLoadingStatus == false
         ? (ElevatedButton(
             style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.symmetric(horizontal: 4.0.wp),
+              padding: EdgeInsets.symmetric(horizontal: theHorizontalPadding ?? 4.0.wp),
               backgroundColor: theColor,
               surfaceTintColor: theColor,
               shadowColor: theShadowColor,
-              elevation: 5,
+              elevation: theElevation ?? 5,
               foregroundColor: crem,
               fixedSize:Size(theWidth??40, theHeight?? 5),
               minimumSize: Size(theWidth??40, theHeight?? 5),

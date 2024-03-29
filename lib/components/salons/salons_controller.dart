@@ -1,10 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
 import 'package:shayplanner/components/salons/salons_service.dart';
+import 'package:shayplanner/components/take_appointement.dart/take_appointement_screen.dart';
 import 'package:shayplanner/models/salon_model.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_snackbar.dart';
@@ -44,13 +46,13 @@ class SalonsController extends GetxController {
     List<Widget> daysList = [];
     DateTime now = DateTime.now();
     final dateFormat = DateFormat('EEE d', 'fr');
-    for (int i =1 ; i <= 7; i++) {
+    for (int i = 1; i <= 7; i++) {
       DateTime day = now.add(Duration(days: i));
       String dayName = dateFormat.format(day);
       daysList.add(
         InkWell(
             onTap: () {
-             // showWorkHours();
+              // showWorkHours();
             },
             child: Container(
                 margin:
@@ -101,7 +103,7 @@ class SalonsController extends GetxController {
     });
   }
 
-   List<Widget> buildDaysListLoading() {
+  List<Widget> buildDaysListLoading() {
     List<Widget> daysList = [];
     DateTime now = DateTime.now();
     final dateFormat = DateFormat('EEE d', 'fr');
@@ -137,4 +139,13 @@ class SalonsController extends GetxController {
     return daysList;
   }
 
+  goToTakeAppointement() async {
+    FlutterSecureStorage storage = FlutterSecureStorage();
+    String? token = await storage.read(key: 'token');
+    if (token == null) {
+      Get.toNamed(TakeAppointementScreen.routename, arguments: "NotLoggedIn");
+    } else {
+      Get.toNamed(TakeAppointementScreen.routename, arguments: "LoggedIn");
+    }
+  }
 }

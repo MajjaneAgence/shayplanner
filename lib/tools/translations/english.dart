@@ -17,7 +17,7 @@ final Map<String, String> en = {
   "tr_continue_without_registration": "Continue without registering",
   "tr_remember_me": "Remember me",
   "tr_type_your_password": "Type your password",
-"tr_new_on_planner": "New to PLANNER",
+  "tr_new_on_planner": "New to PLANNER",
 
   // Forgot password screen
   "tr_try_something_else": "Try something else",
@@ -84,8 +84,7 @@ final Map<String, String> en = {
   "tr_about_PLANNER": "About PLANNER",
   "tr_support": "Support",
   "tr_logout": "Logout",
-    "tr_Logging_out...":"Logging out....",
-
+  "tr_Logging_out...": "Logging out....",
 
   // editing personal infos
   "tr_firstname": "First name",
@@ -110,35 +109,41 @@ final Map<String, String> en = {
   "tr_professional_space": "Professional space",
   "tr_follow_us": "Follow us",
 
-
   // home
-"tr_book_ur_beauty_appointment": "Book your beauty appointment",
-"tr_salon_service": "Salon Name, service (haircut...)",
-"tr_address_city": "Address, city...",
-"tr_categories": "Categories",
-"tr_new_on": "New to ",
+  "tr_book_ur_beauty_appointment": "Book your beauty appointment",
+  "tr_salon_service": "Salon Name, service (haircut...)",
+  "tr_address_city": "Address, city...",
+  "tr_categories": "Categories",
+  "tr_new_on": "New to ",
 
   //salons
-"tr_select_salon": "Select a salon",
-"tr_salon_sheet_": "Salon Sheet",
-"tr_afternoon": "Afternoon",
-"tr_morning": "Morning",
+  "tr_select_salon": "Select a salon",
+  "tr_salon_sheet_": "Salon Sheet",
+  "tr_afternoon": "Afternoon",
+  "tr_morning": "Morning",
+  "tr_take_appointment": "Take an appointment",
 
-    //notifications
-"tr_notification": "Notifications",
-"tr_delete_confirmation": "Delete Confirmation",
-"tr_are_you_sure_you_wanna_delete_notification": "Are you sure you want to delete the notification",
-"tr_no_answer": "No",
-"tr_yes_answer": "Yes",
+  //notifications
+  "tr_notification": "Notifications",
+  "tr_delete_confirmation": "Delete Confirmation",
+  "tr_are_you_sure_you_wanna_delete_notification":
+      "Are you sure you want to delete the notification",
+  "tr_no_answer": "No",
+  "tr_yes_answer": "Yes",
 
 //about
-  "tr_faqs":"FAQs",
-  "tr_about_":"About",
-  "Lorem ipsum dolor sit amet?" :"EN(Lorem ipsum dolor sit amet?)",
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat":"EN('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')",
+  "tr_faqs": "FAQs",
+  "tr_about_": "About",
+  "Lorem ipsum dolor sit amet?": "EN(Lorem ipsum dolor sit amet?)",
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat":
+      "EN('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')",
 
   // Booking history
-"tr_book_again": "Book Again",
-"tr_done": "Completed",
+  "tr_book_again": "Book Again",
+  "tr_done": "Completed",
+
+
+  //take appointment
+  "tr_take_beauty_appointment":"Take an appointment",
 
 };

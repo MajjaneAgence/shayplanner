@@ -48,7 +48,7 @@ class SalonSheetScreen extends StatelessWidget {
                   theText: "tr_salon_sheet".tr,
                   thefontSize: 18.0.sp,
                   theColor: grey,
-                  theFontWeight: FontWeight.bold,
+                  theFontFamily: fontBold,
                 ),
               ),
               Stack(children: [

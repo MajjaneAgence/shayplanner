@@ -119,6 +119,7 @@ final Map<String, String> ar = {
   "tr_salon_sheet_": "ورقة الصالون",
   "tr_afternoon": "بعد الظهر",
   "tr_morning": "صباحًا",
+  "tr_take_appointment": "احجز موعد",
 
   //notifications
   "tr_notification": "الإشعارات",
@@ -138,4 +139,8 @@ final Map<String, String> ar = {
   // booking history
   "tr_book_again": "احجز مرة أخرى",
   "tr_done": "مكتملة",
+
+
+    //take appointment
+  "tr_take_beauty_appointment":"احجز موعد",
 };

@@ -18,6 +18,7 @@ import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
 import 'package:shayplanner/components/salons/salons_screen.dart';
 import 'package:shayplanner/components/rating_app/rating_app_screen.dart';
 import 'package:shayplanner/components/rating_salon/rating_salon_screen.dart';
+import 'package:shayplanner/components/take_appointement.dart/take_appointement_screen.dart';
 
 var router = [
   GetPage(
@@ -97,4 +98,12 @@ var router = [
       name: FavorisScreen.routename,
       page: () => FavorisScreen(),
       transition: Transition.native),
+        GetPage(
+      name: TakeAppointementScreen.routename,
+      page: () => TakeAppointementScreen(),
+      transition: Transition.cupertinoDialog),
+      GetPage(
+      name: RatingAppScreen.routename,
+      page: () => RatingAppScreen(),
+      transition: Transition.cupertinoDialog),
 ];
