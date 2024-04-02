@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
 import 'package:shayplanner/components/salons/salons_service.dart';
-import 'package:shayplanner/components/take_appointement.dart/take_appointement_screen.dart';
+import 'package:shayplanner/components/take_appointement/take_appointement_screen.dart';
 import 'package:shayplanner/models/salon_model.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_snackbar.dart';
@@ -19,13 +19,21 @@ class SalonsController extends GetxController {
   RxBool isLoadingSalons = false.obs;
   RxBool isLoadingBookAppointment = false.obs;
   RxList<SalonModel> salons = <SalonModel>[].obs;
+  Rx<SalonModel?> salon = SalonModel().obs;
 
-  final int id;
-  SalonsController(this.id);
+  Map<String, dynamic> arguments;
+  SalonsController(this.arguments);
   @override
   void onInit() async {
     super.onInit();
-    getShopDetails(id);
+    String filter = arguments['filterBy'];
+    if (filter == "latestSalons") {
+      int salonId = arguments['salon_id'];
+      getSalonDetails(salonId);
+    } else if (filter == "categories") {
+      int categoryId = arguments['category_id'];
+      getSalonsByCategory(categoryId);
+    }
   }
 
   dontValidate(String password) {
@@ -42,36 +50,32 @@ class SalonsController extends GetxController {
     Get.toNamed(SalonSheetScreen.routename);
   }
 
-  List<Widget> buildDaysList(times) {
+  List<Widget> buildDaysList(days) {
     List<Widget> daysList = [];
-    DateTime now = DateTime.now();
-    final dateFormat = DateFormat('EEE d', 'fr');
-    for (int i = 1; i <= 7; i++) {
-      DateTime day = now.add(Duration(days: i));
-      String dayName = dateFormat.format(day);
+    for (String day in days) {
       daysList.add(
         InkWell(
-            onTap: () {
-              // showWorkHours();
-            },
-            child: Container(
-                margin:
-                    EdgeInsets.only(left: 2.0.wp, top: 5.0.sp, bottom: 5.0.sp),
-                padding:
-                    EdgeInsets.symmetric(horizontal: 4.0.sp, vertical: 2.0.sp),
-                width: 8.0.hp,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                  color: grey,
-                ),
-                child: Center(
-                  child: ThemeText(
-                    theText: dayName,
-                    thefontSize: 8.0.sp,
-                    theColor: white,
-                    theFontWeight: FontWeight.bold,
-                  ),
-                ))),
+          onTap: () {
+            // showWorkHours();
+          },
+          child: Container(
+            margin: EdgeInsets.only(left: 2.0.wp, top: 5.0.sp, bottom: 5.0.sp),
+            padding: EdgeInsets.symmetric(horizontal: 4.0.sp, vertical: 2.0.sp),
+            width: 8.0.hp,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.0),
+              color: grey,
+            ),
+            child: Center(
+              child: ThemeText(
+                theText: day,
+                thefontSize: 8.0.sp,
+                theColor: white,
+                theFontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
       );
     }
 
@@ -83,10 +87,27 @@ class SalonsController extends GetxController {
     isShowingWorkHours.refresh();
   }
 
-  getShopDetails(id) async {
+  getSalonDetails(id) async {
     isLoadingSalons.value = true;
     isLoadingSalons.refresh();
     SalonsService().apiSalonDetails(id).then((value) async {
+      isLoadingSalons.value = false;
+      isLoadingSalons.refresh();
+      var body = jsonDecode(value.body);
+      print(body);
+      if (body["success"]) {
+        salon.value = SalonModel.fromJson(body["data"]);
+        salon.refresh();
+      } else {
+        themeSnackBar(body["message"]);
+      }
+    });
+  }
+
+  getSalonsByCategory(id) async {
+    isLoadingSalons.value = true;
+    isLoadingSalons.refresh();
+    SalonsService().apiSalonsByCategory(id).then((value) async {
       isLoadingSalons.value = false;
       isLoadingSalons.refresh();
       var body = jsonDecode(value.body);
@@ -139,13 +160,9 @@ class SalonsController extends GetxController {
     return daysList;
   }
 
-  goToTakeAppointement() async {
-    FlutterSecureStorage storage = FlutterSecureStorage();
-    String? token = await storage.read(key: 'token');
-    if (token == null) {
-      Get.toNamed(TakeAppointementScreen.routename, arguments: "NotLoggedIn");
-    } else {
-      Get.toNamed(TakeAppointementScreen.routename, arguments: "LoggedIn");
-    }
+  goToTakeAppointement(salonId)  {
+   var args = {'salon_id': salonId};
+    Get.toNamed(TakeAppointementScreen.routename,
+        arguments: args);
   }
 }

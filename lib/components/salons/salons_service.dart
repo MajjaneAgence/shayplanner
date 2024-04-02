@@ -10,5 +10,10 @@ class SalonsService {
     final response = await http.get(getSalonDeatilsUrl);
     return response;
   }
-
+Future apiSalonsByCategory(id) async {
+    final getSalonsByCategoryUrl =
+        Uri.parse(ApiHelper().getUrl() + "/get_salon_by_categorie/$id");
+    final response = await http.get(getSalonsByCategoryUrl);
+    return response;
+  }
 }

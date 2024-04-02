@@ -93,13 +93,7 @@ class HomeController extends GetxController {
     Get.back();
   }
 
-  validateFirstName(String email) {
-    if (GetUtils.isEmail(email)) {
-      return null;
-    } else {
-      return "tr_enter_valid_firstname".tr;
-    }
-  }
+
 
   gotoNotifcation() async {
     FlutterSecureStorage storage = FlutterSecureStorage();

@@ -8,7 +8,11 @@ class SalonModel {
   final String? picture;
   final String? address;
   final String? about;
-  final List<DayModel>? times;
+  // final List<DayModel>? times;
+  final List<dynamic>? morningsDays;
+  final List<dynamic>? afternoonDays;
+    final int? countRating;
+  final dynamic countAverage;
   final int? isDeleted;
   final DateTime? createdAt;
   final DateTime? updatedAt;
@@ -19,28 +23,29 @@ class SalonModel {
     this.picture,
     this.address,
     this.about,
-    this.times,
+    this.morningsDays,
+    this.afternoonDays, 
+    this.countRating,
+    this.countAverage,
     this.isDeleted,
     this.createdAt,
     this.updatedAt,
   });
+
   factory SalonModel.fromJson(Map<String, dynamic> json) {
-        List<DayModel> dayTimes = [];
-     jsonDecode(json["time"]['configuration']).forEach((day) => dayTimes.add(DayModel.fromJson(day)));
     return SalonModel(
       id: json['id'] ?? 0,
       name: json['name'] ?? '',
       picture: json['picture'] ?? '',
       address: json['address'] ?? '',
       about: json['about'] ?? '',
-      times: dayTimes,
+      morningsDays: json['disponibilite'] != null ? json['disponibilite']['morningDays']  : [],
+      afternoonDays: json['disponibilite'] != null ? json['disponibilite']['afternoonDays'] : [],
+      countRating:json['count_rating'] ?? 0 ,
+      countAverage: json['rating_avg'],
       isDeleted: json['is_deleted'] ?? 0,
-      createdAt: json['created_at'] != null
-          ? DateTime.parse(json['created_at'])
-          : null,
-      updatedAt: json['updated_at'] != null
-          ? DateTime.parse(json['updated_at'])
-          : null,
+      createdAt: json['created_at'] != null ? DateTime.parse(json['created_at']) : null,
+      updatedAt: json['updated_at'] != null ? DateTime.parse(json['updated_at']) : null,
     );
   }
 
@@ -60,6 +65,8 @@ class SalonModel {
     data['picture'] = this.picture;
     data['address'] = this.address;
     data['about'] = this.about;
+    data['morningDays'] = this.morningsDays;
+    data['afternoonDays'] = this.afternoonDays;
     data['is_deleted'] = this.isDeleted;
     data['created_at'] = this.createdAt;
     data['deleted_at'] = this.updatedAt;

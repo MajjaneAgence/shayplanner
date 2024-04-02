@@ -122,6 +122,7 @@ final Map<String, String> en = {
   "tr_afternoon": "Afternoon",
   "tr_morning": "Morning",
   "tr_take_appointment": "Take an appointment",
+"tr_no_salons_available_for_this_category": "No salons available for this category",
 
   //notifications
   "tr_notification": "Notifications",
@@ -143,7 +144,22 @@ final Map<String, String> en = {
   "tr_done": "Completed",
 
 
-  //take appointment
-  "tr_take_beauty_appointment":"Take an appointment",
+// Take appointment
+"tr_take_beauty_appointment": "Take appointment",
+"tr_service_choice": "Service choice",
+"tr_ok": "OK",
+"tr_cancel": "Cancel",
+"tr_search": "Search",
+"tr_choose_date_and_hour": "Choose date and time",
+"tr_ur_infos": "Your information",
+"tr_msg_for_salon": "Message for the salon",
+"tr_write_msg": "Write a message",
+"tr_book": "Book",
+"tr_availibility": "Availability",
+"tr_connect_me": "Connect me",
+"tr_choose_specialite": "Choose a service",
+"tr_specialite": "Service"
+
+
 
 };

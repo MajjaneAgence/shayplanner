@@ -126,6 +126,8 @@ final Map<String, String> fr = {
   "tr_afternoon": "Après-midi",
   "tr_morning": "Matin",
   "tr_take_appointment": "Prendre RDV",
+  "tr_no_salons_available_for_this_category":"Aucun résultat trouvé pour cette catégorie",
+
 
   //notifications
   "tr_notification": "Notifications",
@@ -152,4 +154,18 @@ final Map<String, String> fr = {
 
   //take appointment 
 "tr_take_beauty_appointment":"Prendre RDV",
+"tr_service_choice":"Choix de la prestation",
+"tr_ok":"Valider",
+"tr_cancel":"Annuler",
+"tr_search":"Rechercher",
+"tr_choose_date_and_hour":"Sélectionner la date et l'heure",
+"tr_ur_infos":"Vos informations",
+"tr_msg_for_salon":"Message pour le salon",
+"tr_write_msg":"écrire un message",
+"tr_book":"Réserver",
+"tr_availibility":"Disponibilités",
+"tr_connect_me":"Me connecter",
+"tr_choose_specialite":"Choisir une prestation",
+"tr_spectialite":"prestation"
+
 };

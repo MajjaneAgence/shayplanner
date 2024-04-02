@@ -5,11 +5,10 @@ import 'package:http/http.dart' as http;
 class TakeAppointmentService {
   String apiUri = "/login";
 
-  Future apiLogin(email, password) async {
-    final loginUrl = Uri.parse(ApiHelper().getUrl()+apiUri);
-    final data = {"email": email, "password": password};
+  Future apiGetSpecialite(salonId) async {
+    final getSpecialiteUrl = Uri.parse(ApiHelper().getUrl()+'/get-specialites-by-salon/$salonId');
     final response =
-        await http.post(loginUrl, body: jsonEncode(data), headers: {
+        await http.get(getSpecialiteUrl, headers: {
       "Content-Type": "application/json",
     });
     return response;

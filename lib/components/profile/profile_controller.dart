@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shayplanner/api/api_helper.dart';
 import 'package:shayplanner/components/booking_history/booking_history_screen.dart';
 import 'package:shayplanner/components/favoris/favoris_screen.dart';
@@ -216,9 +217,14 @@ class ProfileController extends GetxController {
       print(body);
       if (body["success"]) {
         user.value = UserModel.fromJson(body["data"]);
-        isEditingEnabled.value=false;
+        isEditingEnabled.value = false;
         isEditingEnabled.refresh();
         user.refresh();
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('firstname', user.value!.firstname ?? "");
+        prefs.setString('lastname', user.value!.lastname ?? "");
+        prefs.setString('email', user.value!.email ?? "");
+        prefs.setString('mobile', user.value!.mobile ?? "");
         themeSnackBar("tr_your_infos_have_been_updated_successfully".tr);
       } else {
         if (body["message"] == "validationError") {

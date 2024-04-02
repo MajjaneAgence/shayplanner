@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/salons/salons_controller.dart';
 import 'package:shayplanner/components/salons/salons_screen.dart';
@@ -13,17 +14,13 @@ import 'package:shayplanner/tools/extension.dart';
 import 'package:shimmer/shimmer.dart';
 
 class SalonsLoading extends StatelessWidget {
-  SalonsController shopsController = Get.put(SalonsController(1));
-
   @override
   Widget build(BuildContext context) {
-
     return Container(
       height: 62.0.hp,
-                        padding: EdgeInsets.only(top:25.0.sp),
-                        decoration: BoxDecoration(
-                            color: white,
-                            borderRadius: BorderRadius.circular(25.0.sp)),
+      padding: EdgeInsets.only(top: 25.0.sp),
+      decoration: BoxDecoration(
+          color: white, borderRadius: BorderRadius.circular(25.0.sp)),
       child: ListView.builder(
           itemCount: 5, // Adjust the count based on your needs
           itemBuilder: (context, index) {
@@ -144,7 +141,7 @@ class SalonsLoading extends StatelessWidget {
                               height: 11.0.hp,
                               alignment: Alignment.center,
                               child: InkWell(
-                                onTap: () => shopsController.goToSalonSheet(),
+                                onTap: () => {},
                                 child: Container(
                                   width: 28.0.wp,
                                   height: 5.0.hp,
@@ -196,8 +193,7 @@ class SalonsLoading extends StatelessWidget {
                                       highlightColor: Colors.grey[100]!,
                                       child: ListView(
                                           scrollDirection: Axis.horizontal,
-                                          children:
-                                              shopsController.buildDaysListLoading())),
+                                          children: buildDaysListLoading())),
                                 ),
                               ],
                             ),
@@ -224,8 +220,7 @@ class SalonsLoading extends StatelessWidget {
                                       highlightColor: Colors.grey[100]!,
                                       child: ListView(
                                           scrollDirection: Axis.horizontal,
-                                          children:
-                                              shopsController.buildDaysListLoading())),
+                                          children: buildDaysListLoading())),
                                 ),
                               ],
                             ),
@@ -251,5 +246,35 @@ class SalonsLoading extends StatelessWidget {
             );
           }),
     );
+  }
+
+  List<Widget> buildDaysListLoading() {
+    List<Widget> daysList = [];
+    DateTime now = DateTime.now();
+    final dateFormat = DateFormat('EEE d', 'fr');
+    for (int i = 0; i < 7; i++) {
+      DateTime day = now.add(Duration(days: i));
+      String dayName = dateFormat.format(day);
+      daysList.add(
+        Container(
+            margin: EdgeInsets.only(left: 2.0.wp, top: 5.0.sp, bottom: 5.0.sp),
+            padding: EdgeInsets.symmetric(horizontal: 4.0.sp, vertical: 2.0.sp),
+            width: 8.0.hp,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.0),
+              color: grey,
+            ),
+            child: Center(
+              child: ThemeText(
+                theText: dayName,
+                thefontSize: 8.0.sp,
+                theColor: white,
+                theFontWeight: FontWeight.bold,
+              ),
+            )),
+      );
+    }
+
+    return daysList;
   }
 }
