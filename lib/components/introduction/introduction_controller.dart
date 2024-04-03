@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/rating_app/rating_app_screen.dart';
-import 'package:shayplanner/components/rating_salon/rating_salon_screen.dart';
-import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
 
 class IntroductionController extends GetxController {
   // Data properties (if any)

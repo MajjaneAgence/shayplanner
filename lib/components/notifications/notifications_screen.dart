@@ -1,17 +1,12 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:shayplanner/components/notifications/notifications_controller.dart';
-import 'package:shayplanner/components/profile/profile_controller.dart';
-import 'package:shayplanner/components/profile/profile_loading/user_info_loading.dart';
 import 'package:shayplanner/theme/theme_app_bar.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
-import 'package:shayplanner/theme/theme_input.dart';
 import 'package:shayplanner/theme/theme_navigation_bottom_bar.dart';
 import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../theme/theme_circle_painter.dart';
 
 class NotificationsScreen extends StatelessWidget {
   NotificationsScreen({

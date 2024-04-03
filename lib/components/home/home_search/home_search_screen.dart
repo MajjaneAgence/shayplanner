@@ -1,11 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shayplanner/api/api_helper.dart';
 import 'package:shayplanner/components/home/home_service.dart';
-import 'package:http/http.dart' as http;
-import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
 import 'package:shayplanner/components/salons/salons_controller.dart';
 import 'package:shayplanner/components/salons/salons_screen.dart';
 import 'package:shayplanner/theme/theme_colors.dart';

@@ -1,12 +1,6 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:shayplanner/components/home/home_screen.dart';
-import 'package:shayplanner/components/salons/salons_controller.dart';
-import 'package:shayplanner/components/salons/salons_screen.dart';
-import 'package:shayplanner/theme/theme_button.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_grad_container.dart';
 import 'package:shayplanner/theme/theme_text.dart';

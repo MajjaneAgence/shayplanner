@@ -1,15 +1,8 @@
-import 'dart:convert';
 import 'dart:io';
-import 'package:shayplanner/api/api_helper.dart';
-import 'package:shayplanner/components/login/login_screen.dart';
-import 'package:shayplanner/components/profile/profile_editing_screens/change_password_screen.dart';
-import 'package:shayplanner/components/profile/profile_editing_screens/personal_infos_screen.dart';
-import 'package:shayplanner/components/profile/profile_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/models/user_model.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
-import 'package:shayplanner/theme/theme_snackbar.dart';
 import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
 

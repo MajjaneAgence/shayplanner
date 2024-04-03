@@ -1,8 +1,6 @@
 import 'package:flutter_svg/svg.dart';
-import 'package:shayplanner/components/booking_history/booking_history_controller.dart';
 import 'package:shayplanner/components/favoris/favoris_controller.dart';
 import 'package:shayplanner/theme/theme_app_bar.dart';
-import 'package:shayplanner/theme/theme_button.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_navigation_bottom_bar.dart';
 import 'package:shayplanner/theme/theme_text.dart';

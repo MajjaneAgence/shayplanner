@@ -1,18 +1,14 @@
-import 'dart:math';
 import 'dart:ui';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:shayplanner/components/home/home_controller.dart';
 import 'package:shayplanner/components/home/home_loading/categories_loading.dart';
 import 'package:shayplanner/components/home/home_loading/latest_salons_loading.dart';
 import 'package:shayplanner/components/home/home_search/home_search_screen.dart';
-import 'package:shayplanner/components/introduction/introduction_screen.dart';
 import 'package:shayplanner/components/salons/salons_controller.dart';
 import 'package:shayplanner/components/salons/salons_screen.dart';
 import 'package:shayplanner/theme/theme_circle_painter.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_grad_container.dart';
-import 'package:shayplanner/theme/theme_input.dart';
 import 'package:shayplanner/theme/theme_navigation_bottom_bar.dart';
 import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
