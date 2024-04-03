@@ -120,7 +120,9 @@ final Map<String, String> ar = {
   "tr_afternoon": "بعد الظهر",
   "tr_morning": "صباحًا",
   "tr_take_appointment": "احجز موعد",
-"tr_no_salons_available_for_this_category": "لا تتوفر صالونات لهذه الفئة",
+  "tr_no_salons_available_for_this_category": "لا تتوفر صالونات لهذه الفئة",
+  "tr_no_salons_available_for_this_speciality":
+      "لا تتوفر صالونات لهذه الاختصاصية",
 
   //notifications
   "tr_notification": "الإشعارات",
@@ -141,24 +143,18 @@ final Map<String, String> ar = {
   "tr_book_again": "احجز مرة أخرى",
   "tr_done": "مكتملة",
 
-
-    //take appointment
-"tr_take_beauty_appointment": "احجز موعدًا",
-"tr_service_choice": "اختيار الخدمة",
-"tr_ok": "موافق",
-"tr_cancel": "إلغاء",
-"tr_search": "بحث",
-"tr_choose_date_and_hour": "اختيار التاريخ والوقت",
-"tr_ur_infos": "معلوماتك",
-"tr_msg_for_salon": "رسالة للصالون",
-"tr_write_msg": "كتابة رسالة",
-"tr_book": "حجز",
-"tr_availibility": "التوفر",
-"tr_choose_specialite": "اختر خدمة",
-"tr_specialite": "الخدمة"
-
-
-
-
-
+  //take appointment
+  "tr_take_beauty_appointment": "احجز موعدًا",
+  "tr_service_choice": "اختيار الخدمة",
+  "tr_ok": "موافق",
+  "tr_cancel": "إلغاء",
+  "tr_search": "بحث",
+  "tr_choose_date_and_hour": "اختيار التاريخ والوقت",
+  "tr_ur_infos": "معلوماتك",
+  "tr_msg_for_salon": "رسالة للصالون",
+  "tr_write_msg": "كتابة رسالة",
+  "tr_book": "حجز",
+  "tr_availibility": "التوفر",
+  "tr_choose_specialite": "اختر خدمة",
+  "tr_specialite": "الخدمة"
 };

@@ -127,7 +127,7 @@ final Map<String, String> fr = {
   "tr_morning": "Matin",
   "tr_take_appointment": "Prendre RDV",
   "tr_no_salons_available_for_this_category":"Aucun résultat trouvé pour cette catégorie",
-
+ "tr_no_salons_available_for_this_speciality":"Aucun résultat trouvé pour cette spécialité",
 
   //notifications
   "tr_notification": "Notifications",

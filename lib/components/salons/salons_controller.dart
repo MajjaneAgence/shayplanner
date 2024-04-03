@@ -27,12 +27,18 @@ class SalonsController extends GetxController {
   void onInit() async {
     super.onInit();
     String filter = arguments['filterBy'];
-    if (filter == "latestSalons") {
+    if (filter == "salon") {
       int salonId = arguments['salon_id'];
       getSalonDetails(salonId);
     } else if (filter == "categories") {
       int categoryId = arguments['category_id'];
       getSalonsByCategory(categoryId);
+    }else if(filter == "specialite"){
+      int specialiteId = arguments['specialite_id'];
+      getSalonsBySpecialite(specialiteId);
+    }else if(filter == "address"){
+      int salonId = arguments['salon_id'];
+      getSalonDetails(salonId);
     }
   }
 
@@ -103,7 +109,6 @@ class SalonsController extends GetxController {
       }
     });
   }
-
   getSalonsByCategory(id) async {
     isLoadingSalons.value = true;
     isLoadingSalons.refresh();
@@ -124,6 +129,25 @@ class SalonsController extends GetxController {
     });
   }
 
+ getSalonsBySpecialite(id) async {
+    isLoadingSalons.value = true;
+    isLoadingSalons.refresh();
+    SalonsService().apiSalonsBySpecialite(id).then((value) async {
+      isLoadingSalons.value = false;
+      isLoadingSalons.refresh();
+      var body = jsonDecode(value.body);
+      print(body);
+      if (body["success"]) {
+        salons.clear();
+        for (var salon in body["data"]) {
+          salons.add(SalonModel.fromJson(salon));
+        }
+        salons.refresh();
+      } else {
+        themeSnackBar(body["message"]);
+      }
+    });
+  }
   List<Widget> buildDaysListLoading() {
     List<Widget> daysList = [];
     DateTime now = DateTime.now();

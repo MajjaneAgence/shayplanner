@@ -2,39 +2,23 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shayplanner/api/api_helper.dart';
 import 'package:shayplanner/components/home/home_service.dart';
+import 'package:http/http.dart' as http;
+import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
+import 'package:shayplanner/components/salons/salons_controller.dart';
+import 'package:shayplanner/components/salons/salons_screen.dart';
+import 'package:shayplanner/theme/theme_colors.dart';
 
 class CustomSearchDelegate extends SearchDelegate<String> {
-  // final List<String> items = [
-  //   'Apple',
-  //   'Banana',
-  //   'Cherry',
-  //   'Durian',
-  //   'Elderberry',
-  //   'Fig',
-  //   'Grapes',
-  //   'Honeydew',
-  //   'Jackfruit',
-  //   'Kiwi',
-  //   'Lemon',
-  //   'Mango',
-  //   'Nectarine',
-  //   'Orange',
-  //   'Papaya',
-  //   'Quince',
-  //   'Raspberry',
-  //   'Strawberry',
-  //   'Tangerine',
-  //   'Ugli fruit',
-  //   'Vanilla bean',
-  //   'Watermelon',
-  //   'Xigua melon',
-  //   'Yellow kiwi',
-  //   'Zucchini'
-  // ];
-
+  final String type;
   final List<String> recentItems = [];
-   List items =[];
+  List items = [];
+
+  CustomSearchDelegate({required this.type});
+  @override
+  String get searchFieldLabel => 'tr_search'.tr;
+
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
@@ -60,16 +44,13 @@ class CustomSearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    final suggestions = items
-        .where((item) => item.toLowerCase().contains(query.toLowerCase()))
-        .toList();
     return ListView.builder(
-      itemCount: suggestions.length,
+      itemCount: items.length,
       itemBuilder: (context, index) {
         return ListTile(
-          title: Text(suggestions[index]),
+          title: Text(items[index]["name"]),
           onTap: () {
-            close(context, suggestions[index]);
+            close(context, items[index]["name"]);
           },
         );
       },
@@ -78,80 +59,92 @@ class CustomSearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-  //   List list = [];
-  //   HomeService().apiSearch(query).then((value) async {
-  //     var body = jsonDecode(value.body);
-  //     print(body);
-  //     if (body["success"]) {
-  //       list.clear();
-  //       for (var item in body["data"]["salons"]) {
-  //         list.add(item);
-  //       }
-  //       for (var item in body["data"]["categories"]) {
-  //         list.add(item);
-  //       }
-  //       for (var item in body["data"]["specialites"]) {
-  //         list.add(item);
-  //       }
-  //               print(list);
-
-  //     }
-  //   });
-  // items=list;
-  //   final suggestions = items.where((item) => item.toLowerCase().contains(query.toLowerCase())).toList();
-  //   return ListView.builder(
-  //     itemCount: suggestions.length,
-  //     itemBuilder: (context, index) {
-  //       return ListTile(
-  //         title: Text(suggestions[index]),
-  //         onTap: () {
-  //           query = suggestions[index];
-  //           showResults(context);
-  //         },
-  //       );
-  //     },
-  //   );
-      return FutureBuilder(
-      future: HomeService().apiSearch(query), // Assuming query is defined somewhere
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
-        } else if (snapshot.hasError) {
-          return Center(child: Text('Error: ${snapshot.error}'));
-        } else if (!snapshot.hasData || !(snapshot.data as Map<String, dynamic>)['success']) {
-          return Center(child: Text('No data available'));
-        } else {
-          var body = jsonDecode(snapshot.data.body);
-          List<dynamic> items = [];
-          if (body["success"]) {
-            for (var item in body["data"]["salons"]) {
-              items.add(item);
-            }
-            for (var item in body["data"]["categories"]) {
-              items.add(item);
-            }
-            for (var item in body["data"]["specialites"]) {
-              items.add(item);
-            }
-          }
-          final suggestions = items
-              .where((item) => item['name'].toLowerCase().contains(query.toLowerCase()))
-              .toList();
-          return ListView.builder(
-            itemCount: suggestions.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(suggestions[index]['name']),
-                onTap: () {
-                  // Handle item tap
-                  // Example: query = suggestions[index]['name'];
-                  // showResults(context);
-                },
-              );
+    Widget resultContent() {
+      return ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(items[index]["name"]),
+            onTap: () {
+              query = items[index]["name"];
+              print(items[index]["type"]);
+              if (items[index]["type"] == "salon") {
+                Get.delete<SalonsController>();
+                Get.toNamed(SalonsScreen.routename, arguments: {
+                  'filterBy': 'salon',
+                  'salon_id': items[index]["id"]
+                });
+              } else if (items[index]["type"] == "category") {
+                Get.delete<SalonsController>();
+                Get.toNamed(SalonsScreen.routename, arguments: {
+                  'filterBy': 'categories',
+                  'category_id': items[index]["id"]
+                });
+              } else if (items[index]["type"] == "specialite") {
+                Get.delete<SalonsController>();
+                Get.toNamed(SalonsScreen.routename, arguments: {
+                  'filterBy': 'specialite',
+                  'specialite_id': items[index]["id"]
+                });
+              }
+              else if (items[index]["type"] == "address") {
+                Get.delete<SalonsController>();
+                Get.toNamed(SalonsScreen.routename, arguments: {
+                  'filterBy': 'address',
+                  'salon_id': items[index]["id"]
+                });
+              }
+              //showResults(context);
             },
           );
-        }
-      },
-    );
+        },
+      );
+    }
+
+    return query != ''
+        ? FutureBuilder(
+            future: type == "SearchByNameCategorySpecialite"
+                ? HomeService().apiSearchByNameCategorieSpecialite(query)
+                : HomeService().apiSearchByAddress(query),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                print(snapshot.data);
+                if (snapshot.data["success"]) {
+                  if (snapshot.data["data"].length != 0) {
+                    items.clear();
+                    if (snapshot.data["data"]["address"] != null) {
+                      for (var item in snapshot.data["data"]["address"]) {
+                        item['type'] = "address";
+                        items.add(item);
+                      }
+                    } else {
+                      for (var item in snapshot.data["data"]["salons"]) {
+                        item['type'] = "salon";
+                        items.add(item);
+                      }
+                      for (var item in snapshot.data["data"]["categories"]) {
+                        item['type'] = "category";
+                        items.add(item);
+                      }
+                      for (var item in snapshot.data["data"]["specialites"]) {
+                        item['type'] = "specialite";
+                        items.add(item);
+                      }
+                    }
+                    print(items);
+                  }
+                }
+                return resultContent();
+              }
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                    child: CircularProgressIndicator(
+                  color: crem,
+                ));
+              } else {
+                return SizedBox();
+              }
+            })
+        : SizedBox();
   }
 }

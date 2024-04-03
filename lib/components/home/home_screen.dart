@@ -7,6 +7,7 @@ import 'package:shayplanner/components/home/home_loading/categories_loading.dart
 import 'package:shayplanner/components/home/home_loading/latest_salons_loading.dart';
 import 'package:shayplanner/components/home/home_search/home_search_screen.dart';
 import 'package:shayplanner/components/introduction/introduction_screen.dart';
+import 'package:shayplanner/components/salons/salons_controller.dart';
 import 'package:shayplanner/components/salons/salons_screen.dart';
 import 'package:shayplanner/theme/theme_circle_painter.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
@@ -220,8 +221,18 @@ class HomeScreen extends StatelessWidget {
                                         .shopNameEditingController,
                                     style: TextStyle(fontSize: 10.0.sp),
                                     onTap: () {
-                                      showSearch(context: context, delegate: CustomSearchDelegate());
-                                      //Get.toNamed(HomeSearchScreen.routename);
+                                      showSearch(
+                                          context: context,
+                                          query: homeController
+                                              .shopNameEditingController.text,
+                                          delegate: CustomSearchDelegate(type :"SearchByNameCategorySpecialite"));
+                                    },
+                                    onChanged: (value) {
+                                      showSearch(
+                                          context: context,
+                                          query: homeController
+                                              .shopNameEditingController.text,
+                                          delegate: CustomSearchDelegate(type :"SearchByNameCategorySpecialite"));
                                     },
                                     decoration: InputDecoration(
                                       labelText: "tr_salon_service".tr,
@@ -272,6 +283,20 @@ class HomeScreen extends StatelessWidget {
                                     controller: homeController
                                         .shopAddressEditingController,
                                     style: TextStyle(fontSize: 10.0.sp),
+                                     onTap: () {
+                                      showSearch(
+                                          context: context,
+                                          query: homeController
+                                              .shopNameEditingController.text,
+                                          delegate: CustomSearchDelegate(type :"SearchByAddress"));
+                                    },
+                                    onChanged: (value) {
+                                      showSearch(
+                                          context: context,
+                                          query: homeController
+                                              .shopNameEditingController.text,
+                                          delegate: CustomSearchDelegate(type :"SearchByAddress"));
+                                    },
                                     decoration: InputDecoration(
                                       labelText: "tr_address_city".tr,
                                       hintText: "tr_address_city".tr,
@@ -352,6 +377,10 @@ class HomeScreen extends StatelessWidget {
                                   ...homeController.categories.map(
                                     (category) => InkWell(
                                       onTap: () {
+                                        if (Get.isRegistered<
+                                            SalonsController>()) {
+                                          Get.delete<SalonsController>();
+                                        }
                                         Get.toNamed(SalonsScreen.routename,
                                             arguments: {
                                               'filterBy': 'categories',
@@ -441,9 +470,13 @@ class HomeScreen extends StatelessWidget {
                                   ...homeController.latestsSalons.map(
                                     (salon) => InkWell(
                                       onTap: () {
+                                        if (Get.isRegistered<
+                                            SalonsController>()) {
+                                          Get.delete<SalonsController>();
+                                        }
                                         Get.toNamed(SalonsScreen.routename,
                                             arguments: {
-                                              'filterBy': 'latestSalons',
+                                              'filterBy': 'salon',
                                               'salon_id': salon.id
                                             });
                                       },

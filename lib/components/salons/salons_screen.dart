@@ -128,8 +128,8 @@ class SalonsScreen extends StatelessWidget {
                             color: white,
                             borderRadius: BorderRadius.circular(25.0.sp)),
                         child:
-                        salonsController.arguments['filterBy']=="categories" ?
-                        salonsController.salons.length!=0 ?
+                        (salonsController.arguments['filterBy']=="categories" ||  salonsController.arguments['filterBy']=="specialite")  ?
+                        salonsController.salons.isNotEmpty ?
                          ListView(children: [
                           ...salonsController.salons.map((salon) => Column(
                                 children: [
@@ -395,7 +395,7 @@ class SalonsScreen extends StatelessWidget {
                           Container( 
                             width: 70.0.wp,
                             child:
-                        ThemeText(theText:"tr_no_salons_available_for_this_category".tr,thefontSize: 14.0.sp,theColor: black,theMaxOfLines: 7,theTextAlign: TextAlign.center,theFontWeight:FontWeight.bold,)
+                        ThemeText(theText:salonsController.arguments['filterBy']=="categories"  ?"tr_no_salons_available_for_this_category".tr :"tr_no_salons_available_for_this_speciality".tr  ,thefontSize: 14.0.sp,theColor: black,theMaxOfLines: 7,theTextAlign: TextAlign.center,theFontWeight:FontWeight.bold,)
                           ),
                         )
                         :

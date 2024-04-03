@@ -16,4 +16,11 @@ Future apiSalonsByCategory(id) async {
     final response = await http.get(getSalonsByCategoryUrl);
     return response;
   }
+
+  Future apiSalonsBySpecialite(id) async {
+    final getSalonsBySpecialiteUrl =
+        Uri.parse(ApiHelper().getUrl() + "/get-salon-by-specialites/$id");
+    final response = await http.get(getSalonsBySpecialiteUrl);
+    return response;
+  }
 }

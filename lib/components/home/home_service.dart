@@ -20,7 +20,7 @@ class HomeService {
     return response;
   }
 
-   Future apiSearch(keyword) async {
+   Future apiSearchl(keyword) async {
     final searchUrl =
         Uri.parse(ApiHelper().getUrl() + "/search");
     final data = {"searchvalue": keyword};
@@ -30,4 +30,18 @@ class HomeService {
     });
     return response;
   }
+
+  Future apiSearchByNameCategorieSpecialite(keyword) async {
+      var searchUrl = Uri.parse('${ApiHelper().getUrl()}/search');
+      var data = {'searchvalue': keyword};
+      var result = await http.post(searchUrl, body: data);
+      return result.body != '' ? json.decode(result.body) : null;
+    }
+
+    Future apiSearchByAddress(keyword) async {
+      var searchByAddressUrl = Uri.parse('${ApiHelper().getUrl()}/search_salon_by_address');
+      var data = {'searchvalue': keyword};
+      var result = await http.post(searchByAddressUrl, body: data);
+      return result.body != '' ? json.decode(result.body) : null;
+    }
 }
