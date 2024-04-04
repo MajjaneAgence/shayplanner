@@ -18,6 +18,7 @@ final Map<String, String> fr = {
   "tr_remember_me": "Se souvenir de moi",
   "tr_type_your_password": "Saisir votre mot de passe",
   "tr_new_on_planner": "Nouveau sur PLANNER",
+  
 
   // Forgot password screen
   "tr_try_something_else": "Essayer une autre méthode",
@@ -166,6 +167,17 @@ final Map<String, String> fr = {
 "tr_availibility":"Disponibilités",
 "tr_connect_me":"Me connecter",
 "tr_choose_specialite":"Choisir une prestation",
-"tr_spectialite":"prestation"
+"tr_spectialite":"prestation",
+"tr_please_choose_at_least_one_speciality": "Veuillez choisir au moins un service",
+"tr_no_availability": "Aucune disponibilité",
+"tr_salon_with_no_specialities":"Ce salon ne propose aucune spécialité pour le moment",
+
+//recap
+"tr_reservation":"Réservation",
+"tr_date_and_hour":"date et heure",
+"tr_confirm":"Confirmer",
+"tr_please_chose_an_hour":"Veuillez sélectione un créneau",
+"tr_ur_appointement_has_been_booked_sucessfully":"Votre réservation a bien été confirmée.",
+"tr_finish":"Terminer"
 
 };

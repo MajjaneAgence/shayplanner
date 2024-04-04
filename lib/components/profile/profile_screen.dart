@@ -1,6 +1,7 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:shayplanner/components/about/about_screen.dart';
 import 'package:shayplanner/api/api_helper.dart';
+import 'package:shayplanner/components/future_appointement/future_appointement_screen.dart';
 import 'package:shayplanner/components/notifications/notifications_screen.dart';
 import 'package:shayplanner/components/profile/profile_controller.dart';
 import 'package:shayplanner/components/profile/profile_loading/user_info_loading.dart';
@@ -212,6 +213,25 @@ class ProfileScreen extends StatelessWidget {
                               SizedBox(width: 5.0.wp),
                               ThemeText(
                                 theText: "tr_notifications".tr,
+                                thefontSize: 11.0.sp,
+                                theColor: black,
+                                theFontWeight: FontWeight.bold,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 1.0.hp),
+                        TextButton(
+                          onPressed: () {
+                            Get.toNamed(FutureAppointementScreen.routename);
+                          },
+                          child:  Row(
+                            children: [
+                              SvgPicture.asset("assets/icons/profile/bell.svg",
+                                  width: 18.0.sp, height: 18.0.sp),
+                              SizedBox(width: 5.0.wp),
+                              ThemeText(
+                                theText: "tr_future_appointment".tr,
                                 thefontSize: 11.0.sp,
                                 theColor: black,
                                 theFontWeight: FontWeight.bold,

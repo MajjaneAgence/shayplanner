@@ -3,6 +3,8 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:intl/intl.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:shayplanner/components/take_appointement/take_appointement_controller.dart';
+import 'package:shayplanner/components/take_appointement/take_appointment_loading/specialite_loading.dart';
+import 'package:shayplanner/models/specialite_model.dart';
 import 'package:shayplanner/theme/theme_app_bar.dart';
 import 'package:shayplanner/theme/theme_button.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
@@ -187,12 +189,14 @@ class TakeAppointementScreen extends StatelessWidget {
                                     ),
                                     child:
                                         GetBuilder<TakeAppointmentController>(
-                                      init: TakeAppointmentController(Get.arguments),
+                                      init: TakeAppointmentController(takeAppointmentController.arguments),
                                       builder: (controller) => controller
                                                   .isLoadingSpecialites ==
                                               true
-                                          ? CircularProgressIndicator() :
-                                          MultiSelectBottomSheetField(
+                                          ? const SpecialiteLoading() :
+                                          (controller.items.isEmpty && !controller.isLoadingSpecialites) ?
+                                          ThemeText(theText: "tr_salon_with_no_specialities".tr, thefontSize: 12.0.sp, theColor: darkOrange, theTextAlign: TextAlign.center,theFontWeight: FontWeight.bold,):
+                                          MultiSelectBottomSheetField<SpecialiteModel?>(
                                               isDismissible: false,
                                               listType:
                                                   MultiSelectListType.CHIP,
@@ -203,9 +207,9 @@ class TakeAppointementScreen extends StatelessWidget {
                                                   Text("tr_choose_specialite".tr),
                                               title: Text("tr_spectialite".tr),
                                               items: controller.items,
-                                              onConfirm: (values) {
+                                              onConfirm: (List<SpecialiteModel?> values) {
                                                 takeAppointmentController
-                                                    .selectedAnimals2 = values;
+                                                    .selectedSpecialities = values;
                                                 Scrollable.ensureVisible(
                                                     takeAppointmentController
                                                         .keySelectDateHour
@@ -217,7 +221,7 @@ class TakeAppointementScreen extends StatelessWidget {
                                                   MultiSelectChipDisplay(
                                                 scroll: true,
                                                 onTap: (value) {
-                                                  controller.selectedAnimals2
+                                                  controller.selectedSpecialities
                                                       .remove(value);
                                                   controller.update();
                                                 },
@@ -240,7 +244,9 @@ class TakeAppointementScreen extends StatelessWidget {
                                                       color: white, width: 0)),
                                               validator: (value) =>
                                                   takeAppointmentController
-                                                      .validateServices(value))
+                                                      .validateServices(value),
+                                                      autovalidateMode:AutovalidateMode.onUserInteraction
+                                                    )
                                           ,
                                     ),
                                   ),
@@ -264,7 +270,7 @@ class TakeAppointementScreen extends StatelessWidget {
                                     theContent: Row(children: [
                                       SizedBox(width: 4.0.wp),
                                       GetBuilder<TakeAppointmentController>(
-                                        init: TakeAppointmentController(Get.arguments),
+                                        init: TakeAppointmentController(takeAppointmentController.arguments),
                                         builder: (controller) => Expanded(
                                           child: ThemeText(
                                             theText: DateFormat('dd/MM/yyyy')
@@ -281,15 +287,19 @@ class TakeAppointementScreen extends StatelessWidget {
                                           padding: EdgeInsets.symmetric(
                                               vertical: 3.0.sp),
                                           child: VerticalDivider()),
+                                           GetBuilder<TakeAppointmentController>(
+                                        init: TakeAppointmentController(takeAppointmentController.arguments),
+                                        builder: (controller) =>
                                       Expanded(
                                         child: ThemeText(
-                                          theText: "00h:00min".tr,
+                                          theText: controller.availability.firstWhere((element) => element['isChecked']==true, orElse: () =>  {'hour': '00h:00min'})['hour'],
                                           thefontSize: 10.0.sp,
                                           theColor: black,
                                           theMaxOfLines: 1,
                                           theFontWeight: FontWeight.bold,
                                         ),
                                       ),
+                                           ),
                                       Expanded(
                                         child: Container(
                                           alignment: Alignment.center,
@@ -435,6 +445,7 @@ class TakeAppointementScreen extends StatelessWidget {
                                     child: TextField(
                                       keyboardType: TextInputType.multiline,
                                       maxLines: 2,
+                                      controller: takeAppointmentController.msgForSalonEditingController,
                                       decoration: InputDecoration(
                                           filled: true,
                                           fillColor: verylightGrey,
@@ -477,11 +488,9 @@ class TakeAppointementScreen extends StatelessWidget {
                                             theFontWeight: FontWeight.bold,
                                             theColor: white),
                                         theAction: takeAppointmentController
-                                            .bookAppointement,
-                                        theLoadingStatus:
-                                            takeAppointmentController
-                                                .isLoadingBookingAppoitement
-                                                .value),
+                                            .goToRecap,
+                                        theLoadingStatus:false
+                                              ),
                                   ),
                                   SizedBox(height: 20.0.hp),
                                 ],

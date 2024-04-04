@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 String fontBold ="Montserrat-Bold";
 String fontRegular ="Montserrat-regular";
 String fontThin ="Montserrat-Light";

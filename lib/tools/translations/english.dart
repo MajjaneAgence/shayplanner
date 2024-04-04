@@ -160,5 +160,16 @@ final Map<String, String> en = {
   "tr_availibility": "Availability",
   "tr_connect_me": "Connect me",
   "tr_choose_specialite": "Choose a service",
-  "tr_specialite": "Service"
+  "tr_specialite": "Service",
+  "tr_please_choose_at_least_one_speciality": "Please choose at least one specialty",
+"tr_salon_with_no_specialities": "This salon has no specialties at the moment",
+ 
+ // recap
+ "tr_reservation": "Reservation",
+"tr_date_and_hour": "Date and Hour",
+"tr_confirm": "Confirm",
+"tr_please_chose_an_hour": "Please choose an hour",
+"tr_ur_appointement_has_been_booked_sucessfully": "Your appointment has been booked successfully.",
+"tr_finish": "Finish",
+
 };

@@ -1,11 +1,10 @@
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:shayplanner/components/about/about_screen.dart';
 import 'package:shayplanner/components/booking_history/booking_history_screen.dart';
 import 'package:shayplanner/components/favoris/favoris_screen.dart';
 import 'package:shayplanner/components/forgot_password/forgot_password_screen.dart';
 import 'package:shayplanner/components/forgot_password/set_new_password_screen.dart';
+import 'package:shayplanner/components/future_appointement/future_appointement_screen.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
-import 'package:shayplanner/components/home/home_search/home_search_screen.dart';
 import 'package:shayplanner/components/introduction/introduction_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/notifications/notifications_screen.dart';
@@ -106,5 +105,9 @@ var router = [
   GetPage(
       name: AppointmentRecapScreen.routename,
       page: () => AppointmentRecapScreen(),
+      transition: Transition.cupertinoDialog),
+        GetPage(
+      name:FutureAppointementScreen.routename,
+      page: () => FutureAppointementScreen(),
       transition: Transition.cupertinoDialog),
 ];

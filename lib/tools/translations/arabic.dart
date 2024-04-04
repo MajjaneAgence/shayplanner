@@ -156,5 +156,17 @@ final Map<String, String> ar = {
   "tr_book": "حجز",
   "tr_availibility": "التوفر",
   "tr_choose_specialite": "اختر خدمة",
-  "tr_specialite": "الخدمة"
+  "tr_specialite": "الخدمة",
+  "tr_please_choose_at_least_one_speciality": "الرجاء اختيار تخصص واحد على الأقل",
+"tr_salon_with_no_specialities": "هذا الصالون ليس لديه أي تخصصات في الوقت الحالي",
+
+// recap
+"tr_reservation": "الحجز",
+"tr_date_and_hour": "التاريخ والوقت",
+"tr_confirm": "تأكيد",
+"tr_please_chose_an_hour": "يرجى اختيار ساعة",
+"tr_ur_appointement_has_been_booked_sucessfully": "تم حجز موعدك بنجاح.",
+"tr_finish": "إنهاء",
+
+
 };

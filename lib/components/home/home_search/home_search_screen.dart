@@ -59,7 +59,7 @@ class CustomSearchDelegate extends SearchDelegate<String> {
         itemCount: items.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(items[index]["name"]),
+            title:items[index]["type"] != "address" ?  Text(items[index]["name"]): Text(items[index]["address"]),
             onTap: () {
               query = items[index]["name"];
               print(items[index]["type"]);

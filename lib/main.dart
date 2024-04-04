@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -49,4 +48,7 @@ class MyApp extends StatelessWidget {
 
   //missing svg icons trash for deleting notifications
   //svg for arrow language when chosing among the drop down the opposite for the arabic case
+
+
+// cordialment
 }

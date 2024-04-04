@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shayplanner/tools/extension.dart';
 
 class ThemeText extends StatelessWidget {
   String theText;

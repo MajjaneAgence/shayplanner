@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/tools/extension.dart';
 
 class ThemeGradContainer extends StatelessWidget {
