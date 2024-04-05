@@ -1,15 +1,19 @@
+import 'dart:convert';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-import 'package:shayplanner/components/home/home_screen.dart';
+import 'package:shayplanner/components/home/home_service.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/rating_app/rating_app_screen.dart';
-import 'package:shayplanner/components/rating_salon/rating_salon_screen.dart';
+import 'package:shayplanner/components/salon_sheet/salon_sheet_service.dart';
+import 'package:shayplanner/models/category_model.dart';
+import 'package:shayplanner/models/salon_model.dart';
+import 'package:shayplanner/theme/theme_snackbar.dart';
 
 class SalonSheetController extends GetxController {
   // Data properties (if any)
-  RxBool isLoading = false.obs;
-  RxString? errorMessage;
+  bool isLoadingSalonGallery = true;
   List<String> salonImages = [
     'assets/images/salon_sheet.png',
     'assets/images/salon_sheet.png',
@@ -18,10 +22,44 @@ class SalonSheetController extends GetxController {
     'assets/images/salon_sheet.png',
   ];
   CarouselController carouselController = CarouselController();
-  RxInt currentIndex = 0.obs;
-  var isExpanded = false.obs;
+  int currentIndex = 0;
+  bool isExpanded = false;
+  bool isLoadingCategories=false;
+  SalonModel salon = SalonModel();
+  Map<String, dynamic> arguments;
+  List<CategoryModel> categories = <CategoryModel>[];
+
+  SalonSheetController(this.arguments);
+  List<String> secourImages = [
+    'assets/images/take_appointement/no_image_available.jpg',
+  ];
+void onInit() async {
+    super.onInit();
+    int salonId = arguments['salon_id'];
+    print(salonId);
+    getSalonGallery(salonId);
+    getCatgories();
+  }
   void toggleExpanded() {
-    isExpanded.value = !isExpanded.value;
+    isExpanded = !isExpanded;
+    update();
+  }
+
+   getCatgories() async {
+    isLoadingCategories = true;
+    SalonSheetService().apiGetCategories().then((value) async {
+      isLoadingCategories = false;
+      var body = jsonDecode(value.body);
+      print(body);
+      if (body["success"]) {
+        categories.clear();
+        for (var category in body["data"]) {
+          categories.add(CategoryModel.fromJson(category));
+        }
+      } else {
+        themeSnackBar(body["message"]);
+      }
+    });
   }
 
   String salonDesc =
@@ -39,6 +77,24 @@ class SalonSheetController extends GetxController {
 
   void onButton2Pressed() async {
     Get.toNamed(RatingAppScreen.routename);
+  }
+
+  getSalonGallery(salonId) {
+    isLoadingSalonGallery = true;
+    update();
+    SalonSheetService().apiGetSalonGallery(salonId).then((value) async {
+      isLoadingSalonGallery = false;
+      var body = jsonDecode(value.body);
+      print(body);
+      if (body["success"]) {
+        salon = SalonModel.fromJson(body["data"]["salon"]);
+        salonImages.clear();
+        salonImages = salon.gallery!;
+        update();
+      } else {
+        themeSnackBar(body["message"]);
+      }
+    });
   }
 
   doSomething() {}

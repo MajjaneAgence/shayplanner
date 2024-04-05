@@ -1,13 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:shayplanner/components/home/home_screen.dart';
-import 'package:shayplanner/components/introduction/introduction_controller.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_controller.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_tab_bar_screens/salon_sheet_about.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_tab_bar_screens/salon_sheet_rating.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_tab_bar_screens/salon_sheet_services.dart';
-import 'package:shayplanner/components/salons/salons_screen.dart';
+import 'package:shayplanner/components/take_appointement/take_appointment_loading/gallery_loading.dart';
 import 'package:shayplanner/theme/theme_app_bar.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_navigation_bottom_bar.dart';
@@ -19,15 +17,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class SalonSheetScreen extends StatelessWidget {
   const SalonSheetScreen({super.key});
-
   static const routename = '/salon-sheet';
 
   @override
   Widget build(BuildContext context) {
-    final SalonSheetController salonSheetController =
-        Get.put(SalonSheetController());
-
-    return Scaffold(
+    return GetBuilder<SalonSheetController>(
+      init: SalonSheetController(Get.arguments),
+      builder: (controller) => Scaffold(
         appBar: ThemeAppBar(),
         extendBody: true,
         body: Container(
@@ -52,67 +48,83 @@ class SalonSheetScreen extends StatelessWidget {
                 ),
               ),
               Stack(children: [
-                Column( 
-                  children:[ 
-                CarouselSlider(
-                  carouselController: salonSheetController.carouselController,
-                  options: CarouselOptions(
-                      height: 30.0.hp,
-                      viewportFraction: 1.5,
-                      initialPage: 0,
-                      scrollDirection: Axis.horizontal,
-                      onPageChanged: (index, reason) {
-                        salonSheetController.currentIndex.value = index;
-                        salonSheetController.currentIndex.refresh();
-                      }),
-                  items: salonSheetController.salonImages
-                      .map(
-                        (item) => salonSheetController.salonImages.isEmpty
-                            ? Image.asset(
-                                width: MediaQuery.of(context).size.width,
-                                'assets/images/no_image_available.png')
-                            : Image.asset(
-                                width: MediaQuery.of(context).size.width,
-                                item,
-                                fit: BoxFit.fill,
-                              ),
-                      )
-                      .toList(),
+                Stack(
+                  children: [
+                    controller.isLoadingSalonGallery
+                        ? Column(children: [
+                            GalleryLoading(),
+                            Container(
+                              height: 48.0.hp,
+                              // color: Colors.red
+                            ),
+                          ])
+                        : Column(children: [
+                            CarouselSlider(
+                              carouselController: controller.carouselController,
+                              options: CarouselOptions(
+                                  height: 30.0.hp,
+                                  viewportFraction: 1.5,
+                                  initialPage: 0,
+                                  scrollDirection: Axis.horizontal,
+                                  onPageChanged: (index, reason) {
+                                    controller.currentIndex = index;
+                                    controller.update();
+                                  }),
+                              items: controller.salonImages.isNotEmpty
+                                  ? controller.salonImages
+                                      .map(
+                                        (item) => Image.network(
+                                          width: 100.0.wp,
+                                          item,
+                                          fit: BoxFit.fill,
+                                        ),
+                                      )
+                                      .toList()
+                                  : controller.secourImages
+                                      .map(
+                                        (item) => Image.asset(
+                                          width: 100.0.wp,
+                                          item,
+                                          fit: BoxFit.fill,
+                                        ),
+                                      )
+                                      .toList(),
+                            ),
+                            Container(
+                              height: 48.0.hp,
+                              // color: Colors.red
+                            ),
+                          ]),
+                    controller.salonImages.isNotEmpty
+                        ? Container(
+                            padding: EdgeInsets.symmetric(vertical: 8.0.hp),
+                            alignment: Alignment.bottomCenter,
+                            width: 100.0.wp,
+                            height: 30.0.hp,
+                            child: DotsIndicator(
+                              onTap: (position) {
+                                controller.currentIndex = position;
+                                controller.carouselController
+                                    .animateToPage(position);
+                              },
+                              dotsCount: controller.salonImages.length,
+                              position: controller.currentIndex,
+                              decorator: DotsDecorator(
+                                  color: transparent,
+                                  activeColor: white,
+                                  activeSize: Size.square(10),
+                                  shape: CircleBorder(
+                                    side: BorderSide(color: white, width: 1.0),
+                                  ),
+                                  spacing: EdgeInsets.all(2.0.sp)),
+                            ),
+                          )
+                        : SizedBox()
+                  ],
                 ),
-                Container(height:48.0.hp,
-               // color: Colors.red
-                )
-                 ]
-                ),
-                Obx(
-                  () => Positioned(
-                    top: 23.0.hp,
-                    left: 40.0.wp,
-                    child: DotsIndicator(
-                      onTap: (position) {
-                        salonSheetController.currentIndex.value = position;
-                        salonSheetController.currentIndex.refresh();
-                        salonSheetController.carouselController
-                            .animateToPage(position);
-                      },
-                      dotsCount: salonSheetController.salonImages.length,
-                      position: salonSheetController.currentIndex.value,
-                      decorator: DotsDecorator(
-                          color: transparent,
-                          activeColor: white,
-                          activeSize: Size.square(10),
-                          shape: CircleBorder(
-                            side: BorderSide(color: white, width: 1.0),
-                          ),
-                          spacing: EdgeInsets.all(2.0.sp)),
-                    ),
-                  ),
-                ),
-                 
                 Positioned(
-                    top: 27.0.hp,
-                    child:
-                 Container(
+                  top: 23.0.hp,
+                  child: Container(
                     width: 100.0.wp,
                     height: 52.0.hp,
                     decoration: BoxDecoration(
@@ -132,7 +144,7 @@ class SalonSheetScreen extends StatelessWidget {
                               left: 7.0.wp,
                               right: 7.0.wp),
                           child: ThemeText(
-                            theText: "Lorem ipsum ",
+                            theText:  controller.salon.name ?? "",
                             thefontSize: 20.0.sp,
                             theColor: black,
                             theFontWeight: FontWeight.bold,
@@ -144,7 +156,7 @@ class SalonSheetScreen extends StatelessWidget {
                           padding: EdgeInsets.symmetric(
                               vertical: 0.2.hp, horizontal: 7.0.wp),
                           child: ThemeText(
-                            theText: "Lorem ipsum dolor sit amet,",
+                            theText: controller.salon.address ?? "",
                             thefontSize: 10.0.sp,
                             theColor: black,
                             theTextDecoration: TextDecoration.underline,
@@ -169,7 +181,7 @@ class SalonSheetScreen extends StatelessWidget {
                                 width: 50.0.wp,
                                 margin: EdgeInsets.only(right: 6.0.sp),
                                 child: ThemeText(
-                                  theText: "4,9 (317 avis)  MAD",
+                                  theText: "${controller.salon.countAverage} (${controller.salon.countRating} avis) ",
                                   thefontSize: 10.0.sp,
                                   theColor: grey,
                                   theMaxOfLines: 1,
@@ -201,9 +213,9 @@ class SalonSheetScreen extends StatelessWidget {
                               ),
                               views: [
                                 Container(color: biege),
-                                SalonSheetServices(),
-                                SalonSheetAbout(),
-                                SalonSheetRating()
+                                SalonSheetServices(controller: controller),
+                                SalonSheetAbout(controller: controller),
+                                SalonSheetRating(controller: controller)
                               ],
                               onChange: (index) => print(index),
                             ),
@@ -213,13 +225,13 @@ class SalonSheetScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-
               ])
             ]),
           ),
         ),
         bottomNavigationBar: ThemeNavigationBottomBar(),
-        );
+      ),
+    );
   }
 }
 

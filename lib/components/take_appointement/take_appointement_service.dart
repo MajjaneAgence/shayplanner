@@ -3,7 +3,15 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class TakeAppointmentService {
-  String apiUri = "/login";
+
+  Future apiGetSalonGallery(salonId) async {
+    final getSalonGalleryUrl =
+        Uri.parse(ApiHelper().getUrl() + '/get_gallery_salon/$salonId');
+    final response = await http.get(getSalonGalleryUrl, headers: {
+      "Content-Type": "application/json",
+    });
+    return response;
+  }
 
   Future apiGetSpecialite(salonId) async {
     final getSpecialiteUrl =
@@ -39,6 +47,7 @@ class TakeAppointmentService {
       "salon_id": salonId,
       "comment": comment
     };
+
     final response =
         await http.post(getAvailabilityUrl, body: jsonEncode(data),  headers: ApiHelper().getHeaders(await ApiHelper().getToken()));
     return response;

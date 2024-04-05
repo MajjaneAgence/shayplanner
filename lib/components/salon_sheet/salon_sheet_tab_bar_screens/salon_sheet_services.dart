@@ -5,15 +5,12 @@ import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/theme/theme_text.dart';
 import 'package:shayplanner/tools/extension.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class SalonSheetServices extends StatelessWidget {
-  const SalonSheetServices({super.key});
-
+  SalonSheetController controller;
+       SalonSheetServices({super.key,required this.controller});
   @override
   Widget build(BuildContext context) {
-    final SalonSheetController salonSheetController =
-        Get.put(SalonSheetController());
     return Container(
       width: 100.0.wp,
       height: 100.0.hp,
@@ -34,13 +31,13 @@ class SalonSheetServices extends StatelessWidget {
                       theBorderColor: darkOrange,
                       theBorderRadius: 6.0.sp,
                       theColor: lightOrange,
-                      theAction: salonSheetController.doSomething,
+                      theAction: controller.doSomething,
                       theHorizontalPadding: 2.0.wp,
                       theContent: ThemeText(
                           theText: "Lorem ipsum",
                           thefontSize: 9.0.sp,
                           theColor: darkOrange),
-                      theLoadingStatus: salonSheetController.isLoading.value),
+                      theLoadingStatus: false),
                 ),
                 SizedBox(width: 3.0.wp),
                 Padding(
@@ -51,13 +48,13 @@ class SalonSheetServices extends StatelessWidget {
                       theBorderColor: darkOrange,
                       theBorderRadius: 6.0.sp,
                       theColor: lightOrange,
-                      theAction: salonSheetController.doSomething,
+                      theAction: controller.doSomething,
                       theHorizontalPadding: 2.0.wp,
                       theContent: ThemeText(
                           theText: "Lorem ipsum",
                           thefontSize: 9.0.sp,
                           theColor: darkOrange),
-                      theLoadingStatus: salonSheetController.isLoading.value),
+                      theLoadingStatus: false),
                 ),
                 SizedBox(width: 3.0.wp),
                 Padding(
@@ -68,13 +65,13 @@ class SalonSheetServices extends StatelessWidget {
                       theBorderColor: lightGrey,
                       theBorderRadius: 6.0.sp,
                       theColor: verylightGrey,
-                      theAction: salonSheetController.doSomething,
+                      theAction: controller.doSomething,
                       theHorizontalPadding: 2.0.wp,
                       theContent: ThemeText(
                           theText: "Lorem ipsum",
                           thefontSize: 9.0.sp,
                           theColor: grey),
-                      theLoadingStatus: salonSheetController.isLoading.value),
+                      theLoadingStatus: false),
                 ),
               ],
             ),
@@ -110,7 +107,7 @@ class SalonSheetServices extends StatelessWidget {
                                   theBorderColor: darkOrange,
                                   theBorderRadius: 6.0.sp,
                                   theColor: white,
-                                  theAction: salonSheetController.doSomething,
+                                  theAction: controller.doSomething,
                                   theContent: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -126,8 +123,7 @@ class SalonSheetServices extends StatelessWidget {
                                       )
                                     ],
                                   ),
-                                  theLoadingStatus:
-                                      salonSheetController.isLoading.value),
+                                  theLoadingStatus:false),
                             ],
                           ),
                           ThemeText(
@@ -177,7 +173,7 @@ class SalonSheetServices extends StatelessWidget {
                                   theBorderColor: darkOrange,
                                   theBorderRadius: 6.0.sp,
                                   theColor: white,
-                                  theAction: salonSheetController.doSomething,
+                                  theAction: controller.doSomething,
                                   theContent: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -193,8 +189,7 @@ class SalonSheetServices extends StatelessWidget {
                                       )
                                     ],
                                   ),
-                                  theLoadingStatus:
-                                      salonSheetController.isLoading.value),
+                                  theLoadingStatus:false),
                             ],
                           ),
                           ThemeText(

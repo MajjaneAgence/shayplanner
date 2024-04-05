@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:shayplanner/components/salon_sheet/salon_sheet_controller.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
 import 'package:shayplanner/components/salons/salons_service.dart';
+import 'package:shayplanner/components/take_appointement/take_appointement_controller.dart';
 import 'package:shayplanner/components/take_appointement/take_appointement_screen.dart';
 import 'package:shayplanner/models/salon_model.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
@@ -33,10 +35,10 @@ class SalonsController extends GetxController {
     } else if (filter == "categories") {
       int categoryId = arguments['category_id'];
       getSalonsByCategory(categoryId);
-    }else if(filter == "specialite"){
+    } else if (filter == "specialite") {
       int specialiteId = arguments['specialite_id'];
       getSalonsBySpecialite(specialiteId);
-    }else if(filter == "address"){
+    } else if (filter == "address") {
       int salonId = arguments['salon_id'];
       getSalonDetails(salonId);
     }
@@ -51,9 +53,13 @@ class SalonsController extends GetxController {
   }
 
   book() {}
-  goToSalonSheet() {
-    print("test");
-    Get.toNamed(SalonSheetScreen.routename);
+  goToSalonSheet(id) {
+    if (Get.isRegistered<SalonSheetController>()) {
+      Get.delete<SalonSheetController>();
+    }
+    Get.toNamed(SalonSheetScreen.routename,arguments: {
+      "salon_id":id
+    });
   }
 
   List<Widget> buildDaysList(days) {
@@ -109,6 +115,7 @@ class SalonsController extends GetxController {
       }
     });
   }
+
   getSalonsByCategory(id) async {
     isLoadingSalons.value = true;
     isLoadingSalons.refresh();
@@ -129,7 +136,7 @@ class SalonsController extends GetxController {
     });
   }
 
- getSalonsBySpecialite(id) async {
+  getSalonsBySpecialite(id) async {
     isLoadingSalons.value = true;
     isLoadingSalons.refresh();
     SalonsService().apiSalonsBySpecialite(id).then((value) async {
@@ -148,6 +155,7 @@ class SalonsController extends GetxController {
       }
     });
   }
+
   List<Widget> buildDaysListLoading() {
     List<Widget> daysList = [];
     DateTime now = DateTime.now();
@@ -184,9 +192,11 @@ class SalonsController extends GetxController {
     return daysList;
   }
 
-  goToTakeAppointement(salonId)  {
-   var args = {'salon_id': salonId};
-    Get.toNamed(TakeAppointementScreen.routename,
-        arguments: args);
+  goToTakeAppointement(salonId) {
+    if (Get.isRegistered<TakeAppointmentController>()) {
+      Get.delete<TakeAppointmentController>();
+    }
+    var args = {'salon_id': salonId};
+    Get.toNamed(TakeAppointementScreen.routename, arguments: args);
   }
 }

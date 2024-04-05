@@ -12,6 +12,7 @@ import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/take_appointement/appointement_recap/appointement_recap.dart';
 import 'package:shayplanner/components/take_appointement/take_appointement_service.dart';
+import 'package:shayplanner/models/salon_model.dart';
 import 'package:shayplanner/models/specialite_model.dart';
 import 'package:shayplanner/models/user_model.dart';
 import 'package:shayplanner/theme/theme_button.dart';
@@ -26,17 +27,15 @@ class TakeAppointmentController extends GetxController {
   TakeAppointmentController(this.arguments);
   bool isLoadingSpecialites = false;
   bool isLoadingAvailability = false;
-  RxBool isLoadingBookingAppoitement = false.obs;
-  RxString? errorMessage;
-  List<String> salonImages = [
-    'assets/images/salon_sheet.png',
-    'assets/images/salon_sheet.png',
-    'assets/images/model_on_mirror.png',
-    'assets/images/salon_sheet.png',
-    'assets/images/salon_sheet.png',
+  bool isLoadingBookingAppoitement = false;
+  bool isLoadingSalonGallery=true;
+  String? errorMessage;
+  List<String> secourImages = [
+    'assets/images/take_appointement/no_image_available.jpg',
   ];
+  List<String> salonImages = <String>[];
   CarouselController carouselController = CarouselController();
-  RxInt currentIndex = 0.obs;
+  int currentIndex = 0;
   List<MultiSelectItem<SpecialiteModel>> items =
       <MultiSelectItem<SpecialiteModel>>[].obs;
   List<SpecialiteModel?> selectedSpecialities = <SpecialiteModel?>[].obs;
@@ -44,12 +43,13 @@ class TakeAppointmentController extends GetxController {
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
-  RxBool isLoadingCurrentUser = false.obs;
-  Rx<UserModel?> user = UserModel().obs;
+  bool isLoadingCurrentUser = false;
+  UserModel? user = UserModel();
   var keySelectDateHour = GlobalKey();
   List<SpecialiteModel> specialites = <SpecialiteModel>[];
   List<Map<String, dynamic>> availability = [];
   TextEditingController msgForSalonEditingController = TextEditingController();
+  SalonModel salon = SalonModel();
   @override
   void onInit() async {
     super.onInit();
@@ -58,16 +58,16 @@ class TakeAppointmentController extends GetxController {
     if (token != null) {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       print(prefs.getString("mobile"));
-      user.value!.firstname = prefs.getString("firstname");
-      user.value!.lastname = prefs.getString("lastname");
-      user.value!.email = prefs.getString("email");
-      user.value!.mobile = prefs.getString("mobile");
-      user.refresh();
+      user!.firstname = prefs.getString("firstname");
+      user!.lastname = prefs.getString("lastname");
+      user!.email = prefs.getString("email");
+      user!.mobile = prefs.getString("mobile");
     }
     int salonId = arguments['salon_id'];
     print(salonId);
 
     getSpecilaites(salonId);
+    getSalonGallery(salonId);
   }
 
   void onFormatChanged(CalendarFormat newFormat) {
@@ -414,7 +414,9 @@ class TakeAppointmentController extends GetxController {
                                                     child: ThemeText(
                                                       theText: e['hour'],
                                                       thefontSize: 11.0.sp,
-                                                      theColor: e['isChecked'] ? white : darkOrange,
+                                                      theColor: e['isChecked']
+                                                          ? white
+                                                          : darkOrange,
                                                       theFontWeight:
                                                           FontWeight.bold,
                                                     ),
@@ -456,15 +458,17 @@ class TakeAppointmentController extends GetxController {
       );
     }
   }
-   editAppointement(){
-       Get.back();
-   }
+
+  editAppointement() {
+    Get.back();
+  }
+
   void onDaySelected(DateTime day, DateTime focusedDay) {
     selectedDay = day;
     String formattedDate = DateFormat('yyyy-MM-dd').format(selectedDay);
     this.focusedDay = focusedDay;
     List<int> specialiteIds =
-    selectedSpecialities.map((obj) => obj!.id).toList();
+        selectedSpecialities.map((obj) => obj!.id).toList();
     getAvailability(formattedDate, arguments['salon_id'], specialiteIds);
     update();
   }
@@ -474,80 +478,15 @@ class TakeAppointmentController extends GetxController {
   }
 
   goToRecap() {
-    if(selectedSpecialities.isEmpty && availability.every((element) => element['isChecked'] == false)){
- Get.dialog(
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0.wp),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: white,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20.0.sp),
-                  ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(3.0.wp),
-                  child: Material(
-                    child: Column(
-                      children: [
-                        Container(
-                          width: 70.0.wp,
-                          height: 5.0.hp,
-                          alignment: Get.locale!.languageCode != "ar"
-                              ? Alignment.bottomRight
-                              : Alignment.bottomLeft,
-                          child: ThemeButton(
-                            theWidth: 10.0.wp,
-                            theHeight: 10.0.wp,
-                            theContent: Container(
-                              width: 10.0.wp,
-                              height: 10.0.wp,
-                              padding: EdgeInsets.all(2.7.wp),
-                              decoration: BoxDecoration(shape: BoxShape.circle),
-                              child: SvgPicture.asset(
-                                  "assets/icons/take_appointement/close.svg",
-                                  width: 10.0.sp,
-                                  height: 10.0.sp),
-                            ),
-                            theColor: white,
-                            theLoadingStatus: false,
-                            theElevation: 4,
-                            theBorderRadius: 10.0.wp,
-                            theAction: () {
-                              Get.back();
-                            },
-                            theHorizontalPadding: 0,
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment.center,
-                          width: 70.0.wp,
-                          height: 15.0.hp,
-                          child: ThemeText(
-                            theText:
-                                "tr_please_chose_an_hour".tr,
-                            thefontSize: 13.0.sp,
-                            theColor: black,
-                            theFontWeight: FontWeight.bold,
-                            theTextAlign: TextAlign.center,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }else{ 
-    Get.toNamed(AppointmentRecapScreen.routename, arguments: {
-      "salon_id":arguments["salon_id"]
-    });
+    if (selectedSpecialities.isEmpty) {
+      showErrorDialog("tr_please_choose_at_least_one_speciality".tr);
+    } else if (availability.every((element) => element['isChecked'] == false)) {
+      showErrorDialog("tr_please_chose_an_hour".tr);
+    } else if (availability.isEmpty) {
+      showErrorDialog("tr_salon_has_no_availibality_try_another_date".tr);
+    } else {
+      Get.toNamed(AppointmentRecapScreen.routename,
+          arguments: {"salon_id": arguments["salon_id"]});
     }
   }
 
@@ -572,7 +511,7 @@ class TakeAppointmentController extends GetxController {
       print(body);
       if (body["success"]) {
         isLoadingSpecialites = false;
-            update();
+        update();
         specialites.clear();
         for (var specialite in body["data"]) {
           specialites.add(SpecialiteModel.fromJson(specialite));
@@ -588,96 +527,116 @@ class TakeAppointmentController extends GetxController {
     });
   }
 
-  bookAppointemnt(){
-   isLoadingAvailability = true;
-       List<int> specialiteIds =
-    selectedSpecialities.map((obj) => obj!.id).toList();
+  getSalonGallery(salonId){
+    isLoadingSalonGallery=true;
+    update();
+    TakeAppointmentService().apiGetSalonGallery(salonId).then((value) async {
+    isLoadingSalonGallery= false;
+          var body = jsonDecode(value.body);
+      print(body);
+      if (body["success"]) {
+       salon = SalonModel.fromJson(body["data"]["salon"]);
+       salonImages.clear();
+       salonImages = salon.gallery!;
+       update();
+      } else {
+        themeSnackBar(body["message"]);
+      }
+    });
+  }
+
+  bookAppointemnt() {
+    isLoadingAvailability = true;
+    update();
+    List<int> specialiteIds =
+        selectedSpecialities.map((obj) => obj!.id).toList();
     TakeAppointmentService()
         .apiBookAppointement(
-          DateFormat('yyyy-MM-dd').format(selectedDay)
-        ,availability.firstWhere((element) => element['isChecked']==true)['hour'],
-        specialiteIds,
-        arguments['salon_id'],
-         msgForSalonEditingController.text)
+            DateFormat('yyyy-MM-dd').format(selectedDay),
+            availability
+                .firstWhere((element) => element['isChecked'] == true)['hour'],
+            specialiteIds,
+            arguments['salon_id'],
+            msgForSalonEditingController.text)
         .then((value) async {
       isLoadingAvailability = false;
       var body = jsonDecode(value.body);
       print(body);
       if (body["success"]) {
-       showAppointmentBookingSuccess();
+        showAppointmentBookingSuccess();
       }
     });
   }
-  
-  showAppointmentBookingSuccess(){
-  Get.dialog(
-  Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.0.wp),
-        child: Container(
-          decoration: BoxDecoration(
-            color: white,
-            borderRadius: BorderRadius.all(
-              Radius.circular(20.0.sp),
-            ),
-          ),
-          child: Padding(
-            padding: EdgeInsets.all(3.0.wp),
-            child: Material(
-              child: Column(
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    width: 70.0.wp,
-                    height: 15.0.hp,
-                    child: ThemeText(
-                      theText:
-                          "tr_ur_appointement_has_been_booked_sucessfully".tr,
-                      thefontSize: 13.0.sp,
-                      theColor: black,
-                      theFontWeight: FontWeight.bold,
-                      theTextAlign: TextAlign.center,
-                    ),
+
+  showAppointmentBookingSuccess() {
+    Get.dialog(
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.0.wp),
+            child: Container(
+              decoration: BoxDecoration(
+                color: white,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20.0.sp),
+                ),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(3.0.wp),
+                child: Material(
+                  child: Column(
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        width: 70.0.wp,
+                        height: 15.0.hp,
+                        child: ThemeText(
+                          theText:
+                              "tr_ur_appointement_has_been_booked_sucessfully"
+                                  .tr,
+                          thefontSize: 13.0.sp,
+                          theColor: black,
+                          theFontWeight: FontWeight.bold,
+                          theTextAlign: TextAlign.center,
+                        ),
+                      ),
+                      SvgPicture.asset(
+                          "assets/icons/take_appointement/confirmation.svg")
+                    ],
                   ),
-                  SvgPicture.asset(
-                      "assets/icons/take_appointement/confirmation.svg")
-                ],
+                ),
               ),
             ),
           ),
-        ),
+          SizedBox(height: 3.0.hp),
+          Material(
+            color: transparent,
+            child: ThemeButton(
+              theColor: grey,
+              theWidth: 40.0.wp,
+              theHeight: 6.5.hp,
+              theBorderRadius: 2.0.wp,
+              theContent: ThemeText(
+                  theText: "tr_finish".tr,
+                  thefontSize: 12.0.sp,
+                  theFontWeight: FontWeight.bold,
+                  theColor: white),
+              theAction: () {
+                Get.offAllNamed(HomeScreen.routename);
+              },
+              theLoadingStatus: false,
+            ),
+          ),
+        ],
       ),
-      SizedBox(height: 3.0.hp),
-      Material(
-        color: transparent,
-        child: ThemeButton(
-          theColor: grey,
-          theWidth: 40.0.wp,
-          theHeight: 6.5.hp,
-          theBorderRadius: 2.0.wp,
-          theContent: ThemeText(
-              theText: "tr_finish".tr,
-              thefontSize: 12.0.sp,
-              theFontWeight: FontWeight.bold,
-              theColor: white),
-          theAction: () {
-           Get.offAllNamed(HomeScreen.routename);
-          },
-          theLoadingStatus: false,
-        ),
-      ),
-    ],
-  ),
-  barrierDismissible: false, // Make the dialog dismissible
-);
-
-    
+      barrierDismissible: false, // Make the dialog dismissible
+    );
   }
+
   validateServices(value) {
-    if(value.isEmpty){ 
-    return "tr_please_choose_at_least_one_speciality".tr;
+    if (value.isEmpty) {
+      return "tr_please_choose_at_least_one_speciality".tr;
     }
     return null;
   }
@@ -697,9 +656,81 @@ class TakeAppointmentController extends GetxController {
           availability.add({"hour": hour, "isChecked": false});
         }
         update();
-      }else {
+      } else {
         themeSnackBar(body["message"]);
       }
     });
+  }
+
+  showErrorDialog(message) {
+    Get.dialog(
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.0.wp),
+            child: Container(
+              decoration: BoxDecoration(
+                color: white,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20.0.sp),
+                ),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(3.0.wp),
+                child: Material(
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 70.0.wp,
+                        height: 5.0.hp,
+                        alignment: Get.locale!.languageCode != "ar"
+                            ? Alignment.bottomRight
+                            : Alignment.bottomLeft,
+                        child: ThemeButton(
+                          theWidth: 10.0.wp,
+                          theHeight: 10.0.wp,
+                          theContent: Container(
+                            width: 10.0.wp,
+                            height: 10.0.wp,
+                            padding: EdgeInsets.all(2.7.wp),
+                            decoration: BoxDecoration(shape: BoxShape.circle),
+                            child: SvgPicture.asset(
+                                "assets/icons/take_appointement/close.svg",
+                                width: 10.0.sp,
+                                height: 10.0.sp),
+                          ),
+                          theColor: white,
+                          theLoadingStatus: false,
+                          theElevation: 4,
+                          theBorderRadius: 10.0.wp,
+                          theAction: () {
+                            Get.back();
+                          },
+                          theHorizontalPadding: 0,
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        width: 70.0.wp,
+                        height: 15.0.hp,
+                        child: ThemeText(
+                          theText: message,
+                          thefontSize: 11.0.sp,
+                          theColor: black,
+                          theFontWeight: FontWeight.bold,
+                          theTextAlign: TextAlign.center,
+                          theMaxOfLines: 6,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

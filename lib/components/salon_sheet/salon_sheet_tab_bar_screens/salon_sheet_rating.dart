@@ -7,12 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SalonSheetRating extends StatelessWidget {
-  const SalonSheetRating({super.key});
-
+  SalonSheetController controller;
+       SalonSheetRating({super.key,required this.controller});
   @override
   Widget build(BuildContext context) {
-    final SalonSheetController salonSheetController =
-        Get.put(SalonSheetController());
     return Container(
       width: 100.0.wp,
       height: 100.0.hp,

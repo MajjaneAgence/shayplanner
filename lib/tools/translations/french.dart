@@ -171,6 +171,7 @@ final Map<String, String> fr = {
 "tr_please_choose_at_least_one_speciality": "Veuillez choisir au moins un service",
 "tr_no_availability": "Aucune disponibilité",
 "tr_salon_with_no_specialities":"Ce salon ne propose aucune spécialité pour le moment",
+"tr_salon_has_no_availibality_try_another_date": "Malheureusement, ce salon n'a aucune disponibilité pour cette date, veuillez réessayer avec une autre date",
 
 //recap
 "tr_reservation":"Réservation",

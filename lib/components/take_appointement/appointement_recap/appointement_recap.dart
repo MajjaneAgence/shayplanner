@@ -1,5 +1,6 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
+import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/take_appointement/take_appointement_controller.dart';
 import 'package:shayplanner/theme/theme_button.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
@@ -240,7 +241,7 @@ class AppointmentRecapScreen extends StatelessWidget {
                                           flex: 2,
                                           child: ThemeText(
                                             theText:
-                                                "${controller.user.value!.firstname ?? ""} ${controller.user.value!.lastname ?? ""}",
+                                                "${controller.user!.firstname ?? ""} ${controller.user!.lastname ?? ""}",
                                             thefontSize: 10.0.sp,
                                             theColor: black,
                                             theMaxOfLines: 1,
@@ -251,7 +252,7 @@ class AppointmentRecapScreen extends StatelessWidget {
                                           flex: 3,
                                           child: ThemeText(
                                             theText:
-                                                controller.user.value!.email ??
+                                                controller.user!.email ??
                                                     "",
                                             thefontSize: 10.0.sp,
                                             theColor: black,
@@ -266,7 +267,7 @@ class AppointmentRecapScreen extends StatelessWidget {
                                         Expanded(
                                           child: ThemeText(
                                             theText:
-                                                controller.user.value!.mobile ??
+                                                controller.user!.mobile ??
                                                     "",
                                             thefontSize: 10.0.sp,
                                             theColor: black,
@@ -304,6 +305,7 @@ class AppointmentRecapScreen extends StatelessWidget {
                                         child: TextField(
                                           keyboardType: TextInputType.multiline,
                                           maxLines: 2,
+                                          readOnly: true,
                                           controller: controller
                                               .msgForSalonEditingController,
                                           decoration: InputDecoration(
@@ -356,12 +358,10 @@ class AppointmentRecapScreen extends StatelessWidget {
                                                         FontWeight.bold,
                                                     theColor: white),
                                                 theAction:
-                                                    controller
-                                                        .showAppointmentBookingSuccess,
-                                                theLoadingStatus:
-                                                    controller
-                                                        .isLoadingBookingAppoitement
-                                                        .value),
+                                                    (){
+                                                      Get.offAllNamed(HomeScreen.routename);
+                                                    },
+                                                theLoadingStatus:false),
                                           ),
                                           Expanded(
                                             flex: 1,
@@ -387,7 +387,7 @@ class AppointmentRecapScreen extends StatelessWidget {
                                                 theLoadingStatus:
                                                     controller
                                                         .isLoadingBookingAppoitement
-                                                        .value),
+                                                      ),
                                           ),
                                         ],
                                       ),

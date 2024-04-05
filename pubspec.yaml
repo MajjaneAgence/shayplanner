@@ -94,9 +94,9 @@ flutter:
      - assets/icons/about/
      - assets/icons/introduction/
      - assets/icons/take_appointement/
-     - assets/icons/splash/planner.gif
+     - assets/icons/splash/planner.gif 
      - assets/images/home/
-
+     - assets/images/take_appointement/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

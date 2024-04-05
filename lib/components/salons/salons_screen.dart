@@ -254,7 +254,7 @@ class SalonsScreen extends StatelessWidget {
                                               alignment: Alignment.center,
                                               child: InkWell(
                                                 onTap: () => salonsController
-                                                    .goToSalonSheet(),
+                                                    .goToSalonSheet(salon.id),
                                                 child: Container(
                                                   width: 28.0.wp,
                                                   height: 5.0.hp,
@@ -522,7 +522,7 @@ class SalonsScreen extends StatelessWidget {
                                               alignment: Alignment.center,
                                               child: InkWell(
                                                 onTap: () => salonsController
-                                                    .goToSalonSheet(),
+                                                    .goToSalonSheet(salonsController.salon.value!.id),
                                                 child: Container(
                                                   width: 28.0.wp,
                                                   height: 5.0.hp,

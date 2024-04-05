@@ -8,41 +8,41 @@ import 'package:get/get.dart';
 import '../../../theme/theme_circle_painter.dart';
 
 class SalonSheetAbout extends StatelessWidget {
-  const SalonSheetAbout({super.key});
+    SalonSheetController controller;
+       SalonSheetAbout({super.key,required this.controller});
 
   @override
   Widget build(BuildContext context) {
-    final SalonSheetController salonSheetController =
-        Get.put(SalonSheetController());
+
     return Container(
       width: 100.0.wp,
       height: 100.0.hp,
       padding: EdgeInsets.symmetric(horizontal: 3.0.wp),
       child: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Obx(() => salonSheetController.isExpanded.value
+           controller.isExpanded
               ? Text(
-                  salonSheetController.salonDesc,
+                  controller.salonDesc,
                   style: TextStyle(fontSize: 12.0.sp, color: black),
                 )
               : Text(
-                  salonSheetController.salonDesc,
+                  controller.salonDesc,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 7,
                   style: TextStyle(fontSize: 12.0.sp, color: black),
-                )),
-          Obx(() => salonSheetController.salonDesc.length > 50
+                ),
+          controller.salonDesc.length > 50
               ? InkWell(
-                  onTap: salonSheetController.toggleExpanded,
+                  onTap: controller.toggleExpanded,
                   child: Text(
-                    salonSheetController.isExpanded.value
+                    controller.isExpanded
                         ? 'tr_show_less'.tr
                         : 'tr_show_more'.tr,
                     style: TextStyle(
                         color: lightGrey, decoration: TextDecoration.underline),
                   ),
                 )
-              : Container()),
+              : Container(),
           SizedBox(height: 1.0.hp),
           Container(
             height: 15.0.hp,
