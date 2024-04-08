@@ -38,16 +38,16 @@ void onInit() async {
     int salonId = arguments['salon_id'];
     print(salonId);
     getSalonGallery(salonId);
-    getCatgories();
+    getCategoriesBySalon(salonId);
   }
   void toggleExpanded() {
     isExpanded = !isExpanded;
     update();
   }
 
-   getCatgories() async {
+   getCategoriesBySalon(salonId) async {
     isLoadingCategories = true;
-    SalonSheetService().apiGetCategories().then((value) async {
+    SalonSheetService().apiGetCategoriesBySalon(salonId).then((value) async {
       isLoadingCategories = false;
       var body = jsonDecode(value.body);
       print(body);
@@ -65,15 +65,6 @@ void onInit() async {
   String salonDesc =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat";
   // Functions for interaction (e.g., button presses, fetching data)
-  void bookAppointement() async {
-    FlutterSecureStorage storage = FlutterSecureStorage();
-    // String? token = await storage.read(key: 'token');
-    // if (token != null) {
-    Get.toNamed(LoginScreenForEmailAndSocial.routename);
-    // } else {
-    //   Get.toNamed(HomeScreen.routename);
-    // }
-  }
 
   void onButton2Pressed() async {
     Get.toNamed(RatingAppScreen.routename);

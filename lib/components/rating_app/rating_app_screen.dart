@@ -22,7 +22,7 @@ class RatingAppScreen extends StatelessWidget {
         Get.put(RatingAppController());
     final HomeController homeController = Get.put(HomeController());
 
-    final LoginController loginController = Get.put(LoginController());
+    final LoginController loginController = Get.put(LoginController({"test":"test"}));
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -178,7 +178,7 @@ class RatingAppScreen extends StatelessWidget {
                               theFormKey: loginController.formKey,
                               theAction: loginController.goToPasswordScreen,
                               theLoadingStatus:
-                                  loginController.isLoading.value),
+                                  false),
                         ),
                       ]),
                     ),

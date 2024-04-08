@@ -179,6 +179,10 @@ final Map<String, String> fr = {
 "tr_confirm":"Confirmer",
 "tr_please_chose_an_hour":"Veuillez sélectione un créneau",
 "tr_ur_appointement_has_been_booked_sucessfully":"Votre réservation a bien été confirmée.",
-"tr_finish":"Terminer"
+"tr_finish":"Terminer",
+
+//future appointment
+"tr_no_future_appointment":"Vous n'avez aucun rendez-vous prochain",
+"tr_future":"À venir"
 
 };

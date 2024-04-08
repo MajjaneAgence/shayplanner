@@ -171,4 +171,9 @@ final Map<String, String> ar = {
   "tr_please_chose_an_hour": "يرجى اختيار ساعة",
   "tr_ur_appointement_has_been_booked_sucessfully": "تم حجز موعدك بنجاح.",
   "tr_finish": "إنهاء",
+
+  //future appointment
+  "tr_no_future_appointment": "لا مواعيد مستقبلية",
+"tr_future": "المستقبل",
+
 };

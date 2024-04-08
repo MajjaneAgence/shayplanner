@@ -173,4 +173,9 @@ final Map<String, String> en = {
 "tr_ur_appointement_has_been_booked_sucessfully": "Your appointment has been booked successfully.",
 "tr_finish": "Finish",
 
+//future appointment
+"tr_no_future_appointment": "No future appointment",
+"tr_future": "Future",
+
+
 };

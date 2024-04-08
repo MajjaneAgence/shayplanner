@@ -52,4 +52,14 @@ class TakeAppointmentService {
         await http.post(getAvailabilityUrl, body: jsonEncode(data),  headers: ApiHelper().getHeaders(await ApiHelper().getToken()));
     return response;
   }
+
+    Future apiGetCurrentUser() async {
+    final getCurrentUserUrl = Uri.parse(ApiHelper().getUrl() + '/profile/user');
+    final response = await http.get(getCurrentUserUrl,
+        headers: ApiHelper().getHeaders(await ApiHelper().getToken()));
+    return response;
+  }
+
+
+
 }

@@ -374,7 +374,9 @@ class ProfileController extends GetxController {
       if (body["success"]) {
         FlutterSecureStorage secureStorage = const FlutterSecureStorage();
         await secureStorage.delete(key: 'token');
-        Get.offAllNamed(LoginScreenForEmailAndSocial.routename);
+        Get.offAllNamed(LoginScreenForEmailAndSocial.routename,arguments: {
+        "source":"logout"
+      });
       } else {
         if (body["message"] == "validationError") {
           String errorMessage = '';

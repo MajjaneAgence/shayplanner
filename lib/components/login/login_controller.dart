@@ -10,6 +10,8 @@ import 'package:shayplanner/components/login/login_service.dart';
 import 'package:shayplanner/components/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shayplanner/components/salons/salons_screen.dart';
+import 'package:shayplanner/components/take_appointement/take_appointement_screen.dart';
 import 'package:shayplanner/theme/theme_snackbar.dart';
 
 class LoginController extends GetxController {
@@ -18,10 +20,12 @@ class LoginController extends GetxController {
 
   TextEditingController usernameEditingController = TextEditingController();
   TextEditingController passwordEditingController = TextEditingController();
-  RxBool isLoading = false.obs;
+  bool isLoading = false;
   LoginService loginService = LoginService();
-  RxBool isChecked = false.obs;
-  RxBool isObscure = true.obs;
+  bool isChecked = false;
+  bool isObscure = true;
+  Map<String, dynamic> arguments;
+  LoginController(this.arguments);
 
   @override
   void onInit() async {
@@ -45,22 +49,34 @@ class LoginController extends GetxController {
   }
 
   connect() {
-    isLoading.value = true;
-    isLoading.refresh();
+    isLoading = true;
     const FlutterSecureStorage secureStorage = FlutterSecureStorage();
     LoginService()
         .apiLogin(
             usernameEditingController.text, passwordEditingController.text)
         .then((value) async {
       var body = jsonDecode(value.body);
-      isLoading.value = false;
-      isLoading.refresh();
+      isLoading = false;
       print(body);
       if (body["success"]) {
-        await secureStorage.write(
-            key: "token", value: body["data"]['token']);
+        await secureStorage.write(key: "token", value: body["data"]['token']);
         print(await secureStorage.read(key: "token"));
-        Get.toNamed(HomeScreen.routename);
+        if (arguments["source"] == "booking appointment") {
+          // Get.toNamed(HomeScreen.routename);
+          // Get.toNamed(SalonsScreen.routename,arguments: {
+          //   "filterBy":"salon",
+          //   "salon_id":arguments["salon_id"]
+          // });
+          Get.offAllNamed(TakeAppointementScreen.routename,
+              arguments: {
+                "salon_id": arguments["salon_id"],
+                "day":arguments['day'],
+                "hour":arguments["hour"],
+                "services":arguments["services"]
+              });
+        } else {
+          Get.offAllNamed(HomeScreen.routename);
+        }
       } else {
         themeSnackBar(body["message"]);
       }
@@ -75,7 +91,7 @@ class LoginController extends GetxController {
     Get.toNamed(RegisterScreen.routename);
   }
 
-  loginWithGoogle()async{
+  loginWithGoogle() async {
     //  SharedPreferences preferences = await SharedPreferences.getInstance();
     // //Trigger the authentication flow
     // final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
@@ -88,43 +104,40 @@ class LoginController extends GetxController {
 
     //       print(googleAuth.accessToken);
     // }
-      // Create a new credential
-      // final credential = GoogleAuthProvider.credential(
-      //   accessToken: googleAuth.accessToken,
-      //   idToken: googleAuth.idToken,
-      // );
+    // Create a new credential
+    // final credential = GoogleAuthProvider.credential(
+    //   accessToken: googleAuth.accessToken,
+    //   idToken: googleAuth.idToken,
+    // );
 
-      // // Once signed in, return the UserCredential
-      // return await FirebaseAuth.instance
-      //     .signInWithCredential(credential)
-      //     .then((value) {
-      //   userProvider
-      //       .loginSocial(value.additionalUserInfo!.profile!['email'])
-      //       .then((result) async {
-      //     var responseDecode = jsonDecode(result.body);
-      //     if (responseDecode['success'] == 1) {
-      //       await flutterSecureStorage.write(
-      //           key: "token", value: responseDecode['data']['customer_token']);
-      //       preferences.setString("id", responseDecode['data']['customer_id']);
-      //       preferences.setBool("isSocial", true);
-      //       Get.offAllNamed(MainApp.routename);
-      //     } else {
-      //       preferences.setBool("isSocial", true);
-      //       Get.toNamed(Inscription.routename, arguments: [
-      //         value.additionalUserInfo!.profile!['email'],
-      //         value.additionalUserInfo!.profile!['given_name'],
-      //         value.additionalUserInfo!.profile!['family_name']
-      //       ]);
-      //     }
-      //   });
-      // });
+    // // Once signed in, return the UserCredential
+    // return await FirebaseAuth.instance
+    //     .signInWithCredential(credential)
+    //     .then((value) {
+    //   userProvider
+    //       .loginSocial(value.additionalUserInfo!.profile!['email'])
+    //       .then((result) async {
+    //     var responseDecode = jsonDecode(result.body);
+    //     if (responseDecode['success'] == 1) {
+    //       await flutterSecureStorage.write(
+    //           key: "token", value: responseDecode['data']['customer_token']);
+    //       preferences.setString("id", responseDecode['data']['customer_id']);
+    //       preferences.setBool("isSocial", true);
+    //       Get.offAllNamed(MainApp.routename);
+    //     } else {
+    //       preferences.setBool("isSocial", true);
+    //       Get.toNamed(Inscription.routename, arguments: [
+    //         value.additionalUserInfo!.profile!['email'],
+    //         value.additionalUserInfo!.profile!['given_name'],
+    //         value.additionalUserInfo!.profile!['family_name']
+    //       ]);
+    //     }
+    //   });
+    // });
 
-      //   return value;
-      // });
-    }
-
-
-
+    //   return value;
+    // });
+  }
 
   loginWithApple() {}
 
@@ -135,21 +148,20 @@ class LoginController extends GetxController {
   }
 
   changeCheckbox(value) {
-    print(isChecked.value);
-    isChecked.value = !value;
-    isChecked.refresh();
-        print(isChecked.value);
-
+    isChecked = !value;
+    update();
   }
 
   togglePasswordVisibilty(bool visibilty) {
-    print(isObscure.value);
-    isObscure.value = !visibilty;
-    isObscure.refresh();
-        print(isObscure.value);
-
+    isObscure = !visibilty;
+    update();
   }
-  gotohome(){
+
+  gotohome() {
     Get.toNamed(HomeScreen.routename);
+  }
+
+  continueLoggedOut() {
+    Get.offAndToNamed(HomeScreen.routename);
   }
 }

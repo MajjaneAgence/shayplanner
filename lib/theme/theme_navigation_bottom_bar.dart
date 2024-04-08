@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:shayplanner/components/future_appointement/future_appointement_screen.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/profile/profile_screen.dart';
@@ -51,16 +52,13 @@ class ThemeNavigationBottomBar extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-             // Get.toNamed(ShopsScreen.routename);
+              Get.toNamed(FutureAppointementScreen.routename);
             },
             //style: ButtonStyle(surfaceTintColor:MaterialStateProperty.all<Color>(Colors.red)),
-            child: (Get.currentRoute == SalonsScreen.routename ||
-                    Get.currentRoute == SalonSheetScreen.routename)
+            child: Get.currentRoute == FutureAppointementScreen.routename
                 ?
-                // Image.asset(
-                // 'assets/icons/floating_app_bar/calendar-active.png'):
                 SvgPicture.asset(
-                    'assets/icons/floating_app_bar/calendar.svg',
+                    'assets/icons/floating_app_bar/calendar-active.svg',
                     width: 8.0.wp,
                     height: 8.0.wp)
                 : SvgPicture.asset('assets/icons/floating_app_bar/calendar.svg',
@@ -72,7 +70,9 @@ class ThemeNavigationBottomBar extends StatelessWidget {
               String? token = await storage.read(key: 'token');
               print(token);
               if (token == null) {
-                Get.offAllNamed(LoginScreenForEmailAndSocial.routename);
+                Get.offAllNamed(LoginScreenForEmailAndSocial.routename,arguments: {
+                  "source":"profile"
+                });
               } else {
                 Get.toNamed(ProfileScreen.routename);
               }

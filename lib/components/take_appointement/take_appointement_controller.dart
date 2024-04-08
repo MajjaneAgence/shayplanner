@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:multi_select_flutter/util/multi_select_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
+import 'package:shayplanner/components/login/login_controller.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/take_appointement/appointement_recap/appointement_recap.dart';
 import 'package:shayplanner/components/take_appointement/take_appointement_service.dart';
@@ -28,7 +29,7 @@ class TakeAppointmentController extends GetxController {
   bool isLoadingSpecialites = false;
   bool isLoadingAvailability = false;
   bool isLoadingBookingAppoitement = false;
-  bool isLoadingSalonGallery=true;
+  bool isLoadingSalonGallery = true;
   String? errorMessage;
   List<String> secourImages = [
     'assets/images/take_appointement/no_image_available.jpg',
@@ -37,8 +38,8 @@ class TakeAppointmentController extends GetxController {
   CarouselController carouselController = CarouselController();
   int currentIndex = 0;
   List<MultiSelectItem<SpecialiteModel>> items =
-      <MultiSelectItem<SpecialiteModel>>[].obs;
-  List<SpecialiteModel?> selectedSpecialities = <SpecialiteModel?>[].obs;
+      <MultiSelectItem<SpecialiteModel>>[];
+  List<SpecialiteModel?> selectedSpecialities = <SpecialiteModel?>[];
   final multiSelectKey = GlobalKey<FormFieldState>();
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
@@ -56,12 +57,7 @@ class TakeAppointmentController extends GetxController {
     FlutterSecureStorage storage = FlutterSecureStorage();
     String? token = await storage.read(key: 'token');
     if (token != null) {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      print(prefs.getString("mobile"));
-      user!.firstname = prefs.getString("firstname");
-      user!.lastname = prefs.getString("lastname");
-      user!.email = prefs.getString("email");
-      user!.mobile = prefs.getString("mobile");
+      getCurrentUser();
     }
     int salonId = arguments['salon_id'];
     print(salonId);
@@ -474,7 +470,33 @@ class TakeAppointmentController extends GetxController {
   }
 
   goToLogin() {
-    Get.offAllNamed(LoginScreenForEmailAndSocial.routename);
+     if (Get.isRegistered<LoginController>()) {
+            Get.delete<LoginController>();
+          }
+    Get.toNamed(LoginScreenForEmailAndSocial.routename,arguments: {
+      "source":"booking appointment",
+      "salon_id":arguments["salon_id"],
+      "day":selectedDay,
+      "hour":availability,
+      "services":selectedSpecialities,
+    });
+    //getCurrentUser();
+    //update();
+  }
+
+  getCurrentUser() async {
+    isLoadingCurrentUser = true;
+    TakeAppointmentService().apiGetCurrentUser().then((value) async {
+      isLoadingCurrentUser = false;
+      var body = jsonDecode(value.body);
+      print(body);
+        if (body["success"]) {
+          user = UserModel.fromJson(body["data"]);
+          update();
+        } else {
+          themeSnackBar(body["message"]);
+        }
+    });
   }
 
   goToRecap() {
@@ -527,18 +549,18 @@ class TakeAppointmentController extends GetxController {
     });
   }
 
-  getSalonGallery(salonId){
-    isLoadingSalonGallery=true;
+  getSalonGallery(salonId) {
+    isLoadingSalonGallery = true;
     update();
     TakeAppointmentService().apiGetSalonGallery(salonId).then((value) async {
-    isLoadingSalonGallery= false;
-          var body = jsonDecode(value.body);
+      isLoadingSalonGallery = false;
+      var body = jsonDecode(value.body);
       print(body);
       if (body["success"]) {
-       salon = SalonModel.fromJson(body["data"]["salon"]);
-       salonImages.clear();
-       salonImages = salon.gallery!;
-       update();
+        salon = SalonModel.fromJson(body["data"]["salon"]);
+        salonImages.clear();
+        salonImages = salon.gallery!;
+        update();
       } else {
         themeSnackBar(body["message"]);
       }

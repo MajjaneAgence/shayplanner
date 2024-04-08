@@ -221,25 +221,6 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 1.0.hp),
-                        TextButton(
-                          onPressed: () {
-                            Get.toNamed(FutureAppointementScreen.routename);
-                          },
-                          child:  Row(
-                            children: [
-                              SvgPicture.asset("assets/icons/profile/bell.svg",
-                                  width: 18.0.sp, height: 18.0.sp),
-                              SizedBox(width: 5.0.wp),
-                              ThemeText(
-                                theText: "tr_future_appointment".tr,
-                                thefontSize: 11.0.sp,
-                                theColor: black,
-                                theFontWeight: FontWeight.bold,
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 1.0.hp),
                       TextButton(
                           onPressed: () {
                             Get.toNamed(AboutScreen.routename);

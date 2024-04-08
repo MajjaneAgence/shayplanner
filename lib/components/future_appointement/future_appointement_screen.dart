@@ -73,143 +73,163 @@ class FutureAppointementScreen extends StatelessWidget {
                   ),
                   child: controller.isLoadingFutureAppointment
                       ? Center(child: CircularProgressIndicator())
-                      : SingleChildScrollView(
-                          child: 
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ...controller.appointments.map((appointment) =>   Container(
-                                margin: EdgeInsets.only(bottom: 1.0.hp),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          flex: 10,
-                                          child: ThemeText(
-                                              theText:
-                                                  "Lorem ipsum dolor sit amet",
-                                              thefontSize: 11.0.sp,
-                                              theColor: black,
-                                              theFontFamily: fontBold),
-                                        ),
-                                        Expanded(
-                                          flex: 1,
-                                          child: SizedBox(),
-                                        ),
-                                        Expanded(
-                                          flex: 3,
-                                          child: ThemeButton(
-                                              theBorderColor: darkOrange,
-                                              theColor: white,
-                                              theHeight: 5.0.hp,
-                                              theAction: controller.doSomething,
-                                              theContent: ThemeText(
-                                                theText: "tr_future".tr,
-                                                thefontSize: 10.0.sp,
-                                                theColor: darkOrange,
-                                                theTextAlign: TextAlign.center,
-                                                theFontWeight: FontWeight.bold,
-                                              ),
-                                              theLoadingStatus: false),
-                                        )
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          flex: 5,
-                                          child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                ThemeText(
-                                                  theText: appointment.specialite,
-                                                  thefontSize: 11.0.sp,
-                                                  theColor: lightGrey,
-                                                  theFontWeight:
-                                                      FontWeight.bold,
-                                                ),
-                                                ThemeText(
-                                                  theText: appointment.price,
-                                                  thefontSize: 11.0.sp,
-                                                  theColor: lightGrey,
-                                                  theFontWeight:
-                                                      FontWeight.bold,
-                                                ),
-                                              ]),
-                                        ),
-                                        Expanded(
-                                          flex: 3,
-                                          child: SizedBox(),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 1.0.hp),
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          flex: 5,
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                      : controller.appointments.isEmpty
+                          ? Center(
+                              child: ThemeText(
+                                theText: "tr_no_future_appointment".tr,
+                                thefontSize: 11.0.sp,
+                                theColor: black,
+                                theMaxOfLines: 6,
+                              ),
+                            )
+                          : SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ...controller.appointments.map(
+                                    (appointment) => Container(
+                                      margin: EdgeInsets.only(bottom: 1.0.hp),
+                                      child: Column(
+                                        children: [
+                                          Row(
                                             children: [
-                                              ThemeText(
-                                                theText: appointment.date,
-                                                thefontSize: 10.0.sp,
-                                                theColor: lightGrey,
+                                              Expanded(
+                                                flex: 10,
+                                                child: ThemeText(
+                                                    theText:
+                                                        "Lorem ipsum dolor sit amet",
+                                                    thefontSize: 11.0.sp,
+                                                    theColor: black,
+                                                    theFontFamily: fontBold),
                                               ),
-                                              RichText(
-                                                text: TextSpan(
-                                                  children: [
-                                                    WidgetSpan(
-                                                      child: SvgPicture.asset(
-                                                        "assets/icons/booking_history/clock.svg",
-                                                        width: 10.0.sp,
-                                                        height: 10.0.sp,
-                                                      ),
+                                              Expanded(
+                                                flex: 1,
+                                                child: SizedBox(),
+                                              ),
+                                              Expanded(
+                                                flex: 3,
+                                                child: ThemeButton(
+                                                    theBorderColor: darkOrange,
+                                                    theColor: white,
+                                                    theHeight: 5.0.hp,
+                                                    theAction:
+                                                        controller.doSomething,
+                                                    theHorizontalPadding: 0,
+                                                    theContent: ThemeText(
+                                                      theText: "tr_future".tr,
+                                                      thefontSize: 10.0.sp,
+                                                      theColor: darkOrange,
+                                                      theTextAlign:
+                                                          TextAlign.center,
+                                                      theFontWeight:
+                                                          FontWeight.bold,
                                                     ),
-                                                    TextSpan(
-                                                      text:" ${appointment.duration}",
-                                                      style: TextStyle(
-                                                          fontFamily: fontThin,
-                                                          fontSize: 10.0.sp,
-                                                          color: black),
+                                                    theLoadingStatus: false),
+                                              )
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                flex: 5,
+                                                child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      ThemeText(
+                                                        theText: appointment
+                                                            .specialite,
+                                                        thefontSize: 11.0.sp,
+                                                        theColor: lightGrey,
+                                                        theFontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                      ThemeText(
+                                                        theText:
+                                                            appointment.price,
+                                                        thefontSize: 11.0.sp,
+                                                        theColor: lightGrey,
+                                                        theFontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ]),
+                                              ),
+                                              Expanded(
+                                                flex: 3,
+                                                child: SizedBox(),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(height: 1.0.hp),
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                flex: 5,
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    ThemeText(
+                                                      theText: appointment.date,
+                                                      thefontSize: 10.0.sp,
+                                                      theColor: lightGrey,
+                                                    ),
+                                                    RichText(
+                                                      text: TextSpan(
+                                                        children: [
+                                                          WidgetSpan(
+                                                            child: SvgPicture
+                                                                .asset(
+                                                              "assets/icons/booking_history/clock.svg",
+                                                              width: 10.0.sp,
+                                                              height: 10.0.sp,
+                                                            ),
+                                                          ),
+                                                          TextSpan(
+                                                            text:
+                                                                " ${appointment.duration}",
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    fontThin,
+                                                                fontSize:
+                                                                    10.0.sp,
+                                                                color: black),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ],
                                                 ),
                                               ),
+                                              Expanded(
+                                                flex: 3,
+                                                child: SizedBox(),
+                                              ),
+                                              // Expanded(
+                                              //   flex: 1,
+                                              //   child: SizedBox(),
+                                              // ),
+                                              // Expanded(
+                                              //   flex: 2,
+                                              //   child: ThemeText(
+                                              //     theText: "tr_done".tr,
+                                              //     thefontSize: 10.0.sp,
+                                              //     theColor: Color(0xFF10D530),
+                                              //   ),
+                                              // ),
                                             ],
                                           ),
-                                        ),
-                                        Expanded(
-                                          flex: 3,
-                                          child: SizedBox(),
-                                        ),
-                                        // Expanded(
-                                        //   flex: 1,
-                                        //   child: SizedBox(),
-                                        // ),
-                                        // Expanded(
-                                        //   flex: 2,
-                                        //   child: ThemeText(
-                                        //     theText: "tr_done".tr,
-                                        //     thefontSize: 10.0.sp,
-                                        //     theColor: Color(0xFF10D530),
-                                        //   ),
-                                        // ),
-                                      ],
+                                          SizedBox(height: 1.0.hp),
+                                          Divider()
+                                        ],
+                                      ),
                                     ),
-                                    SizedBox(height: 1.0.hp),
-                                    Divider()
-                                  ],
-                                ),
-                              ),)
-                            
-                            ],
-                          ),
-                        ),
+                                  )
+                                ],
+                              ),
+                            ),
                 ),
               ),
             ],

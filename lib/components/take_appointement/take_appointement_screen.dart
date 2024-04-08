@@ -20,11 +20,12 @@ import 'package:shimmer/shimmer.dart';
 
 class TakeAppointementScreen extends StatelessWidget {
   static const routename = '/take-appointment';
+  TakeAppointmentController takeAppointmentController= Get.put(TakeAppointmentController(Get.arguments));
   @override
   Widget build(BuildContext context) {
     //return Scaffold(body: SizedBox(),);
     return GetBuilder<TakeAppointmentController>(
-      init: TakeAppointmentController(Get.arguments),
+      init: TakeAppointmentController(takeAppointmentController.arguments),
       builder: (controller) => Scaffold(
         appBar: ThemeAppBar(),
         extendBody: true,
@@ -244,12 +245,13 @@ class TakeAppointementScreen extends StatelessWidget {
                                                       controller
                                                               .selectedSpecialities =
                                                           values;
-                                                      Scrollable.ensureVisible(
-                                                          controller
-                                                              .keySelectDateHour
-                                                              .currentContext!,
-                                                          duration: Duration(
-                                                              seconds: 3));
+                                                      // Scrollable.ensureVisible(
+                                                      //     controller
+                                                      //         .keySelectDateHour
+                                                      //         .currentContext!,
+                                                      //     duration: Duration(
+                                                      //         seconds: 3)
+                                                      //         );
                                                     },
                                                     chipDisplay:
                                                         MultiSelectChipDisplay(
@@ -284,7 +286,7 @@ class TakeAppointementScreen extends StatelessWidget {
                                               ),
                                     SizedBox(height: 3.0.hp),
                                     ThemeText(
-                                      key: controller.keySelectDateHour,
+                                      //: controller.keySelectDateHour,
                                       theText: "tr_choose_date_and_hour".tr,
                                       thefontSize: 12.0.sp,
                                       theColor: black,
@@ -397,7 +399,8 @@ class TakeAppointementScreen extends StatelessWidget {
                                               theAction: controller.goToLogin,
                                             ),
                                           )
-                                        : Column(children: [
+                                        : 
+                                        Column(children: [
                                             Row(children: [
                                               Expanded(
                                                 flex: 2,

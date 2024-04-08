@@ -12,7 +12,7 @@ class SalonSheetService {
     return response;
   }
 
-    Future apiGetCategories() async {
+    Future apiGetCategoriesBySalon(salonId) async {
     final getCategoriesUrl =
         Uri.parse(ApiHelper().getUrl() + "/get-categories");
     final response = await http.get(getCategoriesUrl);

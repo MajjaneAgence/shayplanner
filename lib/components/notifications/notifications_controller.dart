@@ -213,22 +213,7 @@ class NotificationsController extends GetxController {
     isEditingEnabled.refresh();
   }
 
-  goToProfileEditing()async {
-
-     String? token  = await ApiHelper().getToken();
-    if(token!=null){ 
-    isEditingEnabled.value = false;
-    isEditingEnabled.refresh();
-    firstNameEditingController.text = user.value!.firstname ?? "";
-    lastNameEditingContoller.text = user.value!.lastname ?? "";
-    emailEditingController.text = user.value!.email ?? "";
-    mobileEditingContoller.text = user.value!.mobile ?? "";
-    addressEditingContoller.text = user.value!.address ?? "";
-    Get.toNamed(PersonalInfosScreen.routename);
-    }else{
-      Get.toNamed(LoginScreenForEmailAndSocial.routename);
-    }
-  }
+ 
 
   String? validateOldPassword(String password) {
     if (password.isNotEmpty) {
