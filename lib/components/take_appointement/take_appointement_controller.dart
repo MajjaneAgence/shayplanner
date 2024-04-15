@@ -48,22 +48,31 @@ class TakeAppointmentController extends GetxController {
   UserModel? user = UserModel();
   var keySelectDateHour = GlobalKey();
   List<SpecialiteModel> specialites = <SpecialiteModel>[];
+  List<SpecialiteModel> test = <SpecialiteModel>[];
+
   List<Map<String, dynamic>> availability = [];
   TextEditingController msgForSalonEditingController = TextEditingController();
   SalonModel salon = SalonModel();
+
   @override
   void onInit() async {
     super.onInit();
-    FlutterSecureStorage storage = FlutterSecureStorage();
-    String? token = await storage.read(key: 'token');
-    if (token != null) {
+    // if the user is visitng the screen after logging in
+    if (Get.previousRoute == LoginScreenForPassword.routename) {
+      int salonId = arguments['salon_id'];
       getCurrentUser();
+      getSpecilaites(salonId);
+      getSalonGallery(salonId);
+    } else {
+      FlutterSecureStorage storage = FlutterSecureStorage();
+      String? token = await storage.read(key: 'token');
+      if (token != null) {
+        getCurrentUser();
+      }
+      int salonId = arguments['salon_id'];
+      getSpecilaites(salonId);
+      getSalonGallery(salonId);
     }
-    int salonId = arguments['salon_id'];
-    print(salonId);
-
-    getSpecilaites(salonId);
-    getSalonGallery(salonId);
   }
 
   void onFormatChanged(CalendarFormat newFormat) {
@@ -469,19 +478,29 @@ class TakeAppointmentController extends GetxController {
     update();
   }
 
-  goToLogin() {
-     if (Get.isRegistered<LoginController>()) {
-            Get.delete<LoginController>();
-          }
-    Get.toNamed(LoginScreenForEmailAndSocial.routename,arguments: {
-      "source":"booking appointment",
-      "salon_id":arguments["salon_id"],
-      "day":selectedDay,
-      "hour":availability,
-      "services":selectedSpecialities,
+  goToLogin() async {
+    if (Get.isRegistered<LoginController>()) {
+      Get.delete<LoginController>();
+    }
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    // List<Map<String, dynamic>> specialitiesJson =
+    //     selectedSpecialities.map((specialite) => specialite!.toJson()).toList();
+    // String jsonString = jsonEncode(specialitiesJson);
+    // print(jsonString);
+    List<int> specialiteIds =
+        selectedSpecialities.map((obj) => obj!.id).toList();
+    String jsonString = jsonEncode(specialiteIds);
+    prefs.setInt("salon_id", arguments['salon_id']);
+    prefs.setString("selectedIds", jsonString);
+    prefs.setString("selectedDay", selectedDay.toString());
+    prefs.setString("selectedHour", selectedDay.toString());
+    Get.offAllNamed(LoginScreenForEmailAndSocial.routename, arguments: {
+      "source": "booking appointment",
+      "salon_id": arguments["salon_id"],
+      "day": selectedDay,
+      "hour": availability,
+      "services": selectedSpecialities,
     });
-    //getCurrentUser();
-    //update();
   }
 
   getCurrentUser() async {
@@ -490,12 +509,12 @@ class TakeAppointmentController extends GetxController {
       isLoadingCurrentUser = false;
       var body = jsonDecode(value.body);
       print(body);
-        if (body["success"]) {
-          user = UserModel.fromJson(body["data"]);
-          update();
-        } else {
-          themeSnackBar(body["message"]);
-        }
+      if (body["success"]) {
+        user = UserModel.fromJson(body["data"]);
+        update();
+      } else {
+        themeSnackBar(body["message"]);
+      }
     });
   }
 
@@ -528,7 +547,7 @@ class TakeAppointmentController extends GetxController {
   getSpecilaites(salonId) {
     isLoadingSpecialites = true;
     update();
-    TakeAppointmentService().apiGetSpecialite(salonId).then((value) async {
+    TakeAppointmentService().apiGetSpecialites(salonId).then((value) async {
       var body = jsonDecode(value.body);
       print(body);
       if (body["success"]) {
@@ -543,6 +562,28 @@ class TakeAppointmentController extends GetxController {
                 MultiSelectItem<SpecialiteModel>(specialite, specialite.name))
             .toList();
         update();
+        if (Get.previousRoute == LoginScreenForPassword.routename) {
+          final SharedPreferences prefs = await SharedPreferences.getInstance();
+          final String? selectedServicesString = prefs.getString('selectedIds');
+          //print(selectedServicesString);
+          var selectedServices = jsonDecode(selectedServicesString!);
+          selectedSpecialities.clear();
+
+          List<int> selectedIndexes = [];
+
+          selectedServices.forEach((selectedService) {
+            int index = specialites
+                .indexWhere((specialite) => specialite.id == selectedService);
+            if (index != -1) {
+              selectedIndexes.add(index);
+            }
+          });
+          print(selectedIndexes);
+          test = selectedIndexes.map((index) {
+            return specialites[index];
+          }).toList();
+          prefs.remove("selectedIds");
+        }
       } else {
         themeSnackBar(body["message"]);
       }

@@ -13,7 +13,7 @@ class TakeAppointmentService {
     return response;
   }
 
-  Future apiGetSpecialite(salonId) async {
+  Future apiGetSpecialites(salonId) async {
     final getSpecialiteUrl =
         Uri.parse(ApiHelper().getUrl() + '/get-specialites-by-salon/$salonId');
     final response = await http.get(getSpecialiteUrl, headers: {

@@ -67,7 +67,7 @@ class LoginController extends GetxController {
           //   "filterBy":"salon",
           //   "salon_id":arguments["salon_id"]
           // });
-          Get.offAllNamed(TakeAppointementScreen.routename,
+          Get.toNamed(TakeAppointementScreen.routename,
               arguments: {
                 "salon_id": arguments["salon_id"],
                 "day":arguments['day'],

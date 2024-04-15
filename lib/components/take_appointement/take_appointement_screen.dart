@@ -20,7 +20,8 @@ import 'package:shimmer/shimmer.dart';
 
 class TakeAppointementScreen extends StatelessWidget {
   static const routename = '/take-appointment';
-  TakeAppointmentController takeAppointmentController= Get.put(TakeAppointmentController(Get.arguments));
+  TakeAppointmentController takeAppointmentController =
+      Get.put(TakeAppointmentController(Get.arguments));
   @override
   Widget build(BuildContext context) {
     //return Scaffold(body: SizedBox(),);
@@ -38,78 +39,77 @@ class TakeAppointementScreen extends StatelessWidget {
               Stack(children: [
                 Stack(
                   children: [
-                  controller.isLoadingSalonGallery
-                      ? Column(children: [
-                          GalleryLoading(),
-                          Container(
-                            height: 48.0.hp,
-                            // color: Colors.red
-                          ),
-                        ])
-                      : Column(children: [
-                          CarouselSlider(
-                            carouselController: controller.carouselController,
-                            options: CarouselOptions(
-                                height: 30.0.hp,
-                                viewportFraction: 1.5,
-                                initialPage: 0,
-                                scrollDirection: Axis.horizontal,
-                                onPageChanged: (index, reason) {
-                                  controller.currentIndex = index;
-                                  controller.update();
-                                }),
-                            items:controller.salonImages.isNotEmpty ? controller.salonImages 
-                                .map(
-                                  (item) => Image.network(
+                    controller.isLoadingSalonGallery
+                        ? Column(children: [
+                            GalleryLoading(),
+                            Container(
+                              height: 48.0.hp,
+                              // color: Colors.red
+                            ),
+                          ])
+                        : Column(children: [
+                            CarouselSlider(
+                              carouselController: controller.carouselController,
+                              options: CarouselOptions(
+                                  height: 30.0.hp,
+                                  viewportFraction: 1.5,
+                                  initialPage: 0,
+                                  scrollDirection: Axis.horizontal,
+                                  onPageChanged: (index, reason) {
+                                    controller.currentIndex = index;
+                                    controller.update();
+                                  }),
+                              items: controller.salonImages.isNotEmpty
+                                  ? controller.salonImages
+                                      .map(
+                                        (item) => Image.network(
                                           width: 100.0.wp,
                                           item,
                                           fit: BoxFit.fill,
                                         ),
-                                )
-                                .toList():
-                                controller.secourImages 
-                                .map(
-                                  (item) => 
-                                    Image.asset(
+                                      )
+                                      .toList()
+                                  : controller.secourImages
+                                      .map(
+                                        (item) => Image.asset(
                                           width: 100.0.wp,
                                           item,
                                           fit: BoxFit.fill,
                                         ),
-                                )
-                                .toList()
-                                ,
-                          ),
-                          Container(
-                            height: 48.0.hp,
-                            // color: Colors.red
-                          ),
-                        ]),
-                  controller.salonImages.isNotEmpty
-                      ? Container(
-                          padding: EdgeInsets.symmetric(vertical: 8.0.hp),
-                          alignment: Alignment.bottomCenter,
-                          width: 100.0.wp,
-                          height: 30.0.hp,
-                          child: DotsIndicator(
-                            onTap: (position) {
-                              controller.currentIndex = position;
-                              controller.carouselController
-                                  .animateToPage(position);
-                            },
-                            dotsCount: controller.salonImages.length,
-                            position: controller.currentIndex,
-                            decorator: DotsDecorator(
-                                color: transparent,
-                                activeColor: white,
-                                activeSize: Size.square(10),
-                                shape: CircleBorder(
-                                  side: BorderSide(color: white, width: 1.0),
-                                ),
-                                spacing: EdgeInsets.all(2.0.sp)),
-                          ),
-                        )
-                      : SizedBox()
-                ],
+                                      )
+                                      .toList(),
+                            ),
+                            Container(
+                              height: 48.0.hp,
+                              // color: Colors.red
+                            ),
+                          ]),
+                    controller.salonImages.isNotEmpty
+                        ? Container(
+                            padding: EdgeInsets.symmetric(vertical: 8.0.hp),
+                            alignment: Alignment.bottomCenter,
+                            width: 100.0.wp,
+                            height: 30.0.hp,
+                            child: DotsIndicator(
+                              onTap: (position) {
+                                controller.currentIndex = position;
+                                controller.carouselController
+                                    .animateToPage(position);
+                              },
+                              dotsCount: controller.salonImages.length,
+                              position: controller.currentIndex,
+                              decorator: DotsDecorator(
+                                  color: transparent,
+                                  activeColor: white,
+                                  activeSize: Size.square(10),
+                                  shape: CircleBorder(
+                                    side: BorderSide(color: white, width: 1.0),
+                                  ),
+                                  spacing: EdgeInsets.all(2.0.sp)),
+                            ),
+                          )
+                        : SizedBox()
+                  ],
                 ),
                 Positioned(
                   top: 25.0.hp,
@@ -227,6 +227,7 @@ class TakeAppointementScreen extends StatelessWidget {
                                                 ),
                                                 child: MultiSelectBottomSheetField<
                                                         SpecialiteModel?>(
+            initialValue:controller.test, // Default selection
                                                     isDismissible: false,
                                                     listType: MultiSelectListType
                                                         .CHIP,
@@ -239,21 +240,15 @@ class TakeAppointementScreen extends StatelessWidget {
                                                     title: Text(
                                                         "tr_spectialite".tr),
                                                     items: controller.items,
-                                                    onConfirm:
-                                                        (List<SpecialiteModel?>
-                                                            values) {
-                                                      controller
-                                                              .selectedSpecialities =
+                                                    onConfirm: (List<SpecialiteModel?>
+                                                        values) {
+                                                          controller.selectedSpecialities.clear();
+                                                              controller.selectedSpecialities =
                                                           values;
-                                                      // Scrollable.ensureVisible(
-                                                      //     controller
-                                                      //         .keySelectDateHour
-                                                      //         .currentContext!,
-                                                      //     duration: Duration(
-                                                      //         seconds: 3)
-                                                      //         );
+                                                      controller.update();
                                                     },
                                                     chipDisplay:
+                                                     
                                                         MultiSelectChipDisplay(
                                                       scroll: true,
                                                       onTap: (value) {
@@ -261,8 +256,9 @@ class TakeAppointementScreen extends StatelessWidget {
                                                             .selectedSpecialities
                                                             .remove(value);
                                                         controller.update();
-                                                      },
+                                                                                                  },
                                                     ),
+
                                                     confirmText:
                                                         Text("tr_ok".tr),
                                                     cancelText:
@@ -277,13 +273,11 @@ class TakeAppointementScreen extends StatelessWidget {
                                                           themeBoxShadowInput
                                                         ],
                                                         color: verylightGrey,
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(8.0.sp)),
+                                                        borderRadius: BorderRadius.all(Radius.circular(8.0.sp)),
                                                         border: Border.all(color: white, width: 0)),
                                                     validator: (value) => controller.validateServices(value),
                                                     autovalidateMode: AutovalidateMode.onUserInteraction),
-                                              ),
+                                              ),                                 
                                     SizedBox(height: 3.0.hp),
                                     ThemeText(
                                       //: controller.keySelectDateHour,
@@ -399,8 +393,7 @@ class TakeAppointementScreen extends StatelessWidget {
                                               theAction: controller.goToLogin,
                                             ),
                                           )
-                                        : 
-                                        Column(children: [
+                                        : Column(children: [
                                             Row(children: [
                                               Expanded(
                                                 flex: 2,
