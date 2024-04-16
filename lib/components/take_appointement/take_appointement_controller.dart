@@ -43,34 +43,50 @@ class TakeAppointmentController extends GetxController {
   final multiSelectKey = GlobalKey<FormFieldState>();
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
+  DateTime selectedDayBeforeLogin = DateTime.now();
+  String selectedHour = "--:--";
   DateTime focusedDay = DateTime.now();
   bool isLoadingCurrentUser = false;
   UserModel? user = UserModel();
   var keySelectDateHour = GlobalKey();
   List<SpecialiteModel> specialites = <SpecialiteModel>[];
-  List<SpecialiteModel> test = <SpecialiteModel>[];
-
+  List<SpecialiteModel> specialitiesInitValue = <SpecialiteModel>[];
   List<Map<String, dynamic>> availability = [];
   TextEditingController msgForSalonEditingController = TextEditingController();
   SalonModel salon = SalonModel();
+  bool isLoggedIn = false;
 
   @override
   void onInit() async {
     super.onInit();
+    String previousScreen = arguments['source'];
     // if the user is visitng the screen after logging in
-    if (Get.previousRoute == LoginScreenForPassword.routename) {
+    if (previousScreen == "login") {
+      isLoggedIn = true;
       int salonId = arguments['salon_id'];
       getCurrentUser();
-      getSpecilaites(salonId);
+      getSpecialities(salonId);
       getSalonGallery(salonId);
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      final String? selectedDayString = prefs.getString('selectedDay');
+      selectedHour = prefs.getString('selectedHour') ?? "--:--";
+      selectedDay = DateTime.parse(selectedDayString!);
+      selectedDayBeforeLogin = DateTime.parse(selectedDayString!);
+      focusedDay = DateTime.parse(selectedDayString!);
+      msgForSalonEditingController.text = prefs.getString("msgForSalon") ?? "";
+      // prefs.remove("selectedDay");
+      // prefs.remove("selectedHour");
+      // prefs.remove("msgForSalon");
+      update();
     } else {
       FlutterSecureStorage storage = FlutterSecureStorage();
       String? token = await storage.read(key: 'token');
       if (token != null) {
+        isLoggedIn = true;
         getCurrentUser();
       }
       int salonId = arguments['salon_id'];
-      getSpecilaites(salonId);
+      getSpecialities(salonId);
       getSalonGallery(salonId);
     }
   }
@@ -154,14 +170,14 @@ class TakeAppointmentController extends GetxController {
         ),
       );
     } else {
-      DateTime now = DateTime.now();
-      String date = DateFormat('yyyy-MM-dd').format(now);
+      // DateTime now = DateTime.now();
+      // String date = DateFormat('yyyy-MM-dd').format(now);
       List<int> ids = selectedSpecialities.map((obj) => obj!.id).toList();
 // print(ids);
 //        print(date);
 //        print(selectedSpecialities);
 //        print(arguments['salon_id']);
-      getAvailability(date, arguments['salon_id'], ids);
+      getAvailability(DateFormat('yyyy-MM-dd').format(selectedDay), arguments['salon_id'], ids);
       Get.dialog(
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -493,14 +509,9 @@ class TakeAppointmentController extends GetxController {
     prefs.setInt("salon_id", arguments['salon_id']);
     prefs.setString("selectedIds", jsonString);
     prefs.setString("selectedDay", selectedDay.toString());
-    prefs.setString("selectedHour", selectedDay.toString());
-    Get.offAllNamed(LoginScreenForEmailAndSocial.routename, arguments: {
-      "source": "booking appointment",
-      "salon_id": arguments["salon_id"],
-      "day": selectedDay,
-      "hour": availability,
-      "services": selectedSpecialities,
-    });
+    prefs.setString("selectedHour", selectedHour);
+    prefs.setString("msgForSalon", msgForSalonEditingController.text);
+    Get.toNamed(LoginScreen.routename);
   }
 
   getCurrentUser() async {
@@ -521,13 +532,15 @@ class TakeAppointmentController extends GetxController {
   goToRecap() {
     if (selectedSpecialities.isEmpty) {
       showErrorDialog("tr_please_choose_at_least_one_speciality".tr);
-    } else if (availability.every((element) => element['isChecked'] == false)) {
+    } else if (selectedHour == "--:--") {
       showErrorDialog("tr_please_chose_an_hour".tr);
     } else if (availability.isEmpty) {
       showErrorDialog("tr_salon_has_no_availibality_try_another_date".tr);
+    } else if (!isLoggedIn) {
+      showErrorDialog("tr_you_must_be_loggedIn_to_continue".tr);
     } else {
       Get.toNamed(AppointmentRecapScreen.routename,
-          arguments: {"salon_id": arguments["salon_id"]});
+          arguments: {"salon_id": arguments["salon_id"],"source":"tetstttt"});
     }
   }
 
@@ -539,12 +552,13 @@ class TakeAppointmentController extends GetxController {
     for (var item in availability) {
       if (hour == item['hour']) {
         item['isChecked'] = !item['isChecked'];
+        selectedHour = item['hour'];
         update();
       }
     }
   }
 
-  getSpecilaites(salonId) {
+  getSpecialities(salonId) {
     isLoadingSpecialites = true;
     update();
     TakeAppointmentService().apiGetSpecialites(salonId).then((value) async {
@@ -562,27 +576,34 @@ class TakeAppointmentController extends GetxController {
                 MultiSelectItem<SpecialiteModel>(specialite, specialite.name))
             .toList();
         update();
-        if (Get.previousRoute == LoginScreenForPassword.routename) {
+
+        // if the user has chosen specialities before login we should rememeber what he has
+        // chosen and a fter login we get what he has chosen and we fill the select of specialities
+        //autiomatically
+        if (arguments["source"] == "login") {
           final SharedPreferences prefs = await SharedPreferences.getInstance();
           final String? selectedServicesString = prefs.getString('selectedIds');
-          //print(selectedServicesString);
-          var selectedServices = jsonDecode(selectedServicesString!);
+          var selectedServicesIds = jsonDecode(selectedServicesString!);
           selectedSpecialities.clear();
-
           List<int> selectedIndexes = [];
-
-          selectedServices.forEach((selectedService) {
+          selectedServicesIds.forEach((selectedServiceId) {
             int index = specialites
-                .indexWhere((specialite) => specialite.id == selectedService);
+                .indexWhere((specialite) => specialite.id == selectedServiceId);
             if (index != -1) {
               selectedIndexes.add(index);
+              selectedSpecialities.add(specialites[index]);
             }
           });
           print(selectedIndexes);
-          test = selectedIndexes.map((index) {
+          specialitiesInitValue = selectedIndexes.map((index) {
             return specialites[index];
           }).toList();
-          prefs.remove("selectedIds");
+          List<int> specialiteIds =
+          selectedSpecialities.map((obj) => obj!.id).toList();
+          print(selectedDay);
+          focusedDay = selectedDay;
+          getAvailability(DateFormat('yyyy-MM-dd').format(selectedDayBeforeLogin), salonId,
+              specialiteIds);
         }
       } else {
         themeSnackBar(body["message"]);
@@ -706,7 +727,7 @@ class TakeAppointmentController extends GetxController {
 
   getAvailability(date, salonId, specialiteIds) {
     isLoadingAvailability = true;
-    isLoadingAvailability;
+    update();
     TakeAppointmentService()
         .apiGetAvailability(date, salonId, specialiteIds)
         .then((value) async {
@@ -717,6 +738,15 @@ class TakeAppointmentController extends GetxController {
         availability.clear();
         for (var hour in body["data"]) {
           availability.add({"hour": hour, "isChecked": false});
+        }
+        // print(availability);
+        // print(date);
+        // print(DateFormat('yyyy-MM-dd').format(selectedDayBeforeLogin));
+        if (arguments["source"] == "login" &&
+            date == DateFormat('yyyy-MM-dd').format(selectedDayBeforeLogin)) {
+          availability.firstWhere(
+            (element) => element['hour'] == selectedHour,
+          )['isChecked'] = true;
         }
         update();
       } else {

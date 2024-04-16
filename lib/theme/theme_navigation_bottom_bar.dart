@@ -70,9 +70,7 @@ class ThemeNavigationBottomBar extends StatelessWidget {
               String? token = await storage.read(key: 'token');
               print(token);
               if (token == null) {
-                Get.offAllNamed(LoginScreenForEmailAndSocial.routename,arguments: {
-                  "source":"profile"
-                });
+                Get.offAllNamed(LoginScreen.routename);
               } else {
                 Get.toNamed(ProfileScreen.routename);
               }

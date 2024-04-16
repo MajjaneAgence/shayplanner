@@ -22,7 +22,7 @@ class RatingAppScreen extends StatelessWidget {
         Get.put(RatingAppController());
     final HomeController homeController = Get.put(HomeController());
 
-    final LoginController loginController = Get.put(LoginController({"test":"test"}));
+    final LoginController loginController = Get.put(LoginController());
 
     return Scaffold(
       backgroundColor: Colors.transparent,

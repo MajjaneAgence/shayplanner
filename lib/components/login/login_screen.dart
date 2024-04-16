@@ -10,21 +10,35 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/components/login/login_controller.dart';
 
-class LoginScreenForEmailAndSocial extends StatelessWidget {
-  LoginScreenForEmailAndSocial({
+class LoginScreen extends StatelessWidget{
+   LoginScreen({
     Key? key,
   }) : super(key: key);
   static const routename = '/login-email-and-social';
-    final LoginController loginController = Get.put(LoginController(Get.arguments));
-
+  
   @override
   Widget build(BuildContext context) {
     return GetBuilder<LoginController>(
-        init: LoginController(loginController.arguments),
-        builder: (controller) => Scaffold(
+        init: LoginController(),
+        builder: (controller) => controller.currentLoginPage==0 ?
+          LoginScreenForEmailAndSocial(controller: controller) :
+          LoginScreenForPassword(controller: controller)
+
+    );
+  }
+}
+class LoginScreenForEmailAndSocial extends StatelessWidget {
+  LoginController controller;
+  LoginScreenForEmailAndSocial({
+    Key? key,required this.controller
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
               backgroundColor: white,
               appBar: ThemeAppBar(),
-              body: Container(
+              body: 
+              Container(
                 width: Get.width,
                 height: 90.0.hp,
                 color: biege,
@@ -245,21 +259,18 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
                   ),
                 ),
               ),
-            ));
+            );
   }
 }
 
 class LoginScreenForPassword extends StatelessWidget {
+    LoginController controller;
   LoginScreenForPassword({
     Key? key,
-  }) : super(key: key);
-  static const routename = '/login';
-    final LoginController loginController = Get.find<LoginController>();
+ required this.controller }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<LoginController>(
-        init: LoginController(loginController.arguments),
-      builder: (controller) => Scaffold(
+    return  Scaffold(
         backgroundColor: white,
         appBar: ThemeAppBar(),
         body: Container(
@@ -386,7 +397,6 @@ class LoginScreenForPassword extends StatelessWidget {
             ),
           ),
         ),
-      ),
     );
   }
 }

@@ -172,7 +172,7 @@ final Map<String, String> fr = {
 "tr_no_availability": "Aucune disponibilité",
 "tr_salon_with_no_specialities":"Ce salon ne propose aucune spécialité pour le moment",
 "tr_salon_has_no_availibality_try_another_date": "Malheureusement, ce salon n'a aucune disponibilité pour cette date, veuillez réessayer avec une autre date",
-
+"tr_you_must_be_loggedIn_to_continue": "Vous devez être connecté pour continuer",
 //recap
 "tr_reservation":"Réservation",
 "tr_date_and_hour":"date et heure",

@@ -98,9 +98,7 @@ class HomeController extends GetxController {
     String? token = await storage.read(key: 'token');
     print(token);
     if (token == null) {
-      Get.offAllNamed(LoginScreenForEmailAndSocial.routename,arguments: {
-        "source":"notification bell"
-      });
+      Get.offAllNamed(LoginScreen.routename);
     } else {
       Get.toNamed(NotificationsScreen.routename);
     }

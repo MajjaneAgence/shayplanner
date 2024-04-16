@@ -163,6 +163,7 @@ final Map<String, String> ar = {
       "هذا الصالون ليس لديه أي تخصصات في الوقت الحالي",
   "tr_salon_has_no_availibality_try_another_date":
       "للأسف، هذا الصالون لا يتوفر على أي مواعيد لهذا التاريخ، يرجى المحاولة مع تاريخ آخر",
+"tr_you_must_be_loggedIn_to_continue": "يجب أن تكون مسجل الدخول للمتابعة",
 
 // recap
   "tr_reservation": "الحجز",

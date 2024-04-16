@@ -90,6 +90,6 @@ class ForgotPasswordController extends GetxController {
     await Future.delayed(const Duration(seconds: 3));
     isLoadingChnagePassword.value = false;
     isLoadingChnagePassword.refresh();
-    Get.offAllNamed(LoginScreenForEmailAndSocial.routename);
+    Get.offAllNamed(LoginScreen.routename);
   }
 }

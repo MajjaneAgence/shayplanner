@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shayplanner/components/booking_history/booking_history_screen.dart';
 import 'package:shayplanner/components/favoris/favoris_screen.dart';
+import 'package:shayplanner/components/login/login_controller.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/change_password_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/personal_infos_screen.dart';
@@ -56,7 +57,7 @@ class ProfileController extends GetxController {
       var body = jsonDecode(value.body);
       print(body);
       if (body["message"] == "Unauthenticated.") {
-        Get.offAllNamed(LoginScreenForEmailAndSocial.routename);
+        Get.offAllNamed(LoginScreen.routename);
       } else {
         if (body["success"]) {
           user.value = UserModel.fromJson(body["data"]);
@@ -340,9 +341,13 @@ class ProfileController extends GetxController {
   }
 
   logout() {
+    if (Get.isRegistered<LoginController>()) {
+      Get.delete<LoginController>();
+    }
     profileService().apiLogout().then((value) async {
       var body = jsonDecode(value.body);
-      Get.dialog(Dialog(
+      Get.dialog(
+        Dialog(
         backgroundColor: Colors.transparent,
         elevation: 0,
         child: Center(
@@ -374,9 +379,7 @@ class ProfileController extends GetxController {
       if (body["success"]) {
         FlutterSecureStorage secureStorage = const FlutterSecureStorage();
         await secureStorage.delete(key: 'token');
-        Get.offAllNamed(LoginScreenForEmailAndSocial.routename,arguments: {
-        "source":"logout"
-      });
+        Get.offAllNamed(LoginScreen.routename);
       } else {
         if (body["message"] == "validationError") {
           String errorMessage = '';

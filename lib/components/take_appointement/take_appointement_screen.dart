@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:intl/intl.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
-import 'package:shayplanner/components/salons/salons_controller.dart';
 import 'package:shayplanner/components/take_appointement/take_appointement_controller.dart';
 import 'package:shayplanner/components/take_appointement/take_appointment_loading/gallery_loading.dart';
 import 'package:shayplanner/components/take_appointement/take_appointment_loading/specialite_loading.dart';
@@ -16,7 +15,6 @@ import 'package:shayplanner/tools/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shimmer/shimmer.dart';
 
 class TakeAppointementScreen extends StatelessWidget {
   static const routename = '/take-appointment';
@@ -227,7 +225,9 @@ class TakeAppointementScreen extends StatelessWidget {
                                                 ),
                                                 child: MultiSelectBottomSheetField<
                                                         SpecialiteModel?>(
-            initialValue:controller.test, // Default selection
+                                                    initialValue: controller
+                                                        .specialitiesInitValue, 
+                                                    //initialValue: [controller.specialites[1]],
                                                     isDismissible: false,
                                                     listType: MultiSelectListType
                                                         .CHIP,
@@ -240,25 +240,38 @@ class TakeAppointementScreen extends StatelessWidget {
                                                     title: Text(
                                                         "tr_spectialite".tr),
                                                     items: controller.items,
-                                                    onConfirm: (List<SpecialiteModel?>
-                                                        values) {
-                                                          controller.selectedSpecialities.clear();
-                                                              controller.selectedSpecialities =
+                                                    onConfirm:
+                                                        (List<SpecialiteModel?>
+                                                            values) {
+                                                      controller
+                                                              .selectedSpecialities =
                                                           values;
                                                       controller.update();
                                                     },
                                                     chipDisplay:
-                                                     
                                                         MultiSelectChipDisplay(
                                                       scroll: true,
                                                       onTap: (value) {
+                                                        int index = controller
+                                                            .specialites
+                                                            .indexWhere(
+                                                                (specialite) =>
+                                                                    specialite ==
+                                                                    value);
+                                                        if (index != -1) {
+                                                          print(controller.specialitiesInitValue.length);
+                                                          controller
+                                                              .specialitiesInitValue
+                                                              .remove(value);
+                                                                                                                          controller.update();
+                                                    controller.update();
+                                                        }
                                                         controller
                                                             .selectedSpecialities
                                                             .remove(value);
                                                         controller.update();
-                                                                                                  },
+                                                      },
                                                     ),
-
                                                     confirmText:
                                                         Text("tr_ok".tr),
                                                     cancelText:
@@ -273,11 +286,12 @@ class TakeAppointementScreen extends StatelessWidget {
                                                           themeBoxShadowInput
                                                         ],
                                                         color: verylightGrey,
-                                                        borderRadius: BorderRadius.all(Radius.circular(8.0.sp)),
+                                                        borderRadius: BorderRadius.all(
+                                                            Radius.circular(8.0.sp)),
                                                         border: Border.all(color: white, width: 0)),
                                                     validator: (value) => controller.validateServices(value),
                                                     autovalidateMode: AutovalidateMode.onUserInteraction),
-                                              ),                                 
+                                              ),
                                     SizedBox(height: 3.0.hp),
                                     ThemeText(
                                       //: controller.keySelectDateHour,
@@ -313,14 +327,7 @@ class TakeAppointementScreen extends StatelessWidget {
                                             child: VerticalDivider()),
                                         Expanded(
                                           child: ThemeText(
-                                            theText: controller.availability
-                                                .firstWhere(
-                                                    (element) =>
-                                                        element['isChecked'] ==
-                                                        true,
-                                                    orElse: () => {
-                                                          'hour': '00h:00min'
-                                                        })['hour'],
+                                            theText: controller.selectedHour,
                                             thefontSize: 10.0.sp,
                                             theColor: black,
                                             theMaxOfLines: 1,

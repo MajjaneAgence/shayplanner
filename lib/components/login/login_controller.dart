@@ -11,6 +11,7 @@ import 'package:shayplanner/components/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/components/salons/salons_screen.dart';
+import 'package:shayplanner/components/take_appointement/take_appointement_controller.dart';
 import 'package:shayplanner/components/take_appointement/take_appointement_screen.dart';
 import 'package:shayplanner/theme/theme_snackbar.dart';
 
@@ -24,12 +25,14 @@ class LoginController extends GetxController {
   LoginService loginService = LoginService();
   bool isChecked = false;
   bool isObscure = true;
-  Map<String, dynamic> arguments;
-  LoginController(this.arguments);
-
+   int currentLoginPage=0;
+  LoginController();
+  String previousRoute = "";
   @override
   void onInit() async {
     super.onInit();
+    previousRoute = Get.previousRoute;
+    print(previousRoute);
   }
 
   validateUsername(String email) {
@@ -61,19 +64,14 @@ class LoginController extends GetxController {
       if (body["success"]) {
         await secureStorage.write(key: "token", value: body["data"]['token']);
         print(await secureStorage.read(key: "token"));
-        if (arguments["source"] == "booking appointment") {
-          // Get.toNamed(HomeScreen.routename);
-          // Get.toNamed(SalonsScreen.routename,arguments: {
-          //   "filterBy":"salon",
-          //   "salon_id":arguments["salon_id"]
-          // });
-          Get.toNamed(TakeAppointementScreen.routename,
-              arguments: {
-                "salon_id": arguments["salon_id"],
-                "day":arguments['day'],
-                "hour":arguments["hour"],
-                "services":arguments["services"]
-              });
+        if (previousRoute == TakeAppointementScreen.routename) {
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          int? salonId = prefs.getInt("salon_id");
+          Get.delete<TakeAppointmentController>();
+          Get.offNamed(TakeAppointementScreen.routename, arguments: {
+            "salon_id": salonId,
+            "source":"login"
+          });
         } else {
           Get.offAllNamed(HomeScreen.routename);
         }
@@ -144,7 +142,8 @@ class LoginController extends GetxController {
   loginWithFacebook() {}
 
   goToPasswordScreen() {
-    Get.toNamed(LoginScreenForPassword.routename);
+    currentLoginPage=1;
+    update();
   }
 
   changeCheckbox(value) {

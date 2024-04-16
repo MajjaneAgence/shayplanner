@@ -196,7 +196,7 @@ class SalonsController extends GetxController {
     if (Get.isRegistered<TakeAppointmentController>()) {
       Get.delete<TakeAppointmentController>();
     }
-    var args = {'salon_id': salonId};
+    var args = {'salon_id': salonId,"source":"catalogue"};
     Get.toNamed(TakeAppointementScreen.routename, arguments: args);
   }
 }

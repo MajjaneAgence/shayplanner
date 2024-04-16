@@ -22,13 +22,9 @@ import 'package:shayplanner/components/take_appointement/take_appointement_scree
 
 var router = [
   GetPage(
-    name: LoginScreenForEmailAndSocial.routename,
-    page: () => LoginScreenForEmailAndSocial(),
+    name: LoginScreen.routename,
+    page: () => LoginScreen(),
   ),
-  GetPage(
-      name: LoginScreenForPassword.routename,
-      page: () => LoginScreenForPassword(),
-      transition: Transition.rightToLeft),
   GetPage(
     name: RegisterScreen.routename,
     page: () => RegisterScreen(),

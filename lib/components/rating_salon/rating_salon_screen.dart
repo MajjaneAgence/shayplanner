@@ -22,7 +22,7 @@ class RatingSalonScreen extends StatelessWidget {
         Get.put(RatingSalonController());
     final HomeController homeController = Get.put(HomeController());
 
-    final LoginController loginController = Get.put(LoginController({"test":"test"}));
+    final LoginController loginController = Get.put(LoginController());
 
     return Scaffold(
       backgroundColor: Colors.transparent,

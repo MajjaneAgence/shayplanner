@@ -127,9 +127,7 @@ class RegisterController extends GetxController {
           // await secureStorage.write(
           //     key: "token", value: body["data"]['token']);
           // print(await secureStorage.read(key: "token"));
-         Get.offAllNamed(LoginScreenForEmailAndSocial.routename,arguments: {
-          "source":"register"
-         });
+         Get.offAllNamed(LoginScreen.routename);
         } else {
         if (body["message"] == "validationError") {
           String errorMessage = '';
