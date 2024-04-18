@@ -126,6 +126,10 @@ final Map<String, String> en = {
       "No salons available for this category",
   "tr_no_salons_available_for_this_speciality":
       "No salons available for this specialty",
+"tr_salon_name": "Salon Name",
+"tr_category": "Category",
+"tr_specialite": "Service",
+"tr_address_search": "Address",
 
   //notifications
   "tr_notification": "Notifications",

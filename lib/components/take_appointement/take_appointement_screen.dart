@@ -227,7 +227,7 @@ class TakeAppointementScreen extends StatelessWidget {
                                                         SpecialiteModel?>(
                                                     initialValue: controller
                                                         .specialitiesInitValue, 
-                                                    //initialValue: [controller.specialites[1]],
+                                                   // initialValue: [controller.specialites[1]],
                                                     isDismissible: false,
                                                     listType: MultiSelectListType
                                                         .CHIP,
@@ -252,24 +252,27 @@ class TakeAppointementScreen extends StatelessWidget {
                                                         MultiSelectChipDisplay(
                                                       scroll: true,
                                                       onTap: (value) {
-                                                        int index = controller
-                                                            .specialites
-                                                            .indexWhere(
-                                                                (specialite) =>
-                                                                    specialite ==
-                                                                    value);
-                                                        if (index != -1) {
-                                                          print(controller.specialitiesInitValue.length);
-                                                          controller
-                                                              .specialitiesInitValue
-                                                              .remove(value);
-                                                                                                                          controller.update();
-                                                    controller.update();
-                                                        }
+                                                    //     int index = controller
+                                                    //         .specialites
+                                                    //         .indexWhere(
+                                                    //             (specialite) =>
+                                                    //                 specialite ==
+                                                    //                 value);
+                                                    //     if (index != -1) {
+                                                    //       print(controller.specialitiesInitValue.length);
+                                                    //       controller
+                                                    //           .specialitiesInitValue
+                                                    //           .remove(value);
+                                                    //                                                                       controller.update();
+                                                    // controller.update();
+                                                    //     }
                                                         controller
                                                             .selectedSpecialities
                                                             .remove(value);
                                                         controller.update();
+                                                        return controller
+                                                            .selectedSpecialities;
+                                                            //https://github.com/CHB61/multi_select_flutter/issues/51
                                                       },
                                                     ),
                                                     confirmText:

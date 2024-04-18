@@ -137,6 +137,9 @@ class FutureAppointementScreen extends StatelessWidget {
                                                         MainAxisAlignment
                                                             .spaceBetween,
                                                     children: [
+                                                       Expanded(
+                                                flex: 5,
+                                                child:
                                                       ThemeText(
                                                         theText: appointment
                                                             .specialite,
@@ -145,6 +148,10 @@ class FutureAppointementScreen extends StatelessWidget {
                                                         theFontWeight:
                                                             FontWeight.bold,
                                                       ),
+                                                       ),
+                                                        Expanded(
+                                                flex: 1,
+                                                child:
                                                       ThemeText(
                                                         theText:
                                                             appointment.price,
@@ -153,6 +160,7 @@ class FutureAppointementScreen extends StatelessWidget {
                                                         theFontWeight:
                                                             FontWeight.bold,
                                                       ),
+                                                        ),
                                                     ]),
                                               ),
                                               Expanded(

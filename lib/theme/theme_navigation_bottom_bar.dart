@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:shayplanner/api/api_helper.dart';
 import 'package:shayplanner/components/future_appointement/future_appointement_screen.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
@@ -10,6 +13,7 @@ import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
 import 'package:shayplanner/components/salons/salons_screen.dart';
 import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/tools/extension.dart';
+import 'package:http/http.dart' as http;
 
 // use this theme button only if the function of the action of your button doesn't require parameters line : action(param1,param2)
 class ThemeNavigationBottomBar extends StatelessWidget {
@@ -66,12 +70,18 @@ class ThemeNavigationBottomBar extends StatelessWidget {
           ),
           TextButton(
             onPressed: ()async{
+              final check = Uri.parse('${ApiHelper().getUrl()}/check-token-validity');
+    final response =
+        await http.get(check, headers: ApiHelper().getHeaders(await ApiHelper().getToken()));
+    var body = jsonDecode(response.body);
+    print(body["data"]);
               FlutterSecureStorage storage = FlutterSecureStorage();
               String? token = await storage.read(key: 'token');
               print(token);
-              if (token == null) {
-                Get.offAllNamed(LoginScreen.routename);
-              } else {
+              if (token == null || body["data"]=="expiredToken") {
+                Get.toNamed(LoginScreen.routename);
+              }
+              else {
                 Get.toNamed(ProfileScreen.routename);
               }
             },

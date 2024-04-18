@@ -129,7 +129,10 @@ final Map<String, String> fr = {
   "tr_take_appointment": "Prendre RDV",
   "tr_no_salons_available_for_this_category":"Aucun résultat trouvé pour cette catégorie",
  "tr_no_salons_available_for_this_speciality":"Aucun résultat trouvé pour cette spécialité",
-
+"tr_salon_name":"Nom du salon",
+"tr_category":"Catégorie",
+"tr_specialite":"Prestation",
+"tr_address_search":"Adresse",
   //notifications
   "tr_notification": "Notifications",
   "tr_delete_confirmation": "Confirmer la suppression",

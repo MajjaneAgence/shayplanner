@@ -59,7 +59,9 @@ class CustomSearchDelegate extends SearchDelegate<String> {
         itemCount: items.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title:items[index]["type"] != "address" ?  Text(items[index]["name"]): Text(items[index]["address"]),
+            title: items[index]["type"] != "address"
+                ? Text(items[index]["name"])
+                : Text(items[index]["address"]),
             onTap: () {
               query = items[index]["name"];
               print(items[index]["type"]);
@@ -67,26 +69,29 @@ class CustomSearchDelegate extends SearchDelegate<String> {
                 Get.delete<SalonsController>();
                 Get.toNamed(SalonsScreen.routename, arguments: {
                   'filterBy': 'salon',
-                  'salon_id': items[index]["id"]
+                  'salon_id': items[index]["id"],
+                  "type": items[index]["type"]
                 });
               } else if (items[index]["type"] == "category") {
                 Get.delete<SalonsController>();
                 Get.toNamed(SalonsScreen.routename, arguments: {
                   'filterBy': 'categories',
-                  'category_id': items[index]["id"]
+                  'category_id': items[index]["id"],
+                  "type": items[index]["type"]
                 });
               } else if (items[index]["type"] == "specialite") {
                 Get.delete<SalonsController>();
                 Get.toNamed(SalonsScreen.routename, arguments: {
                   'filterBy': 'specialite',
-                  'specialite_id': items[index]["id"]
+                  'specialite_id': items[index]["id"],
+                  "type": items[index]["type"]
                 });
-              }
-              else if (items[index]["type"] == "address") {
+              } else if (items[index]["type"] == "address") {
                 Get.delete<SalonsController>();
                 Get.toNamed(SalonsScreen.routename, arguments: {
                   'filterBy': 'address',
-                  'salon_id': items[index]["id"]
+                  'salon_id': items[index]["id"],
+                  "type": items[index]["type"]
                 });
               }
               //showResults(context);

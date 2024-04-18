@@ -123,6 +123,10 @@ final Map<String, String> ar = {
   "tr_no_salons_available_for_this_category": "لا تتوفر صالونات لهذه الفئة",
   "tr_no_salons_available_for_this_speciality":
       "لا تتوفر صالونات لهذه الاختصاصية",
+  "tr_salon_name": "اسم الصالون",
+  "tr_category": "الفئة",
+  "tr_specialite": "الخدمة",
+  "tr_address_search": "العنوان",
 
   //notifications
   "tr_notification": "الإشعارات",
@@ -163,7 +167,7 @@ final Map<String, String> ar = {
       "هذا الصالون ليس لديه أي تخصصات في الوقت الحالي",
   "tr_salon_has_no_availibality_try_another_date":
       "للأسف، هذا الصالون لا يتوفر على أي مواعيد لهذا التاريخ، يرجى المحاولة مع تاريخ آخر",
-"tr_you_must_be_loggedIn_to_continue": "يجب أن تكون مسجل الدخول للمتابعة",
+  "tr_you_must_be_loggedIn_to_continue": "يجب أن تكون مسجل الدخول للمتابعة",
 
 // recap
   "tr_reservation": "الحجز",
@@ -175,6 +179,5 @@ final Map<String, String> ar = {
 
   //future appointment
   "tr_no_future_appointment": "لا مواعيد مستقبلية",
-"tr_future": "المستقبل",
-
+  "tr_future": "المستقبل",
 };

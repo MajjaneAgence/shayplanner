@@ -177,7 +177,10 @@ class TakeAppointmentController extends GetxController {
 //        print(date);
 //        print(selectedSpecialities);
 //        print(arguments['salon_id']);
-      getAvailability(DateFormat('yyyy-MM-dd').format(selectedDay), arguments['salon_id'], ids);
+      if (availability.isEmpty) {
+        getAvailability(DateFormat('yyyy-MM-dd').format(selectedDay),
+            arguments['salon_id'], ids);
+      }
       Get.dialog(
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -540,7 +543,7 @@ class TakeAppointmentController extends GetxController {
       showErrorDialog("tr_you_must_be_loggedIn_to_continue".tr);
     } else {
       Get.toNamed(AppointmentRecapScreen.routename,
-          arguments: {"salon_id": arguments["salon_id"],"source":"tetstttt"});
+          arguments: {"salon_id": arguments["salon_id"], "source": "tetstttt"});
     }
   }
 
@@ -551,11 +554,12 @@ class TakeAppointmentController extends GetxController {
     update();
     for (var item in availability) {
       if (hour == item['hour']) {
-        item['isChecked'] = !item['isChecked'];
+        item['isChecked'] = true;
         selectedHour = item['hour'];
         update();
       }
     }
+    print(availability);
   }
 
   getSpecialities(salonId) {
@@ -576,7 +580,6 @@ class TakeAppointmentController extends GetxController {
                 MultiSelectItem<SpecialiteModel>(specialite, specialite.name))
             .toList();
         update();
-
         // if the user has chosen specialities before login we should rememeber what he has
         // chosen and a fter login we get what he has chosen and we fill the select of specialities
         //autiomatically
@@ -599,10 +602,12 @@ class TakeAppointmentController extends GetxController {
             return specialites[index];
           }).toList();
           List<int> specialiteIds =
-          selectedSpecialities.map((obj) => obj!.id).toList();
+              selectedSpecialities.map((obj) => obj!.id).toList();
           print(selectedDay);
           focusedDay = selectedDay;
-          getAvailability(DateFormat('yyyy-MM-dd').format(selectedDayBeforeLogin), salonId,
+          getAvailability(
+              DateFormat('yyyy-MM-dd').format(selectedDayBeforeLogin),
+              salonId,
               specialiteIds);
         }
       } else {

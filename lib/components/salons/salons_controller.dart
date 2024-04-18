@@ -199,4 +199,20 @@ class SalonsController extends GetxController {
     var args = {'salon_id': salonId,"source":"catalogue"};
     Get.toNamed(TakeAppointementScreen.routename, arguments: args);
   }
+
+
+  getSearchName(name){
+      if(name=="salon"){
+        return "tr_salon_name".tr;
+      }else if(name=="category"){
+        return "tr_category".tr;
+      }else if(name=="specialite"){
+       return "tr_specialite".tr;
+      }else if(name=="address"){
+       return "tr_address".tr;
+      }
+      else{
+       return "";
+      }
+  }
 }
