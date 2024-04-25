@@ -8,6 +8,7 @@ import 'package:shayplanner/api/api_helper.dart';
 import 'package:shayplanner/components/future_appointement/future_appointement_screen.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
+import 'package:shayplanner/components/map/map_screen.dart';
 import 'package:shayplanner/components/profile/profile_screen.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
 import 'package:shayplanner/components/salons/salons_screen.dart';
@@ -45,7 +46,9 @@ class ThemeNavigationBottomBar extends StatelessWidget {
                   : SvgPicture.asset('assets/icons/floating_app_bar/home.svg',
                       width: 8.0.wp, height: 8.0.wp)),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(MapScreen());
+            },
             child: Get.currentRoute == ProfileScreen.routename
                 ? SvgPicture.asset(
                     'assets/icons/floating_app_bar/map.svg',

@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,6 +16,7 @@ import 'package:shayplanner/components/salons/salons_screen.dart';
 import 'package:shayplanner/components/take_appointement/take_appointement_controller.dart';
 import 'package:shayplanner/components/take_appointement/take_appointement_screen.dart';
 import 'package:shayplanner/theme/theme_snackbar.dart';
+import 'package:http/http.dart' as http;
 
 class LoginController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -26,7 +29,6 @@ class LoginController extends GetxController {
   bool isChecked = false;
   bool isObscure = true;
    int currentLoginPage=0;
-  LoginController();
   String previousRoute = "";
   @override
   void onInit() async {
@@ -90,17 +92,18 @@ class LoginController extends GetxController {
   }
 
   loginWithGoogle() async {
-    //  SharedPreferences preferences = await SharedPreferences.getInstance();
-    // //Trigger the authentication flow
-    // final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-    // if (googleUser == null) {
-    //   await GoogleSignIn().signOut();
-    // } else {
-    //   // Obtain the auth details from the request
-    //   final GoogleSignInAuthentication googleAuth =
-    //       await googleUser.authentication;
+     SharedPreferences preferences = await SharedPreferences.getInstance();
+    //Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    if (googleUser == null) {
+      await GoogleSignIn().signOut();
+    } else {
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
 
-    //       print(googleAuth.accessToken);
+          print(googleAuth.accessToken);
+    }
     // }
     // Create a new credential
     // final credential = GoogleAuthProvider.credential(
@@ -139,7 +142,24 @@ class LoginController extends GetxController {
 
   loginWithApple() {}
 
-  loginWithFacebook() {}
+  // loginWithFacebook() async{
+
+  //       // Trigger the sign-in flow
+  //   final LoginResult loginResult = await FacebookAuth.instance.login();
+  //   // Create a credential from the access token
+  //   final OAuthCredential facebookAuthCredential =
+  //       FacebookAuthProvider.credential(loginResult.accessToken!.token);
+
+  //   // Once signed in, return the UserCredential
+  //   //check if firebase user is already created with different provider
+  //   // UserCredential userCredential =
+  //   await FirebaseAuth.instance
+  //       .signInWithCredential(facebookAuthCredential)
+  //       .then((value) async {
+  //     var graphResponse = await http.get(Uri.parse(
+  //         'https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email&access_token=${loginResult.accessToken!.token}'));
+  // });
+  // }
 
   goToPasswordScreen() {
     currentLoginPage=1;

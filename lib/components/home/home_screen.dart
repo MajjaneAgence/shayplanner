@@ -380,7 +380,8 @@ class HomeScreen extends StatelessWidget {
                                         Get.toNamed(SalonsScreen.routename,
                                             arguments: {
                                               'filterBy': 'categories',
-                                              'category_id': category.id
+                                              'category_id': category.id,
+                                              'type':'category'
                                             });
                                       },
                                       child: Container(
@@ -473,7 +474,8 @@ class HomeScreen extends StatelessWidget {
                                         Get.toNamed(SalonsScreen.routename,
                                             arguments: {
                                               'filterBy': 'salon',
-                                              'salon_id': salon.id
+                                              'salon_id': salon.id,
+                                              'type':'salon'
                                             });
                                       },
                                       child: Container(

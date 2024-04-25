@@ -44,8 +44,8 @@ class SalonsScreen extends StatelessWidget {
                       boxShadow: [themeBoxShadowInput],
                     ),
                     child: ThemeInput(
-                      theHintText:salonsController. getSearchName(salonsController.arguments['type']),
-                      theLabelText:salonsController. getSearchName(salonsController.arguments['type']),
+                      theHintText:salonsController.getSearchName(salonsController.arguments['type']),
+                      theLabelText:salonsController.getSearchName(salonsController.arguments['type']),
                       theTextEditingController:
                           salonsController.keywordEditingController,
                       theValidation: salonsController.dontValidate,
