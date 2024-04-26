@@ -182,5 +182,11 @@ final Map<String, String> en = {
 "tr_no_future_appointment": "No future appointment",
 "tr_future": "Future",
 
+//favorite
+"tr_add_to_favorite": "Add to favorites",
+"tr_call": "Call",
+"tr_share": "Share",
+
+
 
 };

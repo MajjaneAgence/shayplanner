@@ -22,7 +22,7 @@ class SalonsController extends GetxController {
   RxBool isLoadingBookAppointment = false.obs;
   RxList<SalonModel> salons = <SalonModel>[].obs;
   Rx<SalonModel?> salon = SalonModel().obs;
-
+  
   Map<String, dynamic> arguments;
   SalonsController(this.arguments);
   @override

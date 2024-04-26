@@ -180,4 +180,10 @@ final Map<String, String> ar = {
   //future appointment
   "tr_no_future_appointment": "لا مواعيد مستقبلية",
   "tr_future": "المستقبل",
+
+  //favorite
+  "tr_add_to_favorite": "أضف إلى المفضلة",
+"tr_call": "اتصال",
+"tr_share": "مشاركة",
+
 };

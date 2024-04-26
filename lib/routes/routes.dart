@@ -7,6 +7,7 @@ import 'package:shayplanner/components/future_appointement/future_appointement_s
 import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/introduction/introduction_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
+import 'package:shayplanner/components/map/map_screen.dart';
 import 'package:shayplanner/components/notifications/notifications_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/change_password_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/personal_infos_screen.dart';
@@ -105,5 +106,9 @@ var router = [
         GetPage(
       name:FutureAppointementScreen.routename,
       page: () => FutureAppointementScreen(),
+      transition: Transition.cupertinoDialog),
+         GetPage(
+      name:MapScreen.routename,
+      page: () => MapScreen(),
       transition: Transition.cupertinoDialog),
 ];

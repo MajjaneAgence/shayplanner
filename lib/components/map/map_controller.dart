@@ -1,21 +1,18 @@
+import 'dart:async';
 import 'dart:convert';
 
-import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shayplanner/components/forgot_password/forgot_password_screen.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
-import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/login/login_service.dart';
 import 'package:shayplanner/components/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shayplanner/components/salons/salons_screen.dart';
-import 'package:shayplanner/components/take_appointement/take_appointement_controller.dart';
-import 'package:shayplanner/components/take_appointement/take_appointement_screen.dart';
-import 'package:shayplanner/theme/theme_snackbar.dart';
+import 'package:uuid/uuid.dart';
 import 'package:http/http.dart' as http;
 
 class MapController extends GetxController {
@@ -24,40 +21,42 @@ class MapController extends GetxController {
 
   TextEditingController usernameEditingController = TextEditingController();
   TextEditingController keywordEditingController = TextEditingController();
-  bool isLoading = false;
-  LoginService loginService = LoginService();
-  bool isChecked = false;
-  bool isObscure = true;
-   int currentLoginPage=0;
-  String previousRoute = "";
+   double? latitude=0;
+   double? longitude=0;
+  bool currentPositionLoaded=false;
+  bool isSearching=false;
+   final _controller = TextEditingController();
+  final sessionToken = Uuid().v4();
+  final provider = PlaceApiProvider(Uuid().v4());
+  List<Suggestion> suggestion = [];
+    final pickUpLocationSC = StreamController<PlaceDetail>.broadcast();
+  StreamSink<PlaceDetail> get pickUpLocationSink => pickUpLocationSC.sink;
+  bool aSalonIsSelected=false;
   @override
   void onInit() async {
-    super.onInit();
-    previousRoute = Get.previousRoute;
-    print(previousRoute);
+     super.onInit();
+     Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+        longitude=position.longitude;
+        latitude=position.latitude;
+        print("this is latitude : $latitude");
+        print("this is longitude: $longitude");
+      currentPositionLoaded=true;
+    update();
   }
 
-  validateUsername(String email) {
-    if (GetUtils.isEmail(email)) {
-      return null;
-    } else {
-      return "tr_enter_valid_email_address".tr;
-    }
-  }
-
-  validatePassword(String password) {
-    if (password.isNotEmpty) {
-      return null;
-    } else {
-      return "tr_enter_password".tr;
-    }
-  }
+  
+  
 
 
 
 
-  goToRestPassword() {
-    Get.toNamed(ForgotPasswordScreen.routename);
+  search(value )async {
+     if (keywordEditingController.text.length > 1) {
+        suggestion = await provider.fetchSuggestions(keywordEditingController.text);
+      } else {
+        suggestion.clear();
+      }
   }
 
   goToRegister() {
@@ -134,20 +133,6 @@ class MapController extends GetxController {
   // });
   // }
 
-  goToPasswordScreen() {
-    currentLoginPage=1;
-    update();
-  }
-
-  changeCheckbox(value) {
-    isChecked = !value;
-    update();
-  }
-
-  togglePasswordVisibilty(bool visibilty) {
-    isObscure = !visibilty;
-    update();
-  }
 
   gotohome() {
     Get.toNamed(HomeScreen.routename);
@@ -156,4 +141,93 @@ class MapController extends GetxController {
   continueLoggedOut() {
     Get.offAndToNamed(HomeScreen.routename);
   }
+
+  
+}
+
+// We will use this util class to fetch the auto complete result and get the details of the place.
+class PlaceApiProvider {
+  PlaceApiProvider(this.sessionToken);
+
+  final String sessionToken;
+  final apiKey = "AIzaSyARF8feb-tLDqkP9AKd0dmLi4NhrU7_548";
+
+  http.Request createGetRequest(String url) =>
+      http.Request('GET', Uri.parse(url));
+
+  Future<List<Suggestion>> fetchSuggestions(String input) async {
+    final url =
+        'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$input&components=country:ma&key=$apiKey&sessiontoken=$sessionToken';
+    var request = createGetRequest(url);
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      final data = await response.stream.bytesToString();
+      final result = json.decode(data);
+
+      print(result);
+
+      if (result['status'] == 'OK') {
+        return result['predictions']
+            .map<Suggestion>((p) => Suggestion(p['place_id'], p['description'],
+                p['structured_formatting']['main_text']))
+            .toList();
+      }
+      if (result['status'] == 'ZERO_RESULTS') {
+        return [];
+      }
+      throw Exception(result['error_message']);
+    } else {
+      throw Exception('Failed to fetch suggestion');
+    }
+  }
+
+  Future<PlaceDetail> getPlaceDetailFromId(String placeId) async {
+    final url =
+        'https://maps.googleapis.com/maps/api/place/details/json?place_id=$placeId&fields=formatted_address,name,geometry/location&key=$apiKey&sessiontoken=$sessionToken';
+    var request = createGetRequest(url);
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      final data = await response.stream.bytesToString();
+      final result = json.decode(data);
+      print(result);
+
+      if (result['status'] == 'OK') {
+        // build result
+        final place = PlaceDetail();
+        place.address = result['result']['formatted_address'];
+        place.latitude = result['result']['geometry']['location']['lat'];
+        place.longitude = result['result']['geometry']['location']['lng'];
+        place.name = result['result']['geometry']['name'];
+        return place;
+      }
+      throw Exception(result['error_message']);
+    } else {
+      throw Exception('Failed to fetch suggestion');
+    }
+  }
+}
+
+
+class PlaceDetail {
+  String? address;
+  double? latitude;
+  double? longitude;
+  String? name;
+
+  PlaceDetail({
+    this.address,
+    this.latitude,
+    this.longitude,
+    this.name,
+  });
+}
+
+class Suggestion {
+  final String placeId;
+  final String description;
+  final String title;
+
+  Suggestion(this.placeId, this.description, this.title);
 }

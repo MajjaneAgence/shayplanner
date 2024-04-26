@@ -186,6 +186,12 @@ final Map<String, String> fr = {
 
 //future appointment
 "tr_no_future_appointment":"Vous n'avez aucun rendez-vous prochain",
-"tr_future":"À venir"
+"tr_future":"À venir",
+
+// map screen
+ "tr_add_to_favorite":"Ajouter aux favoris",
+ "tr_call":"Appeler",
+ "tr_share":"Partager"
+
 
 };
