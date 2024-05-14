@@ -19,6 +19,7 @@ import 'package:shayplanner/tools/extension.dart';
 class MapScreen extends StatelessWidget {
   late GoogleMapController mapController;
   static const routename = '/map';
+  Completer<GoogleMapController> _controller = Completer();
 
   final LatLng _center = const LatLng(34.020882, -6.841650);
   static const MAP_STYLE =
@@ -28,7 +29,10 @@ class MapScreen extends StatelessWidget {
     mapController = controller;
     //mapController.setMapStyle(MAP_STYLE);
   }
-
+static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(3.3679965,  6.5212402),
+    zoom: 9.4746,
+  ); 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,23 +116,8 @@ class MapScreen extends StatelessWidget {
                                           Divider()
                                         ],
                                       ),
-                                      onTap: () async {
-                                        final placeDetail = await controller
-                                            .provider
-                                            .getPlaceDetailFromId(controller
-                                                .suggestion[index].placeId);
-                                        //super.sink.add(placeDetail);
-                                        //onBackPressed(context);
-                                        MapController mapController =
-                                            Get.find<MapController>();
-                                        mapController.latitude =
-                                            placeDetail.latitude;
-                                        mapController.longitude =
-                                            placeDetail.longitude;
-                                        controller.isSearching = false;
-                                        controller.aSalonIsSelected = true;
-                                        controller.update();
-                                      },
+                                      onTap: controller.selectSalon(controller
+                                                .suggestion[index].placeId),
                                     ),
                                     itemCount: controller.suggestion.length,
                                   )),
@@ -142,23 +131,15 @@ class MapScreen extends StatelessWidget {
                               topLeft: Radius.circular(8.5.wp),
                               topRight: Radius.circular(8.5.wp),
                             ),
-                            child: GoogleMap(
+                            child: 
+                            GoogleMap(
                               onMapCreated: _onMapCreated,
                               initialCameraPosition: CameraPosition(
-                                target: LatLng(controller.latitude ?? 0,
-                                    controller.longitude ?? 0),
+                                target: LatLng(controller.originLatitude ?? 0, controller.originLongitude ??0),
                                 zoom: 10,
                               ),
-                              markers: {
-                                const Marker(
-                                  markerId: const MarkerId("Home"),
-                                  position: LatLng(34.020882, -6.841650),
-                                  infoWindow: InfoWindow(
-                                    title: "Home",
-                                    snippet: "",
-                                  ),
-                                ), 
-                              },
+                              markers: Set<Marker>.of(controller.markers.values),
+                              polylines: controller.polylinePoints.isBlank ==null? Set<Polyline>.of(controller.polylines.values):Set<Polyline>.of(controller.polylines.values),
                             ),
                           ),
                         ),

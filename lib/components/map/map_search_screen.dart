@@ -167,8 +167,8 @@ class _LocationSearchScreenState extends State<LocationSearchScreen> {
                       widget.sink.add(placeDetail);
                       //onBackPressed(context);
                       MapController mapController = Get.find<MapController>();
-                      mapController.latitude = placeDetail.latitude;
-                      mapController.longitude = placeDetail.longitude;
+                      mapController.originLongitude = placeDetail.latitude;
+                      mapController.originLatitude = placeDetail.longitude;
                       Get.toNamed(MapScreen.routename);
                     },
                   ),

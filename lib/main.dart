@@ -15,7 +15,7 @@ void main() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? savedLanguage = prefs.getString('language');
   Locale locale =
-      savedLanguage != null ? Locale(savedLanguage) : Locale('fr', 'FR');
+      savedLanguage != null ? Locale(savedLanguage) : const Locale('fr', 'FR');
   runApp(MyApp(locale: locale));
 }
 

@@ -2,13 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 
 //import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:http/http.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shayplanner/components/forgot_password/forgot_password_screen.dart';
-import 'package:shayplanner/components/home/home_screen.dart';
-import 'package:shayplanner/components/login/login_service.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import 'package:shayplanner/components/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,36 +18,85 @@ class MapController extends GetxController {
 
   TextEditingController usernameEditingController = TextEditingController();
   TextEditingController keywordEditingController = TextEditingController();
-   double? latitude=0;
-   double? longitude=0;
+   double? originLatitude=34.011503;
+   double? originLongitude= -6.85879;
+   double? destinationLatitude=0;
+   double? destinationLongitude=0;
   bool currentPositionLoaded=false;
   bool isSearching=false;
-   final _controller = TextEditingController();
   final sessionToken = Uuid().v4();
   final provider = PlaceApiProvider(Uuid().v4());
   List<Suggestion> suggestion = [];
     final pickUpLocationSC = StreamController<PlaceDetail>.broadcast();
   StreamSink<PlaceDetail> get pickUpLocationSink => pickUpLocationSC.sink;
   bool aSalonIsSelected=false;
+  Map<MarkerId, Marker> markers = {}; 
+  PolylinePoints polylinePoints = PolylinePoints();
+Map<PolylineId, Polyline> polylines = {};
+List<LatLng> polylineCoordinates = [];
   @override
   void onInit() async {
      super.onInit();
      Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
-        longitude=position.longitude;
-        latitude=position.latitude;
-        print("this is latitude : $latitude");
-        print("this is longitude: $longitude");
-      currentPositionLoaded=true;
+        originLongitude=position.longitude;
+        originLatitude=position.latitude;
+        print("this is latitude : $originLatitude");
+        print("this is longitude: $originLongitude");
+      addMarker(
+      LatLng(originLatitude ?? 0 ,originLongitude ?? 0),
+      "origin",
+      BitmapDescriptor.defaultMarker,
+    );
+     addMarker(
+      LatLng(destinationLatitude ?? 0, destinationLongitude ?? 0),
+      "destination",
+      BitmapDescriptor.defaultMarkerWithHue(90),
+    );
+    currentPositionLoaded=true;
+    getPolyline();
     update();
   }
 
   
+
+addPolyLine(List<LatLng> polylineCoordinates) {
+    PolylineId id = PolylineId("poly");
+    Polyline polyline = Polyline(
+      polylineId: id,
+      points: polylineCoordinates,
+      width: 1,
+    );
+    polylines[id] = polyline;
+    update();
+  }
+
+void getPolyline() async {
+    List<LatLng> polylineCoordinates = [];
+
+    PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
+      "AIzaSyARF8feb-tLDqkP9AKd0dmLi4NhrU7_548",
+      PointLatLng(originLatitude ?? 0, originLongitude ?? 0),
+      PointLatLng(33.589886,-7.603869), 
+      travelMode: TravelMode.driving,
+    );
+    if (result.points.isNotEmpty) {
+      result.points.forEach((PointLatLng point) {
+        polylineCoordinates.add(LatLng(point.latitude, point.longitude));
+      });
+    } else {
+      print(result.errorMessage);
+    }
+    addPolyLine(polylineCoordinates);
+  }
+ // This method will add markers to the map based on the LatLng position
+  addMarker(LatLng position, String id, BitmapDescriptor descriptor) {
+    MarkerId markerId = MarkerId(id);
+    Marker marker =
+        Marker(markerId: markerId, icon: descriptor, position: position);
+    markers[markerId] = marker;
+  }
   
-
-
-
-
   search(value )async {
      if (keywordEditingController.text.length > 1) {
         suggestion = await provider.fetchSuggestions(keywordEditingController.text);
@@ -62,87 +108,21 @@ class MapController extends GetxController {
   goToRegister() {
     Get.toNamed(RegisterScreen.routename);
   }
-
-  loginWithGoogle() async {
-     SharedPreferences preferences = await SharedPreferences.getInstance();
-    //Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-    if (googleUser == null) {
-      await GoogleSignIn().signOut();
-    } else {
-      // Obtain the auth details from the request
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
-
-          print(googleAuth.accessToken);
-    }
-    // }
-    // Create a new credential
-    // final credential = GoogleAuthProvider.credential(
-    //   accessToken: googleAuth.accessToken,
-    //   idToken: googleAuth.idToken,
-    // );
-
-    // // Once signed in, return the UserCredential
-    // return await FirebaseAuth.instance
-    //     .signInWithCredential(credential)
-    //     .then((value) {
-    //   userProvider
-    //       .loginSocial(value.additionalUserInfo!.profile!['email'])
-    //       .then((result) async {
-    //     var responseDecode = jsonDecode(result.body);
-    //     if (responseDecode['success'] == 1) {
-    //       await flutterSecureStorage.write(
-    //           key: "token", value: responseDecode['data']['customer_token']);
-    //       preferences.setString("id", responseDecode['data']['customer_id']);
-    //       preferences.setBool("isSocial", true);
-    //       Get.offAllNamed(MainApp.routename);
-    //     } else {
-    //       preferences.setBool("isSocial", true);
-    //       Get.toNamed(Inscription.routename, arguments: [
-    //         value.additionalUserInfo!.profile!['email'],
-    //         value.additionalUserInfo!.profile!['given_name'],
-    //         value.additionalUserInfo!.profile!['family_name']
-    //       ]);
-    //     }
-    //   });
-    // });
-
-    //   return value;
-    // });
-  }
-
-  loginWithApple() {}
-
-  // loginWithFacebook() async{
-
-  //       // Trigger the sign-in flow
-  //   final LoginResult loginResult = await FacebookAuth.instance.login();
-  //   // Create a credential from the access token
-  //   final OAuthCredential facebookAuthCredential =
-  //       FacebookAuthProvider.credential(loginResult.accessToken!.token);
-
-  //   // Once signed in, return the UserCredential
-  //   //check if firebase user is already created with different provider
-  //   // UserCredential userCredential =
-  //   await FirebaseAuth.instance
-  //       .signInWithCredential(facebookAuthCredential)
-  //       .then((value) async {
-  //     var graphResponse = await http.get(Uri.parse(
-  //         'https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email&access_token=${loginResult.accessToken!.token}'));
-  // });
-  // }
-
-
-  gotohome() {
-    Get.toNamed(HomeScreen.routename);
-  }
-
-  continueLoggedOut() {
-    Get.offAndToNamed(HomeScreen.routename);
-  }
-
   
+  selectSalon(placeId) async{
+     final placeDetail = await provider.getPlaceDetailFromId(placeId);
+                                        //super.sink.add(placeDetail);
+                                        //onBackPressed(context);
+                                        MapController mapController =
+                                            Get.find<MapController>();
+                                        mapController.originLatitude =
+                                            placeDetail.latitude;
+                                        mapController.originLongitude =
+                                            placeDetail.longitude;
+                                        isSearching = false;
+                                       aSalonIsSelected = true;
+                                        update();
+  }
 }
 
 // We will use this util class to fetch the auto complete result and get the details of the place.
