@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:shayplanner/theme/theme_colors.dart';
 import 'package:shayplanner/tools/extension.dart';
 
 class CirclePainter extends CustomPainter {
@@ -21,8 +22,11 @@ class CirclePainter extends CustomPainter {
     Offset center = Offset(size.width / 2, size.height / 2);
     double radius = min(size.width / 2, size.height / 2);
 
-    Paint progressPaint = Paint()
-      ..shader = LinearGradient(
+    Paint progressPaint = Paint();
+    if (progressColor == verylightGrey) {
+      progressPaint.color = Color(0xFFD9D9D9);
+    } else {
+      progressPaint.shader = LinearGradient(
         begin: Alignment.centerLeft,
         end: Alignment.centerRight,
         colors: [
@@ -30,9 +34,13 @@ class CirclePainter extends CustomPainter {
           Color(0xFFFFDBBA),
           Color(0xFFD79F6C),
         ], // Example gradient colors
-      ).createShader(Rect.fromCircle(center: center, radius: radius))
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = strokeWidth;
+      ).createShader(
+        Rect.fromCircle(center: center, radius: radius),
+      );
+    }
+
+    progressPaint.style = PaintingStyle.stroke;
+    progressPaint.strokeWidth = strokeWidth;
 
     // Calculate the inner radius by subtracting the strokeWidth from the outer radius
     double innerRadius = radius + strokeWidth / 2 + 2.0.sp;

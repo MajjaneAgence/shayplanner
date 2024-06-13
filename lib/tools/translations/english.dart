@@ -18,6 +18,7 @@ final Map<String, String> en = {
   "tr_remember_me": "Remember me",
   "tr_type_your_password": "Type your password",
   "tr_new_on_planner": "New to PLANNER",
+"tr_create_a_pr_account": "Create a Professional Account",
 
   // Forgot password screen
   "tr_try_something_else": "Try something else",
@@ -186,6 +187,14 @@ final Map<String, String> en = {
 "tr_add_to_favorite": "Add to favorites",
 "tr_call": "Call",
 "tr_share": "Share",
+
+// pin screen
+"tr_verification_code": "Verification code",
+"tr_please_enter_code_sent_to": "Please enter the 4-digit code sent to",
+"tr_please_enter_valid_pin_code": "Please enter a valid verification code",
+"tr_resend": "Resend",
+"tr_verify": "Verify",
+
 
 
 

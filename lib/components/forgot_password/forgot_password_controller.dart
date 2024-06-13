@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shayplanner/components/forgot_password/set_new_password_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
+import 'package:shayplanner/components/pin_verfication/pin_verification_screen.dart';
 
 class ForgotPasswordController extends GetxController {
   final formKeyForgetPassword = GlobalKey<FormState>();
@@ -51,7 +52,7 @@ class ForgotPasswordController extends GetxController {
     await Future.delayed(const Duration(seconds: 3));
     isLoadingSendVerificationCode.value = false;
     isLoadingSendVerificationCode.refresh();
-    Get.toNamed(SetNewPasswordScreen.routename);
+    Get.toNamed(PinCodeVerificationScreen.routename);
   }
 
   validatePassword(String password) {

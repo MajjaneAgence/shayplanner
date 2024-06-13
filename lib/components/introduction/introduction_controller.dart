@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:shayplanner/components/home/home_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/rating_app/rating_app_screen.dart';
+import 'package:shayplanner/components/register/register_screen.dart';
+import 'package:shayplanner/components/register/salon_infos_screen.dart';
 
 class IntroductionController extends GetxController {
   // Data properties (if any)
@@ -21,9 +23,9 @@ class IntroductionController extends GetxController {
     }
   }
 
-  void onButton2Pressed() async {
+  void proSpace() async {
     // Get.toNamed(RatingAppScreen.routename);
-    Get.toNamed(RatingAppScreen.routename);
+    Get.toNamed(RegisterScreen.routename,arguments: "pro");
   }
 
   // Additional functions and logic as needed

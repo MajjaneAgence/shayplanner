@@ -18,6 +18,7 @@ final Map<String, String> ar = {
   "tr_remember_me": "تذكرني",
   "tr_type_your_password": "أدخل كلمة المرور",
   "tr_new_on_planner": "جديد على PLANNER",
+  "tr_create_a_pr_account": "إنشاء حساب مهني",
 
   // Forgot password screen
   "tr_try_something_else": "جرب شيئًا آخر",
@@ -183,7 +184,14 @@ final Map<String, String> ar = {
 
   //favorite
   "tr_add_to_favorite": "أضف إلى المفضلة",
-"tr_call": "اتصال",
-"tr_share": "مشاركة",
+  "tr_call": "اتصال",
+  "tr_share": "مشاركة",
 
+//pin screen
+  "tr_verification_code": "رمز التحقق",
+  "tr_please_enter_code_sent_to":
+      "يرجى إدخال الرمز المكون من 4 أرقام المرسل إلى",
+  "tr_please_enter_valid_pin_code": "يرجى إدخال رمز تحقق صالح",
+  "tr_resend": "إعادة الإرسال",
+  "tr_verify": "تحقق",
 };

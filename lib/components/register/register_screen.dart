@@ -14,7 +14,7 @@ class RegisterScreen extends StatelessWidget {
   RegisterScreen({
     Key? key,
   }) : super(key: key);
-  final RegisterController registerController = Get.put(RegisterController());
+  final RegisterController registerController = Get.put(RegisterController(Get.arguments));
   static const routename = '/register';
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class RegisterScreen extends StatelessWidget {
             children: [
               SizedBox(height: 3.0.hp),
               ThemeText(
-                theText: "tr_create_your_account".tr,
+                theText: registerController.argument=="client" ? "tr_create_your_account".tr : "tr_create_a_pro_account",
                 theColor: black,
                 thefontSize: 18.0.sp,
                 theFontWeight: FontWeight.bold,
@@ -186,18 +186,19 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: 2.0.hp),
                     Obx(
                       () => Center(
-                        child: ThemeButton(
+                        child: 
+                         ThemeButton(
                             theColor: grey,
                             theWidth: 65.0.wp,
                             theHeight: 6.5.hp,
                             theBorderRadius: 2.0.wp,
                             theContent: ThemeText(
-                                theText: "tr_register".tr,
+                                theText:registerController.argument=="client" ? "tr_register".tr : "tr_continue".tr,
                                 thefontSize: 12.0.sp,
                                 theFontWeight: FontWeight.bold,
                                 theColor: white),
                             theFormKey: registerController.formKey,
-                            theAction: registerController.register,
+                            theAction: registerController.argument=="client" ? registerController.sendOtp :registerController.continueToSalonInfos  ,
                             theLoadingStatus:
                                 registerController.isLoading.value),
                       ),

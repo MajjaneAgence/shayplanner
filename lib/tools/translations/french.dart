@@ -18,7 +18,6 @@ final Map<String, String> fr = {
   "tr_remember_me": "Se souvenir de moi",
   "tr_type_your_password": "Saisir votre mot de passe",
   "tr_new_on_planner": "Nouveau sur PLANNER",
-  
 
   // Forgot password screen
   "tr_try_something_else": "Essayer une autre méthode",
@@ -54,6 +53,7 @@ final Map<String, String> fr = {
       "La confirmation du mot de passe est incorrecte",
   "tr_accept_general_condions":
       "Veuillez accepter les conditions générales d'utilistaion",
+  "tr_create_a_pr_account": "Créer un Compte Professionnel",
 
   // rating
 
@@ -127,12 +127,14 @@ final Map<String, String> fr = {
   "tr_afternoon": "Après-midi",
   "tr_morning": "Matin",
   "tr_take_appointment": "Prendre RDV",
-  "tr_no_salons_available_for_this_category":"Aucun résultat trouvé pour cette catégorie",
- "tr_no_salons_available_for_this_speciality":"Aucun résultat trouvé pour cette spécialité",
-"tr_salon_name":"Nom du salon",
-"tr_category":"Catégorie",
-"tr_specialite":"Prestation",
-"tr_address_search":"Adresse",
+  "tr_no_salons_available_for_this_category":
+      "Aucun résultat trouvé pour cette catégorie",
+  "tr_no_salons_available_for_this_speciality":
+      "Aucun résultat trouvé pour cette spécialité",
+  "tr_salon_name": "Nom du salon",
+  "tr_category": "Catégorie",
+  "tr_specialite": "Prestation",
+  "tr_address_search": "Adresse",
   //notifications
   "tr_notification": "Notifications",
   "tr_delete_confirmation": "Confirmer la suppression",
@@ -154,44 +156,61 @@ final Map<String, String> fr = {
 
   //favorite
 
-
-
-  //take appointment 
-"tr_take_beauty_appointment":"Prendre RDV",
-"tr_service_choice":"Choix de la prestation",
-"tr_ok":"Valider",
-"tr_cancel":"Annuler",
-"tr_search":"Rechercher",
-"tr_choose_date_and_hour":"Sélectionner la date et l'heure",
-"tr_ur_infos":"Vos informations",
-"tr_msg_for_salon":"Message pour le salon",
-"tr_write_msg":"écrire un message",
-"tr_book":"Réserver",
-"tr_availibility":"Disponibilités",
-"tr_connect_me":"Me connecter",
-"tr_choose_specialite":"Choisir une prestation",
-"tr_spectialite":"prestation",
-"tr_please_choose_at_least_one_speciality": "Veuillez choisir au moins un service",
-"tr_no_availability": "Aucune disponibilité",
-"tr_salon_with_no_specialities":"Ce salon ne propose aucune spécialité pour le moment",
-"tr_salon_has_no_availibality_try_another_date": "Malheureusement, ce salon n'a aucune disponibilité pour cette date, veuillez réessayer avec une autre date",
-"tr_you_must_be_loggedIn_to_continue": "Vous devez être connecté pour continuer",
+  //take appointment
+  "tr_take_beauty_appointment": "Prendre RDV",
+  "tr_service_choice": "Choix de la prestation",
+  "tr_ok": "Valider",
+  "tr_cancel": "Annuler",
+  "tr_search": "Rechercher",
+  "tr_choose_date_and_hour": "Sélectionner la date et l'heure",
+  "tr_ur_infos": "Vos informations",
+  "tr_msg_for_salon": "Message pour le salon",
+  "tr_write_msg": "écrire un message",
+  "tr_book": "Réserver",
+  "tr_availibility": "Disponibilités",
+  "tr_connect_me": "Me connecter",
+  "tr_choose_specialite": "Choisir une prestation",
+  "tr_spectialite": "prestation",
+  "tr_please_choose_at_least_one_speciality":
+      "Veuillez choisir au moins un service",
+  "tr_no_availability": "Aucune disponibilité",
+  "tr_salon_with_no_specialities":
+      "Ce salon ne propose aucune spécialité pour le moment",
+  "tr_salon_has_no_availibality_try_another_date":
+      "Malheureusement, ce salon n'a aucune disponibilité pour cette date, veuillez réessayer avec une autre date",
+  "tr_you_must_be_loggedIn_to_continue":
+      "Vous devez être connecté pour continuer",
 //recap
-"tr_reservation":"Réservation",
-"tr_date_and_hour":"date et heure",
-"tr_confirm":"Confirmer",
-"tr_please_chose_an_hour":"Veuillez sélectione un créneau",
-"tr_ur_appointement_has_been_booked_sucessfully":"Votre réservation a bien été confirmée.",
-"tr_finish":"Terminer",
+  "tr_reservation": "Réservation",
+  "tr_date_and_hour": "date et heure",
+  "tr_confirm": "Confirmer",
+  "tr_please_chose_an_hour": "Veuillez sélectione un créneau",
+  "tr_ur_appointement_has_been_booked_sucessfully":
+      "Votre réservation a bien été confirmée.",
+  "tr_finish": "Terminer",
 
 //future appointment
-"tr_no_future_appointment":"Vous n'avez aucun rendez-vous prochain",
-"tr_future":"À venir",
+  "tr_no_future_appointment": "Vous n'avez aucun rendez-vous prochain",
+  "tr_future": "À venir",
 
 // map screen
- "tr_add_to_favorite":"Ajouter aux favoris",
- "tr_call":"Appeler",
- "tr_share":"Partager"
+  "tr_add_to_favorite": "Ajouter aux favoris",
+  "tr_call": "Appeler",
+  "tr_share": "Partager",
 
+  // pin screen
 
+  "tr_verification_code": "Code de vérification",
+  "tr_please_enter_code_sent_to":
+      "Veuillez saisir le code à 4 chiffres envoyé à",
+  "tr_please_enter_valid_pin_code":
+      "Veuillez saisir un code de vérification valide",
+  "tr_resend": "Renvoyer",
+  "tr_verify": "Vérifier",
+
+  // salon infos screen
+  "tr_salon_informations" : "Informations du salon",
+  "tr_city" :"Ville",
+  'tr_postal_code' :"Code postal",
+  "tr_patent" : "patente"
 };

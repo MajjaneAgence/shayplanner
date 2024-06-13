@@ -9,11 +9,13 @@ import 'package:shayplanner/components/introduction/introduction_screen.dart';
 import 'package:shayplanner/components/login/login_screen.dart';
 import 'package:shayplanner/components/map/map_screen.dart';
 import 'package:shayplanner/components/notifications/notifications_screen.dart';
+import 'package:shayplanner/components/pin_verfication/pin_verification_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/change_password_screen.dart';
 import 'package:shayplanner/components/profile/profile_editing_screens/personal_infos_screen.dart';
 import 'package:shayplanner/components/profile/profile_screen.dart';
 import 'package:shayplanner/components/register/register_screen.dart';
 import 'package:get/get.dart';
+import 'package:shayplanner/components/register/salon_infos_screen.dart';
 import 'package:shayplanner/components/salon_sheet/salon_sheet_screen.dart';
 import 'package:shayplanner/components/salons/salons_screen.dart';
 import 'package:shayplanner/components/rating_app/rating_app_screen.dart';
@@ -103,12 +105,20 @@ var router = [
       name: AppointmentRecapScreen.routename,
       page: () => AppointmentRecapScreen(),
       transition: Transition.cupertinoDialog),
-        GetPage(
-      name:FutureAppointementScreen.routename,
+  GetPage(
+      name: FutureAppointementScreen.routename,
       page: () => FutureAppointementScreen(),
       transition: Transition.cupertinoDialog),
-         GetPage(
-      name:MapScreen.routename,
+  GetPage(
+      name: MapScreen.routename,
       page: () => MapScreen(),
+      transition: Transition.cupertinoDialog),
+  GetPage(
+      name: PinCodeVerificationScreen.routename,
+      page: () => PinCodeVerificationScreen(),
+      transition: Transition.cupertinoDialog),
+  GetPage(
+      name: SalonInfosScreen.routename,
+      page: () => SalonInfosScreen(),
       transition: Transition.cupertinoDialog),
 ];

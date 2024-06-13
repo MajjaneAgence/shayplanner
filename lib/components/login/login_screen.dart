@@ -216,7 +216,7 @@ class LoginScreenForEmailAndSocial extends StatelessWidget {
                           Center(
                             child: InkWell(
                               onTap: () {
-                                Get.toNamed(RegisterScreen.routename);
+                                Get.toNamed(RegisterScreen.routename,arguments: "client");
                               },
                               child: ThemeText(
                                 theText: "tr_register".tr,
