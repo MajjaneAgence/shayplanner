@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,12 +13,22 @@ import 'package:shayplanner/tools/translations/translate.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+    HttpOverrides.global = MyHttpOverrides();
   await initializeDateFormatting();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? savedLanguage = prefs.getString('language');
   Locale locale =
       savedLanguage != null ? Locale(savedLanguage) : const Locale('fr', 'FR');
   runApp(MyApp(locale: locale));
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -45,10 +57,4 @@ class MyApp extends StatelessWidget {
       fallbackLocale: Locale('fr', 'FR'),
     );
   }
-
-  //missing svg icons trash for deleting notifications
-  //svg for arrow language when chosing among the drop down the opposite for the arabic case
-
-
-// cordialment
 }

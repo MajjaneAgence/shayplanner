@@ -198,7 +198,7 @@ class RegisterScreen extends StatelessWidget {
                                 theFontWeight: FontWeight.bold,
                                 theColor: white),
                             theFormKey: registerController.formKey,
-                            theAction: registerController.argument=="client" ? registerController.sendOtp :registerController.continueToSalonInfos  ,
+                            theAction: registerController.argument=="client" ? registerController.register :registerController.continueToSalonInfos  ,
                             theLoadingStatus:
                                 registerController.isLoading.value),
                       ),

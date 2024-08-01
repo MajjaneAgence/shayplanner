@@ -9,6 +9,7 @@ class HomeService {
   Future apiGetCategories() async {
     final getCategoriesUrl =
         Uri.parse(ApiHelper().getUrl() + "/get-categories");
+        print(ApiHelper().getUrl() + "/get-categories");
     final response = await http.get(getCategoriesUrl);
     return response;
   }

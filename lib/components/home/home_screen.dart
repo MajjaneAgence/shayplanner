@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:shayplanner/api/api_helper.dart';
 import 'package:shayplanner/components/home/home_controller.dart';
 import 'package:shayplanner/components/home/home_loading/categories_loading.dart';
 import 'package:shayplanner/components/home/home_loading/latest_salons_loading.dart';
@@ -406,7 +407,7 @@ class HomeScreen extends StatelessWidget {
                                                     child: CircleAvatar(
                                                       radius: 4.5.hp,
                                                       backgroundImage:
-                                                          NetworkImage(category
+                                                          NetworkImage(ApiHelper().getAssetsUrl()+category
                                                               .pictureUrl),
                                                     ),
                                                   ),

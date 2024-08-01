@@ -7,7 +7,7 @@ import 'package:shayplanner/components/login/login_screen.dart';
 
 class ApiHelper {
   final String _url = 'https://shayplanner.majjane.agency/api';
-  final String _urlAssets = 'https://shayplanner.majjane.agency/assets';
+  final String _urlAssets = 'https://shayplanner.majjane.agency/';
 
   getToken() async {
     FlutterSecureStorage secureStorage = const FlutterSecureStorage();
